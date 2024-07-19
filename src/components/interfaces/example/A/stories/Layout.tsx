@@ -4,7 +4,7 @@ import { ExampleA, TExampleA } from "..";
 
 type T = Omit<TExampleA, "className">;
 
-const Layout: FC<T> = ({ ...props }): ReactElement => {
+const Layout: FC<T> = (props): ReactElement => {
   return (
     <ExampleA color={props.color} disabled={props.disabled} size={props.size} variant={props.variant} {...props}>
       {props.children}

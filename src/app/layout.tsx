@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 type T = PropsWithChildren;
 
-const RootLayout: FC<T> = ({ ...props }): ReactElement => {
+const RootLayout: FC<T> = (props): ReactElement => {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>{props.children}</body>

@@ -6,7 +6,7 @@ import { ThemeProvider } from "next-themes";
 
 type T = PropsWithChildren;
 
-export const NextThemesProvider: FC<T> = ({ ...props }): ReactElement => {
+export const NextThemesProvider: FC<T> = (props): ReactElement => {
   return (
     <ThemeProvider enableColorScheme={false} enableSystem>
       {props.children}

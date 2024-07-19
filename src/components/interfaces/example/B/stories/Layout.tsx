@@ -9,7 +9,7 @@ type TLayout = {
   textColor: string;
 };
 
-const Layout: FC<TLayout> = ({ ...props }): ReactElement => {
+const Layout: FC<TLayout> = (props): ReactElement => {
   return (
     <ContainerExampleB>
       <IconExampleB style={{ color: props.iconColor }}>{props.icon}</IconExampleB>
