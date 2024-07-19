@@ -4,7 +4,7 @@ import { FC, PropsWithChildren, ReactElement } from "react";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-type T = PropsWithChildren;
+type T = Readonly<PropsWithChildren>;
 
 export const ReactQueryProvider: FC<T> = (props): ReactElement => {
   const queryClient = new QueryClient();

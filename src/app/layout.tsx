@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
 };
 
-type T = PropsWithChildren;
+type T = Readonly<PropsWithChildren>;
 
 const RootLayout: FC<T> = (props): ReactElement => {
   return (
