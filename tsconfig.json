@@ -18,7 +18,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
+      "@/src/*": ["./src/*"],
       "@/public/*": ["./public/*"],
       "@/interfaces/*": ["./src/components/interfaces/*"]
     }
