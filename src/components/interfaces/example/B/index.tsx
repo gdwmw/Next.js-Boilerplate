@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, FC, HTMLAttributes, ReactElement } from "react";
 
-import { twm } from "@/libs";
+import { twm } from "@/src/libs";
 
 type TContainerExampleB = { className?: string } & DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
 type TIconExampleB = { className?: string } & DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>;

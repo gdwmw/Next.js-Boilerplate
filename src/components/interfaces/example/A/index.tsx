@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, FC, ReactElement } from "react";
 
-import { twm } from "@/libs";
+import { twm } from "@/src/libs";
 
 /* eslint-disable perfectionist/sort-union-types */
 export type TExampleA = {

@@ -2,7 +2,7 @@ import { FC, ReactElement } from "react";
 
 import { Metadata, Viewport } from "next";
 
-import { HomeLayout } from "@/layouts/home";
+import { HomeLayout } from "@/src/layouts/home";
 
 export const viewport: Viewport = {
   initialScale: 1.0,
