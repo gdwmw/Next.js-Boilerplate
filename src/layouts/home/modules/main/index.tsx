@@ -1,5 +1,9 @@
 import { FC, ReactElement } from "react";
 
 export const Main: FC = (): ReactElement => {
-  return <></>;
+  return (
+    <main>
+      <p>This is the home page.</p>
+    </main>
+  );
 };

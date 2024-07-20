@@ -1,5 +1,5 @@
 import { FC, ReactElement } from "react";
 
 export const Nav: FC = (): ReactElement => {
-  return <></>;
+  return <nav></nav>;
 };

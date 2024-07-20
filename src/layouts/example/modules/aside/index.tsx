@@ -1,5 +1,5 @@
 import { FC, ReactElement } from "react";
 
 export const ASide: FC = (): ReactElement => {
-  return <></>;
+  return <aside></aside>;
 };

@@ -4,6 +4,8 @@ import { FC, PropsWithChildren, ReactElement } from "react";
 
 import { Inter } from "next/font/google";
 
+import { NextAuthProvider } from "../libs";
+
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -25,7 +27,9 @@ type T = Readonly<PropsWithChildren>;
 const RootLayout: FC<T> = (props): ReactElement => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>{props.children}</body>
+      <body className={inter.className}>
+        <NextAuthProvider>{props.children}</NextAuthProvider>
+      </body>
     </html>
   );
 };

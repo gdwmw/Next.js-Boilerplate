@@ -2,7 +2,7 @@ import { FC, ReactElement } from "react";
 
 import { ASide, Footer, Header, Main, Nav } from "./modules";
 
-export const ExampleLayout: FC = (): ReactElement => {
+const ExampleLayout: FC = (): ReactElement => {
   return (
     <>
       <Header />
@@ -13,3 +13,5 @@ export const ExampleLayout: FC = (): ReactElement => {
     </>
   );
 };
+
+export default ExampleLayout;
