@@ -12,7 +12,11 @@ export const metadata: Metadata = {
 };
 
 const DeniedPage: FC = (): ReactElement => {
-  return <p>You are not allowed to access this page.</p>;
+  return (
+    <main className="flex h-screen flex-col items-center justify-center">
+      <p className="text-2xl font-semibold">You are not allowed to access this page.</p>
+    </main>
+  );
 };
 
 export default DeniedPage;
