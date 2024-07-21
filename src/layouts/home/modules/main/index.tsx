@@ -1,14 +1,14 @@
-"use client";
-
 import { FC, ReactElement } from "react";
 
-import { signOut, useSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
 import Link from "next/link";
 
-import { ExampleA, ExampleATWM } from "@/src/components/interfaces/example/A";
+import { Logout } from "@/interfaces/buttons/logout";
+import { options } from "@/root/auth";
+import { ExampleATWM } from "@/src/components/interfaces/example/A";
 
-export const Main: FC = (): ReactElement => {
-  const session = useSession();
+export const Main: FC = async (): Promise<ReactElement> => {
+  const session = await getServerSession(options);
 
   return (
     <main className="flex h-screen flex-col items-center justify-center gap-3">
@@ -20,11 +20,7 @@ export const Main: FC = (): ReactElement => {
         <Link className={ExampleATWM({ color: "rose", size: "sm", variant: "solid" })} href={"/admin"}>
           Admin
         </Link>
-        {session.status === "authenticated" && (
-          <ExampleA color="rose" onClick={() => signOut()} size="sm" variant="solid">
-            Logout
-          </ExampleA>
-        )}
+        {session?.user.token && <Logout />}
       </div>
     </main>
   );
