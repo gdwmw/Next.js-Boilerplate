@@ -12,7 +12,6 @@ const config: Config = {
   moduleNameMapper: {
     "^@/interfaces/(.*)$": "<rootDir>/src/components/interfaces/$1",
     "^@/public/(.*)$": "<rootDir>/public/$1",
-    "^@/root/(.*)$": "<rootDir>/$1",
     "^@/src/(.*)$": "<rootDir>/src/$1",
   },
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],

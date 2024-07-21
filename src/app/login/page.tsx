@@ -2,7 +2,7 @@ import { FC, ReactElement } from "react";
 
 import { Metadata, Viewport } from "next";
 
-import { signIn } from "@/root/auth";
+import LoginLayout from "@/src/layouts/login";
 
 export const viewport: Viewport = {
   initialScale: 1.0,
@@ -14,24 +14,7 @@ export const metadata: Metadata = {
 };
 
 const LoginPage: FC = (): ReactElement => {
-  return (
-    <form
-      action={async (formData) => {
-        "use server";
-        await signIn("credentials", formData);
-      }}
-    >
-      <label>
-        Email
-        <input name="email" type="email" />
-      </label>
-      <label>
-        Password
-        <input name="password" type="password" />
-      </label>
-      <button>Login</button>
-    </form>
-  );
+  return <LoginLayout />;
 };
 
 export default LoginPage;

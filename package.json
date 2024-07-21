@@ -6,28 +6,35 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
+    "clean": "rimraf .next",
     "storybook": "storybook dev -p 6006 --ci",
-    "storybook: build": "storybook build",
-    "storybook: start": "bunx http-server storybook-static",
-    "jest: watch": "jest --watch",
-    "jest: test": "jest",
+    "storybook:build": "storybook build",
+    "storybook:start": "bunx http-server storybook-static",
+    "jest:watch": "jest --watch",
+    "jest:test": "jest",
     "lint": "next lint",
-    "lint: fix": "bunx eslint src --fix",
-    "prettier": "bunx prettier --write \"src/**/*\"",
+    "lint:fix": "eslint src --fix",
+    "prettier": "prettier --write \"src/**/*\"",
     "vercel": "vercel --prod",
-    "vercel: link": "vercel link",
-    "vercel: pull": "vercel env pull .env.local",
+    "vercel:link": "vercel link",
+    "vercel:pull": "vercel env pull .env.local",
+    "base64": "openssl rand -base64 33",
     "commit": "git-cz",
     "prepare": "husky"
   },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
+  },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
-    "@tanstack/react-query": "^5.51.9",
+    "@tanstack/react-query": "^5.51.11",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
     "lucide": "^0.408.0",
     "next": "14.2.5",
-    "next-auth": "^5.0.0-beta.19",
+    "next-auth": "^4.24.7",
     "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -37,11 +44,6 @@
     "tailwind-merge": "^2.4.0",
     "zod": "^3.23.8",
     "zustand": "^4.5.4"
-  },
-  "config": {
-    "commitizen": {
-      "path": "@commitlint/cz-commitlint"
-    }
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
@@ -57,7 +59,7 @@
     "@storybook/nextjs": "^8.2.5",
     "@storybook/react": "^8.2.5",
     "@storybook/test": "^8.2.5",
-    "@tanstack/eslint-plugin-query": "^5.51.10",
+    "@tanstack/eslint-plugin-query": "^5.51.12",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
     "@types/jest": "^29.5.12",

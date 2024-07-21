@@ -1,15 +1,17 @@
-import { auth } from "@/root/auth";
+import { NextRequestWithAuth, withAuth } from "next-auth/middleware";
+import { NextResponse } from "next/server";
 
-export default auth((req) => {
-  if (!req.auth || (req.nextUrl.pathname === "/admin" && req.auth.user.role !== "admin")) {
-    const newUrl = new URL(!req.auth ? "/login" : "/denied", req.nextUrl.origin);
-    return Response.redirect(newUrl);
-  }
-
-  if (!req.auth || req.nextUrl.pathname === "/user") {
-    const newUrl = new URL("/login", req.nextUrl.origin);
-    return Response.redirect(newUrl);
-  }
-});
+export default withAuth(
+  function middleware(request: NextRequestWithAuth) {
+    if (request.nextUrl.pathname.startsWith("/admin") && request.nextauth.token?.role !== "admin") {
+      return NextResponse.rewrite(new URL("/denied", request.url));
+    }
+  },
+  {
+    callbacks: {
+      authorized: ({ token }) => !!token,
+    },
+  },
+);
 
 export const config = { matcher: ["/admin", "/user"] };
