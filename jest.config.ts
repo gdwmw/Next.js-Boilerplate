@@ -10,8 +10,6 @@ const createJestConfig = nextJest({
 const config: Config = {
   coverageProvider: "v8",
   moduleNameMapper: {
-    "^@/interfaces/(.*)$": "<rootDir>/src/components/interfaces/$1",
-    "^@/public/(.*)$": "<rootDir>/public/$1",
     "^@/root/(.*)$": "<rootDir>/$1",
     "^@/src/(.*)$": "<rootDir>/src/$1",
   },

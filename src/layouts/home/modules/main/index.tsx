@@ -3,9 +3,9 @@ import { FC, ReactElement } from "react";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 
-import { Logout } from "@/interfaces/buttons/logout";
 import { options } from "@/root/auth";
 import { ExampleATWM } from "@/src/components/interfaces/example/A";
+import { Logout } from "@/src/components/logout";
 
 export const Main: FC = async (): Promise<ReactElement> => {
   const session = await getServerSession(options);
