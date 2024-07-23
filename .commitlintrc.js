@@ -32,7 +32,7 @@ module.exports = {
       { value: "refactor", name: "refactor: 💡   Code changes that do not fix bugs or add features", emoji: "💡" },
       { value: "perf", name: "perf:     ⚡️  Code changes that improve performance", emoji: "⚡️" },
       { value: "test", name: "test:     🧪  Adding missing tests or correcting existing tests", emoji: "🧪" },
-      { value: "build", name: "build:    📦️   Changes that affect the build system or external dependencies", emoji: "📦️" },
+      { value: "build", name: "build:    📦️   Changes that affect the build system or dependencies", emoji: "📦️" },
       { value: "ci", name: "ci:       ♾️  Changes to configuration files and CI scripts", emoji: "♾️" },
       { value: "chore", name: "chore:    ⚙️  Other changes that do not modify the src or test files", emoji: "⚙️" },
       { value: "revert", name: "revert:   ⏪️  Reverts a previous commit", emoji: "⏪️" },
