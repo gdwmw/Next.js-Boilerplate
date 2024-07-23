@@ -6,14 +6,14 @@
     "plugin:storybook/recommended",
     "next/core-web-vitals"
   ],
-  // "overrides": [
-  //   {
-  //     "files": ["*.stories.js", "*.stories.jsx", "*.stories.mdx", "*.stories.ts", "*.stories.tsx"],
-  //     "rules": {
-  //       "perfectionist/sort-objects": "off"
-  //     }
-  //   }
-  // ],
+  "overrides": [
+    {
+      "files": [".commitlintrc.js"],
+      "rules": {
+        "perfectionist/sort-objects": "off"
+      }
+    }
+  ],
   "plugins": ["perfectionist"],
   "rules": {
     "perfectionist/sort-imports": [
