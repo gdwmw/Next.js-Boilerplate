@@ -1,0 +1,3 @@
+bun jest
+bun storybook:build
+bun next build
