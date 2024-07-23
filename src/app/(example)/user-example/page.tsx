@@ -1,0 +1,33 @@
+import { Metadata, Viewport } from "next";
+import { FC, ReactElement } from "react";
+
+import { FormContainer } from "@/src/components";
+import { getAllSession } from "@/src/hooks";
+
+export const viewport: Viewport = {
+  initialScale: 1.0,
+  width: "device-width",
+};
+
+export const metadata: Metadata = {
+  title: "User (Example)",
+};
+
+const UserPage: FC = async (): Promise<ReactElement> => {
+  const session = await getAllSession();
+
+  return (
+    <main className="bg-slate-100">
+      <FormContainer innerContainerClassName="flex-col gap-3 items-center">
+        <header>
+          <h1 className="text-2xl font-semibold">
+            This is <span className="text-rose-400">User</span> page
+          </h1>
+        </header>
+        <pre className="rounded-lg border border-gray-300 bg-white p-2 text-sm">session: {JSON.stringify(session, null, 2)}</pre>
+      </FormContainer>
+    </main>
+  );
+};
+
+export default UserPage;
