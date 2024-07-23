@@ -1,0 +1,91 @@
+import { FlatCompat } from "@eslint/eslintrc";
+import js from "@eslint/js";
+import pluginQuery from "@tanstack/eslint-plugin-query";
+import perfectionist from "eslint-plugin-perfectionist";
+import { default as react, default as reactPlugin } from "eslint-plugin-react";
+import storybook from "eslint-plugin-storybook";
+import tailwind from "eslint-plugin-tailwindcss";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const compat = new FlatCompat({
+  allConfig: js.configs.all,
+  baseDirectory: __dirname,
+  recommendedConfig: js.configs.recommended,
+});
+
+const eslintConfig = [
+  perfectionist.configs["recommended-alphabetical"],
+  ...pluginQuery.configs["flat/recommended"],
+  ...storybook.configs["flat/recommended"],
+  ...tailwind.configs["flat/recommended"],
+  reactPlugin.configs.flat.recommended,
+  ...compat.extends("next/typescript", "next/core-web-vitals", "plugin:@typescript-eslint/strict", "plugin:@typescript-eslint/stylistic"),
+  {
+    ignores: ["!.storybook"],
+  },
+  {
+    files: ["**/.commitlintrc.cjs"],
+    rules: {
+      "perfectionist/sort-objects": "off",
+    },
+  },
+  {
+    plugins: {
+      react,
+    },
+    rules: {
+      "@typescript-eslint/no-unused-expressions": "error",
+      "arrow-body-style": ["error", "as-needed"],
+      curly: ["error"],
+      "no-unused-expressions": "off",
+      "perfectionist/sort-imports": [
+        "error",
+        {
+          customGroups: { type: {}, value: {} },
+          environment: "node",
+          groups: [
+            "type",
+            ["builtin", "external"],
+            "internal-type",
+            "internal",
+            ["parent-type", "sibling-type", "index-type"],
+            ["parent", "sibling", "index"],
+            "object",
+            "unknown",
+          ],
+          ignoreCase: true,
+          internalPattern: ["^@/.+"],
+          maxLineLength: undefined,
+          newlinesBetween: "always",
+          order: "asc",
+          partitionByComment: false,
+          partitionByNewLine: false,
+          specialCharacters: "keep",
+          type: "alphabetical",
+        },
+      ],
+      "perfectionist/sort-modules": "off",
+      "react/display-name": "error",
+      "react/jsx-fragments": "error",
+      "react/jsx-no-undef": "error",
+      "react/jsx-no-useless-fragment": "error",
+      "react/no-children-prop": "error",
+      "react/no-danger": "error",
+      // "react/no-multi-comp": "error",
+      "react/no-unstable-nested-components": "error",
+      "react/no-unused-prop-types": "error",
+      // "react/prefer-read-only-props": "error",
+      "react/react-in-jsx-scope": "off",
+    },
+    settings: {
+      tailwindcss: {
+        callees: ["twm"],
+      },
+    },
+  },
+];
+
+export default eslintConfig;
