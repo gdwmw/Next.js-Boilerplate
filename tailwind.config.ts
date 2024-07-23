@@ -1,20 +1,24 @@
 import type { Config } from "tailwindcss";
 
+import plugin from "tailwindcss/plugin";
+
 const config: Config = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  content: ["./src/**/*.{js,jsx,ts,tsx,mdx}"],
+  darkMode: ["selector", '[data-theme="dark"]'],
+  plugins: [
+    plugin(({ matchVariant }) => {
+      matchVariant("h-max", (value) => `@media (max-height: ${value})`);
+      matchVariant("h-min", (value) => `@media (min-height: ${value})`);
+    }),
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      fontFamily: {
+        geistMono: ["var(--font-geist-sans)"],
+        geistSans: ["var(--font-geist-mono)"],
       },
     },
   },
-  plugins: [],
 };
+
 export default config;
