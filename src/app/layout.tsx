@@ -4,7 +4,7 @@ import { FC, PropsWithChildren, ReactElement } from "react";
 
 import { Inter } from "next/font/google";
 
-import { NextAuthProvider } from "../libs";
+import { NextAuthProvider, NextThemesProvider, ReactQueryProvider } from "../libs";
 
 import "./globals.css";
 
@@ -28,7 +28,11 @@ const RootLayout: FC<T> = (props): ReactElement => {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <NextAuthProvider>{props.children}</NextAuthProvider>
+        <NextThemesProvider>
+          <ReactQueryProvider>
+            <NextAuthProvider>{props.children}</NextAuthProvider>
+          </ReactQueryProvider>
+        </NextThemesProvider>
       </body>
     </html>
   );
