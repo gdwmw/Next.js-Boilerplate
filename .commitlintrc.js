@@ -3,6 +3,8 @@
 module.exports = {
   rules: {
     "header-case": [2, "always", "lower-case"],
+    "subject-min-length": [2, "always", 3],
+    "subject-max-length": [2, "always", 50],
   },
   prompt: {
     alias: { fd: "docs: fix typos" },
