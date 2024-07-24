@@ -4,7 +4,7 @@ import { FC, PropsWithChildren, ReactElement } from "react";
 
 import { Inter } from "next/font/google";
 
-import { NextAuthProvider, NextThemesProvider, ReactQueryProvider } from "../libs";
+import { NextAuthProvider, NextThemesProvider, ReactQueryProvider } from "@/src/libs/providers";
 
 import "./globals.css";
 

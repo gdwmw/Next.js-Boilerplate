@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, FC, ReactElement } from "react";
 
-import { twm } from "@/src/libs";
+import { twm } from "@/src/libs/tailwind-merge";
 
 /* eslint-disable perfectionist/sort-union-types */
 export type TExampleA = {

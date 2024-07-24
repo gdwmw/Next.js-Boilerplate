@@ -3,7 +3,7 @@ import type { NextAuthOptions, Session, User } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-import { IAuthPayload, IAuthResponse } from "../src/utils";
+import { IAuthPayload, IAuthResponse } from "@/src/utils/api";
 
 interface IUserData extends IAuthResponse {
   password: string;
