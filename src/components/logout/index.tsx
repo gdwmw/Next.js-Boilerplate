@@ -6,10 +6,12 @@ import { signOut } from "next-auth/react";
 
 import { ExampleA } from "@/src/components/interfaces/example/A";
 
-export const Logout: FC = (): ReactElement => {
+const Logout: FC = (): ReactElement => {
   return (
     <ExampleA color="rose" onClick={() => signOut()} size="sm" variant="solid">
       Logout
     </ExampleA>
   );
 };
+
+export default Logout;

@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { options } from "@/root/auth";
 import { ExampleATWM } from "@/src/components/interfaces/example/A";
-import { Logout } from "@/src/components/logout";
+import Logout from "@/src/components/logout";
 
 export const Main: FC = async (): Promise<ReactElement> => {
   const session = await getServerSession(options);
