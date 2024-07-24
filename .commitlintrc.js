@@ -10,7 +10,7 @@ module.exports = {
     alias: { fd: "docs: fix typos" },
     messages: {
       type: "Select the type of change that you're committing:",
-      scope: "What is the scope or issue of this change (e.g. utils or #123):",
+      scope: "What is the scope or issue of this change (e.g. utils or #123) (optional):",
       customScope: "Specific scope or issue of this change:",
       subject: "Write a short, imperative tense description of the change:\n",
       body: "Provide a longer description of the change (optional):\n",
