@@ -1,3 +1,10 @@
+export interface IExample {
+  id: string;
+  title: string;
+}
+
+// ----------------------------
+
 export interface IAuthPayload {
   confirmPassword?: string;
   email?: string;
@@ -14,11 +21,4 @@ export interface IAuthResponse {
   role: string;
   token: string;
   username: string;
-}
-
-// ----------------------------
-
-export interface IExample {
-  id: string;
-  title: string;
 }
