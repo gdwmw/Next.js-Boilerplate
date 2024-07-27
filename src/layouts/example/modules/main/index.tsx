@@ -1,5 +1,3 @@
 import { FC, ReactElement } from "react";
 
-export const Main: FC = (): ReactElement => {
-  return <main></main>;
-};
+export const Main: FC = (): ReactElement => <main></main>;

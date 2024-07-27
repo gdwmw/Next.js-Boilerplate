@@ -50,8 +50,6 @@ export const metadata: Metadata = {
   },
 };
 
-const HomePage: FC = (): ReactElement => {
-  return <HomeLayout />;
-};
+const HomePage: FC = (): ReactElement => <HomeLayout />;
 
 export default HomePage;

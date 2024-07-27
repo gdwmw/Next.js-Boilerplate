@@ -9,13 +9,11 @@ type TLayout = {
   textColor: string;
 };
 
-const Layout: FC<TLayout> = (props): ReactElement => {
-  return (
-    <ContainerExampleB>
-      <IconExampleB style={{ color: props.iconColor }}>{props.icon}</IconExampleB>
-      <TextExampleB style={{ color: props.textColor }}>{props.text}</TextExampleB>
-    </ContainerExampleB>
-  );
-};
+const Layout: FC<TLayout> = (props): ReactElement => (
+  <ContainerExampleB>
+    <IconExampleB style={{ color: props.iconColor }}>{props.icon}</IconExampleB>
+    <TextExampleB style={{ color: props.textColor }}>{props.text}</TextExampleB>
+  </ContainerExampleB>
+);
 
 export default Layout;

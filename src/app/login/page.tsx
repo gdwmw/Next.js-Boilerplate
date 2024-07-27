@@ -13,8 +13,6 @@ export const metadata: Metadata = {
   title: "Login",
 };
 
-const LoginPage: FC = (): ReactElement => {
-  return <LoginLayout />;
-};
+const LoginPage: FC = (): ReactElement => <LoginLayout />;
 
 export default LoginPage;

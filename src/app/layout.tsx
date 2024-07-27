@@ -24,18 +24,16 @@ export const metadata: Metadata = {
 
 type T = Readonly<PropsWithChildren>;
 
-const RootLayout: FC<T> = (props): ReactElement => {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <NextThemesProvider>
-          <ReactQueryProvider>
-            <NextAuthProvider>{props.children}</NextAuthProvider>
-          </ReactQueryProvider>
-        </NextThemesProvider>
-      </body>
-    </html>
-  );
-};
+const RootLayout: FC<T> = (props): ReactElement => (
+  <html lang="en" suppressHydrationWarning>
+    <body className={inter.className}>
+      <NextThemesProvider>
+        <ReactQueryProvider>
+          <NextAuthProvider>{props.children}</NextAuthProvider>
+        </ReactQueryProvider>
+      </NextThemesProvider>
+    </body>
+  </html>
+);
 
 export default RootLayout;

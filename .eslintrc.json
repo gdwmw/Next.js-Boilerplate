@@ -16,6 +16,8 @@
   ],
   "plugins": ["perfectionist"],
   "rules": {
+    "curly": ["error"],
+    "arrow-body-style": ["error", "as-needed"],
     "perfectionist/sort-imports": [
       "error",
       {

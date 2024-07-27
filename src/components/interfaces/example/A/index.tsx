@@ -12,8 +12,8 @@ export type TExampleA = {
 } & DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
 /* eslint-enable perfectionist/sort-union-types */
 
-export const ExampleATWM = ({ className, color, disabled, size, variant }: TExampleA) => {
-  return twm(
+export const ExampleATWM = ({ className, color, disabled, size, variant }: TExampleA) =>
+  twm(
     "flex items-center gap-2",
     // ⭐ === BASE === ⭐
     variant !== "ghost" && "justify-center rounded-full",
@@ -70,12 +70,9 @@ export const ExampleATWM = ({ className, color, disabled, size, variant }: TExam
     // ⭐ === CLASSNAME === ⭐
     className,
   );
-};
 
-export const ExampleA: FC<TExampleA> = ({ className, color, disabled, size, variant, ...props }): ReactElement => {
-  return (
-    <button className={ExampleATWM({ className, color, disabled, size, variant })} data-testid="example-a" disabled={disabled} {...props}>
-      {props.children}
-    </button>
-  );
-};
+export const ExampleA: FC<TExampleA> = ({ className, color, disabled, size, variant, ...props }): ReactElement => (
+  <button className={ExampleATWM({ className, color, disabled, size, variant })} data-testid="example-a" disabled={disabled} {...props}>
+    {props.children}
+  </button>
+);

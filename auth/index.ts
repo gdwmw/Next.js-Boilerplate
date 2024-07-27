@@ -60,7 +60,9 @@ export const options: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       async authorize(credentials: Record<never, string> | undefined): Promise<IAuthResponse | null> {
-        if (!credentials) return null;
+        if (!credentials) {
+          return null;
+        }
 
         try {
           //   const res = await POSTAuth(credentials as IAuthPayload);
@@ -68,7 +70,9 @@ export const options: NextAuthOptions = {
           const payload = credentials as IAuthPayload;
           const res = USER_DATA.find((user) => user.username === payload.username && user.password === payload.password);
 
-          if (!res) return null;
+          if (!res) {
+            return null;
+          }
 
           const { password, ...resWithoutPassword } = res;
 
