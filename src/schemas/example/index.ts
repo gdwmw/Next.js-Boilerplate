@@ -16,6 +16,15 @@ const errorMessage = {
 
 // -----------------------------------------------------------------------------
 
+export const ExampleLoginSchema = z.object({
+  password: z.string().min(1, { message: errorMessage.string.required("Password") }),
+  username: z.string().min(1, { message: errorMessage.string.required("Username") }),
+});
+
+export type TExampleLoginSchema = z.infer<typeof ExampleLoginSchema>;
+
+// -----------------------------------------------------------------------------
+
 const ExampleTitleSchema = z.object({
   id: z.string(),
   title: z
