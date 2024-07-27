@@ -1,16 +1,16 @@
 import { create } from "zustand";
 
-type States = {
+interface IStates {
   openA?: boolean;
   openB?: boolean;
-};
+}
 
-type Actions = {
+interface IActions {
   setOpenA: (param: boolean) => void;
   setOpenB: (param: boolean) => void;
-};
+}
 
-export const useGlobalStates = create<Actions & States>((set) => ({
+export const useGlobalStates = create<IActions & IStates>((set) => ({
   openA: false,
   openB: false,
   setOpenA: (openA: boolean) => set({ openA }),

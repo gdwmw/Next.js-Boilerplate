@@ -41,15 +41,27 @@ const classes = {
 /* eslint-enable perfectionist/sort-objects */
 
 /* eslint-disable perfectionist/sort-union-types */
-const variants: ("solid" | "outline" | "ghost")[] = ["solid", "outline", "ghost"];
-const colors: ("rose" | "emerald")[] = ["rose", "emerald"];
-const sizes: ("sm" | "md" | "lg")[] = ["sm", "md", "lg"];
-const ghostSizes: ("sm" | "md" | "lg")[] = ["sm", "md", "lg"];
+type TVariant = "solid" | "outline" | "ghost";
+type TColor = "rose" | "emerald";
+type TSize = "sm" | "md" | "lg";
+
+const variants: TVariant[] = ["solid", "outline", "ghost"];
+const colors: TColor[] = ["rose", "emerald"];
+const sizes: TSize[] = ["sm", "md", "lg"];
+const ghostSizes: TSize[] = ["sm", "md", "lg"];
 const disabled: boolean[] = [false, true];
 /* eslint-enable perfectionist/sort-union-types */
 
+interface I {
+  color?: TColor;
+  disabled?: boolean;
+  onClickFn?: () => void;
+  size?: TSize;
+  variant?: TVariant;
+}
+
 /* eslint-disable tailwindcss/no-custom-classname */
-const component = ({ color, disabled, onClickFn, size, variant }: any) => (
+const component = ({ color, disabled, onClickFn, size, variant }: I) => (
   <ExampleA
     className="testing-class"
     color={color}

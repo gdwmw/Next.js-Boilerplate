@@ -74,6 +74,7 @@ export const options: NextAuthOptions = {
             return null;
           }
 
+          /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
           const { password, ...resWithoutPassword } = res;
 
           return resWithoutPassword;
