@@ -1,13 +1,14 @@
 {
   "extends": [
     "eslint:recommended",
+    "next/core-web-vitals",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/stylistic",
     "plugin:perfectionist/recommended-alphabetical",
-    "plugin:tailwindcss/recommended",
-    "plugin:@tanstack/eslint-plugin-query/recommended",
+    "plugin:react/recommended",
     "plugin:storybook/recommended",
-    "next/core-web-vitals"
+    "plugin:tailwindcss/recommended"
   ],
   "overrides": [
     {
@@ -17,10 +18,11 @@
       }
     }
   ],
-  "plugins": ["perfectionist"],
+  "plugins": ["perfectionist", "react"],
   "rules": {
     "curly": ["error"],
     "arrow-body-style": ["error", "as-needed"],
+    "react/react-in-jsx-scope": "off",
     "perfectionist/sort-imports": [
       "error",
       {
