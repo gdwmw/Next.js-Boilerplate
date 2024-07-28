@@ -44,13 +44,13 @@ const classes = {
 type TVariant = "solid" | "outline" | "ghost";
 type TColor = "rose" | "emerald";
 type TSize = "sm" | "md" | "lg";
+/* eslint-enable perfectionist/sort-union-types */
 
 const variants: TVariant[] = ["solid", "outline", "ghost"];
 const colors: TColor[] = ["rose", "emerald"];
 const sizes: TSize[] = ["sm", "md", "lg"];
 const ghostSizes: TSize[] = ["sm", "md", "lg"];
 const disabled: boolean[] = [false, true];
-/* eslint-enable perfectionist/sort-union-types */
 
 interface I {
   color?: TColor;
@@ -139,9 +139,9 @@ describe("ExampleA Component Testing", () => {
                 ? expect(getByTestId("example-a")).toHaveClass(classes.base.b)
                 : expect(getByTestId("example-a")).not.toHaveClass(classes.base.b);
 
-              !disabled
-                ? expect(getByTestId("example-a")).not.toHaveClass(classes.base.c)
-                : expect(getByTestId("example-a")).toHaveClass(classes.base.c);
+              disabled
+                ? expect(getByTestId("example-a")).toHaveClass(classes.base.c)
+                : expect(getByTestId("example-a")).not.toHaveClass(classes.base.c);
 
               // ⭐ === SOLID === ⭐
               variant === "solid" && color === "rose" && !disabled
