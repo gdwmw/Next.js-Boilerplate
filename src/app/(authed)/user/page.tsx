@@ -20,7 +20,7 @@ const UserPage: FC = async (): Promise<ReactElement> => {
   return (
     <main className="flex h-screen flex-col items-center justify-center gap-3">
       <p className="text-2xl font-semibold">This is the user page.</p>
-      <pre className="rounded-lg border border-gray-300 p-2 text-sm">session: {JSON.stringify(session, null, 2)}</pre>
+      <pre className="rounded-lg border border-gray-300 bg-white p-2 text-sm">session: {JSON.stringify(session, null, 2)}</pre>
     </main>
   );
 };
