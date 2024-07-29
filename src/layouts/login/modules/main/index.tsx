@@ -8,7 +8,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 import { ExampleA } from "@/src/components/interfaces/example/A";
-import { ExampleLoginSchema, TExampleLoginSchema } from "@/src/schemas/example";
+import { LoginSchema, TLoginSchema } from "@/src/schemas/auth";
 
 export const Main: FC = (): ReactElement => {
   const router = useRouter();
@@ -19,12 +19,12 @@ export const Main: FC = (): ReactElement => {
     formState: { errors },
     handleSubmit,
     register,
-  } = useForm<TExampleLoginSchema>({
+  } = useForm<TLoginSchema>({
     defaultValues: { password: "", username: "" },
-    resolver: zodResolver(ExampleLoginSchema),
+    resolver: zodResolver(LoginSchema),
   });
 
-  const onSubmit: SubmitHandler<TExampleLoginSchema> = async (dt) => {
+  const onSubmit: SubmitHandler<TLoginSchema> = async (dt) => {
     setLoading(true);
     setInvalidCredentials(false);
 

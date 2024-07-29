@@ -3,25 +3,16 @@ import { z } from "zod";
 /* eslint-disable perfectionist/sort-objects */
 const errorMessage = {
   string: {
-    min: (object: string, min: number) => `Please enter ${object} minimum ${min} characters`,
-    max: (object: string, max: number) => `${object} maximum ${max} characters`,
-    required: (object: string) => `Please enter ${object}`,
+    min: (label: string, min: number) => `Please enter ${label} minimum ${min} characters`,
+    max: (label: string, max: number) => `${label} maximum ${max} characters`,
+    required: (label: string) => `Please enter ${label}`,
   },
   number: {
-    min: (object: string, min: number) => `${object} minimum ${min}`,
-    max: (object: string, max: number) => `${object} maximum ${max}`,
+    min: (label: string, min: number) => `${label} minimum ${min}`,
+    max: (label: string, max: number) => `${label} maximum ${max}`,
   },
 };
 /* eslint-enable perfectionist/sort-objects */
-
-// -----------------------------------------------------------------------------
-
-export const ExampleLoginSchema = z.object({
-  password: z.string().min(1, { message: errorMessage.string.required("Password") }),
-  username: z.string().min(1, { message: errorMessage.string.required("Username") }),
-});
-
-export type TExampleLoginSchema = z.infer<typeof ExampleLoginSchema>;
 
 // -----------------------------------------------------------------------------
 
