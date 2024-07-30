@@ -1,9 +1,8 @@
 import { FC, ReactElement } from "react";
 
 import { Metadata, Viewport } from "next";
-import { getServerSession } from "next-auth";
 
-import { options } from "@/root/auth";
+import { getAllSession } from "@/src/hooks/session";
 
 export const viewport: Viewport = {
   initialScale: 1.0,
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 const AdminPage: FC = async (): Promise<ReactElement> => {
-  const session = await getServerSession(options);
+  const session = await getAllSession();
 
   return (
     <main className="flex h-screen flex-col items-center justify-center gap-3">
