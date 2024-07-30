@@ -59,7 +59,7 @@ export const options: NextAuthOptions = {
 
   providers: [
     CredentialsProvider({
-      async authorize(credentials: Record<never, string> | undefined): Promise<IAuthResponse | null> {
+      async authorize(credentials: Record<never, string> | undefined): Promise<null | User> {
         if (!credentials) {
           return null;
         }

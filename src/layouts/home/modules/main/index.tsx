@@ -1,14 +1,13 @@
 import { FC, ReactElement } from "react";
 
-import { getServerSession } from "next-auth";
 import Link from "next/link";
 
-import { options } from "@/root/auth";
 import { ExampleATWM } from "@/src/components/interfaces/example/A";
 import { Logout } from "@/src/components/logout";
+import { getSession } from "@/src/hooks/session";
 
 export const Main: FC = async (): Promise<ReactElement> => {
-  const session = await getServerSession(options);
+  const session = await getSession("id");
 
   return (
     <main className="flex h-screen flex-col items-center justify-center gap-3">
@@ -20,7 +19,7 @@ export const Main: FC = async (): Promise<ReactElement> => {
         <Link className={ExampleATWM({ color: "rose", size: "sm", variant: "solid" })} href={"/admin"}>
           Admin
         </Link>
-        {session?.user.token && <Logout />}
+        {session && <Logout />}
       </div>
     </main>
   );
