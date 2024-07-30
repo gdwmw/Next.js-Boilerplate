@@ -76,8 +76,9 @@ export const options: NextAuthOptions = {
 
           /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
           const { password, ...resWithoutPassword } = res;
+          const newRes = { ...resWithoutPassword, status: "authenticated" };
 
-          return resWithoutPassword;
+          return newRes;
         } catch (error) {
           console.error("Authorization:", error);
           return null;

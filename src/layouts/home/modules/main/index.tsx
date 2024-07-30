@@ -7,7 +7,7 @@ import { Logout } from "@/src/components/logout";
 import { getSession } from "@/src/hooks/session";
 
 export const Main: FC = async (): Promise<ReactElement> => {
-  const session = await getSession("id");
+  const session = await getSession("status");
 
   return (
     <main className="flex h-screen flex-col items-center justify-center gap-3">
