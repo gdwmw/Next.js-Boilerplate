@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const NotFoundPage: FC = (): ReactElement => (
   <main className="flex h-screen flex-col items-center justify-center">
-    <p className="text-2xl font-semibold text-black dark:text-white">The page you are looking for does not exist.</p>
+    <p className="text-2xl font-semibold">The page you are looking for does not exist.</p>
   </main>
 );
 
