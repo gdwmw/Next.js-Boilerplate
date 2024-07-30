@@ -1,12 +1,12 @@
 # Next.js Boilerplate Documentation
 
- Boilerplate By [Gede Dewo Wahyu M.W](https://github.com/gdwmw) ❤️
+Boilerplate By [Gede Dewo Wahyu M.W](https://github.com/gdwmw) ❤️
 
-## Boilerplate Description
+## Boilerplate Description 📖
 
 This boilerplate is a web application built using Next.js, which is a React framework for web application development. The boilerplate includes various features such as authentication, theme management, state management, form validation, and more.
 
-## Boilerplate Structure
+## Boilerplate Structure 📂
 
 Below is the main directory structure of the boilerplate:
 
@@ -29,7 +29,7 @@ Below is the main directory structure of the boilerplate:
   /middleware.ts
 ```
 
-### Structure Explanation
+### Structure Explanation 📚
 
 - **/auth**: Contains authentication-related files and logic.
 - **/public**: Contains static assets such as images, animations, and other static files.
@@ -44,7 +44,7 @@ Below is the main directory structure of the boilerplate:
 - **/src/utils**: Contains utility functions used in various places within the application.
 - **/src/middleware.ts**: Contains middleware functions for handling requests and responses.
 
-## Installation
+## Installation 🚀
 
 To get started with this boilerplate, follow these steps:
 
@@ -89,7 +89,7 @@ To get started with this boilerplate, follow these steps:
 
    Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
 
-## Commit Guidelines
+## Commit Guidelines 📝
 
 When committing your changes using the `bun commit` command, please follow these steps:
 
@@ -122,7 +122,7 @@ When committing your changes using the `bun commit` command, please follow these
 7. **Add a Detailed Body (Optional)**  
    If necessary, provide a longer description of the changes in the body section. This can include the motivation for the change and any relevant details.
 
-8. **List Breaking Changes (If Any)**  
+8. **List Breaking Changes (If Any) (Optional)**  
    If your changes introduce breaking changes, list them in the designated section.
 
 9. **Confirm Your Commit**  
@@ -130,7 +130,7 @@ When committing your changes using the `bun commit` command, please follow these
 
 By following these guidelines, you ensure that your commit messages are informative and consistent with the project's standards.
 
-## Contribution
+## Contribution 🤝
 
 If you would like to contribute to this boilerplate, please follow these steps:
 
@@ -174,8 +174,29 @@ If you would like to contribute to this boilerplate, please follow these steps:
 
 Thank you for your contribution!
 
-## License
+## MIT License ⚖️
 
 This boilerplate is licensed under the MIT License. Please see the `LICENSE` file for more information.
 
-This documentation provides a clear overview of the boilerplate, installation instructions, features, and contribution guidelines. If you have any further questions, feel free to ask!
+## How to Ask Questions❓
+
+If you have any questions regarding the boilerplate or its usage, please follow these guidelines:
+
+1. **Be Clear and Concise**  
+   Clearly state your question or issue. Provide enough context for others to understand your problem.
+
+2. **Include Relevant Details**  
+   Mention any specific errors, code snippets, or configurations that are relevant to your question.
+
+3. **Search Before Asking**  
+   Check the documentation and existing issues to see if your question has already been answered.
+
+4. **Use Proper Formatting**  
+   When sharing code or error messages, use code blocks for better readability.
+
+5. **Be Respectful**  
+   Remember to be polite and respectful in your communication.
+
+By following these guidelines, you can help ensure that your questions are understood and addressed promptly.
+
+This documentation provides a clear overview of the boilerplate, installation instructions, commit guidelines, and contribution guidelines. If you have any further questions, feel free to ask!
