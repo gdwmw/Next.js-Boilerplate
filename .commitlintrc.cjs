@@ -1,5 +1,5 @@
-// commitlint.config.js | .commitlintrc.js
 /** @type {import('cz-git').UserConfig} */
+
 module.exports = {
   rules: {
     "header-case": [2, "always", "lower-case"],
