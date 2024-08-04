@@ -4,7 +4,7 @@ Boilerplate By [Gede Dewo Wahyu M.W](https://github.com/gdwmw) ❤️
 
 ## Boilerplate Description 📖
 
-This boilerplate is a web application built using Next.js, which is a React framework for web application development. The boilerplate includes various features such as authentication, theme management, state management, form validation, and more.
+This boilerplate is a web application built using Next.js, which is a React framework for web application development. The boilerplate includes various features such as authentication, theme management, state management, form validation, and more. Additionally, this boilerplate follows the principles of Atomic Design for organizing components.
 
 ## Boilerplate Structure 📂
 
@@ -34,10 +34,10 @@ Below is the main directory structure of the boilerplate:
 - **/auth**: Contains authentication-related files and logic.
 - **/public**: Contains static assets such as images, animations, and other static files.
 - **/src/app**: Contains the main application pages, including login, admin, user, and others.
-- **/src/components**: Contains reusable UI components throughout the application.
+- **/src/components**: Contains reusable components throughout the application, organized following the principles of Atomic Design.
 - **/src/context**: Contains context providers for state management and sharing data across components.
 - **/src/hooks**: Contains custom hooks for managing state and side effects in functional components.
-- **/src/layouts**: Contains layouts for various parts of the application, such as header, footer, aside, and others.
+- **/src/layouts**: Contains layouts for various parts of the application, such as header, footer, aside, and others. The layouts are organized following the principles of Atomic Design, with components broken down into smaller, reusable pieces.
 - **/src/libs**: Contains libraries such as providers for authentication and theme management, as well as constants and others.
 - **/src/schemas**: Contains validation schemas using Zod to ensure incoming data meets expectations.
 - **/src/types**: Contains TypeScript type definitions to ensure type safety throughout the application.
