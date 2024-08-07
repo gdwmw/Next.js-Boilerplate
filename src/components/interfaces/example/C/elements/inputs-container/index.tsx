@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren, ReactElement } from "react";
 
-import { twm } from "@/root/src/libs/tailwind-merge";
+import { twm } from "@/src/libs/tailwind-merge";
 
 type T = {
   className?: string;

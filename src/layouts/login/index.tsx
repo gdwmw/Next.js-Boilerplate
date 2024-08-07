@@ -1,15 +1,7 @@
 import { FC, ReactElement } from "react";
 
-import { ASide, Footer, Header, Main, Nav } from "./modules";
+import { Main } from "./modules";
 
-const LoginLayout: FC = (): ReactElement => (
-  <>
-    <Header />
-    <Nav />
-    <ASide />
-    <Main />
-    <Footer />
-  </>
-);
+const LoginLayout: FC = (): ReactElement => <Main />;
 
 export default LoginLayout;

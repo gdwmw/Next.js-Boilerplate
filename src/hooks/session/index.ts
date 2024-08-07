@@ -2,7 +2,7 @@
 
 import { getServerSession, Session, User } from "next-auth";
 
-import { options } from "@/root/auth";
+import { options } from "@/auth";
 
 type T = keyof User;
 

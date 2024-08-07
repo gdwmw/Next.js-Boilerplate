@@ -12,7 +12,7 @@
   ],
   "overrides": [
     {
-      "files": [".commitlintrc.js"],
+      "files": [".commitlintrc.cjs"],
       "rules": {
         "perfectionist/sort-objects": "off"
       }

@@ -1,8 +1,6 @@
-"use server";
-
 import { IAuthPayload, IAuthResponse } from "@/src/types/api";
 
-const API_URL = process.env.AUTH_URL;
+const API_URL = process.env.NEXT_PUBLIC_AUTH_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
