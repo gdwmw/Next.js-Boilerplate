@@ -5,6 +5,7 @@ const errorMessage = {
   string: {
     min: (label: string, min: number) => `Please enter ${label} minimum ${min} characters`,
     max: (label: string, max: number) => `${label} maximum ${max} characters`,
+    email: (label: string) => `${label} must be a valid email address`,
     required: (label: string) => `Please enter ${label}`,
   },
   number: {
@@ -16,9 +17,13 @@ const errorMessage = {
 
 // -----------------------------------------------------------------------------
 
-export const LoginSchema = z.object({
-  password: z.string().min(1, { message: errorMessage.string.required("Password") }),
-  username: z.string().min(1, { message: errorMessage.string.required("Username") }),
-});
+export const LoginSchema = (label: string) =>
+  z.object({
+    identifier:
+      label === "Email"
+        ? z.string().email({ message: errorMessage.string.email(label) })
+        : z.string().min(1, { message: errorMessage.string.required(label) }),
+    password: z.string().min(1, { message: errorMessage.string.required("Password") }),
+  });
 
-export type TLoginSchema = z.infer<typeof LoginSchema>;
+export type TLoginSchema = z.infer<ReturnType<typeof LoginSchema>>;

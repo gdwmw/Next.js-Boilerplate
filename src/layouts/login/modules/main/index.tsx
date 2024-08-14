@@ -14,6 +14,7 @@ import { LoginSchema, TLoginSchema } from "@/src/schemas/auth";
 
 export const Main: FC = (): ReactElement => {
   const router = useRouter();
+  const [withEmail, setWithEmail] = useState(false);
   const [visibility, setVisibility] = useState(false);
   const [invalidCredentials, setInvalidCredentials] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -23,8 +24,8 @@ export const Main: FC = (): ReactElement => {
     handleSubmit,
     register,
   } = useForm<TLoginSchema>({
-    defaultValues: { password: "", username: "" },
-    resolver: zodResolver(LoginSchema),
+    defaultValues: { identifier: "", password: "" },
+    resolver: zodResolver(LoginSchema(withEmail ? "Email" : "Username")),
   });
 
   const onSubmit: SubmitHandler<TLoginSchema> = async (dt) => {
@@ -33,15 +34,15 @@ export const Main: FC = (): ReactElement => {
 
     try {
       const res = await signIn("credentials", {
+        identifier: dt.identifier,
         password: dt.password,
         redirect: false,
-        username: dt.username,
       });
 
       if (!res?.ok) {
         setLoading(false);
         setInvalidCredentials(true);
-        return;
+        throw new Error(withEmail ? "Invalid Email or Password" : "Invalid Username or Password");
       }
 
       router.push("/");
@@ -57,10 +58,10 @@ export const Main: FC = (): ReactElement => {
         <ExampleInput
           color="rose"
           disabled={loading}
-          errorMessage={errors.username?.message}
-          label="Username"
+          errorMessage={errors.identifier?.message}
+          label={withEmail ? "Email" : "Username"}
           type="text"
-          {...register("username")}
+          {...register("identifier")}
         />
 
         <ExampleInput
@@ -74,11 +75,28 @@ export const Main: FC = (): ReactElement => {
           {...register("password")}
         />
 
-        <span className="text-center text-sm text-red-600"> {invalidCredentials && "Invalid Username or Password"}</span>
+        <span className="text-center text-sm text-red-600">
+          {invalidCredentials && (withEmail ? "Invalid Email or Password" : "Invalid Username or Password")}
+        </span>
 
         <ExampleA className={loading ? "cursor-not-allowed" : ""} color="rose" disabled={loading} size="sm" type="submit" variant="solid">
           {loading ? "Loading..." : "Login"}
         </ExampleA>
+
+        <div className="flex justify-center gap-1">
+          <span className="text-xs">{withEmail ? "Login with username?" : "Login with email?"}</span>
+          <ExampleA
+            className="text-xs"
+            color="rose"
+            disabled={loading}
+            onClick={() => setWithEmail((prev) => !prev)}
+            size="sm"
+            type="button"
+            variant="ghost"
+          >
+            Click here!
+          </ExampleA>
+        </div>
       </form>
     </main>
   );

@@ -3,31 +3,37 @@ import type { NextAuthOptions, Session, User } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-import { IAuthPayload, IAuthResponse } from "@/src/types/api";
+import { ILoginPayload } from "@/src/types/api";
 
-interface IUserData extends IAuthResponse {
-  password: string;
-}
-
-const USER_DATA: IUserData[] = [
+const USER_DATA = [
   {
     email: "admin@gmail.com",
-    id: "1",
-    image: "image url",
-    name: "Admin",
     password: "admin",
-    role: "admin",
-    token: "123456789",
+    response: {
+      email: "admin@gmail.com",
+      id: "1",
+      image: "image url",
+      name: "Admin",
+      role: "admin",
+      status: "authenticated",
+      token: "123456789",
+      username: "admin",
+    },
     username: "admin",
   },
   {
     email: "user@gmail.com",
-    id: "2",
-    image: "image url",
-    name: "User",
     password: "user",
-    role: "user",
-    token: "987654321",
+    response: {
+      email: "user@gmail.com",
+      id: "2",
+      image: "image url",
+      name: "User",
+      role: "user",
+      status: "authenticated",
+      token: "987654321",
+      username: "user",
+    },
     username: "user",
   },
 ];
@@ -65,23 +71,20 @@ export const options: NextAuthOptions = {
         }
 
         try {
-          //   const res = await POSTAuth(credentials as IAuthPayload);
+          const { identifier, password } = credentials as ILoginPayload;
 
-          const payload = credentials as IAuthPayload;
-          const res = USER_DATA.find((user) => user.username === payload.username && user.password === payload.password);
+          // const res = await POSTAuth({ password, identifier });
+
+          const res = USER_DATA.find((user) => (user.username === identifier || user.email === identifier) && user.password === password);
 
           if (!res) {
             return null;
           }
 
-          /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
-          const { password, ...resWithoutPassword } = res;
-          const newRes = { ...resWithoutPassword, status: "authenticated" };
-
-          return newRes;
+          return res.response;
         } catch (error) {
-          console.error("Authorization:", error);
-          return null;
+          console.error(error);
+          throw error;
         }
       },
       credentials: {},
