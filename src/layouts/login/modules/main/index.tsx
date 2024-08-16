@@ -40,7 +40,6 @@ export const Main: FC = (): ReactElement => {
       });
 
       if (!res?.ok) {
-        setLoading(false);
         setInvalidCredentials(true);
         throw new Error(withEmail ? "Invalid Email or Password" : "Invalid Username or Password");
       }
@@ -49,6 +48,8 @@ export const Main: FC = (): ReactElement => {
       router.refresh();
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
