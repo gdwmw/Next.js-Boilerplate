@@ -22,7 +22,7 @@ export const POSTRegister = async (data: IRegisterPayload): Promise<IAuthRespons
 
     return await res.json();
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };

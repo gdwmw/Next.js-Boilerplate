@@ -16,7 +16,7 @@ export const GETExample = async (): Promise<IExample[]> => {
 
     return await res.json();
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -37,7 +37,7 @@ export const POSTExample = async (data: IExample): Promise<IExample> => {
 
     return await res.json();
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -58,7 +58,7 @@ export const PUTExample = async (data: IExample): Promise<IExample> => {
 
     return await res.json();
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -78,7 +78,7 @@ export const DELETEExample = async (id: string): Promise<IExample> => {
 
     return await res.json();
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
