@@ -83,7 +83,7 @@ export const options: NextAuthOptions = {
 
           return res.response;
         } catch (error) {
-          console.error(error);
+          console.log("An error occurred in the authentication process!");
           throw error;
         }
       },

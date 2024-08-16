@@ -44,10 +44,12 @@ export const Main: FC = (): ReactElement => {
         throw new Error(withEmail ? "Invalid Email or Password" : "Invalid Username or Password");
       }
 
+      console.log("Login Success!");
       router.push("/");
       router.refresh();
     } catch (error) {
-      console.error(error);
+      console.log("Login Failed!");
+      console.error("--- Authentication Error Message ---", error);
     } finally {
       setLoading(false);
     }
