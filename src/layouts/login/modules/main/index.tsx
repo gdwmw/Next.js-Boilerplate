@@ -23,6 +23,7 @@ export const Main: FC = (): ReactElement => {
     formState: { errors },
     handleSubmit,
     register,
+    reset,
   } = useForm<TLoginSchema>({
     defaultValues: { identifier: "", password: "" },
     resolver: zodResolver(LoginSchema(withEmail ? "Email" : "Username")),
@@ -92,7 +93,10 @@ export const Main: FC = (): ReactElement => {
             className="text-xs"
             color="rose"
             disabled={loading}
-            onClick={() => setWithEmail((prev) => !prev)}
+            onClick={() => {
+              setWithEmail((prev) => !prev);
+              reset();
+            }}
             size="sm"
             type="button"
             variant="ghost"
