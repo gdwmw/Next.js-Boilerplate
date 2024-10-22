@@ -64,7 +64,7 @@ To get started with this boilerplate, follow these steps:
 3. **Setup Environment Variables**
 
    ```bash
-   cp .env.example .env.local
+   bun cpenv
    ```
 
 4. **Fill in the `NEXTAUTH_URL` with Local URL**
