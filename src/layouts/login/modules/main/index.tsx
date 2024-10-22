@@ -94,6 +94,7 @@ export const Main: FC = (): ReactElement => {
             color="rose"
             disabled={loading}
             onClick={() => {
+              setVisibility(false);
               setWithEmail((prev) => !prev);
               reset();
             }}
