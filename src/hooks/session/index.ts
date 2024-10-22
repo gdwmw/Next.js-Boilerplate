@@ -8,11 +8,7 @@ type T = keyof User;
 
 export const getSession = async (props: T): Promise<null | string | undefined> => {
   const session = await getServerSession(options);
-  const res = session?.user?.[props];
-  return res;
+  return session?.user?.[props];
 };
 
-export const getAllSession = async (): Promise<null | Session> => {
-  const session = await getServerSession(options);
-  return session;
-};
+export const getAllSession = async (): Promise<null | Session> => await getServerSession(options);

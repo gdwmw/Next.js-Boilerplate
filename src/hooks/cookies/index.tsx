@@ -12,8 +12,6 @@ interface I {
   value: string;
 }
 
-export const setCookie = async (props: I) => {
-  cookies().set(props.name, props.value, props.options);
-};
+export const setCookie = async (props: I) => cookies().set(props.name, props.value, props.options);
 
 export const getCookie = async (name: string): Promise<RequestCookie | undefined> => cookies().get(name);
