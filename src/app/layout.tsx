@@ -2,13 +2,22 @@ import type { Metadata } from "next";
 
 import { FC, PropsWithChildren, ReactElement } from "react";
 
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 
 import { NextAuthProvider, NextThemesProvider, ReactQueryProvider } from "@/src/libs/providers";
 
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "100 900",
+});
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
+});
 
 export const metadata: Metadata = {
   authors: [{ name: "Gede Dewo Wahyu M.W", url: "https://github.com/gdwmw" }],
@@ -26,7 +35,7 @@ type T = Readonly<PropsWithChildren>;
 
 const RootLayout: FC<T> = (props): ReactElement => (
   <html lang="en" suppressHydrationWarning>
-    <body className={inter.className}>
+    <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <NextThemesProvider>
         <ReactQueryProvider>
           <NextAuthProvider>{props.children}</NextAuthProvider>
