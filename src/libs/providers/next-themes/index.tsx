@@ -1,8 +1,7 @@
 "use client";
 
-import { FC, PropsWithChildren, ReactElement } from "react";
-
 import { ThemeProvider } from "next-themes";
+import { FC, PropsWithChildren, ReactElement } from "react";
 
 type T = Readonly<PropsWithChildren>;
 

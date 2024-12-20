@@ -1,8 +1,7 @@
 "use client";
 
-import { FC, PropsWithChildren, ReactElement } from "react";
-
 import { SessionProvider } from "next-auth/react";
+import { FC, PropsWithChildren, ReactElement } from "react";
 
 type T = Readonly<PropsWithChildren>;
 

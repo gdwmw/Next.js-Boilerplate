@@ -1,8 +1,7 @@
 "use client";
 
-import { FC, PropsWithChildren, ReactElement, useState } from "react";
-
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { FC, PropsWithChildren, ReactElement, useState } from "react";
 
 type T = Readonly<PropsWithChildren>;
 

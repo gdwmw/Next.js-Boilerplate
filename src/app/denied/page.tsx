@@ -1,6 +1,5 @@
-import { FC, ReactElement } from "react";
-
 import { Metadata, Viewport } from "next";
+import { FC, ReactElement } from "react";
 
 export const viewport: Viewport = {
   initialScale: 1.0,

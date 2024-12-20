@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 
-import { FC, PropsWithChildren, ReactElement } from "react";
-
 import localFont from "next/font/local";
+import { FC, PropsWithChildren, ReactElement } from "react";
 
 import { NextAuthProvider, NextThemesProvider, ReactQueryProvider } from "@/src/libs/providers";
 
