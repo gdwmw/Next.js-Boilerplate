@@ -40,17 +40,13 @@ const classes = {
 };
 /* eslint-enable perfectionist/sort-objects */
 
-/* eslint-disable perfectionist/sort-union-types */
-type TVariant = "solid" | "outline" | "ghost";
-type TColor = "rose" | "emerald";
-type TSize = "sm" | "md" | "lg";
-/* eslint-enable perfectionist/sort-union-types */
+const VARIANTS = ["solid", "outline", "ghost"] as const;
+const COLORS = ["rose", "emerald"] as const;
+const SIZES = ["sm", "md", "lg"] as const;
 
-const variants: TVariant[] = ["solid", "outline", "ghost"];
-const colors: TColor[] = ["rose", "emerald"];
-const sizes: TSize[] = ["sm", "md", "lg"];
-const ghostSizes: TSize[] = ["sm", "md", "lg"];
-const disabled: boolean[] = [false, true];
+type TVariant = (typeof VARIANTS)[number];
+type TColor = (typeof COLORS)[number];
+type TSize = (typeof SIZES)[number];
 
 interface I {
   color?: TColor;
@@ -110,7 +106,7 @@ describe("ExampleA Component Testing", () => {
     expect(getByTestId("example-a")).toHaveAttribute("type", "button");
   });
 
-  disabled.forEach((disabled) => {
+  [true, false].forEach((disabled) => {
     it(`Should ${!disabled ? "can" : "cannot"} interact when the button is ${!disabled ? "enabled" : "disabled"}`, () => {
       const onClickFn = jest.fn();
       const { getByTestId } = render(component({ disabled, onClickFn }));
@@ -119,11 +115,11 @@ describe("ExampleA Component Testing", () => {
     });
   });
 
-  variants.forEach((variant) => {
-    colors.forEach((color) => {
-      sizes.forEach((size) => {
-        ghostSizes.forEach((ghostSize) => {
-          disabled.forEach((disabled) => {
+  VARIANTS.forEach((variant) => {
+    COLORS.forEach((color) => {
+      SIZES.forEach((size) => {
+        SIZES.forEach((ghostSize) => {
+          [true, false].forEach((disabled) => {
             it(`Should have Variant: ${variant}, Color: ${color}, ${size === "lg" && variant !== "ghost" ? "Size: " + size : " Ghost Size: " + ghostSize} correctly`, () => {
               const { getByTestId } = render(component({ color, disabled, size, variant }));
 
