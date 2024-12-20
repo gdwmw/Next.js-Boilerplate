@@ -5,5 +5,7 @@ interface I {
 }
 
 export const ErrorMessage: FC<I> = (props): ReactElement => (
-  <span className="ml-1 block text-xs font-semibold text-red-600">{props.errorMessage}</span>
+  <span className="ml-1 block text-xs font-semibold text-red-600" data-testid="example-error-message">
+    {props.errorMessage}
+  </span>
 );

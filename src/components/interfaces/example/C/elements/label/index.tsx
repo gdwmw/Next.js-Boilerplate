@@ -1,5 +1,4 @@
 import { FC, PropsWithChildren, ReactElement } from "react";
-
 import { MdError } from "react-icons/md";
 
 import { twm } from "@/src/libs/tailwind-merge";
@@ -34,10 +33,10 @@ const LegendTWM = ({ color, disabled, legendClassName }: T) =>
   );
 
 export const Label: FC<T> = ({ color, disabled, errorMessage, fieldsetClassName, label, legendClassName, ...props }): ReactElement => (
-  <fieldset className={FieldsetTWM({ color, disabled, fieldsetClassName })}>
-    <legend className={LegendTWM({ color, disabled, legendClassName })}>
+  <fieldset className={FieldsetTWM({ color, disabled, fieldsetClassName })} data-testid="example-label-fieldset">
+    <legend className={LegendTWM({ color, disabled, legendClassName })} data-testid="example-label-legend">
       {label}
-      {errorMessage && !disabled && <MdError className="text-red-600" />}
+      {errorMessage && !disabled && <MdError className="text-red-600" data-testid="example-label-icon" />}
     </legend>
 
     <div className="flex items-center justify-center">{props.children}</div>

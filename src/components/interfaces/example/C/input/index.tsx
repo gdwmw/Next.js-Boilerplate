@@ -41,7 +41,7 @@ export const ExampleInput: FC<TExampleInput> = forwardRef<HTMLInputElement, TExa
         label={label}
         legendClassName={legendClassName}
       >
-        <input className={ExampleInputTWM({ className, disabled })} disabled={disabled} ref={ref} {...props} />
+        <input className={ExampleInputTWM({ className, disabled })} data-testid="example-input" disabled={disabled} ref={ref} {...props} />
 
         {icon && (
           <ExampleA className="pr-1 text-inherit" color={color} disabled={disabled} onClick={iconOnClick} size="sm" type="button" variant="ghost">

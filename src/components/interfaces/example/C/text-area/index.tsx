@@ -41,7 +41,14 @@ export const ExampleTextArea: FC<TExampleTextArea> = forwardRef<HTMLTextAreaElem
         label={label}
         legendClassName={legendClassName}
       >
-        <textarea className={ExampleTextAreaTWM({ className, disabled })} disabled={disabled} ref={ref} rows={rows ?? 5} {...props} />
+        <textarea
+          className={ExampleTextAreaTWM({ className, disabled })}
+          data-testid="example-textarea"
+          disabled={disabled}
+          ref={ref}
+          rows={rows ?? 5}
+          {...props}
+        />
       </Label>
 
       {errorMessage && !disabled && <ErrorMessage errorMessage={errorMessage} />}

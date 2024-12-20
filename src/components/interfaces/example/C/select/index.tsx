@@ -35,7 +35,7 @@ export const ExampleSelect: FC<TExampleSelect> = forwardRef<HTMLSelectElement, T
         label={label}
         legendClassName={legendClassName}
       >
-        <select className={ExampleSelectTWM({ className, disabled })} disabled={disabled} ref={ref} {...props}>
+        <select className={ExampleSelectTWM({ className, disabled })} data-testid="example-select" disabled={disabled} ref={ref} {...props}>
           {props.children}
         </select>
       </Label>
