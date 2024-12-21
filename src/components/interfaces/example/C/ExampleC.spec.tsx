@@ -9,14 +9,16 @@ const classes = {
   label: {
     fieldset: {
       default: "group overflow-hidden rounded-md border-2 px-1 pb-2",
-      rose: "border-rose-600 text-rose-600 focus-within:border-rose-600 dark:border-black dark:text-black",
-      emerald: "border-emerald-600 text-emerald-600 focus-within:border-emerald-600 dark:border-white dark:text-white",
+      rose: "border-black focus-within:border-rose-400",
+      emerald: "border-black focus-within:border-emerald-400",
+      error: "border-black focus-within:border-red-600",
       disabled: "border-gray-400",
     },
     legend: {
       default: "ml-3 flex select-none items-center gap-1 whitespace-nowrap px-1 text-xs font-semibold",
-      rose: "group-focus-within:text-rose-600",
-      emerald: "group-focus-within:text-emerald-600",
+      rose: "group-focus-within:text-rose-400",
+      emerald: "group-focus-within:text-emerald-400",
+      error: "group-focus-within:text-red-600",
       disabled: "text-gray-400",
     },
   },
@@ -92,11 +94,17 @@ describe("ExampleC Component Testing", () => {
       expect(getByTestId("example-input")).toBeDisabled();
     });
 
-    it("Should have an error icon and error message", () => {
+    it("Should have an error icon, error message and correct classes", () => {
       const { getByTestId } = render(inputComponent({ color: "rose", errorMessage: "Example", type: "text" }));
       expect(getByTestId("example-label-icon")).toBeDefined();
       expect(getByTestId("example-error-message")).toBeDefined();
       expect(getByTestId("example-error-message")).toHaveTextContent("Example");
+      expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.error);
+      expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.rose);
+      expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.emerald);
+      expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.error);
+      expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.rose);
+      expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.emerald);
     });
 
     describe("Input Classes Testing", () => {
