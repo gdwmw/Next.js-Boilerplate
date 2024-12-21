@@ -19,8 +19,6 @@ type TExampleSelect = {
 } & DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>;
 /* eslint-enable perfectionist/sort-union-types */
 
-// TODO: Jangan lupa nanti lanjutin bikin Unit Testing dan Storybook untuk Select
-
 const ExampleSelectTWM = ({ className, disabled }: TExampleSelect) =>
   twm("w-full rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed", disabled && "text-gray-400", className);
 

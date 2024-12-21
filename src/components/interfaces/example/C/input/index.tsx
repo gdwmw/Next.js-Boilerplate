@@ -22,8 +22,6 @@ type TExampleInput = {
 } & DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 /* eslint-enable perfectionist/sort-union-types */
 
-// TODO: Jangan lupa nanti lanjutin bikin Unit Testing dan Storybook untuk Input
-
 const ExampleInputTWM = ({ className, disabled }: TExampleInput) =>
   twm("w-full rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed", disabled && "text-gray-400", className);
 
@@ -44,7 +42,15 @@ export const ExampleInput: FC<TExampleInput> = forwardRef<HTMLInputElement, TExa
         <input className={ExampleInputTWM({ className, disabled })} data-testid="example-input" disabled={disabled} ref={ref} {...props} />
 
         {icon && (
-          <ExampleA className="pr-1 text-inherit" color={color} disabled={disabled} onClick={iconOnClick} size="sm" type="button" variant="ghost">
+          <ExampleA
+            className={`pr-1 text-inherit ${errorMessage ? "hover:text-red-600 active:text-red-700" : ""}`}
+            color={color}
+            disabled={disabled}
+            onClick={iconOnClick}
+            size="sm"
+            type="button"
+            variant="ghost"
+          >
             {icon}
           </ExampleA>
         )}

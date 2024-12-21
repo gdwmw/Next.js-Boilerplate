@@ -18,8 +18,6 @@ type TExampleTextArea = {
 } & DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>;
 /* eslint-enable perfectionist/sort-union-types */
 
-// TODO: Jangan lupa nanti lanjutin bikin Unit Testing dan Storybook untuk TextArea
-
 const ExampleTextAreaTWM = ({ className, disabled }: TExampleTextArea) =>
   twm(
     "max-h-[200px] min-h-[120px] w-full rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed",
