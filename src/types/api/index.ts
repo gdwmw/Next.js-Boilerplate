@@ -7,7 +7,6 @@ export interface IExample {
 
 export interface IRegisterPayload {
   email: string;
-  name: string;
   password: string;
   username: string;
 }
