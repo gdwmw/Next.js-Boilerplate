@@ -1,7 +1,10 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
+import pluginQuery from "@tanstack/eslint-plugin-query";
 import perfectionist from "eslint-plugin-perfectionist";
-import react from "eslint-plugin-react";
+import { default as react, default as reactPlugin } from "eslint-plugin-react";
+import storybook from "eslint-plugin-storybook";
+import tailwind from "eslint-plugin-tailwindcss";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -15,17 +18,14 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   perfectionist.configs["recommended-alphabetical"],
-  ...compat.extends(
-    "next/typescript",
-    "next/core-web-vitals",
-    "eslint:recommended",
-    "plugin:@tanstack/eslint-plugin-query/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/stylistic",
-    "plugin:react/recommended",
-    "plugin:storybook/recommended",
-    "plugin:tailwindcss/recommended",
-  ),
+  ...pluginQuery.configs["flat/recommended"],
+  ...storybook.configs["flat/recommended"],
+  ...tailwind.configs["flat/recommended"],
+  reactPlugin.configs.flat.recommended,
+  ...compat.extends("next/typescript", "next/core-web-vitals", "plugin:@typescript-eslint/strict", "plugin:@typescript-eslint/stylistic"),
+  {
+    ignores: ["!.storybook"],
+  },
   {
     files: ["**/.commitlintrc.cjs"],
     rules: {
@@ -37,9 +37,10 @@ const eslintConfig = [
       react,
     },
     rules: {
-      "@typescript-eslint/no-unused-expressions": "off",
+      "@typescript-eslint/no-unused-expressions": "error",
       "arrow-body-style": ["error", "as-needed"],
       curly: ["error"],
+      "no-unused-expressions": "off",
       "perfectionist/sort-imports": [
         "error",
         {
@@ -67,6 +68,16 @@ const eslintConfig = [
         },
       ],
       "perfectionist/sort-modules": "off",
+      "react/display-name": "error",
+      "react/jsx-fragments": "error",
+      "react/jsx-no-undef": "error",
+      "react/jsx-no-useless-fragment": "error",
+      "react/no-children-prop": "error",
+      "react/no-danger": "error",
+      // "react/no-multi-comp": "error",
+      "react/no-unstable-nested-components": "error",
+      "react/no-unused-prop-types": "error",
+      // "react/prefer-read-only-props": "error",
       "react/react-in-jsx-scope": "off",
     },
     settings: {

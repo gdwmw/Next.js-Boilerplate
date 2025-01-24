@@ -111,7 +111,11 @@ describe("ExampleA Component Testing", () => {
       const onClickFn = jest.fn();
       const { getByTestId } = render(component({ disabled, onClickFn }));
       fireEvent.click(getByTestId("example-a"));
-      !disabled ? expect(onClickFn).toHaveBeenCalled() : expect(onClickFn).not.toHaveBeenCalled();
+      if (!disabled) {
+        expect(onClickFn).toHaveBeenCalled();
+      } else {
+        expect(onClickFn).not.toHaveBeenCalled();
+      }
     });
   });
 
@@ -127,74 +131,110 @@ describe("ExampleA Component Testing", () => {
               expect(getByTestId("example-a")).toHaveClass(classes.default);
 
               // ⭐ === BASE === ⭐
-              variant !== "ghost"
-                ? expect(getByTestId("example-a")).toHaveClass(classes.base.a)
-                : expect(getByTestId("example-a")).not.toHaveClass(classes.base.a);
+              if (variant !== "ghost") {
+                expect(getByTestId("example-a")).toHaveClass(classes.base.a);
+              } else {
+                expect(getByTestId("example-a")).not.toHaveClass(classes.base.a);
+              }
 
-              !disabled
-                ? expect(getByTestId("example-a")).toHaveClass(classes.base.b)
-                : expect(getByTestId("example-a")).not.toHaveClass(classes.base.b);
+              if (!disabled) {
+                expect(getByTestId("example-a")).toHaveClass(classes.base.b);
+              } else {
+                expect(getByTestId("example-a")).not.toHaveClass(classes.base.b);
+              }
 
-              disabled
-                ? expect(getByTestId("example-a")).toHaveClass(classes.base.c)
-                : expect(getByTestId("example-a")).not.toHaveClass(classes.base.c);
+              if (disabled) {
+                expect(getByTestId("example-a")).toHaveClass(classes.base.c);
+              } else {
+                expect(getByTestId("example-a")).not.toHaveClass(classes.base.c);
+              }
 
               // ⭐ === SOLID === ⭐
-              variant === "solid" && color === "rose" && !disabled
-                ? expect(getByTestId("example-a")).toHaveClass(classes.solid.rose)
-                : expect(getByTestId("example-a")).not.toHaveClass(classes.solid.rose);
+              if (variant === "solid" && color === "rose" && !disabled) {
+                expect(getByTestId("example-a")).toHaveClass(classes.solid.rose);
+              } else {
+                expect(getByTestId("example-a")).not.toHaveClass(classes.solid.rose);
+              }
 
-              variant === "solid" && color === "emerald" && !disabled
-                ? expect(getByTestId("example-a")).toHaveClass(classes.solid.emerald)
-                : expect(getByTestId("example-a")).not.toHaveClass(classes.solid.emerald);
+              if (variant === "solid" && color === "emerald" && !disabled) {
+                expect(getByTestId("example-a")).toHaveClass(classes.solid.emerald);
+              } else {
+                expect(getByTestId("example-a")).not.toHaveClass(classes.solid.emerald);
+              }
 
-              variant === "solid" && disabled
-                ? expect(getByTestId("example-a")).toHaveClass(classes.solid.disabled)
-                : expect(getByTestId("example-a")).not.toHaveClass(classes.solid.disabled);
+              if (variant === "solid" && disabled) {
+                expect(getByTestId("example-a")).toHaveClass(classes.solid.disabled);
+              } else {
+                expect(getByTestId("example-a")).not.toHaveClass(classes.solid.disabled);
+              }
 
               // ⭐ === OUTLINE === ⭐
-              variant === "outline" && color === "rose" && !disabled
-                ? expect(getByTestId("example-a")).toHaveClass(classes.outline.rose)
-                : expect(getByTestId("example-a")).not.toHaveClass(classes.outline.rose);
+              if (variant === "outline" && color === "rose" && !disabled) {
+                expect(getByTestId("example-a")).toHaveClass(classes.outline.rose);
+              } else {
+                expect(getByTestId("example-a")).not.toHaveClass(classes.outline.rose);
+              }
 
-              variant === "outline" && color === "emerald" && !disabled
-                ? expect(getByTestId("example-a")).toHaveClass(classes.outline.emerald)
-                : expect(getByTestId("example-a")).not.toHaveClass(classes.outline.emerald);
+              if (variant === "outline" && color === "emerald" && !disabled) {
+                expect(getByTestId("example-a")).toHaveClass(classes.outline.emerald);
+              } else {
+                expect(getByTestId("example-a")).not.toHaveClass(classes.outline.emerald);
+              }
 
-              variant === "outline" && disabled
-                ? expect(getByTestId("example-a")).toHaveClass(classes.outline.disabled)
-                : expect(getByTestId("example-a")).not.toHaveClass(classes.outline.disabled);
+              if (variant === "outline" && disabled) {
+                expect(getByTestId("example-a")).toHaveClass(classes.outline.disabled);
+              } else {
+                expect(getByTestId("example-a")).not.toHaveClass(classes.outline.disabled);
+              }
 
               // ⭐ === GHOST === ⭐
-              variant === "ghost" && color === "rose" && !disabled
-                ? expect(getByTestId("example-a")).toHaveClass(classes.ghost.rose)
-                : expect(getByTestId("example-a")).not.toHaveClass(classes.ghost.rose);
+              if (variant === "ghost" && color === "rose" && !disabled) {
+                expect(getByTestId("example-a")).toHaveClass(classes.ghost.rose);
+              } else {
+                expect(getByTestId("example-a")).not.toHaveClass(classes.ghost.rose);
+              }
 
-              variant === "ghost" && color === "emerald" && !disabled
-                ? expect(getByTestId("example-a")).toHaveClass(classes.ghost.emerald)
-                : expect(getByTestId("example-a")).not.toHaveClass(classes.ghost.emerald);
+              if (variant === "ghost" && color === "emerald" && !disabled) {
+                expect(getByTestId("example-a")).toHaveClass(classes.ghost.emerald);
+              } else {
+                expect(getByTestId("example-a")).not.toHaveClass(classes.ghost.emerald);
+              }
 
-              variant === "ghost" && disabled && expect(getByTestId("example-a")).toHaveClass(classes.ghost.disabled);
+              if (variant === "ghost" && disabled) {
+                expect(getByTestId("example-a")).toHaveClass(classes.ghost.disabled);
+              }
 
               // ⭐ === SIZE === ⭐
-              size === "sm" && variant !== "ghost"
-                ? expect(getByTestId("example-a")).toHaveClass(classes.size.sm)
-                : expect(getByTestId("example-a")).not.toHaveClass(classes.size.sm);
+              if (size === "sm" && variant !== "ghost") {
+                expect(getByTestId("example-a")).toHaveClass(classes.size.sm);
+              } else {
+                expect(getByTestId("example-a")).not.toHaveClass(classes.size.sm);
+              }
 
-              size === "md" && variant !== "ghost"
-                ? expect(getByTestId("example-a")).toHaveClass(classes.size.md)
-                : expect(getByTestId("example-a")).not.toHaveClass(classes.size.md);
+              if (size === "md" && variant !== "ghost") {
+                expect(getByTestId("example-a")).toHaveClass(classes.size.md);
+              } else {
+                expect(getByTestId("example-a")).not.toHaveClass(classes.size.md);
+              }
 
-              size === "lg" && variant !== "ghost"
-                ? expect(getByTestId("example-a")).toHaveClass(classes.size.lg)
-                : expect(getByTestId("example-a")).not.toHaveClass(classes.size.lg);
+              if (size === "lg" && variant !== "ghost") {
+                expect(getByTestId("example-a")).toHaveClass(classes.size.lg);
+              } else {
+                expect(getByTestId("example-a")).not.toHaveClass(classes.size.lg);
+              }
 
               // ⭐ === GHOST SIZE === ⭐
-              size === "sm" && variant === "ghost" && expect(getByTestId("example-a")).toHaveClass(classes.ghostSize.sm);
+              if (size === "sm" && variant === "ghost") {
+                expect(getByTestId("example-a")).toHaveClass(classes.ghostSize.sm);
+              }
 
-              size === "md" && variant === "ghost" && expect(getByTestId("example-a")).toHaveClass(classes.ghostSize.md);
+              if (size === "md" && variant === "ghost") {
+                expect(getByTestId("example-a")).toHaveClass(classes.ghostSize.md);
+              }
 
-              size === "lg" && variant === "ghost" && expect(getByTestId("example-a")).toHaveClass(classes.ghostSize.lg);
+              if (size === "lg" && variant === "ghost") {
+                expect(getByTestId("example-a")).toHaveClass(classes.ghostSize.lg);
+              }
             });
           });
         });

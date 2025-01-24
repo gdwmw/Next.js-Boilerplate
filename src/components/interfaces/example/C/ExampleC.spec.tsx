@@ -117,33 +117,50 @@ describe("ExampleC Component Testing", () => {
             expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.default);
             expect(getByTestId("example-input")).toHaveClass(classes.input.default);
 
-            color === "rose" && !disabled
-              ? expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.rose)
-              : expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.rose);
+            // ⭐ === LABEL FIELDSET === ⭐
+            if (color === "rose" && !disabled) {
+              expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.rose);
+            } else {
+              expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.rose);
+            }
 
-            color === "emerald" && !disabled
-              ? expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.emerald)
-              : expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.emerald);
+            if (color === "emerald" && !disabled) {
+              expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.emerald);
+            } else {
+              expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.emerald);
+            }
 
-            disabled
-              ? expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.disabled)
-              : expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.disabled);
+            if (disabled) {
+              expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.disabled);
+            } else {
+              expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.disabled);
+            }
 
-            color === "rose" && !disabled
-              ? expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.rose)
-              : expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.rose);
+            // ⭐ === LABEL LEGEND === ⭐
+            if (color === "rose" && !disabled) {
+              expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.rose);
+            } else {
+              expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.rose);
+            }
 
-            color === "emerald" && !disabled
-              ? expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.emerald)
-              : expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.emerald);
+            if (color === "emerald" && !disabled) {
+              expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.emerald);
+            } else {
+              expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.emerald);
+            }
 
-            disabled
-              ? expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.disabled)
-              : expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.disabled);
+            if (disabled) {
+              expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.disabled);
+            } else {
+              expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.disabled);
+            }
 
-            disabled
-              ? expect(getByTestId("example-input")).toHaveClass(classes.input.disabled)
-              : expect(getByTestId("example-input")).not.toHaveClass(classes.input.disabled);
+            // ⭐ === INPUT === ⭐
+            if (disabled) {
+              expect(getByTestId("example-input")).toHaveClass(classes.input.disabled);
+            } else {
+              expect(getByTestId("example-input")).not.toHaveClass(classes.input.disabled);
+            }
           });
         });
       });
@@ -188,33 +205,50 @@ describe("ExampleC Component Testing", () => {
             expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.default);
             expect(getByTestId("example-select")).toHaveClass(classes.select.default);
 
-            color === "rose" && !disabled
-              ? expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.rose)
-              : expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.rose);
+            // ⭐ === LABEL FIELDSET === ⭐
+            if (color === "rose" && !disabled) {
+              expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.rose);
+            } else {
+              expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.rose);
+            }
 
-            color === "emerald" && !disabled
-              ? expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.emerald)
-              : expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.emerald);
+            if (color === "emerald" && !disabled) {
+              expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.emerald);
+            } else {
+              expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.emerald);
+            }
 
-            disabled
-              ? expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.disabled)
-              : expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.disabled);
+            if (disabled) {
+              expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.disabled);
+            } else {
+              expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.disabled);
+            }
 
-            color === "rose" && !disabled
-              ? expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.rose)
-              : expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.rose);
+            // ⭐ === LABEL LEGEND === ⭐
+            if (color === "rose" && !disabled) {
+              expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.rose);
+            } else {
+              expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.rose);
+            }
 
-            color === "emerald" && !disabled
-              ? expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.emerald)
-              : expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.emerald);
+            if (color === "emerald" && !disabled) {
+              expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.emerald);
+            } else {
+              expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.emerald);
+            }
 
-            disabled
-              ? expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.disabled)
-              : expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.disabled);
+            if (disabled) {
+              expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.disabled);
+            } else {
+              expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.disabled);
+            }
 
-            disabled
-              ? expect(getByTestId("example-select")).toHaveClass(classes.select.disabled)
-              : expect(getByTestId("example-select")).not.toHaveClass(classes.select.disabled);
+            // ⭐ === SELECT === ⭐
+            if (disabled) {
+              expect(getByTestId("example-select")).toHaveClass(classes.select.disabled);
+            } else {
+              expect(getByTestId("example-select")).not.toHaveClass(classes.select.disabled);
+            }
           });
         });
       });
@@ -259,33 +293,50 @@ describe("ExampleC Component Testing", () => {
             expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.default);
             expect(getByTestId("example-textarea")).toHaveClass(classes.textarea.default);
 
-            color === "rose" && !disabled
-              ? expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.rose)
-              : expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.rose);
+            // ⭐ === LABEL FIELDSET === ⭐
+            if (color === "rose" && !disabled) {
+              expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.rose);
+            } else {
+              expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.rose);
+            }
 
-            color === "emerald" && !disabled
-              ? expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.emerald)
-              : expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.emerald);
+            if (color === "emerald" && !disabled) {
+              expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.emerald);
+            } else {
+              expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.emerald);
+            }
 
-            disabled
-              ? expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.disabled)
-              : expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.disabled);
+            if (disabled) {
+              expect(getByTestId("example-label-fieldset")).toHaveClass(classes.label.fieldset.disabled);
+            } else {
+              expect(getByTestId("example-label-fieldset")).not.toHaveClass(classes.label.fieldset.disabled);
+            }
 
-            color === "rose" && !disabled
-              ? expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.rose)
-              : expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.rose);
+            // ⭐ === LABEL LEGEND === ⭐
+            if (color === "rose" && !disabled) {
+              expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.rose);
+            } else {
+              expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.rose);
+            }
 
-            color === "emerald" && !disabled
-              ? expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.emerald)
-              : expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.emerald);
+            if (color === "emerald" && !disabled) {
+              expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.emerald);
+            } else {
+              expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.emerald);
+            }
 
-            disabled
-              ? expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.disabled)
-              : expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.disabled);
+            if (disabled) {
+              expect(getByTestId("example-label-legend")).toHaveClass(classes.label.legend.disabled);
+            } else {
+              expect(getByTestId("example-label-legend")).not.toHaveClass(classes.label.legend.disabled);
+            }
 
-            disabled
-              ? expect(getByTestId("example-textarea")).toHaveClass(classes.textarea.disabled)
-              : expect(getByTestId("example-textarea")).not.toHaveClass(classes.textarea.disabled);
+            // ⭐ === TEXTAREA === ⭐
+            if (disabled) {
+              expect(getByTestId("example-textarea")).toHaveClass(classes.textarea.disabled);
+            } else {
+              expect(getByTestId("example-textarea")).not.toHaveClass(classes.textarea.disabled);
+            }
           });
         });
       });

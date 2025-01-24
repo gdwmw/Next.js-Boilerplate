@@ -12,7 +12,7 @@ interface ILayout {
   type?: string;
 }
 
-const Layout: FC<ILayout> = (props): ReactElement => {
+const Layout: FC<ILayout> = (props): null | ReactElement => {
   switch (props.componentType) {
     case "input":
       return (
@@ -44,7 +44,7 @@ const Layout: FC<ILayout> = (props): ReactElement => {
       );
 
     default:
-      return <></>;
+      return null;
   }
 };
 
