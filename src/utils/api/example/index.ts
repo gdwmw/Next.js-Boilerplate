@@ -21,10 +21,10 @@ export const GETExample = async (): Promise<IExample[]> => {
   }
 };
 
-export const POSTExample = async (data: IExample): Promise<IExample> => {
+export const POSTExample = async (payload: IExample): Promise<IExample> => {
   try {
     const res = await fetch(API_URL, {
-      body: JSON.stringify(data),
+      body: JSON.stringify(payload),
       headers: {
         "Content-Type": "application/json",
       },
@@ -42,10 +42,10 @@ export const POSTExample = async (data: IExample): Promise<IExample> => {
   }
 };
 
-export const PUTExample = async (data: IExample): Promise<IExample> => {
+export const PUTExample = async (payload: IExample): Promise<IExample> => {
   try {
-    const res = await fetch(`${API_URL}/${data.id}`, {
-      body: JSON.stringify(data),
+    const res = await fetch(`${API_URL}/${payload.id}`, {
+      body: JSON.stringify(payload),
       headers: {
         "Content-Type": "application/json",
       },
@@ -66,9 +66,6 @@ export const PUTExample = async (data: IExample): Promise<IExample> => {
 export const DELETEExample = async (id: string): Promise<IExample> => {
   try {
     const res = await fetch(`${API_URL}/${id}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
       method: "DELETE",
     });
 
