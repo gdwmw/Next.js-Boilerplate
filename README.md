@@ -11,22 +11,64 @@ This boilerplate is a web application built using Next.js, which is a React fram
 Below is the main directory structure of the boilerplate:
 
 ```
-/auth
-/public
-   /assets
-      /animations
-      /images
-/src
-  /app
-  /components
-  /context
-  /hooks
-  /layouts
-  /libs
-  /schemas
-  /types
-  /utils
-  /middleware.ts
+└── 📁auth
+└── 📁public
+    └── 📁assets
+        └── 📁animations
+        └── 📁images
+└── 📁src
+    └── 📁app
+        └── 📁(authed)
+            └── 📁(admin)
+            └── 📁(user)
+        └── 📁api
+            └── 📁auth
+                └── 📁[...nextauth]
+        └── 📁fonts
+    └── 📁components
+        └── 📁interfaces
+            └── 📁example
+                └── 📁A
+                └── 📁B
+                └── 📁C
+        └── README.md
+    └── 📁context
+    └── 📁hooks
+        └── 📁cookies
+        └── 📁functions
+        └── 📁session
+    └── 📁layouts
+        └── 📁example
+            └── 📁modules
+                └── 📁aside
+                └── 📁footer
+                └── 📁header
+                └── 📁main
+                └── 📁nav
+            └── 📁pages
+                └── 📁example
+                    └── 📁modules
+                        └── 📁aside
+                        └── 📁footer
+                        └── 📁header
+                        └── 📁main
+                        └── 📁nav
+    └── 📁libs
+        └── 📁constants
+        └── 📁providers
+            └── 📁next-auth
+            └── 📁next-themes
+            └── 📁react-query
+        └── 📁tailwind-merge
+    └── 📁schemas
+        └── 📁example
+    └── 📁types
+        └── 📁example
+        └── next-auth.d.ts
+    └── 📁utils
+        └── 📁api
+            └── 📁example
+    └── middleware.ts
 ```
 
 ### Structure Explanation 📚
