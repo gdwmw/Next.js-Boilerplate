@@ -255,12 +255,17 @@ This documentation provides a clear overview of the boilerplate, installation in
 2. **Icons**:
 
    - Use the following icons to identify components:
+     - 📚 for **Layout**.
+     - ❌ for **Error**.
+     - 📋 for **Template**.
      - 📄 for **Page**.
-     - 📦 for **Main** or **Layout**.
-     - 📝 for **Content** or content components.
+     - 📦 for **(Section)Layout**.
+     - 🤖 for **Header**.
      - 🧭 for **Nav**.
      - 📐 for **Aside**.
+     - 🔰 for **Main**.
      - 🦶 for **Footer**.
+     - 📝 for **Content**.
 
 3. **Structure**:
 
@@ -277,56 +282,26 @@ This documentation provides a clear overview of the boilerplate, installation in
 
 ## Example Code Structure Diagram
 
-### 🏠 **Home**
+### 🏠 **Example**
 
 ```md
-- [📄 HomePage](src/app/page.tsx)
-  - [📦 HomeLayout](src/layouts/home/index.tsx)
-    - [🧭 Nav](src/layouts/home/modules/nav/index.tsx)
-      - [📝 Nav Content](src/layouts/home/modules/nav/batches/content/index.tsx)
-    - [📐 Aside](src/layouts/home/modules/aside/index.tsx)
-    - [📦 Main](src/layouts/home/modules/main/index.tsx)
-      - [📝 About](src/layouts/home/modules/main/batches/about/index.tsx)
-      - [📝 Contact](src/layouts/home/modules/main/batches/contact/index.tsx)
-      - [📝 Home](src/layouts/home/modules/main/batches/home/index.tsx)
-      - [📝 Packages](src/layouts/home/modules/main/batches/packages/index.tsx)
-      - [📝 Portfolio](src/layouts/home/modules/main/batches/portfolio/index.tsx)
-    - [🦶 Footer](src/layouts/home/modules/footer/index.tsx)
-```
-
-### 🔐 **Login**
-
-```md
-- [📄 LoginPage](src/app/login/page.tsx)
-  - [📦 LoginLayout](src/layouts/login/index.tsx)
-    - [📦 Main](src/layouts/login/modules/main/index.tsx)
-      - [📝 Content](src/layouts/login/modules/main/batches/content/index.tsx)
-```
-
-### 📝 **Register**
-
-```md
-- [📄 RegisterPage](src/app/register/page.tsx)
-  - [📦 RegisterLayout](src/layouts/register/index.tsx)
-    - [📦 Main](src/layouts/register/modules/main/index.tsx)
-      - [📝 Content](src/layouts/register/modules/main/batches/content/index.tsx)
-```
-
-### 📅 **Booking**
-
-```md
-- [📄 BookingPage](<src/app/(authed)/(user)/booking/page.tsx>)
-  - [📦 BookingLayout](src/layouts/booking/index.tsx)
-    - [📦 Main](src/layouts/booking/modules/main/index.tsx)
-      - [📝 Content](src/layouts/booking/modules/main/batches/content/index.tsx)
-```
-
-### 👤 **User**
-
-```md
-- [📄 Layout](<src/app/(authed)/(user)/user/layout.tsx>)
-  - [📦 UserLayout](src/layouts/user/layout/index.tsx)
-    - [📄 Slug](<src/app/(authed)/(user)/user/[...slug]/page.tsx>)
-      - [📦 Main](src/layouts/user/pages/history/modules/main/index.tsx)
-        - [📝 Content](src/layouts/user/pages/history/modules/main/batches/content/index.tsx)
+- [📚 Layout](src/app/example/layout.tsx)
+   - [🤖 Header](src/layouts/example/modules/header/index.tsx)
+      - [📝 Content](src/layouts/example/modules/header/batches/content/index.tsx)
+   - [📐 Aside](src/layouts/example/modules/aside/index.tsx)
+      - [📝 Content](src/layouts/example/modules/aside/batches/content/index.tsx)
+         - [❌ Error](src/app/example/error.tsx)
+            - [📋 Template](src/app/example/template.tsx)
+               - [📄 ExamplePage](src/app/example/page.tsx)
+                  - [📦 ExampleLayout](src/layouts/example/index.tsx)
+                     - [🧭 Nav](src/layouts/example/modules/nav/index.tsx)
+                        - [📝 Content](src/layouts/example/modules/nav/batches/content/index.tsx)
+                     - [📦 Main](src/layouts/example/modules/main/index.tsx)
+                        - [📝 About](src/layouts/example/modules/main/batches/about/index.tsx)
+                        - [📝 Contact](src/layouts/example/modules/main/batches/contact/index.tsx)
+                        - [📝 Home](src/layouts/example/modules/main/batches/example/index.tsx)
+                        - [📝 Packages](src/layouts/example/modules/main/batches/packages/index.tsx)
+                        - [📝 Portfolio](src/layouts/example/modules/main/batches/portfolio/index.tsx)
+                     - [🦶 Footer](src/layouts/example/modules/footer/index.tsx)
+                        - [📝 Content](src/layouts/example/modules/footer/batches/content/index.tsx)
 ```
