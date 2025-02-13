@@ -1,4 +1,4 @@
-import { IExamplePayload, IExampleResponse, IExampleSchema } from "@/src/types/example";
+import { IExamplePayload, IExampleResponse } from "@/src/types/example";
 
 const API_URL = process.env.NEXT_PUBLIC_EXAMPLE_URL;
 
@@ -20,9 +20,7 @@ const createExampleResponse = (source: any): IExampleResponse =>
     {},
   ) as IExampleResponse;
 
-const rearrangeAll = (dt: IExampleResponse): IExampleResponse => createExampleResponse(dt);
-
-const rearrange = (dt: IExampleSchema): IExampleResponse => createExampleResponse(dt.data);
+const rearrange = (response: IExampleResponse): IExampleResponse => createExampleResponse(response);
 
 export const GETExample = async (query?: string): Promise<IExampleResponse[]> => {
   try {
@@ -34,7 +32,7 @@ export const GETExample = async (query?: string): Promise<IExampleResponse[]> =>
       throw new Error(`Failed to get: Example with status ${res.status} || ${response.error.message}`);
     }
 
-    return response.data.map(rearrangeAll);
+    return response.data.map(rearrange);
   } catch (error) {
     console.error("--- Fetch Error Message ---", error);
     throw error;
@@ -51,7 +49,7 @@ export const GETExampleByDocumentId = async (documentId: string): Promise<IExamp
       throw new Error(`Failed to get: Example By Document ID with status ${res.status} || ${response.error.message}`);
     }
 
-    return rearrange(response);
+    return rearrange(response.data);
   } catch (error) {
     console.error("--- Fetch Error Message ---", error);
     throw error;
@@ -74,7 +72,7 @@ export const POSTExample = async (payload: IExamplePayload): Promise<IExampleRes
       throw new Error(`Failed to post: Example with status ${res.status} || ${response.error.message}`);
     }
 
-    return rearrange(response);
+    return rearrange(response.data);
   } catch (error) {
     console.error("--- Fetch Error Message ---", error);
     throw error;
@@ -97,7 +95,7 @@ export const PUTExample = async (payload: IExamplePayload): Promise<IExampleResp
       throw new Error(`Failed to put: Example with status ${res.status} || ${response.error.message}`);
     }
 
-    return rearrange(response);
+    return rearrange(response.data);
   } catch (error) {
     console.error("--- Fetch Error Message ---", error);
     throw error;
@@ -116,7 +114,7 @@ export const DELETEExample = async (documentId: string): Promise<IExampleRespons
       throw new Error(`Failed to delete: Example with status ${res.status} || ${response.error.message}`);
     }
 
-    return rearrange(response);
+    return rearrange(response.data);
   } catch (error) {
     console.error("--- Fetch Error Message ---", error);
     throw error;

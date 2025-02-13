@@ -1,4 +1,4 @@
-import { IUsersPayload, IUsersResponse, IUsersSchema } from "@/src/types/api";
+import { IUsersPayload, IUsersResponse } from "@/src/types/api";
 
 const API_URL = process.env.NEXT_PUBLIC_EXAMPLE_URL;
 
@@ -6,7 +6,7 @@ if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
 }
 
-const rearrange = (response: IUsersSchema): IUsersResponse => ({
+const rearrange = (response: IUsersResponse): IUsersResponse => ({
   datasDocumentId: response.datasDocumentId,
 });
 

@@ -1,10 +1,3 @@
-export interface IExample {
-  id: string;
-  title: string;
-}
-
-// ----------------------------
-
 export interface IAuthSchema {
   jwt: string;
   user: IUsersSchema;
@@ -67,15 +60,23 @@ export interface IUsersResponse {
 
 // ----------------------------
 
-export interface IDatasSchema {
-  data: {
-    documentId: string;
-    image: { url: string };
-    name: string;
-    phoneNumber: string;
-    role: string;
-  };
+export interface IUploadPayload {
+  field?: string;
+  files: File[];
+  ref?: string;
+  refId?: string;
 }
+
+export interface IUploadResponse {
+  documentId: string;
+  id: string;
+  name: string;
+  thumbnail: { name: string; url: string }[] | null;
+  url: string;
+}
+
+// ----------------------------
+
 export interface IDatasPayload {
   documentId?: string;
   image?: number;
@@ -91,5 +92,3 @@ export interface IDatasResponse {
   phoneNumber: string;
   role: string;
 }
-
-// ----------------------------

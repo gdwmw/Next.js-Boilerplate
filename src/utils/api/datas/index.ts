@@ -1,6 +1,6 @@
-const API_URL = process.env.NEXT_PUBLIC_EXAMPLE_URL;
+import { IDatasPayload, IDatasResponse } from "@/src/types/api";
 
-import { IDatasPayload, IDatasResponse, IDatasSchema } from "@/src/types/api";
+const API_URL = process.env.NEXT_PUBLIC_EXAMPLE_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
@@ -20,9 +20,7 @@ const createDataResponse = (source: any): IDatasResponse =>
     {},
   ) as IDatasResponse;
 
-const rearrangeAll = (response: IDatasResponse): IDatasResponse => createDataResponse(response);
-
-const rearrange = (response: IDatasSchema): IDatasResponse => createDataResponse(response.data);
+const rearrange = (response: IDatasResponse): IDatasResponse => createDataResponse(response);
 
 export const GETDatas = async (query?: string): Promise<IDatasResponse[]> => {
   try {
@@ -34,7 +32,7 @@ export const GETDatas = async (query?: string): Promise<IDatasResponse[]> => {
       throw new Error(`Failed to get: Datas with status ${res.status} || ${response.error.message}`);
     }
 
-    return response.data.map(rearrangeAll);
+    return response.data.map(rearrange);
   } catch (error) {
     console.error("--- Fetch Error Message ---", error);
     throw error;
@@ -51,7 +49,7 @@ export const GETDatasByDocumentId = async (documentId: string): Promise<IDatasRe
       throw new Error(`Failed to get: Datas By Document ID with status ${res.status} || ${response.error.message}`);
     }
 
-    return rearrange(response);
+    return rearrange(response.data);
   } catch (error) {
     console.error("--- Fetch Error Message ---", error);
     throw error;
@@ -74,7 +72,7 @@ export const POSTDatas = async (payload: IDatasPayload): Promise<IDatasResponse>
       throw new Error(`Failed to post: Datas with status ${res.status} || ${response.error.message}`);
     }
 
-    return rearrange(response);
+    return rearrange(response.data);
   } catch (error) {
     console.error("--- Fetch Error Message ---", error);
     throw error;
@@ -97,7 +95,7 @@ export const PUTDatas = async (payload: IDatasPayload): Promise<IDatasResponse> 
       throw new Error(`Failed to put: Datas with status ${res.status} || ${response.error.message}`);
     }
 
-    return rearrange(response);
+    return rearrange(response.data);
   } catch (error) {
     console.error("--- Fetch Error Message ---", error);
     throw error;
@@ -116,7 +114,7 @@ export const DELETEDatas = async (documentId: string): Promise<IDatasResponse> =
       throw new Error(`Failed to delete: Datas with status ${res.status} || ${response.error.message}`);
     }
 
-    return rearrange(response);
+    return rearrange(response.data);
   } catch (error) {
     console.error("--- Fetch Error Message ---", error);
     throw error;

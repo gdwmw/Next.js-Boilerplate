@@ -39,6 +39,7 @@ Below is the main directory structure of the boilerplate:
         └── 📁session
     └── 📁layouts
         └── 📁example
+            └── 📁global
             └── 📁modules
                 └── 📁aside
                 └── 📁footer
@@ -47,12 +48,15 @@ Below is the main directory structure of the boilerplate:
                 └── 📁nav
             └── 📁pages
                 └── 📁example
+                    └── 📁global
                     └── 📁modules
                         └── 📁aside
                         └── 📁footer
                         └── 📁header
                         └── 📁main
                         └── 📁nav
+                    └── 📁template
+            └── 📁template
     └── 📁libs
         └── 📁constants
         └── 📁providers
@@ -286,22 +290,22 @@ This documentation provides a clear overview of the boilerplate, installation in
 
 ```md
 - [📚 Layout](src/app/example/layout.tsx)
-   - [🤖 Header](src/layouts/example/modules/header/index.tsx)
-      - [📝 Content](src/layouts/example/modules/header/batches/content/index.tsx)
-   - [📐 Aside](src/layouts/example/modules/aside/index.tsx)
-      - [📝 Content](src/layouts/example/modules/aside/batches/content/index.tsx)
-         - [❌ Error](src/app/example/error.tsx)
-            - [📋 Template](src/app/example/template.tsx)
-               - [📄 ExamplePage](src/app/example/page.tsx)
-                  - [📦 ExampleLayout](src/layouts/example/index.tsx)
-                     - [🧭 Nav](src/layouts/example/modules/nav/index.tsx)
-                        - [📝 Content](src/layouts/example/modules/nav/batches/content/index.tsx)
-                     - [📦 Main](src/layouts/example/modules/main/index.tsx)
-                        - [📝 About](src/layouts/example/modules/main/batches/about/index.tsx)
-                        - [📝 Contact](src/layouts/example/modules/main/batches/contact/index.tsx)
-                        - [📝 Home](src/layouts/example/modules/main/batches/example/index.tsx)
-                        - [📝 Packages](src/layouts/example/modules/main/batches/packages/index.tsx)
-                        - [📝 Portfolio](src/layouts/example/modules/main/batches/portfolio/index.tsx)
-                     - [🦶 Footer](src/layouts/example/modules/footer/index.tsx)
-                        - [📝 Content](src/layouts/example/modules/footer/batches/content/index.tsx)
+  - [📐 Aside](src/layouts/example/global/aside/index.tsx)
+    - [📝 Content](src/layouts/example/global/aside/batches/content/index.tsx)
+  - [📋 Template](src/app/example/template.tsx)
+    - [🤖 Header](src/layouts/example/template/header/index.tsx)
+      - [📝 Content](src/layouts/example/template/header/batches/content/index.tsx)
+    - [❌ Error](src/app/example/error.tsx)
+      - [📄 ExamplePage](src/app/example/page.tsx)
+        - [📦 ExampleLayout](src/layouts/example/index.tsx)
+          - [🧭 Nav](src/layouts/example/modules/nav/index.tsx)
+            - [📝 Content](src/layouts/example/modules/nav/batches/content/index.tsx)
+          - [📦 Main](src/layouts/example/modules/main/index.tsx)
+            - [📝 About](src/layouts/example/modules/main/batches/about/index.tsx)
+            - [📝 Contact](src/layouts/example/modules/main/batches/contact/index.tsx)
+            - [📝 Home](src/layouts/example/modules/main/batches/example/index.tsx)
+            - [📝 Packages](src/layouts/example/modules/main/batches/packages/index.tsx)
+            - [📝 Portfolio](src/layouts/example/modules/main/batches/portfolio/index.tsx)
+          - [🦶 Footer](src/layouts/example/modules/footer/index.tsx)
+            - [📝 Content](src/layouts/example/modules/footer/batches/content/index.tsx)
 ```
