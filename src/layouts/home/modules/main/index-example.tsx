@@ -12,10 +12,12 @@ export const Main: FC = async (): Promise<ReactElement> => {
     <main className="bg-slate-100">
       <section className="flex h-screen items-center justify-center p-5">
         <div className="flex flex-col items-center justify-center gap-3 rounded-xl bg-white p-5 shadow-lg">
-          <h1 className="text-2xl font-semibold">
-            This is <span className="text-rose-400">Home</span> page
-          </h1>
-          <div className="flex gap-3">
+          <header>
+            <h1 className="text-2xl font-semibold">
+              This is <span className="text-rose-400">Home</span> page
+            </h1>
+          </header>
+          <nav className="flex gap-3">
             <Link className={ExampleATWM({ color: "rose", size: "sm", variant: "solid" })} href={"/user-example"}>
               User
             </Link>
@@ -23,7 +25,7 @@ export const Main: FC = async (): Promise<ReactElement> => {
               Admin
             </Link>
             {session && <Logout />}
-          </div>
+          </nav>
         </div>
       </section>
     </main>
