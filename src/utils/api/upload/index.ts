@@ -65,9 +65,9 @@ export const POSTUpload = async (payload: IUploadPayload): Promise<IUploadRespon
   try {
     const formData = new FormData();
 
-    payload.files.forEach((file) => {
+    for (const file of payload.files) {
       formData.append("files", file);
-    });
+    }
 
     if (payload.ref) {
       formData.append("ref", payload.ref);

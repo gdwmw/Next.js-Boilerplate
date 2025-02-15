@@ -62,7 +62,7 @@ export interface IUsersResponse {
 
 export interface IUploadPayload {
   field?: string;
-  files: File[];
+  files: FileList;
   ref?: string;
   refId?: string;
 }
