@@ -11,67 +11,97 @@ This boilerplate is a web application built using Next.js, which is a React fram
 Below is the main directory structure of the boilerplate:
 
 ```
-└── 📁auth
-└── 📁public
-    └── 📁assets
-        └── 📁animations
-        └── 📁images
+└── 📁configs
+    └── 📁authentication
 └── 📁src
     └── 📁app
         └── 📁(authed)
             └── 📁(admin)
             └── 📁(user)
+        └── 📁(example)
+            └── 📁admin-example
+            └── 📁home-example
+            └── 📁user-example
         └── 📁api
             └── 📁auth
                 └── 📁[...nextauth]
+        └── 📁authentication
+            └── 📁login
+            └── 📁register
+        └── 📁denied
         └── 📁fonts
     └── 📁components
+        └── 📁form-container
         └── 📁interfaces
             └── 📁example
                 └── 📁A
                 └── 📁B
                 └── 📁C
+                └── index.ts
+            └── index.ts
+        └── 📁logout
+        └── index.ts
         └── README.md
     └── 📁context
     └── 📁hooks
         └── 📁cookies
         └── 📁functions
         └── 📁session
+        └── index.ts
     └── 📁layouts
+        └── 📁authentication
+            └── 📁pages
+                └── 📁login
+                └── 📁register
         └── 📁example
             └── 📁global
+            └── 📁pages
+            └── 📁template
             └── 📁modules
                 └── 📁aside
                 └── 📁footer
                 └── 📁header
                 └── 📁main
                 └── 📁nav
-            └── 📁pages
-                └── 📁example
-                    └── 📁global
-                    └── 📁modules
-                        └── 📁aside
-                        └── 📁footer
-                        └── 📁header
-                        └── 📁main
-                        └── 📁nav
-                    └── 📁template
-            └── 📁template
+            └── index.tsx
+        └── 📁home
+        └── 📁password
+        └── 📁profile
     └── 📁libs
         └── 📁constants
         └── 📁providers
             └── 📁next-auth
             └── 📁next-themes
             └── 📁react-query
+            └── index.ts
         └── 📁tailwind-merge
+        └── index.ts
     └── 📁schemas
+        └── 📁authentication
         └── 📁example
+        └── 📁password
+        └── 📁profile
+        └── index.ts
+    └── 📁styles
     └── 📁types
+        └── 📁api
+        └── 📁context
         └── 📁example
+        └── index.ts
         └── next-auth.d.ts
     └── 📁utils
         └── 📁api
+            └── 📁authentication
+                └── 📁login
+                └── 📁register
+                └── index.ts
+            └── 📁datas
             └── 📁example
+            └── 📁password
+            └── 📁upload
+            └── 📁users
+            └── index.ts
+        └── index.ts
     └── middleware.ts
 ```
 
@@ -260,7 +290,6 @@ This documentation provides a clear overview of the boilerplate, installation in
 
    - Use the following icons to identify components:
      - 📚 for **Layout**.
-     - ❌ for **Error**.
      - 📋 for **Template**.
      - 📄 for **Page**.
      - 📦 for **(Section)Layout**.
@@ -270,6 +299,7 @@ This documentation provides a clear overview of the boilerplate, installation in
      - 🔰 for **Main**.
      - 🦶 for **Footer**.
      - 📝 for **Content**.
+     - ❌ for **Error**.
 
 3. **Structure**:
 
@@ -292,20 +322,20 @@ This documentation provides a clear overview of the boilerplate, installation in
 - [📚 Layout](src/app/example/layout.tsx)
   - [📐 Aside](src/layouts/example/global/aside/index.tsx)
     - [📝 Content](src/layouts/example/global/aside/batches/content/index.tsx)
-  - [📋 Template](src/app/example/template.tsx)
-    - [🤖 Header](src/layouts/example/template/header/index.tsx)
-      - [📝 Content](src/layouts/example/template/header/batches/content/index.tsx)
-    - [❌ Error](src/app/example/error.tsx)
-      - [📄 ExamplePage](src/app/example/page.tsx)
-        - [📦 ExampleLayout](src/layouts/example/index.tsx)
-          - [🧭 Nav](src/layouts/example/modules/nav/index.tsx)
-            - [📝 Content](src/layouts/example/modules/nav/batches/content/index.tsx)
-          - [📦 Main](src/layouts/example/modules/main/index.tsx)
-            - [📝 About](src/layouts/example/modules/main/batches/about/index.tsx)
-            - [📝 Contact](src/layouts/example/modules/main/batches/contact/index.tsx)
-            - [📝 Home](src/layouts/example/modules/main/batches/example/index.tsx)
-            - [📝 Packages](src/layouts/example/modules/main/batches/packages/index.tsx)
-            - [📝 Portfolio](src/layouts/example/modules/main/batches/portfolio/index.tsx)
-          - [🦶 Footer](src/layouts/example/modules/footer/index.tsx)
-            - [📝 Content](src/layouts/example/modules/footer/batches/content/index.tsx)
+- [📋 Template](src/app/example/template.tsx)
+  - [🤖 Header](src/layouts/example/template/header/index.tsx)
+    - [📝 Content](src/layouts/example/template/header/batches/content/index.tsx)
+- [📄 ExamplePage](src/app/example/page.tsx)
+  - [📦 ExampleLayout](src/layouts/example/index.tsx)
+    - [🧭 Nav](src/layouts/example/modules/nav/index.tsx)
+      - [📝 Content](src/layouts/example/modules/nav/batches/content/index.tsx)
+    - [📦 Main](src/layouts/example/modules/main/index.tsx)
+      - [📝 About](src/layouts/example/modules/main/batches/about/index.tsx)
+      - [📝 Contact](src/layouts/example/modules/main/batches/contact/index.tsx)
+      - [📝 Home](src/layouts/example/modules/main/batches/example/index.tsx)
+      - [📝 Packages](src/layouts/example/modules/main/batches/packages/index.tsx)
+      - [📝 Portfolio](src/layouts/example/modules/main/batches/portfolio/index.tsx)
+    - [🦶 Footer](src/layouts/example/modules/footer/index.tsx)
+      - [📝 Content](src/layouts/example/modules/footer/batches/content/index.tsx)
+- [❌ Error](src/app/example/error.tsx)
 ```
