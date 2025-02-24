@@ -1,4 +1,4 @@
-import { IDatasPayload, IDatasResponse } from "@/src/types/api";
+import { IDatasPayload, IDatasResponse } from "@/src/types";
 
 const API_URL = process.env.NEXT_PUBLIC_EXAMPLE_URL;
 
@@ -6,21 +6,33 @@ if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
 }
 
-type TFields = keyof IDatasResponse;
+const DUMMY_OBJECTS_DATA: IDatasResponse = {
+  documentId: "",
+  id: 0,
+  image: null,
+  name: "",
+  phoneNumber: "",
+  role: "",
+};
 
-const FIELDS_DATA: TFields[] = ["documentId", "image", "name", "phoneNumber", "role"];
-
-// eslint-disable-next-line
-const createDataResponse = (source: any): IDatasResponse =>
-  FIELDS_DATA.reduce(
+const create = (response: IDatasResponse): IDatasResponse =>
+  Object.keys(DUMMY_OBJECTS_DATA).reduce(
     (result, field) => ({
       ...result,
-      [field]: field === "image" ? (source[field]?.url ? API_URL + source[field].url : null) : source[field],
+      [field]:
+        field === "image"
+          ? response[field]
+            ? {
+                id: response[field].id,
+                url: API_URL + response[field].url,
+              }
+            : null
+          : response[field as keyof IDatasResponse],
     }),
     {},
   ) as IDatasResponse;
 
-const rearrange = (response: IDatasResponse): IDatasResponse => createDataResponse(response);
+const rearrange = (response: IDatasResponse): IDatasResponse => create(response);
 
 export const GETDatas = async (query?: string): Promise<IDatasResponse[]> => {
   try {
@@ -80,9 +92,10 @@ export const POSTDatas = async (payload: IDatasPayload): Promise<IDatasResponse>
 };
 
 export const PUTDatas = async (payload: IDatasPayload): Promise<IDatasResponse> => {
+  const { documentId, ...payloadWithoutDocumentId } = payload;
   try {
-    const res = await fetch(`${API_URL}/api/datas/${payload.documentId}?populate=*`, {
-      body: JSON.stringify({ data: payload }),
+    const res = await fetch(`${API_URL}/api/datas/${documentId}?populate=*`, {
+      body: JSON.stringify({ data: payloadWithoutDocumentId }),
       headers: {
         "Content-Type": "application/json",
       },

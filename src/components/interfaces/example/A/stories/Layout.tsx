@@ -1,8 +1,8 @@
 import { FC, ReactElement } from "react";
 
-import { ExampleA, TExampleA } from "..";
+import { ExampleA, IExampleA } from "..";
 
-type T = Omit<TExampleA, "className">;
+type T = Omit<IExampleA, "className">;
 
 const Layout: FC<T> = (props): ReactElement => (
   <ExampleA color={props.color} disabled={props.disabled} size={props.size} variant={props.variant} {...props}>

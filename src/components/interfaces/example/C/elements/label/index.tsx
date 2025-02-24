@@ -1,20 +1,20 @@
 import { FC, PropsWithChildren, ReactElement } from "react";
 import { MdError } from "react-icons/md";
 
-import { twm } from "@/src/libs/tailwind-merge";
+import { twm } from "@/src/libs";
 
 /* eslint-disable perfectionist/sort-union-types */
-type T = {
+interface I extends Readonly<PropsWithChildren> {
   color?: "rose" | "emerald";
   disabled?: boolean;
   errorMessage?: string;
   fieldsetClassName?: string;
   label?: string;
   legendClassName?: string;
-} & Readonly<PropsWithChildren>;
+}
 /* eslint-enable perfectionist/sort-union-types */
 
-const FieldsetTWM = ({ color, disabled, errorMessage, fieldsetClassName }: T) =>
+const FieldsetTWM = ({ color, disabled, errorMessage, fieldsetClassName }: I) =>
   twm(
     "group overflow-hidden rounded-md border-2 px-1 pb-2",
     color === "rose" && !errorMessage && !disabled && "border-black focus-within:border-rose-400",
@@ -24,7 +24,7 @@ const FieldsetTWM = ({ color, disabled, errorMessage, fieldsetClassName }: T) =>
     fieldsetClassName,
   );
 
-const LegendTWM = ({ color, disabled, errorMessage, legendClassName }: T) =>
+const LegendTWM = ({ color, disabled, errorMessage, legendClassName }: I) =>
   twm(
     "ml-3 flex select-none items-center gap-1 whitespace-nowrap px-1 text-xs font-semibold",
     color === "rose" && !errorMessage && !disabled && "group-focus-within:text-rose-400",
@@ -34,7 +34,7 @@ const LegendTWM = ({ color, disabled, errorMessage, legendClassName }: T) =>
     legendClassName,
   );
 
-export const Label: FC<T> = ({ color, disabled, errorMessage, fieldsetClassName, label, legendClassName, ...props }): ReactElement => (
+export const ExampleLabel: FC<I> = ({ color, disabled, errorMessage, fieldsetClassName, label, legendClassName, ...props }): ReactElement => (
   <fieldset className={FieldsetTWM({ color, disabled, errorMessage, fieldsetClassName })} data-testid="example-label-fieldset">
     <legend className={LegendTWM({ color, disabled, errorMessage, legendClassName })} data-testid="example-label-legend">
       {label}

@@ -1,19 +1,19 @@
 import { FC, ReactElement, ReactNode } from "react";
 
-import { ContainerExampleB, IconExampleB, TextExampleB } from "..";
+import { ExampleBContainer, ExampleBIcon, ExampleBText } from "..";
 
-interface ILayout {
+interface I {
   icon: ReactNode;
   iconColor: string;
   text: string;
   textColor: string;
 }
 
-const Layout: FC<ILayout> = (props): ReactElement => (
-  <ContainerExampleB>
-    <IconExampleB style={{ color: props.iconColor }}>{props.icon}</IconExampleB>
-    <TextExampleB style={{ color: props.textColor }}>{props.text}</TextExampleB>
-  </ContainerExampleB>
+const Layout: FC<I> = (props): ReactElement => (
+  <ExampleBContainer>
+    <ExampleBIcon style={{ color: props.iconColor }}>{props.icon}</ExampleBIcon>
+    <ExampleBText style={{ color: props.textColor }}>{props.text}</ExampleBText>
+  </ExampleBContainer>
 );
 
 export default Layout;

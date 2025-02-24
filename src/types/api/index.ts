@@ -1,12 +1,7 @@
-export interface IAuthSchema {
-  jwt: string;
-  user: IUsersSchema;
-}
-
 export interface IRegisterPayload {
+  username: string;
   email: string;
   password: string;
-  username: string;
 }
 
 export interface ILoginPayload {
@@ -14,81 +9,108 @@ export interface ILoginPayload {
   password: string;
 }
 
+export interface IAuthSchema {
+  jwt: string;
+  user: IUsersResponse;
+}
+
 export interface IAuthResponse {
-  datasDocumentId: string;
-  email: string;
   id: number;
-  image?: null | string;
+  datasId: string;
+  datasDocumentId: string;
+  username: string;
   name: string;
+  email: string;
   phoneNumber: string;
+  image?: null | string;
   role: string;
   status: string;
   token: string;
-  username: string;
 }
 
 export interface INextAuthResponse {
-  datasDocumentId: string;
-  email?: null | string;
   id: string;
-  image?: null | string;
+  datasId: string;
+  datasDocumentId: string;
+  username: string;
   name?: null | string;
+  email?: null | string;
   phoneNumber: string;
+  image?: null | string;
   role: string;
   status: string;
   token: string;
-  username: string;
 }
 
 // ----------------------------
 
-export interface IUsersSchema {
-  datasDocumentId: string;
-  email: string;
-  id: number;
-  username: string;
+export interface IPasswordPayload {
+  email?: string;
+  code?: string;
+  currentPassword?: string;
+  password?: string;
+  passwordConfirmation?: string;
 }
 
+export interface IPasswordResponse extends IUsersResponse {
+  token: string;
+}
+
+// ----------------------------
+
 export interface IUsersPayload {
-  datasDocumentId: string;
-  id: number;
+  id?: number;
+  username?: string;
+  email?: string;
+  datasDocumentId?: string;
 }
 
 export interface IUsersResponse {
-  datasDocumentId: string;
+  id: number;
+  username: string;
+  email: string;
+  datasDocumentId?: string;
 }
 
 // ----------------------------
 
 export interface IUploadPayload {
-  field?: string;
   files: FileList;
   ref?: string;
   refId?: string;
+  field?: string;
 }
 
 export interface IUploadResponse {
+  id: number;
   documentId: string;
-  id: string;
   name: string;
-  thumbnail: { name: string; url: string }[] | null;
   url: string;
+  formats: { thumbnail: { url: string } } | null;
 }
 
 // ----------------------------
 
 export interface IDatasPayload {
+  id?: number;
   documentId?: string;
-  image?: number;
   name: string;
   phoneNumber: string;
+  image?: FileList | number;
   role?: string;
+  bookings?: string;
+  reviews?: string;
+  questionnaires?: string;
 }
 
 export interface IDatasResponse {
+  id: number;
   documentId: string;
-  image: string;
   name: string;
   phoneNumber: string;
+  image: {
+    id: number;
+    url: string;
+  } | null;
   role: string;
 }

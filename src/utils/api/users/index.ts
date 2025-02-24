@@ -1,4 +1,4 @@
-import { IUsersPayload, IUsersResponse } from "@/src/types/api";
+import { IUsersPayload, IUsersResponse } from "@/src/types";
 
 const API_URL = process.env.NEXT_PUBLIC_EXAMPLE_URL;
 
@@ -8,12 +8,15 @@ if (!API_URL) {
 
 const rearrange = (response: IUsersResponse): IUsersResponse => ({
   datasDocumentId: response.datasDocumentId,
+  email: response.email,
+  id: response.id,
+  username: response.username,
 });
 
 export const PUTUsers = async (payload: IUsersPayload): Promise<IUsersResponse> => {
   try {
     const res = await fetch(`${API_URL}/api/users/${payload.id}?populate=*`, {
-      body: JSON.stringify({ datasDocumentId: payload.datasDocumentId }),
+      body: JSON.stringify(payload),
       headers: {
         "Content-Type": "application/json",
       },

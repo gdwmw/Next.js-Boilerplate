@@ -1,4 +1,4 @@
-import { IUploadPayload, IUploadResponse } from "@/src/types/api";
+import { IUploadPayload, IUploadResponse } from "@/src/types";
 
 const API_URL = process.env.NEXT_PUBLIC_EXAMPLE_URL;
 
@@ -6,26 +6,31 @@ if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
 }
 
-type TFields = keyof IUploadResponse;
+const DUMMY_OBJECTS_DATA: IUploadResponse = {
+  documentId: "",
+  formats: null,
+  id: 0,
+  name: "",
+  url: "",
+};
 
-const FIELDS_DATA: TFields[] = ["documentId", "id", "name", "thumbnail", "url"];
-
-// eslint-disable-next-line
-const createUploadResponse = (source: any): IUploadResponse =>
-  FIELDS_DATA.reduce(
+const create = (response: IUploadResponse): IUploadResponse =>
+  Object.keys(DUMMY_OBJECTS_DATA).reduce(
     (result, field) => ({
       ...result,
       [field]:
-        field === "thumbnail"
-          ? source.formats?.thumbnail
-            ? [{ name: source.formats.thumbnail.name, url: source.formats.thumbnail.url }]
+        field === "formats"
+          ? response[field]
+            ? { thumbnail: { url: API_URL + response[field].thumbnail.url } }
             : null
-          : source[field],
+          : field === "url"
+            ? API_URL + response[field]
+            : response[field as keyof IUploadResponse],
     }),
     {} as IUploadResponse,
   );
 
-const rearrange = (response: IUploadResponse): IUploadResponse => createUploadResponse(response);
+const rearrange = (response: IUploadResponse): IUploadResponse => create(response);
 
 export const GETUpload = async (query?: string): Promise<IUploadResponse[]> => {
   try {

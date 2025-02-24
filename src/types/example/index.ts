@@ -1,24 +1,24 @@
 export interface IExampleSchema {
   data: {
     documentId: string;
-    email: string;
-    name: string;
-    phoneNumber: string;
     username: string;
+    name: string;
+    email: string;
+    phoneNumber: string;
   };
 }
 export interface IExamplePayload {
   documentId?: string;
-  email: string;
-  name: string;
-  phoneNumber: string;
   username: string;
+  name: string;
+  email: string;
+  phoneNumber: string;
 }
 
 export interface IExampleResponse {
   documentId: string;
-  email: string;
-  name: string;
-  phoneNumber: string;
   username: string;
+  name: string;
+  email: string;
+  phoneNumber: string;
 }

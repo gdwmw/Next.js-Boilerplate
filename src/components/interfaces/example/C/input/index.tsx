@@ -2,13 +2,13 @@
 
 import { DetailedHTMLProps, FC, forwardRef, InputHTMLAttributes, ReactElement, ReactNode } from "react";
 
-import { twm } from "@/src/libs/tailwind-merge";
+import { twm } from "@/src/libs";
 
 import { ExampleA } from "../../A";
-import { ErrorMessage, InputsContainer, Label } from "../elements";
+import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel } from "../elements";
 
 /* eslint-disable perfectionist/sort-union-types */
-type TExampleInput = {
+interface I extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   className?: string;
   color?: "rose" | "emerald";
   containerClassName?: string;
@@ -19,19 +19,19 @@ type TExampleInput = {
   iconOnClick?: () => void;
   label?: string;
   legendClassName?: string;
-} & DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+}
 /* eslint-enable perfectionist/sort-union-types */
 
-const ExampleInputTWM = ({ className, disabled }: TExampleInput) =>
+const ExampleInputTWM = ({ className, disabled }: I) =>
   twm("w-full rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed", disabled && "text-gray-400", className);
 
-export const ExampleInput: FC<TExampleInput> = forwardRef<HTMLInputElement, TExampleInput>(
+export const ExampleInput: FC<I> = forwardRef<HTMLInputElement, I>(
   (
     { className, color, containerClassName, disabled, errorMessage, fieldsetClassName, icon, iconOnClick, label, legendClassName, ...props },
     ref,
   ): ReactElement => (
-    <InputsContainer className={containerClassName}>
-      <Label
+    <ExampleInputsContainer className={containerClassName}>
+      <ExampleLabel
         color={color}
         disabled={disabled}
         errorMessage={errorMessage}
@@ -54,10 +54,10 @@ export const ExampleInput: FC<TExampleInput> = forwardRef<HTMLInputElement, TExa
             {icon}
           </ExampleA>
         )}
-      </Label>
+      </ExampleLabel>
 
-      {errorMessage && !disabled && <ErrorMessage errorMessage={errorMessage} />}
-    </InputsContainer>
+      {errorMessage && !disabled && <ExampleErrorMessage errorMessage={errorMessage} />}
+    </ExampleInputsContainer>
   ),
 );
 

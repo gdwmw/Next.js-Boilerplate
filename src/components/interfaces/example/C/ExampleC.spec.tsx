@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import { InputHTMLAttributes, ReactNode } from "react";
 import { FaEye } from "react-icons/fa";
 
-import { ExampleInput, ExampleSelect, ExampleTextArea } from "@/src/components/interfaces/example/C";
+import { ExampleInput, ExampleSelect, ExampleTextArea } from "./";
 
 /* eslint-disable perfectionist/sort-objects */
 const classes = {

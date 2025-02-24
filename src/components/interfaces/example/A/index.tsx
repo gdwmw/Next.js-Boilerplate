@@ -1,18 +1,18 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, FC, ReactElement } from "react";
 
-import { twm } from "@/src/libs/tailwind-merge";
+import { twm } from "@/src/libs";
 
 /* eslint-disable perfectionist/sort-union-types */
-export type TExampleA = {
+export interface IExampleA extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   className?: string;
   color?: "rose" | "emerald";
   disabled?: boolean;
   size?: "sm" | "md" | "lg";
   variant?: "solid" | "outline" | "ghost";
-} & DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
+}
 /* eslint-enable perfectionist/sort-union-types */
 
-export const ExampleATWM = ({ className, color, disabled, size, variant }: TExampleA) =>
+export const ExampleATWM = ({ className, color, disabled, size, variant }: IExampleA) =>
   twm(
     "flex items-center gap-2",
     // ⭐ === BASE === ⭐
@@ -71,7 +71,7 @@ export const ExampleATWM = ({ className, color, disabled, size, variant }: TExam
     className,
   );
 
-export const ExampleA: FC<TExampleA> = ({ className, color, disabled, size, variant, ...props }): ReactElement => (
+export const ExampleA: FC<IExampleA> = ({ className, color, disabled, size, variant, ...props }): ReactElement => (
   <button className={ExampleATWM({ className, color, disabled, size, variant })} data-testid="example-a" disabled={disabled} {...props}>
     {props.children}
   </button>

@@ -1,3 +1,42 @@
+export const ACCOUNT_DATA = [
+  {
+    email: "admin@gmail.com",
+    password: "admin",
+    response: {
+      datasDocumentId: "1234567890",
+      datasId: "1",
+      email: "admin@gmail.com",
+      id: 1,
+      image: "image url",
+      name: "Admin",
+      phoneNumber: "1234567890",
+      role: "admin",
+      status: "authenticated",
+      token: "1234567890",
+      username: "admin",
+    },
+    username: "admin",
+  },
+  {
+    email: "user@gmail.com",
+    password: "user",
+    response: {
+      datasDocumentId: "1234567890",
+      datasId: "2",
+      email: "user@gmail.com",
+      id: 2,
+      image: "image url",
+      name: "User",
+      phoneNumber: "1234567890",
+      role: "user",
+      status: "authenticated",
+      token: "1234567890",
+      username: "user",
+    },
+    username: "user",
+  },
+];
+
 export const EXAMPLE_PACKAGES_DATA = [
   {
     description: [

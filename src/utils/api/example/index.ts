@@ -1,4 +1,4 @@
-import { IExamplePayload, IExampleResponse } from "@/src/types/example";
+import { IExamplePayload, IExampleResponse } from "@/src/types";
 
 const API_URL = process.env.NEXT_PUBLIC_EXAMPLE_URL;
 
@@ -6,21 +6,24 @@ if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
 }
 
-type TFields = keyof IExampleResponse;
+const DUMMY_OBJECTS_DATA: IExampleResponse = {
+  documentId: "",
+  email: "",
+  name: "",
+  phoneNumber: "",
+  username: "",
+};
 
-const FIELDS_DATA: TFields[] = ["documentId", "email", "name", "phoneNumber", "username"];
-
-// eslint-disable-next-line
-const createExampleResponse = (source: any): IExampleResponse =>
-  FIELDS_DATA.reduce(
+const create = (response: IExampleResponse): IExampleResponse =>
+  Object.keys(DUMMY_OBJECTS_DATA).reduce(
     (result, field) => ({
       ...result,
-      [field]: source[field],
+      [field]: response[field as keyof IExampleResponse],
     }),
     {},
   ) as IExampleResponse;
 
-const rearrange = (response: IExampleResponse): IExampleResponse => createExampleResponse(response);
+const rearrange = (response: IExampleResponse): IExampleResponse => create(response);
 
 export const GETExample = async (query?: string): Promise<IExampleResponse[]> => {
   try {
@@ -80,9 +83,10 @@ export const POSTExample = async (payload: IExamplePayload): Promise<IExampleRes
 };
 
 export const PUTExample = async (payload: IExamplePayload): Promise<IExampleResponse> => {
+  const { documentId, ...payloadWithoutDocumentId } = payload;
   try {
-    const res = await fetch(`${API_URL}/api/example/${payload.documentId}?populate=*`, {
-      body: JSON.stringify({ data: payload }),
+    const res = await fetch(`${API_URL}/api/example/${documentId}?populate=*`, {
+      body: JSON.stringify({ data: payloadWithoutDocumentId }),
       headers: {
         "Content-Type": "application/json",
       },

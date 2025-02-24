@@ -33,6 +33,14 @@ const eslintConfig = [
     },
   },
   {
+    files: ["src/types/**/*.ts"],
+    rules: {
+      "perfectionist/sort-enums": "off",
+      "perfectionist/sort-interfaces": "off",
+      "perfectionist/sort-object-types": "off",
+    },
+  },
+  {
     plugins: {
       react,
     },

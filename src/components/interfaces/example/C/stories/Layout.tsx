@@ -2,7 +2,7 @@ import { FC, ReactElement, ReactNode } from "react";
 
 import { ExampleInput, ExampleSelect, ExampleTextArea } from "..";
 
-interface ILayout {
+interface I {
   color?: "emerald" | "rose";
   componentType: "input" | "select" | "textarea";
   disabled?: boolean;
@@ -12,7 +12,7 @@ interface ILayout {
   type?: string;
 }
 
-const Layout: FC<ILayout> = (props): null | ReactElement => {
+const Layout: FC<I> = (props): null | ReactElement => {
   switch (props.componentType) {
     case "input":
       return (
