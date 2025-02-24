@@ -30,7 +30,7 @@
     }
   },
   "dependencies": {
-    "@hookform/resolvers": "^4.1.1",
+    "@hookform/resolvers": "^4.1.2",
     "@tanstack/react-query": "^5.66.9",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
@@ -52,15 +52,15 @@
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
     "@eslint/js": "^9.21.0",
-    "@storybook/addon-essentials": "^8.5.8",
-    "@storybook/addon-interactions": "^8.5.8",
-    "@storybook/addon-links": "^8.5.8",
-    "@storybook/addon-onboarding": "^8.5.8",
-    "@storybook/addon-themes": "^8.5.8",
-    "@storybook/blocks": "^8.5.8",
-    "@storybook/nextjs": "^8.5.8",
-    "@storybook/react": "^8.5.8",
-    "@storybook/test": "^8.5.8",
+    "@storybook/addon-essentials": "^8.6.0",
+    "@storybook/addon-interactions": "^8.6.0",
+    "@storybook/addon-links": "^8.6.0",
+    "@storybook/addon-onboarding": "^8.6.0",
+    "@storybook/addon-themes": "^8.6.0",
+    "@storybook/blocks": "^8.6.0",
+    "@storybook/nextjs": "^8.6.0",
+    "@storybook/react": "^8.6.0",
+    "@storybook/test": "^8.6.0",
     "@tanstack/eslint-plugin-query": "^5.66.1",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
@@ -84,11 +84,11 @@
     "postcss": "^8.5.3",
     "prettier": "^3.5.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "storybook": "^8.5.8",
+    "storybook": "^8.6.0",
     "storybook-dark-mode": "^4.0.2",
     "tailwindcss": "^3.4.17",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.24.1"
+    "typescript-eslint": "^8.25.0"
   }
 }
