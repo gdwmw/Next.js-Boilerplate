@@ -15,9 +15,10 @@ export interface IAuthSchema {
 }
 
 export interface IAuthResponse {
-  id: number;
+  id: string;
   datasId: string;
   datasDocumentId: string;
+  imageId: null | string;
   username: string;
   name: string;
   email: string;
@@ -32,6 +33,7 @@ export interface INextAuthResponse {
   id: string;
   datasId: string;
   datasDocumentId: string;
+  imageId: null | string;
   username: string;
   name?: null | string;
   email?: null | string;

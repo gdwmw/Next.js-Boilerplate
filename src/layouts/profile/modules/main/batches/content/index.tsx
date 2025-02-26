@@ -8,11 +8,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FC, HTMLInputTypeAttribute, KeyboardEvent, ReactElement, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { FaUser } from "react-icons/fa";
 
 import { ExampleA, ExampleATWM, ExampleInput, FormContainer } from "@/src/components";
 import { inputValidations } from "@/src/hooks";
 import { ProfileSchema, TProfileSchema } from "@/src/schemas";
-import { DELETEUpload, GETDatasByDocumentId, POSTUpload, PUTDatas, PUTUsers } from "@/src/utils";
+import { DELETEUpload, POSTUpload, PUTDatas, PUTUsers } from "@/src/utils";
 
 interface IFormField {
   id: number;
@@ -117,13 +118,12 @@ export const Content: FC<I> = (props): ReactElement => {
         phoneNumber: dt.phoneNumber,
       });
 
+      let imageId = props.session?.user?.imageId;
       let imageUrl = props.session?.user?.image;
 
       if (dt.image && dt.image.length > 0) {
-        const datasByDocumentIdResponse = await GETDatasByDocumentId(props.session?.user?.datasDocumentId ?? "");
-
-        if (datasByDocumentIdResponse.image?.id !== 1) {
-          await DELETEUpload(datasByDocumentIdResponse.image?.id ?? 0);
+        if (props.session?.user?.imageId) {
+          await DELETEUpload(parseInt(props.session?.user?.imageId));
         }
 
         const uploadResponse = await POSTUpload({
@@ -133,6 +133,7 @@ export const Content: FC<I> = (props): ReactElement => {
           refId: props.session?.user?.datasId ?? "",
         });
 
+        imageId = uploadResponse[0].id.toString();
         imageUrl = uploadResponse[0].url;
       }
 
@@ -141,6 +142,7 @@ export const Content: FC<I> = (props): ReactElement => {
           ...session.data?.user,
           email: usersResponse.email,
           image: imageUrl,
+          imageId: imageId,
           name: datasResponse.name,
           phoneNumber: datasResponse.phoneNumber,
           username: usersResponse.username,
@@ -160,9 +162,15 @@ export const Content: FC<I> = (props): ReactElement => {
     <main className="bg-slate-100">
       <FormContainer href={"/"} innerContainerClassName="size-full max-h-[624px] max-w-[450px]" label={"Home"}>
         <form className="w-full space-y-3 overflow-y-auto" onSubmit={handleSubmit(onSubmit)}>
-          <div className="relative mx-auto aspect-square size-32 overflow-hidden rounded-full border border-gray-200">
-            <Image alt="Review Image" className="object-cover" fill quality={50} src={previewImage ?? props.session?.user?.image ?? ""} />
-          </div>
+          {previewImage || props.session?.user?.image ? (
+            <div className="relative mx-auto aspect-square size-32 overflow-hidden rounded-full border border-gray-200">
+              <Image alt="Profile Image" className="object-cover" fill quality={50} src={previewImage ?? props.session?.user?.image ?? ""} />
+            </div>
+          ) : (
+            <div className="mx-auto flex aspect-square size-32 items-center justify-center rounded-full border border-gray-200 bg-gray-100">
+              <FaUser className="text-gray-400" size={64} />
+            </div>
+          )}
 
           {FORM_FIELDS_DATA.map((dt) => (
             <ExampleInput

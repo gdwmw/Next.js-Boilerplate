@@ -16,8 +16,9 @@ const rearrange = (response: IRearrange): IAuthResponse => ({
   datasDocumentId: response.user.datasDocumentId ?? "",
   datasId: response.id.toString(),
   email: response.user.email,
-  id: response.user.id,
-  image: response.image?.url,
+  id: response.user.id.toString(),
+  image: response.image?.url ?? null,
+  imageId: response.image?.id.toString() ?? null,
   name: response.name,
   phoneNumber: response.phoneNumber,
   role: response.role,
@@ -47,7 +48,6 @@ export const POSTRegister = async (payload: IPayload): Promise<IAuthResponse> =>
     }
 
     const datasResponse = await POSTDatas({
-      image: 1,
       name: payload.name,
       phoneNumber: payload.phoneNumber,
       role: "user",

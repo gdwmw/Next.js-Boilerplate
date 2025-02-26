@@ -24,7 +24,7 @@ export const FormContainer: FC<I> = ({
   label,
   ...linkProps
 }): ReactElement => (
-  <section className={twm("container mx-auto flex h-screen items-center justify-center p-5", containerClassName)}>
+  <section className={twm("container mx-auto flex h-svh items-center justify-center p-5", containerClassName)}>
     <div className={twm("relative flex rounded-xl bg-white px-5 pb-5 pt-[60px] shadow-lg", !href && "p-5", innerContainerClassName)}>
       {href && (
         <Link
