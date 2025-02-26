@@ -107,7 +107,7 @@ Below is the main directory structure of the boilerplate:
 
 ### Structure Explanation 📚
 
-- **/auth**: Contains authentication-related files and logic.
+- **/configs**: Contains configuration files, including authentication settings and logic.
 - **/public**: Contains static assets such as images, animations, and other static files.
 - **/src/app**: Contains the main application pages, including login, admin, user, and others.
 - **/src/components**: Contains reusable components throughout the application, organized following the principles of Atomic Design.
@@ -116,6 +116,7 @@ Below is the main directory structure of the boilerplate:
 - **/src/layouts**: Contains layouts for various parts of the application, such as header, footer, aside, and others. The layouts are organized following the principles of Atomic Design, with components broken down into smaller, reusable pieces.
 - **/src/libs**: Contains libraries such as providers for authentication and theme management, as well as constants and others.
 - **/src/schemas**: Contains validation schemas using Zod to ensure incoming data meets expectations.
+- **/src/styles**: Contains global styles, CSS modules, and other styling-related files.
 - **/src/types**: Contains TypeScript type definitions to ensure type safety throughout the application.
 - **/src/utils**: Contains utility functions used in various places within the application.
 - **/src/middleware.ts**: Contains middleware functions for handling requests and responses.
@@ -277,9 +278,7 @@ By following these guidelines, you can help ensure that your questions are under
 
 This documentation provides a clear overview of the boilerplate, installation instructions, commit guidelines, and contribution guidelines. If you have any further questions, feel free to ask!
 
----
-
-# Special AI Instructions for Creating Code Structure Diagrams
+## Special AI Instructions for Creating Code Structure Diagrams 🤖
 
 1. **Format**:
 
@@ -314,7 +313,7 @@ This documentation provides a clear overview of the boilerplate, installation in
 
    - Create the structure according to the actual structure in the codebase. This is just an example, so adjust it to the current codebase.
 
-## Example Code Structure Diagram
+## Example Code Structure Diagram 📊
 
 ### 🏠 **Example**
 
