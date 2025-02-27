@@ -90,7 +90,8 @@ const eslintConfig = [
     },
     settings: {
       tailwindcss: {
-        callees: ["twm"],
+        callees: ["twMerge", "clsx", "twm"],
+        classRegex: "^(class(Name)?$)|(.*[cC]lassName$)",
       },
     },
   },

@@ -9,7 +9,7 @@ export const Main: FC = async (): Promise<ReactElement> => {
 
   return (
     <main className="bg-slate-100">
-      <FormContainer innerContainerClassName="flex-col gap-3 items-center">
+      <FormContainer innerContainerClassName="flex-col items-center gap-3">
         <header>
           <h1 className="text-2xl font-semibold">
             This is <span className="text-rose-400">Home</span> page
