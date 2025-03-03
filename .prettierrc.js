@@ -1,5 +1,5 @@
 module.exports = {
+  plugins: ["prettier-plugin-tailwindcss"],
   printWidth: 150,
-  // plugins: ["prettier-plugin-tailwindcss"],
-  // tailwindFunctions: ["twMerge", "clsx", "twm"],
+  tailwindFunctions: ["twMerge", "clsx", "twm"],
 };
