@@ -4,7 +4,8 @@ import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 // import { POSTLogin } from "@/src/utils";
-import { ACCOUNT_DATA } from "@/src/libs";
+// import { DEMO_ACCOUNT_DATA } from "@/src/libs";
+import { DUMMY_ACCOUNT_DATA } from "@/src/libs";
 import { ILoginPayload } from "@/src/types";
 
 export const options: NextAuthOptions = {
@@ -40,9 +41,19 @@ export const options: NextAuthOptions = {
         try {
           const { identifier, password } = credentials as ILoginPayload;
 
-          // const res = await POSTLogin({ identifier, password });
+          // if ((identifier === "demo" || identifier === "demo@demo.com") && password === "demo") {
+          //   return DEMO_ACCOUNT_DATA;
+          // } else {
+          //   const res = await POSTLogin({ identifier, password });
 
-          const res = ACCOUNT_DATA.find((user) => (user.username === identifier || user.email === identifier) && user.password === password);
+          //   if (!res) {
+          //     return null;
+          //   }
+
+          //   return res;
+          // }
+
+          const res = DUMMY_ACCOUNT_DATA.find((user) => (user.username === identifier || user.email === identifier) && user.password === password);
 
           if (!res) {
             return null;
