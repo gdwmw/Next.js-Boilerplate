@@ -1,56 +1,37 @@
-import { IAuthResponse, IAuthSchema, IDatasResponse, ILoginPayload } from "@/src/types";
+import { IAuthResponse, IAuthSchema, IDataResponse, ILoginPayload } from "@/src/types";
 
-import { GETDatasByDocumentId } from "../../datas";
+import { postApi } from "../../base";
+import { GETDataByDocumentId } from "../../data";
+import { GETUserByDocumentId } from "../../user";
 
-const API_URL = process.env.NEXT_PUBLIC_EXAMPLE_URL;
+const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
 }
 
-interface IRearrange extends IAuthSchema, IDatasResponse {}
-
-const rearrange = (response: IRearrange): IAuthResponse => ({
-  datasDocumentId: response.user.datasDocumentId ?? "",
-  datasId: response.id.toString(),
-  email: response.user.email,
-  id: response.user.id.toString(),
-  image: response.image?.url ?? null,
-  imageId: response.image?.id.toString() ?? null,
-  name: response.name,
-  phoneNumber: response.phoneNumber,
-  role: response.role,
+const rearrange = (authResponse: IAuthSchema, dataResponse: IDataResponse): IAuthResponse => ({
+  dataDocumentId: dataResponse.documentId ?? "",
+  dataId: dataResponse.id.toString(),
+  email: authResponse.user.email,
+  id: authResponse.user.id.toString(),
+  image: dataResponse.image ? API_URL + dataResponse.image.url : null,
+  imageId: dataResponse.image?.id.toString() ?? null,
+  name: dataResponse.name,
+  phoneNumber: dataResponse.phoneNumber,
+  role: dataResponse.role,
   status: "authenticated",
-  token: response.jwt,
-  username: response.user.username,
+  token: authResponse.jwt,
+  username: authResponse.user.username,
 });
 
+const label = "Login";
+
 export const POSTLogin = async (payload: ILoginPayload): Promise<IAuthResponse> => {
-  try {
-    const res = await fetch(`${API_URL}/api/auth/local?populate=*`, {
-      body: JSON.stringify(payload),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
+  const authResponse = await postApi<IAuthSchema>({ data: payload, endpoint: "/api/auth/local", label: label });
 
-    const response = await res.json();
+  const userResponse = await GETUserByDocumentId(authResponse.user.id);
+  const dataResponse = await GETDataByDocumentId(userResponse.relation_data?.documentId ?? "");
 
-    if (!res.ok) {
-      throw new Error(`Failed to post: Login with status ${res.status} || ${response.error.message}`);
-    }
-
-    const datasResponse = await GETDatasByDocumentId(response.user.datasDocumentId);
-
-    const result: IRearrange = {
-      ...response,
-      ...datasResponse,
-    };
-
-    return rearrange(result);
-  } catch (error) {
-    console.error("--- Fetch Error Message ---", error);
-    throw error;
-  }
+  return rearrange(authResponse, dataResponse);
 };

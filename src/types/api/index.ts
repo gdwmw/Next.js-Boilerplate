@@ -1,3 +1,8 @@
+export type TRole = "admin" | "demo" | "user";
+export type TIndicator = "Canceled" | "On Going" | "Payment" | "Rejected" | "Success" | "Waiting";
+
+// ----------------------------
+
 export interface IRegisterPayload {
   username: string;
   email: string;
@@ -11,37 +16,31 @@ export interface ILoginPayload {
 
 export interface IAuthSchema {
   jwt: string;
-  user: IUsersResponse;
+  user: IUserResponse;
 }
 
-export interface IAuthResponse {
+interface IAuthCommon {
   id: string;
-  datasId: string;
-  datasDocumentId: string;
+  dataId: string;
+  dataDocumentId: string;
   imageId: null | string;
   username: string;
+  phoneNumber: string;
+  role: TRole;
+  status: string;
+  token: string;
+}
+
+export interface IAuthResponse extends IAuthCommon {
   name: string;
   email: string;
-  phoneNumber: string;
   image?: null | string;
-  role: string;
-  status: string;
-  token: string;
 }
 
-export interface INextAuthResponse {
-  id: string;
-  datasId: string;
-  datasDocumentId: string;
-  imageId: null | string;
-  username: string;
+export interface INextAuthResponse extends IAuthCommon {
   name?: null | string;
   email?: null | string;
-  phoneNumber: string;
   image?: null | string;
-  role: string;
-  status: string;
-  token: string;
 }
 
 // ----------------------------
@@ -54,24 +53,20 @@ export interface IPasswordPayload {
   passwordConfirmation?: string;
 }
 
-export interface IPasswordResponse extends IUsersResponse {
-  token: string;
-}
-
 // ----------------------------
 
-export interface IUsersPayload {
+export interface IUserPayload {
   id?: number;
   username?: string;
   email?: string;
-  datasDocumentId?: string;
+  relation_data?: number;
 }
 
-export interface IUsersResponse {
+export interface IUserResponse {
   id: number;
   username: string;
   email: string;
-  datasDocumentId?: string;
+  relation_data?: IDataResponse;
 }
 
 // ----------------------------
@@ -93,26 +88,21 @@ export interface IUploadResponse {
 
 // ----------------------------
 
-export interface IDatasPayload {
-  id?: number;
-  documentId?: string;
+interface IDataCommon {
   name: string;
   phoneNumber: string;
-  image?: FileList | number;
-  role?: string;
-  bookings?: string;
-  reviews?: string;
-  questionnaires?: string;
 }
 
-export interface IDatasResponse {
+export interface IDataPayload extends IDataCommon {
+  id?: number;
+  documentId?: string;
+  image?: FileList | number;
+  role?: TRole;
+}
+
+export interface IDataResponse extends IDataCommon {
   id: number;
   documentId: string;
-  name: string;
-  phoneNumber: string;
-  image: {
-    id: number;
-    url: string;
-  } | null;
-  role: string;
+  image: IUploadResponse | null;
+  role: TRole;
 }

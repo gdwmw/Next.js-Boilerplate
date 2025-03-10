@@ -1,72 +1,52 @@
-import { IAuthResponse, IAuthSchema, IDatasPayload, IDatasResponse, IRegisterPayload } from "@/src/types";
+import { IAuthResponse, IAuthSchema, IDataPayload, IDataResponse, IRegisterPayload } from "@/src/types";
 
-import { POSTDatas } from "../../datas";
-import { PUTUsers } from "../../users";
+import { postApi } from "../../base";
+import { POSTData } from "../../data";
+import { PUTUser } from "../../user";
 
-const API_URL = process.env.NEXT_PUBLIC_EXAMPLE_URL;
+const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
 }
 
-interface IRearrange extends IAuthSchema, IDatasResponse {}
-interface IPayload extends IDatasPayload, IRegisterPayload {}
-
-const rearrange = (response: IRearrange): IAuthResponse => ({
-  datasDocumentId: response.user.datasDocumentId ?? "",
-  datasId: response.id.toString(),
-  email: response.user.email,
-  id: response.user.id.toString(),
-  image: response.image?.url ?? null,
-  imageId: response.image?.id.toString() ?? null,
-  name: response.name,
-  phoneNumber: response.phoneNumber,
-  role: response.role,
+const rearrange = (authResponse: IAuthSchema, dataResponse: IDataResponse): IAuthResponse => ({
+  dataDocumentId: dataResponse.documentId ?? "",
+  dataId: dataResponse.id.toString(),
+  email: authResponse.user.email,
+  id: authResponse.user.id.toString(),
+  image: dataResponse.image ? API_URL + dataResponse.image.url : null,
+  imageId: dataResponse.image?.id.toString() ?? null,
+  name: dataResponse.name,
+  phoneNumber: dataResponse.phoneNumber,
+  role: dataResponse.role,
   status: "authenticated",
-  token: response.jwt,
-  username: response.user.username,
+  token: authResponse.jwt,
+  username: authResponse.user.username,
 });
 
-export const POSTRegister = async (payload: IPayload): Promise<IAuthResponse> => {
-  try {
-    const res = await fetch(`${API_URL}/api/auth/local/register?populate=*`, {
-      body: JSON.stringify({
-        email: payload.email,
-        password: payload.password,
-        username: payload.username,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
+interface I extends IDataPayload, IRegisterPayload {}
 
-    const response = await res.json();
+const label = "Register";
 
-    if (!res.ok) {
-      throw new Error(`Failed to post: Register with status ${res.status} || ${response.error.message}`);
-    }
+export const POSTRegister = async (payload: I): Promise<IAuthResponse> => {
+  const authResponse = await postApi<IAuthSchema>({
+    data: {
+      email: payload.email,
+      password: payload.password,
+      username: payload.username,
+    },
+    endpoint: "/api/auth/local/register",
+    label: label,
+  });
 
-    const datasResponse = await POSTDatas({
-      name: payload.name,
-      phoneNumber: payload.phoneNumber,
-      role: "user",
-    });
+  const dataResponse = await POSTData({
+    name: payload.name,
+    phoneNumber: payload.phoneNumber,
+    role: "user",
+  });
 
-    const usersResponse = await PUTUsers({ datasDocumentId: datasResponse.documentId, id: response.user.id });
+  await PUTUser({ id: authResponse.user.id, relation_data: dataResponse.id });
 
-    const result: IRearrange = {
-      ...response,
-      ...datasResponse,
-      user: {
-        ...response.user,
-        datasDocumentId: usersResponse.datasDocumentId,
-      },
-    };
-
-    return rearrange(result);
-  } catch (error) {
-    console.error("--- Fetch Error Message ---", error);
-    throw error;
-  }
+  return rearrange(authResponse, dataResponse);
 };

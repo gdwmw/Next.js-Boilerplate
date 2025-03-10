@@ -13,7 +13,13 @@ import { FaUser } from "react-icons/fa";
 import { ExampleA, ExampleATWM, ExampleInput, FormContainer } from "@/src/components";
 import { inputValidations } from "@/src/hooks";
 import { ProfileSchema, TProfileSchema } from "@/src/schemas";
-import { DELETEUpload, POSTUpload, PUTDatas, PUTUsers } from "@/src/utils";
+import { DELETEUpload, POSTUpload, PUTData, PUTUser } from "@/src/utils";
+
+const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
+
+if (!API_URL) {
+  throw new Error("The API URL is not defined. Please check your environment variables.");
+}
 
 interface IFormField {
   id: number;
@@ -106,14 +112,14 @@ export const Content: FC<I> = (props): ReactElement => {
     setLoading(true);
 
     try {
-      const usersResponse = await PUTUsers({
+      const userResponse = await PUTUser({
         email: dt.email,
         id: Number(props.session?.user?.id),
         username: dt.username,
       });
 
-      const datasResponse = await PUTDatas({
-        documentId: props.session?.user?.datasDocumentId ?? "",
+      const dataResponse = await PUTData({
+        documentId: props.session?.user?.dataDocumentId ?? "",
         name: dt.name,
         phoneNumber: dt.phoneNumber,
       });
@@ -130,22 +136,22 @@ export const Content: FC<I> = (props): ReactElement => {
           field: "image",
           files: dt.image,
           ref: "api::data.data",
-          refId: props.session?.user?.datasId ?? "",
+          refId: props.session?.user?.dataId ?? "",
         });
 
         imageId = uploadResponse[0].id.toString();
-        imageUrl = uploadResponse[0].url;
+        imageUrl = API_URL + uploadResponse[0].url;
       }
 
       await session.update({
         user: {
           ...session.data?.user,
-          email: usersResponse.email,
+          email: userResponse.email,
           image: imageUrl,
           imageId: imageId,
-          name: datasResponse.name,
-          phoneNumber: datasResponse.phoneNumber,
-          username: usersResponse.username,
+          name: dataResponse.name,
+          phoneNumber: dataResponse.phoneNumber,
+          username: userResponse.username,
         },
       });
 
@@ -163,11 +169,11 @@ export const Content: FC<I> = (props): ReactElement => {
       <FormContainer href={"/"} innerContainerClassName="size-full max-h-[624px] max-w-[450px]" label={"Home"}>
         <form className="w-full space-y-3 overflow-y-auto" onSubmit={handleSubmit(onSubmit)}>
           {previewImage || props.session?.user?.image ? (
-            <div className="relative mx-auto aspect-square size-32 overflow-hidden rounded-full border border-gray-200">
+            <div className="relative mx-auto aspect-square size-fit min-h-32 min-w-32 overflow-hidden rounded-full border border-gray-200">
               <Image alt="Profile Image" className="object-cover" fill quality={50} src={previewImage ?? props.session?.user?.image ?? ""} />
             </div>
           ) : (
-            <div className="mx-auto flex aspect-square size-32 items-center justify-center rounded-full border border-gray-200 bg-gray-100">
+            <div className="mx-auto flex aspect-square size-fit min-h-32 min-w-32 items-center justify-center rounded-full border border-gray-200 bg-gray-100">
               <FaUser className="text-gray-400" size={64} />
             </div>
           )}
@@ -186,7 +192,7 @@ export const Content: FC<I> = (props): ReactElement => {
             />
           ))}
 
-          <div className="flex justify-center gap-1">
+          <div className="flex justify-center gap-1 max-[350px]:flex-col max-[350px]:items-center">
             <span className="text-xs">Do you want to change your password?</span>
             <Link
               className={ExampleATWM({ className: "text-xs", color: "rose", disabled: loading, size: "sm", variant: "ghost" })}

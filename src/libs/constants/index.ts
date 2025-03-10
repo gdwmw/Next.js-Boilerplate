@@ -1,6 +1,8 @@
-export const DEMO_ACCOUNT_DATA = {
-  datasDocumentId: "dEmOdataSDocuMenTid",
-  datasId: "1",
+import { IAuthResponse } from "@/src/types";
+
+export const DEMO_ACCOUNT_DATA: IAuthResponse = {
+  dataDocumentId: "dEmOdataSDocuMenTid",
+  dataId: "1",
   email: "demo@demo.com",
   id: "1",
   image: null,
@@ -13,13 +15,20 @@ export const DEMO_ACCOUNT_DATA = {
   username: "demo",
 };
 
-export const DUMMY_ACCOUNT_DATA = [
+interface IDUMMY_ACCOUNT_DATA {
+  email: string;
+  password: string;
+  response: IAuthResponse;
+  username: string;
+}
+
+export const DUMMY_ACCOUNT_DATA: IDUMMY_ACCOUNT_DATA[] = [
   {
     email: "admin@admin.com",
     password: "admin",
     response: {
-      datasDocumentId: "ADmiNSDocuMenTid",
-      datasId: "1",
+      dataDocumentId: "ADmiNSDocuMenTid",
+      dataId: "1",
       email: "admin@admin.com",
       id: "1",
       image: null,
@@ -37,8 +46,8 @@ export const DUMMY_ACCOUNT_DATA = [
     email: "user@user.com",
     password: "user",
     response: {
-      datasDocumentId: "uSErDocuMenTid",
-      datasId: "2",
+      dataDocumentId: "uSErDocuMenTid",
+      dataId: "2",
       email: "user@user.com",
       id: "2",
       image: null,
