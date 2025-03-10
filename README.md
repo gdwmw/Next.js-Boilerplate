@@ -95,11 +95,11 @@ Below is the main directory structure of the boilerplate:
                 └── 📁login
                 └── 📁register
                 └── index.ts
-            └── 📁datas
+            └── 📁data
             └── 📁example
             └── 📁password
             └── 📁upload
-            └── 📁users
+            └── 📁user
             └── index.ts
         └── index.ts
     └── middleware.ts
