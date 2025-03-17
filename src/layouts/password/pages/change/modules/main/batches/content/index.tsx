@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signOut } from "next-auth/react";
-import { FC, HTMLInputTypeAttribute, KeyboardEvent, ReactElement, useState } from "react";
+import { FC, HTMLInputTypeAttribute, ReactElement, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
@@ -15,7 +15,6 @@ interface IFormField {
   label: string;
   maxLength?: number;
   name: keyof TChangePasswordSchema;
-  onKeyDown?: (e: KeyboardEvent) => void;
   type: HTMLInputTypeAttribute;
 }
 
@@ -91,7 +90,6 @@ export const Content: FC = (): ReactElement => {
               key={dt.id}
               label={dt.label}
               maxLength={dt.maxLength}
-              onKeyDown={dt.onKeyDown}
               type={passwordVisibility ? "text" : "password"}
               {...register(dt.name)}
             />

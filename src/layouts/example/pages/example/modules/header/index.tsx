@@ -1,3 +1,5 @@
-import { FC, ReactElement } from "react";
+import { FC, PropsWithChildren, ReactElement } from "react";
 
-export const Header: FC = (): ReactElement => <header></header>;
+type T = Readonly<PropsWithChildren>;
+
+export const Header: FC<T> = (props): ReactElement => <header>{props.children}</header>;

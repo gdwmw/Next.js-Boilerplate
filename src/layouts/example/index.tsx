@@ -4,10 +4,12 @@ import { ASide, Footer, Header, Main, Nav } from "./modules";
 
 const ExampleLayout: FC = (): ReactElement => (
   <>
-    <Header />
-    <Nav />
-    <ASide />
-    <Main />
+    <Header>
+      <Nav />
+    </Header>
+    <Main>
+      <ASide />
+    </Main>
     <Footer />
   </>
 );

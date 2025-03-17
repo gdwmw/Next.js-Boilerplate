@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const DeniedPage: FC = (): ReactElement => (
   <main className="flex h-screen flex-col items-center justify-center">
-    <p className="text-2xl font-semibold">You are not allowed to access this page.</p>
+    <h1 className="text-2xl font-semibold">You are not allowed to access this page.</h1>
   </main>
 );
 

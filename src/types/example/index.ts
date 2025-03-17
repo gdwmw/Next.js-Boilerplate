@@ -1,24 +1,19 @@
-export interface IExampleSchema {
-  data: {
-    documentId: string;
-    username: string;
-    name: string;
-    email: string;
-    phoneNumber: string;
-  };
-}
-export interface IExamplePayload {
-  documentId?: string;
+interface IExampleCommon {
   username: string;
   name: string;
   email: string;
   phoneNumber: string;
 }
 
-export interface IExampleResponse {
-  documentId: string;
-  username: string;
-  name: string;
-  email: string;
-  phoneNumber: string;
+export interface IExampleSchema {
+  data: {
+    documentId: string;
+  } & IExampleCommon;
 }
+
+export interface IExamplePayload extends IExampleCommon {
+  documentId?: string;
+}
+
+// eslint-disable-next-line
+export interface IExampleResponse extends IExampleCommon {}

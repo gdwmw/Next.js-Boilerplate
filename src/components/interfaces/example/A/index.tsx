@@ -54,11 +54,11 @@ export const ExampleATWM = ({ className, color, disabled, size, variant }: IExam
     variant === "ghost" && disabled && "text-gray-400",
 
     // ⭐ === SIZE === ⭐
-    size === "sm" && variant !== "ghost" && "h-10 min-w-28 px-3 text-base",
+    size === "sm" && variant !== "ghost" && "h-10 min-h-10 min-w-28 px-3 text-base",
 
-    size === "md" && variant !== "ghost" && "h-11 min-w-32 px-4 text-lg",
+    size === "md" && variant !== "ghost" && "h-11 min-h-11 min-w-32 px-4 text-lg",
 
-    size === "lg" && variant !== "ghost" && "h-12 min-w-36 px-5 text-xl",
+    size === "lg" && variant !== "ghost" && "h-12 min-h-12 min-w-36 px-5 text-xl",
 
     // ⭐ === GHOST SIZE === ⭐
     size === "sm" && variant === "ghost" && "text-base",

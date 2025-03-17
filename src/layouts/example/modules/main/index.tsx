@@ -1,3 +1,5 @@
-import { FC, ReactElement } from "react";
+import { FC, PropsWithChildren, ReactElement } from "react";
 
-export const Main: FC = (): ReactElement => <main></main>;
+type T = Readonly<PropsWithChildren>;
+
+export const Main: FC<T> = (props): ReactElement => <main>{props.children}</main>;
