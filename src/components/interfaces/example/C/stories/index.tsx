@@ -8,11 +8,12 @@ interface I {
   disabled?: boolean;
   errorMessage?: string;
   icon?: ReactNode;
+  iconOnClick: () => void;
   label?: string;
   type?: string;
 }
 
-const Layout: FC<I> = (props): null | ReactElement => {
+const StoriesLayout: FC<I> = (props): null | ReactElement => {
   switch (props.componentType) {
     case "input":
       return (
@@ -22,6 +23,7 @@ const Layout: FC<I> = (props): null | ReactElement => {
             disabled={props.disabled}
             errorMessage={props.errorMessage}
             icon={props.icon}
+            iconOnClick={props.iconOnClick}
             label={props.label}
             type={props.type}
           />
@@ -31,8 +33,10 @@ const Layout: FC<I> = (props): null | ReactElement => {
       return (
         <div className="w-60">
           <ExampleSelect color={props.color} disabled={props.disabled} errorMessage={props.errorMessage} label={props.label}>
+            <option value="-">-</option>
             <option value="1">Option 1</option>
             <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
           </ExampleSelect>
         </div>
       );
@@ -48,4 +52,4 @@ const Layout: FC<I> = (props): null | ReactElement => {
   }
 };
 
-export default Layout;
+export default StoriesLayout;

@@ -3,9 +3,9 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import { FaCrown } from "react-icons/fa";
 
-import Layout from "./Layout";
+import { ExampleA } from ".";
 
-const meta: Meta<typeof Layout> = {
+const meta: Meta<typeof ExampleA> = {
   args: { onClick: fn(() => alert("Clicked!")) },
   argTypes: {
     color: {
@@ -24,7 +24,7 @@ const meta: Meta<typeof Layout> = {
       options: ["solid", "outline", "ghost"],
     },
   },
-  component: Layout,
+  component: ExampleA,
   parameters: {
     layout: "centered",
   },
@@ -33,7 +33,7 @@ const meta: Meta<typeof Layout> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Layout>;
+type Story = StoryObj<typeof ExampleA>;
 
 /* eslint-disable perfectionist/sort-objects */
 export const Solid: Story = {
@@ -43,7 +43,7 @@ export const Solid: Story = {
     size: "sm",
     children: (
       <>
-        <FaCrown data-testid="testing-icon" />
+        <FaCrown />
         Example
       </>
     ),
@@ -57,7 +57,7 @@ export const Outline: Story = {
     size: "sm",
     children: (
       <>
-        <FaCrown data-testid="testing-icon" />
+        <FaCrown />
         Example
       </>
     ),
@@ -71,7 +71,7 @@ export const Ghost: Story = {
     size: "sm",
     children: (
       <>
-        <FaCrown data-testid="testing-icon" />
+        <FaCrown />
         Example
       </>
     ),

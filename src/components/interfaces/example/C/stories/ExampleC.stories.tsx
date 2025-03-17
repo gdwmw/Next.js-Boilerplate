@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { fn } from "@storybook/test";
 import { FaEye } from "react-icons/fa";
 
-import Layout from "./Layout";
+import StoriesLayout from ".";
 
-const meta: Meta<typeof Layout> = {
-  args: {},
+const meta: Meta<typeof StoriesLayout> = {
+  args: { iconOnClick: fn(() => alert("Clicked!")) },
   argTypes: {
     color: {
       control: { type: "radio" },
@@ -24,7 +25,7 @@ const meta: Meta<typeof Layout> = {
       control: { type: "text" },
     },
   },
-  component: Layout,
+  component: StoriesLayout,
   parameters: {
     layout: "centered",
   },
@@ -33,7 +34,7 @@ const meta: Meta<typeof Layout> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Layout>;
+type Story = StoryObj<typeof StoriesLayout>;
 
 /* eslint-disable perfectionist/sort-objects */
 export const Input: Story = {

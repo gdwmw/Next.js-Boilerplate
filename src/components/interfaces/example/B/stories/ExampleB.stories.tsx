@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { FaCrown } from "react-icons/fa";
 
-import Layout from "./Layout";
+import StoriesLayout from ".";
 
-const meta: Meta<typeof Layout> = {
+const meta: Meta<typeof StoriesLayout> = {
   args: {},
   argTypes: {
     iconColor: {
@@ -14,7 +14,7 @@ const meta: Meta<typeof Layout> = {
       control: { type: "color" },
     },
   },
-  component: Layout,
+  component: StoriesLayout,
   parameters: {
     layout: "centered",
   },
@@ -23,7 +23,7 @@ const meta: Meta<typeof Layout> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Layout>;
+type Story = StoryObj<typeof StoriesLayout>;
 
 /* eslint-disable perfectionist/sort-objects */
 export const Primary: Story = {
