@@ -29,6 +29,8 @@ interface IAuthCommon {
   role: TRole;
   status: string;
   token: string;
+  confirmed: boolean;
+  blocked: boolean;
 }
 
 export interface IAuthResponse extends IAuthCommon {
@@ -67,6 +69,8 @@ export interface IUserResponse {
   username: string;
   email: string;
   relation_data?: IDataResponse;
+  confirmed: boolean;
+  blocked: boolean;
 }
 
 // ----------------------------

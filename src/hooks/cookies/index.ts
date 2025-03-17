@@ -14,10 +14,15 @@ interface I {
 
 export const setCookie = async (props: I) => {
   const cookieStore = await cookies();
-  return cookieStore.set(props.name, props.value, props.options);
+  cookieStore.set(props.name, props.value, props.options);
 };
 
 export const getCookie = async (name: string): Promise<RequestCookie | undefined> => {
   const cookieStore = await cookies();
   return cookieStore.get(name);
+};
+
+export const deleteCookie = async (name: string) => {
+  const cookieStore = await cookies();
+  cookieStore.delete(name);
 };

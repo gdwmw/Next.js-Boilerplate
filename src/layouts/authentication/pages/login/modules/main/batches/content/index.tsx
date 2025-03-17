@@ -7,15 +7,17 @@ import { useRouter } from "next/navigation";
 import { FC, ReactElement, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
+import { TbArrowsExchange } from "react-icons/tb";
 
 import { ExampleA, ExampleATWM, ExampleInput, FormContainer } from "@/src/components";
+import { deleteCookie, getCookie } from "@/src/hooks";
 import { LoginSchema, TLoginSchema } from "@/src/schemas";
 
 export const Content: FC = (): ReactElement => {
   const router = useRouter();
   const [loginWithEmail, setLoginWithEmail] = useState(false);
   const [passwordVisibility, setPasswordVisibility] = useState(false);
-  const [invalidCredentials, setInvalidCredentials] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
   const {
@@ -29,7 +31,7 @@ export const Content: FC = (): ReactElement => {
 
   const onSubmit: SubmitHandler<TLoginSchema> = async (dt) => {
     setLoading(true);
-    setInvalidCredentials(false);
+    setErrorMessage("");
 
     try {
       const res = await signIn("credentials", {
@@ -38,11 +40,26 @@ export const Content: FC = (): ReactElement => {
         redirect: false,
       });
 
-      if (!res?.ok) {
-        setInvalidCredentials(true);
-        throw new Error(loginWithEmail ? "Invalid Email or Password" : "Invalid Username or Password");
+      const reportResponse = await getCookie("report");
+      let report: boolean[] = [];
+      if (reportResponse?.value) {
+        report = JSON.parse(reportResponse?.value);
       }
 
+      if (!res?.ok) {
+        if (report?.[0] === false) {
+          setErrorMessage("Your account has not been confirmed");
+          throw new Error("Your account has not been confirmed");
+        } else if (report?.[1] === true) {
+          setErrorMessage("Your account has been blocked");
+          throw new Error("Your account has been blocked");
+        } else {
+          setErrorMessage(loginWithEmail ? "Invalid Email or Password" : "Invalid Username or Password");
+          throw new Error(loginWithEmail ? "Invalid Email or Password" : "Invalid Username or Password");
+        }
+      }
+
+      await deleteCookie("report");
       console.log("Login Success!");
       router.push("/");
       router.refresh();
@@ -63,6 +80,13 @@ export const Content: FC = (): ReactElement => {
             color="rose"
             disabled={loading}
             errorMessage={errors.identifier?.message}
+            icon={<TbArrowsExchange size={18} />}
+            iconOnClick={() => {
+              setPasswordVisibility(false);
+              setErrorMessage("");
+              setLoginWithEmail((prev) => !prev);
+              reset();
+            }}
             label={loginWithEmail ? "Email" : "Username"}
             type="text"
             {...register("identifier")}
@@ -79,9 +103,7 @@ export const Content: FC = (): ReactElement => {
             {...register("password")}
           />
 
-          <span className="text-center text-sm text-red-600">
-            {invalidCredentials && (loginWithEmail ? "Invalid Email or Password" : "Invalid Username or Password")}
-          </span>
+          <span className="text-center text-sm text-red-600">{errorMessage}</span>
 
           <ExampleA className="font-semibold" color="rose" disabled={loading} size="sm" type="submit" variant="solid">
             {loading ? "Loading..." : "LOGIN"}
@@ -97,33 +119,13 @@ export const Content: FC = (): ReactElement => {
                   e.preventDefault();
                 } else {
                   setPasswordVisibility(false);
-                  setInvalidCredentials(false);
+                  setErrorMessage("");
                   reset();
                 }
               }}
             >
               Register!
             </Link>
-          </div>
-
-          <div className="flex justify-center gap-1">
-            <span className="text-xs">{loginWithEmail ? "Login with username?" : "Login with email?"}</span>
-            <ExampleA
-              className="text-xs"
-              color="rose"
-              disabled={loading}
-              onClick={() => {
-                setPasswordVisibility(false);
-                setInvalidCredentials(false);
-                setLoginWithEmail((prev) => !prev);
-                reset();
-              }}
-              size="sm"
-              type="button"
-              variant="ghost"
-            >
-              Click here!
-            </ExampleA>
           </div>
         </form>
       </FormContainer>

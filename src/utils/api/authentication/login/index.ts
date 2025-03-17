@@ -4,13 +4,15 @@ import { postApi } from "../../base";
 import { GETDataByDocumentId } from "../../data";
 import { GETUserByDocumentId } from "../../user";
 
-const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_EXAMPLE_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
 }
 
 const rearrange = (authResponse: IAuthSchema, dataResponse: IDataResponse): IAuthResponse => ({
+  blocked: authResponse.user.blocked,
+  confirmed: authResponse.user.confirmed,
   dataDocumentId: dataResponse.documentId ?? "",
   dataId: dataResponse.id.toString(),
   email: authResponse.user.email,
