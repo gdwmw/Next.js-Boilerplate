@@ -22,7 +22,14 @@ const eslintConfig = [
   ...storybook.configs["flat/recommended"],
   ...tailwind.configs["flat/recommended"],
   reactPlugin.configs.flat.recommended,
-  ...compat.extends("next/typescript", "next/core-web-vitals", "plugin:@typescript-eslint/strict", "plugin:@typescript-eslint/stylistic"),
+  ...compat.extends(
+    "next/typescript",
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/strict",
+    "plugin:@typescript-eslint/stylistic",
+    "plugin:jest/recommended",
+    "plugin:jest/style",
+  ),
   {
     ignores: ["!.storybook"],
   },
@@ -38,6 +45,12 @@ const eslintConfig = [
       "perfectionist/sort-enums": "off",
       "perfectionist/sort-interfaces": "off",
       "perfectionist/sort-object-types": "off",
+    },
+  },
+  {
+    files: ["src/components/interfaces/example/**/*spec.tsx"],
+    rules: {
+      "jest/no-conditional-expect": "off",
     },
   },
   {

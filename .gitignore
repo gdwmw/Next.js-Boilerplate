@@ -38,6 +38,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+vitest.shims.d.ts
 
 # storybook
 *storybook.log
