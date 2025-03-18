@@ -31,15 +31,8 @@ Below is the main directory structure of the boilerplate:
         └── 📁denied
         └── 📁fonts
     └── 📁components
-        └── 📁form-container
-        └── 📁interfaces
-            └── 📁example
-                └── 📁A
-                └── 📁B
-                └── 📁C
-                └── index.ts
-            └── index.ts
-        └── 📁logout
+        └── 📁elements
+        └── 📁templates
         └── index.ts
         └── README.md
     └── 📁context
@@ -50,9 +43,6 @@ Below is the main directory structure of the boilerplate:
         └── index.ts
     └── 📁layouts
         └── 📁authentication
-            └── 📁pages
-                └── 📁login
-                └── 📁register
         └── 📁example
             └── 📁global
             └── 📁pages
@@ -92,9 +82,7 @@ Below is the main directory structure of the boilerplate:
     └── 📁utils
         └── 📁api
             └── 📁authentication
-                └── 📁login
-                └── 📁register
-                └── index.ts
+            └── 📁base
             └── 📁data
             └── 📁example
             └── 📁password
