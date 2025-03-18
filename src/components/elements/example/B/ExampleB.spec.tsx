@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { FaCrown } from "react-icons/fa";
 
-import { ExampleBContainer, ExampleBIcon, ExampleBText } from "./";
+import { ExampleBContainer, ExampleBIcon, ExampleBText } from ".";
 
 /* eslint-disable tailwindcss/no-custom-classname */
 const component = (

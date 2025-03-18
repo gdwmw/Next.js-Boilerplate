@@ -48,7 +48,7 @@ const eslintConfig = [
     },
   },
   {
-    files: ["src/components/interfaces/example/**/*spec.tsx"],
+    files: ["src/components/elements/example/**/*spec.tsx"],
     rules: {
       "jest/no-conditional-expect": "off",
     },

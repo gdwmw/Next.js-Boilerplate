@@ -4,8 +4,9 @@ import { useTheme } from "next-themes";
 import { FC, ReactElement } from "react";
 import { FaDesktop, FaMoon, FaSun } from "react-icons/fa";
 
-import { ExampleA } from "@/src/components";
 import { setCookie } from "@/src/hooks";
+
+import { ExampleA } from "../../";
 
 interface I {
   cookie: string | undefined;

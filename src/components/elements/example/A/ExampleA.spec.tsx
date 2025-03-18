@@ -1,7 +1,7 @@
 import { fireEvent, render } from "@testing-library/react";
 import { FaCrown } from "react-icons/fa";
 
-import { ExampleA } from "./";
+import { ExampleA } from ".";
 
 /* eslint-disable perfectionist/sort-objects */
 const classes = {
