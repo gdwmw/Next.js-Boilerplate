@@ -5,7 +5,7 @@ import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FC, ReactElement, useState } from "react";
+import { FC, ReactElement, useState, useTransition } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { TbArrowsExchange } from "react-icons/tb";
@@ -20,7 +20,7 @@ export const Content: FC = (): ReactElement => {
   const [loginWithEmail, setLoginWithEmail] = useState(false);
   const [passwordVisibility, setPasswordVisibility] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setTransition] = useTransition();
 
   const {
     formState: { errors },
@@ -31,47 +31,46 @@ export const Content: FC = (): ReactElement => {
     resolver: zodResolver(LoginSchema(loginWithEmail ? "Email" : "Username")),
   });
 
-  const onSubmit: SubmitHandler<TLoginSchema> = async (dt) => {
-    setLoading(true);
-    setErrorMessage("");
+  const onSubmit: SubmitHandler<TLoginSchema> = (dt) => {
+    setTransition(async () => {
+      setErrorMessage("");
 
-    try {
-      const res = await signIn("credentials", {
-        identifier: dt.identifier,
-        password: dt.password,
-        redirect: false,
-      });
+      try {
+        const res = await signIn("credentials", {
+          identifier: dt.identifier,
+          password: dt.password,
+          redirect: false,
+        });
 
-      const reportResponse = await getCookie("report");
-      let report: boolean[] = [];
-      if (reportResponse?.value) {
-        report = JSON.parse(reportResponse?.value);
-      }
-
-      if (!res?.ok) {
-        if (report?.[0] === false) {
-          setErrorMessage("Your account has not been confirmed");
-          throw new Error("Your account has not been confirmed");
-        } else if (report?.[1] === true) {
-          setErrorMessage("Your account has been blocked");
-          throw new Error("Your account has been blocked");
-        } else {
-          setErrorMessage(loginWithEmail ? "Invalid Email or Password" : "Invalid Username or Password");
-          throw new Error(loginWithEmail ? "Invalid Email or Password" : "Invalid Username or Password");
+        const reportResponse = await getCookie("report");
+        let report: boolean[] = [];
+        if (reportResponse?.value) {
+          report = JSON.parse(reportResponse?.value);
         }
-      }
 
-      await deleteCookie("report");
-      console.log("Login Success!");
-      router.push("/");
-      router.refresh();
-      reset();
-    } catch (error) {
-      console.log("Login Failed!");
-      console.error("--- Authentication Error Message ---", error);
-    } finally {
-      setLoading(false);
-    }
+        if (!res?.ok) {
+          if (report?.[0] === false) {
+            setErrorMessage("Your account has not been confirmed");
+            throw new Error("Your account has not been confirmed");
+          } else if (report?.[1] === true) {
+            setErrorMessage("Your account has been blocked");
+            throw new Error("Your account has been blocked");
+          } else {
+            setErrorMessage(loginWithEmail ? "Invalid Email or Password" : "Invalid Username or Password");
+            throw new Error(loginWithEmail ? "Invalid Email or Password" : "Invalid Username or Password");
+          }
+        }
+
+        await deleteCookie("report");
+        console.log("Login Success!");
+        router.push("/");
+        router.refresh();
+        reset();
+      } catch (error) {
+        console.log("Login Failed!");
+        console.error("--- Authentication Error Message ---", error);
+      }
+    });
   };
 
   return (

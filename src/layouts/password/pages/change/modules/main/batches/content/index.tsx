@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
-import { FC, HTMLInputTypeAttribute, ReactElement, useState } from "react";
+import { FC, HTMLInputTypeAttribute, ReactElement, useState, useTransition } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
@@ -45,7 +45,7 @@ const FORM_FIELDS_DATA: IFormField[] = [
 export const Content: FC = (): ReactElement => {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
   const [passwordNotMatch, setPasswordNotMatch] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setTransition] = useTransition();
 
   const {
     formState: { errors },
@@ -57,25 +57,23 @@ export const Content: FC = (): ReactElement => {
     resolver: zodResolver(ChangePasswordSchema),
   });
 
-  const onSubmit: SubmitHandler<TChangePasswordSchema> = async (dt) => {
-    setLoading(true);
-    setPasswordNotMatch(false);
+  const onSubmit: SubmitHandler<TChangePasswordSchema> = (dt) => {
+    setTransition(async () => {
+      setPasswordNotMatch(false);
 
-    if (getValues("password") === getValues("passwordConfirmation")) {
-      try {
-        await POSTChangePassword(dt);
-        console.log("Change Password Success!");
-        signOut();
-        reset();
-      } catch {
-        console.log("Change Password Failed!");
-      } finally {
-        setLoading(false);
+      if (getValues("password") === getValues("passwordConfirmation")) {
+        try {
+          await POSTChangePassword(dt);
+          console.log("Change Password Success!");
+          signOut();
+          reset();
+        } catch {
+          console.log("Change Password Failed!");
+        }
+      } else {
+        setPasswordNotMatch(true);
       }
-    } else {
-      setLoading(false);
-      setPasswordNotMatch(true);
-    }
+    });
   };
 
   return (

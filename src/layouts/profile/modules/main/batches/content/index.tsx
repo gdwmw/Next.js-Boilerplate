@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FC, HTMLInputTypeAttribute, KeyboardEvent, ReactElement, useEffect, useState } from "react";
+import { FC, HTMLInputTypeAttribute, KeyboardEvent, ReactElement, useEffect, useState, useTransition } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { FaUser } from "react-icons/fa";
 
@@ -78,7 +78,7 @@ export const Content: FC<I> = (props): ReactElement => {
   const session = useSession();
   const router = useRouter();
   const [previewImage, setPreviewImage] = useState<null | string>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setTransition] = useTransition();
 
   const {
     formState: { errors },
@@ -109,60 +109,58 @@ export const Content: FC<I> = (props): ReactElement => {
     // eslint-disable-next-line
   }, [watch("image")]);
 
-  const onSubmit: SubmitHandler<TProfileSchema> = async (dt) => {
-    setLoading(true);
-
-    try {
-      const userResponse = await PUTUser({
-        email: dt.email,
-        id: Number(props.session?.user?.id),
-        username: dt.username,
-      });
-
-      const dataResponse = await PUTData({
-        documentId: props.session?.user?.dataDocumentId ?? "",
-        name: dt.name,
-        phoneNumber: dt.phoneNumber,
-      });
-
-      let imageId = props.session?.user?.imageId;
-      let imageUrl = props.session?.user?.image;
-
-      if (dt.image && dt.image.length > 0) {
-        if (props.session?.user?.imageId) {
-          await DELETEUpload(parseInt(props.session?.user?.imageId));
-        }
-
-        const uploadResponse = await POSTUpload({
-          field: "image",
-          files: dt.image,
-          ref: "api::data.data",
-          refId: props.session?.user?.dataId ?? "",
+  const onSubmit: SubmitHandler<TProfileSchema> = (dt) => {
+    setTransition(async () => {
+      try {
+        const userResponse = await PUTUser({
+          email: dt.email,
+          id: Number(props.session?.user?.id),
+          username: dt.username,
         });
 
-        imageId = uploadResponse[0].id.toString();
-        imageUrl = API_URL + uploadResponse[0].url;
+        const dataResponse = await PUTData({
+          documentId: props.session?.user?.dataDocumentId ?? "",
+          name: dt.name,
+          phoneNumber: dt.phoneNumber,
+        });
+
+        let imageId = props.session?.user?.imageId;
+        let imageUrl = props.session?.user?.image;
+
+        if (dt.image && dt.image.length > 0) {
+          if (props.session?.user?.imageId) {
+            await DELETEUpload(parseInt(props.session?.user?.imageId));
+          }
+
+          const uploadResponse = await POSTUpload({
+            field: "image",
+            files: dt.image,
+            ref: "api::data.data",
+            refId: props.session?.user?.dataId ?? "",
+          });
+
+          imageId = uploadResponse[0].id.toString();
+          imageUrl = API_URL + uploadResponse[0].url;
+        }
+
+        await session.update({
+          user: {
+            ...session.data?.user,
+            email: userResponse.email,
+            image: imageUrl,
+            imageId: imageId,
+            name: dataResponse.name,
+            phoneNumber: dataResponse.phoneNumber,
+            username: userResponse.username,
+          },
+        });
+
+        console.log("Profile Success!");
+        router.refresh();
+      } catch {
+        console.log("Profile Failed!");
       }
-
-      await session.update({
-        user: {
-          ...session.data?.user,
-          email: userResponse.email,
-          image: imageUrl,
-          imageId: imageId,
-          name: dataResponse.name,
-          phoneNumber: dataResponse.phoneNumber,
-          username: userResponse.username,
-        },
-      });
-
-      console.log("Profile Success!");
-      router.refresh();
-    } catch {
-      console.log("Profile Failed!");
-    } finally {
-      setLoading(false);
-    }
+    });
   };
 
   return (

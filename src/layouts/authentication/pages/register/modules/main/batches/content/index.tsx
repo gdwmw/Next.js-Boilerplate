@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FC, HTMLInputTypeAttribute, KeyboardEvent, ReactElement, useState } from "react";
+import { FC, HTMLInputTypeAttribute, KeyboardEvent, ReactElement, useState, useTransition } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
@@ -76,7 +76,7 @@ export const Content: FC = (): ReactElement => {
   const router = useRouter();
   const [passwordVisibility, setPasswordVisibility] = useState(false);
   const [passwordNotMatch, setPasswordNotMatch] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setTransition] = useTransition();
 
   const {
     formState: { errors },
@@ -88,25 +88,23 @@ export const Content: FC = (): ReactElement => {
     resolver: zodResolver(RegisterSchema),
   });
 
-  const onSubmit: SubmitHandler<TRegisterSchema> = async (dt) => {
-    setLoading(true);
-    setPasswordNotMatch(false);
+  const onSubmit: SubmitHandler<TRegisterSchema> = (dt) => {
+    setTransition(async () => {
+      setPasswordNotMatch(false);
 
-    if (getValues("password") === getValues("confirmPassword")) {
-      try {
-        await POSTRegister(dt);
-        console.log("Register Success!");
-        router.push("/authentication/login");
-        reset();
-      } catch {
-        console.log("Register Failed!");
-      } finally {
-        setLoading(false);
+      if (getValues("password") === getValues("confirmPassword")) {
+        try {
+          await POSTRegister(dt);
+          console.log("Register Success!");
+          router.push("/authentication/login");
+          reset();
+        } catch {
+          console.log("Register Failed!");
+        }
+      } else {
+        setPasswordNotMatch(true);
       }
-    } else {
-      setLoading(false);
-      setPasswordNotMatch(true);
-    }
+    });
   };
 
   return (
