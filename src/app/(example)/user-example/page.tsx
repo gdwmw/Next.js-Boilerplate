@@ -18,7 +18,7 @@ const UserPage: FC = async (): Promise<ReactElement> => {
 
   return (
     <main className="bg-slate-100 dark:bg-slate-900">
-      <FormContainer innerContainerClassName="flex-col items-center gap-3">
+      <FormContainer className={{ innerContainer: "flex-col items-center gap-3" }}>
         <header>
           <h1 className="text-2xl font-semibold">
             This is <span className="text-rose-400">User</span> page
