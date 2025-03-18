@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FC, ReactElement, useState } from "react";
@@ -9,6 +10,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { TbArrowsExchange } from "react-icons/tb";
 
+import Loading from "@/public/assets/animations/Loading.svg";
 import { ExampleA, ExampleATWM, ExampleInput, FormContainer } from "@/src/components";
 import { deleteCookie, getCookie } from "@/src/hooks";
 import { LoginSchema, TLoginSchema } from "@/src/schemas";
@@ -106,7 +108,7 @@ export const Content: FC = (): ReactElement => {
           <span className="text-center text-sm text-red-600">{errorMessage}</span>
 
           <ExampleA className="font-semibold" color="rose" disabled={loading} size="sm" type="submit" variant="solid">
-            {loading ? "Loading..." : "LOGIN"}
+            {loading ? <Image alt="Loading..." src={Loading} width={50} /> : "LOGIN"}
           </ExampleA>
 
           <div className="flex justify-center gap-1">

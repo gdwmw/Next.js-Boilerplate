@@ -2,10 +2,12 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signOut } from "next-auth/react";
+import Image from "next/image";
 import { FC, HTMLInputTypeAttribute, ReactElement, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
+import Loading from "@/public/assets/animations/Loading.svg";
 import { ExampleA, ExampleInput, FormContainer } from "@/src/components";
 import { ChangePasswordSchema, TChangePasswordSchema } from "@/src/schemas";
 import { POSTChangePassword } from "@/src/utils";
@@ -97,8 +99,8 @@ export const Content: FC = (): ReactElement => {
 
           <span className="text-center text-sm text-red-600">{passwordNotMatch && "Confirm Password does not match Password"}</span>
 
-          <ExampleA className="w-full font-semibold" color="rose" disabled={loading} size="sm" type="submit" variant="solid">
-            {loading ? "Loading..." : "UPDATE"}
+          <ExampleA className="font-semibold" color="rose" disabled={loading} size="sm" type="submit" variant="solid">
+            {loading ? <Image alt="Loading..." src={Loading} width={50} /> : "UPDATE"}
           </ExampleA>
         </form>
       </FormContainer>

@@ -1,12 +1,14 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FC, HTMLInputTypeAttribute, KeyboardEvent, ReactElement, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
+import Loading from "@/public/assets/animations/Loading.svg";
 import { ExampleA, ExampleATWM, ExampleInput, FormContainer } from "@/src/components";
 import { inputValidations } from "@/src/hooks";
 import { RegisterSchema, TRegisterSchema } from "@/src/schemas";
@@ -109,7 +111,7 @@ export const Content: FC = (): ReactElement => {
 
   return (
     <main className="bg-slate-100">
-      <FormContainer href={"/"} innerContainerClassName="size-full max-h-[556px] max-w-[450px]" label={"Home"}>
+      <FormContainer href={"/"} innerContainerClassName="max-h-[556px] w-full max-w-[450px]" label={"Home"}>
         <form className="flex w-full flex-col gap-3 overflow-y-auto" onSubmit={handleSubmit(onSubmit)}>
           {FORM_FIELDS_DATA.map((dt) => (
             <ExampleInput
@@ -129,8 +131,8 @@ export const Content: FC = (): ReactElement => {
 
           <span className="text-center text-sm text-red-600">{passwordNotMatch && "Confirm Password does not match Password"}</span>
 
-          <ExampleA className="min-h-10 font-semibold" color="rose" disabled={loading} size="sm" type="submit" variant="solid">
-            {loading ? "Loading..." : "REGISTER"}
+          <ExampleA className="font-semibold" color="rose" disabled={loading} size="sm" type="submit" variant="solid">
+            {loading ? <Image alt="Loading..." src={Loading} width={50} /> : "REGISTER"}
           </ExampleA>
 
           <div className="flex justify-center gap-1">

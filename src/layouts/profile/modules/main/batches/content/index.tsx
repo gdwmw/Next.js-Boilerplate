@@ -10,6 +10,7 @@ import { FC, HTMLInputTypeAttribute, KeyboardEvent, ReactElement, useEffect, use
 import { SubmitHandler, useForm } from "react-hook-form";
 import { FaUser } from "react-icons/fa";
 
+import Loading from "@/public/assets/animations/Loading.svg";
 import { ExampleA, ExampleATWM, ExampleInput, FormContainer } from "@/src/components";
 import { inputValidations } from "@/src/hooks";
 import { ProfileSchema, TProfileSchema } from "@/src/schemas";
@@ -167,7 +168,7 @@ export const Content: FC<I> = (props): ReactElement => {
   return (
     <main className="bg-slate-100">
       <FormContainer href={"/"} innerContainerClassName="size-full max-h-[624px] max-w-[450px]" label={"Home"}>
-        <form className="w-full space-y-3 overflow-y-auto" onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex w-full flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
           {previewImage || props.session?.user?.image ? (
             <div className="relative mx-auto aspect-square size-fit min-h-32 min-w-32 overflow-hidden rounded-full border border-gray-200">
               <Image alt="Profile Image" className="object-cover" fill quality={50} src={previewImage ?? props.session?.user?.image ?? ""} />
@@ -207,8 +208,8 @@ export const Content: FC<I> = (props): ReactElement => {
             </Link>
           </div>
 
-          <ExampleA className="w-full font-semibold" color="rose" disabled={loading} size="sm" type="submit" variant="solid">
-            {loading ? "Loading..." : "UPDATE"}
+          <ExampleA className="font-semibold" color="rose" disabled={loading} size="sm" type="submit" variant="solid">
+            {loading ? <Image alt="Loading..." src={Loading} width={50} /> : "UPDATE"}
           </ExampleA>
         </form>
       </FormContainer>
