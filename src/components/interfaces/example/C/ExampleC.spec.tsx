@@ -9,16 +9,16 @@ const classes = {
   label: {
     fieldset: {
       default: "group overflow-hidden rounded-md border-2 px-1 pb-2",
-      rose: "border-black focus-within:border-rose-400",
-      emerald: "border-black focus-within:border-emerald-400",
-      error: "border-black focus-within:border-red-600",
+      rose: "border-black dark:border-white focus-within:border-rose-400",
+      emerald: "border-black dark:border-white focus-within:border-emerald-400",
+      error: "border-black dark:border-white focus-within:border-red-600",
       disabled: "border-gray-400",
     },
     legend: {
       default: "ml-3 flex select-none items-center gap-1 whitespace-nowrap px-1 text-xs font-semibold",
-      rose: "group-focus-within:text-rose-400",
-      emerald: "group-focus-within:text-emerald-400",
-      error: "group-focus-within:text-red-600",
+      rose: "dark:text-white group-focus-within:text-rose-400",
+      emerald: "dark:text-white group-focus-within:text-emerald-400",
+      error: "dark:text-white group-focus-within:text-red-600",
       disabled: "text-gray-400",
     },
   },

@@ -75,7 +75,7 @@ export const Content: FC = (): ReactElement => {
   };
 
   return (
-    <main className="bg-slate-100">
+    <main className="bg-slate-100 dark:bg-slate-900">
       <FormContainer href={"/"} innerContainerClassName="w-full max-w-[300px]" label={"Home"}>
         <form className="flex w-full flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
           <ExampleInput

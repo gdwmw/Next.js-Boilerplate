@@ -166,7 +166,7 @@ export const Content: FC<I> = (props): ReactElement => {
   };
 
   return (
-    <main className="bg-slate-100">
+    <main className="bg-slate-100 dark:bg-slate-900">
       <FormContainer href={"/"} innerContainerClassName="size-full max-h-[624px] max-w-[450px]" label={"Home"}>
         <form className="flex w-full flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
           {previewImage || props.session?.user?.image ? (

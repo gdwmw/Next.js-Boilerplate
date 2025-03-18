@@ -17,8 +17,7 @@ export const ExampleATWM = ({ className, color, disabled, size, variant }: IExam
     "flex items-center gap-2",
     // ⭐ === BASE === ⭐
     variant !== "ghost" && "justify-center rounded-full",
-    !disabled && "active:scale-95",
-    disabled && "cursor-not-allowed",
+    disabled ? "cursor-not-allowed" : "active:scale-95",
 
     // ⭐ === SOLID === ⭐
     variant === "solid" &&

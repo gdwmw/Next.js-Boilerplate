@@ -110,7 +110,7 @@ export const Content: FC = (): ReactElement => {
   };
 
   return (
-    <main className="bg-slate-100">
+    <main className="bg-slate-100 dark:bg-slate-900">
       <FormContainer href={"/"} innerContainerClassName="max-h-[556px] w-full max-w-[450px]" label={"Home"}>
         <form className="flex w-full flex-col gap-3 overflow-y-auto" onSubmit={handleSubmit(onSubmit)}>
           {FORM_FIELDS_DATA.map((dt) => (

@@ -43,7 +43,7 @@ export const ExampleInput: FC<I> = forwardRef<HTMLInputElement, I>(
 
         {icon && (
           <ExampleA
-            className={`pr-1 ${!disabled && "text-inherit"} ${errorMessage ? "hover:text-red-600 active:text-red-700" : ""}`}
+            className={`ml-2 mr-1 ${!disabled && "text-inherit"} ${errorMessage ? "hover:text-red-600 active:text-red-700" : ""}`}
             color={color}
             disabled={disabled}
             onClick={iconOnClick}

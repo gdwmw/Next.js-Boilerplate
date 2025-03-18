@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { FC, ReactElement } from "react";
 
-import { ExampleATWM, FormContainer, Logout } from "@/src/components";
-import { getSession } from "@/src/hooks";
+import { ChangeThemeButton, ExampleATWM, FormContainer, Logout } from "@/src/components";
+import { getCookie, getSession } from "@/src/hooks";
 
 export const Main: FC = async (): Promise<ReactElement> => {
   const session = await getSession("status");
+  const themeCookie = await getCookie("theme");
 
   return (
-    <main className="bg-slate-100">
+    <main className="bg-slate-100 dark:bg-slate-900">
       <FormContainer innerContainerClassName="flex-col items-center gap-3">
         <header>
           <h1 className="text-2xl font-semibold">
@@ -16,6 +17,7 @@ export const Main: FC = async (): Promise<ReactElement> => {
           </h1>
         </header>
         <nav className="flex gap-3">
+          <ChangeThemeButton cookie={themeCookie?.value} />
           <Link className={ExampleATWM({ color: "rose", size: "sm", variant: "solid" })} href={"/user-example"}>
             User
           </Link>

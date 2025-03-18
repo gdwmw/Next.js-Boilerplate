@@ -14,25 +14,33 @@ interface I extends Readonly<PropsWithChildren> {
 }
 /* eslint-enable perfectionist/sort-union-types */
 
-const FieldsetTWM = ({ color, disabled, errorMessage, fieldsetClassName }: I) =>
-  twm(
+const FieldsetTWM = ({ color, disabled, errorMessage, fieldsetClassName }: I) => {
+  const isActive = !disabled && !errorMessage;
+  const isError = errorMessage && !disabled;
+
+  return twm(
     "group overflow-hidden rounded-md border-2 px-1 pb-2",
-    color === "rose" && !errorMessage && !disabled && "border-black focus-within:border-rose-400",
-    color === "emerald" && !errorMessage && !disabled && "border-black focus-within:border-emerald-400",
-    errorMessage && !disabled && "border-black focus-within:border-red-600",
-    disabled && "border-gray-400",
+    disabled ? "border-gray-400" : "border-black dark:border-white",
+    isActive && color === "rose" && "focus-within:border-rose-400",
+    isActive && color === "emerald" && "focus-within:border-emerald-400",
+    isError && "focus-within:border-red-600",
     fieldsetClassName,
   );
+};
 
-const LegendTWM = ({ color, disabled, errorMessage, legendClassName }: I) =>
-  twm(
+const LegendTWM = ({ color, disabled, errorMessage, legendClassName }: I) => {
+  const isActive = !disabled && !errorMessage;
+  const isError = errorMessage && !disabled;
+
+  return twm(
     "ml-3 flex select-none items-center gap-1 whitespace-nowrap px-1 text-xs font-semibold",
-    color === "rose" && !errorMessage && !disabled && "group-focus-within:text-rose-400",
-    color === "emerald" && !errorMessage && !disabled && "group-focus-within:text-emerald-400",
-    errorMessage && !disabled && "group-focus-within:text-red-600",
-    disabled && "text-gray-400",
+    disabled ? "text-gray-400" : "dark:text-white",
+    isActive && color === "rose" && "group-focus-within:text-rose-400",
+    isActive && color === "emerald" && "group-focus-within:text-emerald-400",
+    isError && "group-focus-within:text-red-600",
     legendClassName,
   );
+};
 
 export const ExampleLabel: FC<I> = ({ color, disabled, errorMessage, fieldsetClassName, label, legendClassName, ...props }): ReactElement => (
   <fieldset className={FieldsetTWM({ color, disabled, errorMessage, fieldsetClassName })} data-testid="example-label-fieldset">
