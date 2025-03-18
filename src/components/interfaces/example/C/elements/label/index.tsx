@@ -5,16 +5,18 @@ import { twm } from "@/src/libs";
 
 /* eslint-disable perfectionist/sort-union-types */
 interface I extends Readonly<PropsWithChildren> {
+  className?: {
+    fieldset?: string;
+    legend?: string;
+  };
   color?: "rose" | "emerald";
   disabled?: boolean;
   errorMessage?: string;
-  fieldsetClassName?: string;
   label?: string;
-  legendClassName?: string;
 }
 /* eslint-enable perfectionist/sort-union-types */
 
-const FieldsetTWM = ({ color, disabled, errorMessage, fieldsetClassName }: I) => {
+const FieldsetTWM = ({ className, color, disabled, errorMessage }: I) => {
   const isActive = !disabled && !errorMessage;
   const isError = errorMessage && !disabled;
 
@@ -24,11 +26,11 @@ const FieldsetTWM = ({ color, disabled, errorMessage, fieldsetClassName }: I) =>
     isActive && color === "rose" && "focus-within:border-rose-400",
     isActive && color === "emerald" && "focus-within:border-emerald-400",
     isError && "focus-within:border-red-600",
-    fieldsetClassName,
+    className?.fieldset,
   );
 };
 
-const LegendTWM = ({ color, disabled, errorMessage, legendClassName }: I) => {
+const LegendTWM = ({ className, color, disabled, errorMessage }: I) => {
   const isActive = !disabled && !errorMessage;
   const isError = errorMessage && !disabled;
 
@@ -38,13 +40,13 @@ const LegendTWM = ({ color, disabled, errorMessage, legendClassName }: I) => {
     isActive && color === "rose" && "group-focus-within:text-rose-400",
     isActive && color === "emerald" && "group-focus-within:text-emerald-400",
     isError && "group-focus-within:text-red-600",
-    legendClassName,
+    className?.legend,
   );
 };
 
-export const ExampleLabel: FC<I> = ({ color, disabled, errorMessage, fieldsetClassName, label, legendClassName, ...props }): ReactElement => (
-  <fieldset className={FieldsetTWM({ color, disabled, errorMessage, fieldsetClassName })} data-testid="example-label-fieldset">
-    <legend className={LegendTWM({ color, disabled, errorMessage, legendClassName })} data-testid="example-label-legend">
+export const ExampleLabel: FC<I> = ({ className, color, disabled, errorMessage, label, ...props }): ReactElement => (
+  <fieldset className={FieldsetTWM({ className, color, disabled, errorMessage })} data-testid="example-label-fieldset">
+    <legend className={LegendTWM({ className, color, disabled, errorMessage })} data-testid="example-label-legend">
       {label}
       {errorMessage && !disabled && <MdError className="text-red-600" data-testid="example-label-icon" />}
     </legend>

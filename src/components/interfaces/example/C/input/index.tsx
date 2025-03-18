@@ -8,36 +8,34 @@ import { ExampleA } from "../../A";
 import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel } from "../elements";
 
 /* eslint-disable perfectionist/sort-union-types */
-interface I extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-  className?: string;
+interface I extends DetailedHTMLProps<Omit<InputHTMLAttributes<HTMLInputElement>, "className">, HTMLInputElement> {
+  className?: {
+    container?: string;
+    fieldset?: string;
+    input?: string;
+    legend?: string;
+  };
   color?: "rose" | "emerald";
-  containerClassName?: string;
   disabled?: boolean;
   errorMessage?: string;
-  fieldsetClassName?: string;
   icon?: ReactNode;
   iconOnClick?: () => void;
   label?: string;
-  legendClassName?: string;
 }
 /* eslint-enable perfectionist/sort-union-types */
 
 const ExampleInputTWM = ({ className, disabled }: I) =>
-  twm("w-full rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed", disabled && "text-gray-400", className);
+  twm("w-full rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed", disabled && "text-gray-400", className?.input);
 
 export const ExampleInput: FC<I> = forwardRef<HTMLInputElement, I>(
-  (
-    { className, color, containerClassName, disabled, errorMessage, fieldsetClassName, icon, iconOnClick, label, legendClassName, ...props },
-    ref,
-  ): ReactElement => (
-    <ExampleInputsContainer className={containerClassName}>
+  ({ className, color, disabled, errorMessage, icon, iconOnClick, label, ...props }, ref): ReactElement => (
+    <ExampleInputsContainer className={className?.container}>
       <ExampleLabel
+        className={{ fieldset: className?.fieldset, legend: className?.legend }}
         color={color}
         disabled={disabled}
         errorMessage={errorMessage}
-        fieldsetClassName={fieldsetClassName}
         label={label}
-        legendClassName={legendClassName}
       >
         <input className={ExampleInputTWM({ className, disabled })} data-testid="example-input" disabled={disabled} ref={ref} {...props} />
 

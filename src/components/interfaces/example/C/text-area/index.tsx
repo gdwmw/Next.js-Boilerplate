@@ -5,15 +5,17 @@ import { twm } from "@/src/libs";
 import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel } from "../elements";
 
 /* eslint-disable perfectionist/sort-union-types */
-interface I extends DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> {
-  className?: string;
+interface I extends DetailedHTMLProps<Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "className">, HTMLTextAreaElement> {
+  className?: {
+    container?: string;
+    fieldset?: string;
+    legend?: string;
+    textarea?: string;
+  };
   color?: "rose" | "emerald";
-  containerClassName?: string;
   disabled?: boolean;
   errorMessage?: string;
-  fieldsetClassName?: string;
   label?: string;
-  legendClassName?: string;
   rows?: number;
 }
 /* eslint-enable perfectionist/sort-union-types */
@@ -22,22 +24,18 @@ const ExampleTextAreaTWM = ({ className, disabled }: I) =>
   twm(
     "max-h-[200px] min-h-[120px] w-full rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed",
     disabled && "text-gray-400",
-    className,
+    className?.textarea,
   );
 
 export const ExampleTextArea: FC<I> = forwardRef<HTMLTextAreaElement, I>(
-  (
-    { className, color, containerClassName, disabled, errorMessage, fieldsetClassName, label, legendClassName, rows, ...props },
-    ref,
-  ): ReactElement => (
-    <ExampleInputsContainer className={containerClassName}>
+  ({ className, color, disabled, errorMessage, label, rows, ...props }, ref): ReactElement => (
+    <ExampleInputsContainer className={className?.container}>
       <ExampleLabel
+        className={{ fieldset: className?.fieldset, legend: className?.legend }}
         color={color}
         disabled={disabled}
         errorMessage={errorMessage}
-        fieldsetClassName={fieldsetClassName}
         label={label}
-        legendClassName={legendClassName}
       >
         <textarea
           className={ExampleTextAreaTWM({ className, disabled })}
