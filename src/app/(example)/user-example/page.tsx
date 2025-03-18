@@ -18,13 +18,15 @@ const UserPage: FC = async (): Promise<ReactElement> => {
 
   return (
     <main className="bg-slate-100 dark:bg-slate-900">
-      <FormContainer className={{ innerContainer: "flex-col items-center gap-3" }}>
+      <FormContainer className={{ innerContainer: "w-full max-w-[435px] flex-col items-center gap-3" }}>
         <header>
-          <h1 className="text-2xl font-semibold">
+          <h1 className="text-center text-2xl font-semibold">
             This is <span className="text-rose-400">User</span> page
           </h1>
         </header>
-        <pre className="rounded-lg border border-black p-2 text-sm dark:border-white">session: {JSON.stringify(session, null, 2)}</pre>
+        <div className="w-full overflow-x-auto rounded-lg border border-black p-2 dark:border-white">
+          <pre className="w-fit text-sm">session: {JSON.stringify(session, null, 2)}</pre>
+        </div>
       </FormContainer>
     </main>
   );
