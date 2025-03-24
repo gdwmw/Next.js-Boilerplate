@@ -3,6 +3,36 @@ export type TIndicator = "Canceled" | "On Going" | "Payment" | "Rejected" | "Suc
 
 // ----------------------------
 
+export interface IDummyAccount {
+  email: string;
+  password: string;
+  response: IAuthResponse;
+  username: string;
+}
+
+// ----------------------------
+
+interface IExampleCommon {
+  username: string;
+  name: string;
+  email: string;
+  phoneNumber: string;
+}
+
+export interface IExampleSchema {
+  data: {
+    documentId: string;
+  } & IExampleCommon;
+}
+
+export interface IExamplePayload extends IExampleCommon {
+  documentId?: string;
+}
+
+export interface IExampleResponse extends IExampleCommon {}
+
+// ----------------------------
+
 export interface IRegisterPayload {
   username: string;
   email: string;
