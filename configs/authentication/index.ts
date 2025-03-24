@@ -57,6 +57,7 @@ export const options: NextAuthOptions = {
         //     await deleteCookie("report");
         //     return null;
         //   }
+        // }
 
         const res = DUMMY_ACCOUNT_DATA.find((user) => (user.username === identifier || user.email === identifier) && user.password === password);
 
