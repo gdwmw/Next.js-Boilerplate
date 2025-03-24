@@ -10,8 +10,7 @@ import { FC, HTMLInputTypeAttribute, KeyboardEvent, ReactElement, useEffect, use
 import { SubmitHandler, useForm } from "react-hook-form";
 import { FaUser } from "react-icons/fa";
 
-import Loading from "@/public/assets/animations/Loading.svg";
-import { ExampleA, ExampleATWM, ExampleInput, FormContainer } from "@/src/components";
+import { ExampleATWM, ExampleInput, FormContainer, SubmitButton } from "@/src/components";
 import { inputValidations } from "@/src/hooks";
 import { ProfileSchema, TProfileSchema } from "@/src/schemas";
 import { DELETEUpload, POSTUpload, PUTData, PUTUser } from "@/src/utils";
@@ -206,9 +205,7 @@ export const Content: FC<I> = (props): ReactElement => {
             </Link>
           </div>
 
-          <ExampleA className="font-semibold" color="rose" disabled={loading} size="sm" type="submit" variant="solid">
-            {loading ? <Image alt="Loading..." src={Loading} width={50} /> : "UPDATE"}
-          </ExampleA>
+          <SubmitButton color="rose" disabled={loading} label="UPDATE" size="sm" variant="solid" />
         </form>
       </FormContainer>
     </main>

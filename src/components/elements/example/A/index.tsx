@@ -1,20 +1,17 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, FC, ReactElement } from "react";
 
 import { twm } from "@/src/libs";
+import { TExampleAColor, TExampleASize, TExampleAVariant } from "@/src/types";
 
-/* eslint-disable perfectionist/sort-union-types */
 export interface IExampleA extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-  className?: string;
-  color?: "rose" | "emerald";
-  disabled?: boolean;
-  size?: "sm" | "md" | "lg";
-  variant?: "solid" | "outline" | "ghost";
+  color: TExampleAColor;
+  size: TExampleASize;
+  variant: TExampleAVariant;
 }
-/* eslint-enable perfectionist/sort-union-types */
 
 export const ExampleATWM = ({ className, color, disabled, size, variant }: IExampleA) =>
   twm(
-    "flex items-center gap-2",
+    "flex items-center gap-2 font-semibold",
     // ⭐ === BASE === ⭐
     variant !== "ghost" && "justify-center rounded-full",
     disabled ? "cursor-not-allowed" : "active:scale-95",

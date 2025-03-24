@@ -75,8 +75,8 @@ Below is the main directory structure of the boilerplate:
     └── 📁styles
     └── 📁types
         └── 📁api
+        └── 📁components
         └── 📁context
-        └── 📁example
         └── index.ts
         └── next-auth.d.ts
     └── 📁utils

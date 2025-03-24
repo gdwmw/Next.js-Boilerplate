@@ -1,15 +1,17 @@
 import { FC, ReactElement, ReactNode } from "react";
 
+import { TExampleCColor } from "@/src/types";
+
 import { ExampleInput, ExampleSelect, ExampleTextArea } from "..";
 
 interface I {
-  color?: "emerald" | "rose";
+  color: TExampleCColor;
   componentType: "input" | "select" | "textarea";
   disabled?: boolean;
   errorMessage?: string;
   icon?: ReactNode;
   iconOnClick: () => void;
-  label?: string;
+  label: string;
   type?: string;
 }
 

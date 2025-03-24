@@ -3,6 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import { FaCrown } from "react-icons/fa";
 
+import { EXAMPLEA_COLOR_OPTIONS, EXAMPLEA_SIZE_OPTIONS, EXAMPLEA_VARIANT_OPTIONS } from "@/src/libs";
+
 import { ExampleA } from ".";
 
 const meta: Meta<typeof ExampleA> = {
@@ -10,18 +12,18 @@ const meta: Meta<typeof ExampleA> = {
   argTypes: {
     color: {
       control: { type: "radio" },
-      options: ["rose", "emerald"],
+      options: EXAMPLEA_COLOR_OPTIONS,
     },
     disabled: {
       control: { type: "boolean" },
     },
     size: {
       control: { type: "radio" },
-      options: ["sm", "md", "lg"],
+      options: EXAMPLEA_SIZE_OPTIONS,
     },
     variant: {
       control: { type: "radio" },
-      options: ["solid", "outline", "ghost"],
+      options: EXAMPLEA_VARIANT_OPTIONS,
     },
   },
   component: ExampleA,

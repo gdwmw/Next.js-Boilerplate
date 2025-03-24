@@ -2,21 +2,20 @@ import { FC, PropsWithChildren, ReactElement } from "react";
 import { MdError } from "react-icons/md";
 
 import { twm } from "@/src/libs";
+import { TExampleCColor } from "@/src/types";
 
-/* eslint-disable perfectionist/sort-union-types */
-interface I extends Readonly<PropsWithChildren> {
+export interface IExampleLabel extends Readonly<PropsWithChildren> {
   className?: {
     fieldset?: string;
     legend?: string;
   };
-  color?: "rose" | "emerald";
+  color: TExampleCColor;
   disabled?: boolean;
   errorMessage?: string;
-  label?: string;
+  label: string;
 }
-/* eslint-enable perfectionist/sort-union-types */
 
-const FieldsetTWM = ({ className, color, disabled, errorMessage }: I) => {
+const FieldsetTWM = ({ className, color, disabled, errorMessage }: Omit<IExampleLabel, "label">) => {
   const isActive = !disabled && !errorMessage;
   const isError = errorMessage && !disabled;
 
@@ -30,7 +29,7 @@ const FieldsetTWM = ({ className, color, disabled, errorMessage }: I) => {
   );
 };
 
-const LegendTWM = ({ className, color, disabled, errorMessage }: I) => {
+const LegendTWM = ({ className, color, disabled, errorMessage }: Omit<IExampleLabel, "label">) => {
   const isActive = !disabled && !errorMessage;
   const isError = errorMessage && !disabled;
 
@@ -44,7 +43,7 @@ const LegendTWM = ({ className, color, disabled, errorMessage }: I) => {
   );
 };
 
-export const ExampleLabel: FC<I> = ({ className, color, disabled, errorMessage, label, ...props }): ReactElement => (
+export const ExampleLabel: FC<IExampleLabel> = ({ className, color, disabled, errorMessage, label, ...props }): ReactElement => (
   <fieldset className={FieldsetTWM({ className, color, disabled, errorMessage })} data-testid="example-label-fieldset">
     <legend className={LegendTWM({ className, color, disabled, errorMessage })} data-testid="example-label-legend">
       {label}

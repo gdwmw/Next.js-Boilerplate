@@ -2,25 +2,19 @@ import { DetailedHTMLProps, FC, forwardRef, ReactElement, TextareaHTMLAttributes
 
 import { twm } from "@/src/libs";
 
-import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel } from "../elements";
+import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel, IExampleLabel } from "../";
 
-/* eslint-disable perfectionist/sort-union-types */
-interface I extends DetailedHTMLProps<Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "className">, HTMLTextAreaElement> {
+interface I
+  extends DetailedHTMLProps<Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "className" | "color">, HTMLTextAreaElement>,
+    Omit<IExampleLabel, "children" | "className"> {
   className?: {
     container?: string;
-    fieldset?: string;
-    legend?: string;
     textarea?: string;
-  };
-  color?: "rose" | "emerald";
-  disabled?: boolean;
-  errorMessage?: string;
-  label?: string;
+  } & IExampleLabel["className"];
   rows?: number;
 }
-/* eslint-enable perfectionist/sort-union-types */
 
-const ExampleTextAreaTWM = ({ className, disabled }: I) =>
+const ExampleTextAreaTWM = ({ className, disabled }: Omit<I, "color" | "label">) =>
   twm(
     "max-h-[200px] min-h-[120px] w-full rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed",
     disabled && "text-gray-400",

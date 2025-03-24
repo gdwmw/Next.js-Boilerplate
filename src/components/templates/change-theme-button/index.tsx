@@ -9,13 +9,13 @@ import { setCookie } from "@/src/hooks";
 import { ExampleA } from "../../";
 
 interface I {
-  cookie: string | undefined;
+  cookie: string;
 }
 
 export const ChangeThemeButton: FC<I> = (props): ReactElement => {
   const { setTheme, theme } = useTheme();
 
-  const getThemeIcon = (cookie: string | undefined) => {
+  const getThemeIcon = (cookie: string) => {
     switch (cookie) {
       case "dark":
         return <FaMoon size={18} />;

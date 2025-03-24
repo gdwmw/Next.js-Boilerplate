@@ -4,27 +4,21 @@ import { DetailedHTMLProps, FC, forwardRef, InputHTMLAttributes, ReactElement, R
 
 import { twm } from "@/src/libs";
 
-import { ExampleA } from "../../A";
-import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel } from "../elements";
+import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel, IExampleLabel } from "../";
+import { ExampleA } from "../../";
 
-/* eslint-disable perfectionist/sort-union-types */
-interface I extends DetailedHTMLProps<Omit<InputHTMLAttributes<HTMLInputElement>, "className">, HTMLInputElement> {
+interface I
+  extends DetailedHTMLProps<Omit<InputHTMLAttributes<HTMLInputElement>, "className" | "color">, HTMLInputElement>,
+    Omit<IExampleLabel, "children" | "className"> {
   className?: {
     container?: string;
-    fieldset?: string;
     input?: string;
-    legend?: string;
-  };
-  color?: "rose" | "emerald";
-  disabled?: boolean;
-  errorMessage?: string;
+  } & IExampleLabel["className"];
   icon?: ReactNode;
   iconOnClick?: () => void;
-  label?: string;
 }
-/* eslint-enable perfectionist/sort-union-types */
 
-const ExampleInputTWM = ({ className, disabled }: I) =>
+const ExampleInputTWM = ({ className, disabled }: Omit<I, "color" | "label">) =>
   twm("w-full rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed", disabled && "text-gray-400", className?.input);
 
 export const ExampleInput: FC<I> = forwardRef<HTMLInputElement, I>(

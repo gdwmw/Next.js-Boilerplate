@@ -13,8 +13,8 @@ interface I extends Omit<LinkProps, "href"> {
     innerContainer?: string;
     link?: string;
   };
-  href?: string;
-  label?: string;
+  href: string;
+  label: string;
 }
 
 export const FormContainer: FC<I> = ({ children, className, href, label, ...props }): ReactElement => (

@@ -3,6 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import { FaEye } from "react-icons/fa";
 
+import { EXAMPLEC_COLOR_OPTIONS } from "@/src/libs";
+
 import StoriesLayout from ".";
 
 const meta: Meta<typeof StoriesLayout> = {
@@ -10,7 +12,7 @@ const meta: Meta<typeof StoriesLayout> = {
   argTypes: {
     color: {
       control: { type: "radio" },
-      options: ["rose", "emerald"],
+      options: EXAMPLEC_COLOR_OPTIONS,
     },
     disabled: {
       control: { type: "boolean" },

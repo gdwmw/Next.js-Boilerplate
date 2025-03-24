@@ -4,24 +4,18 @@ import { DetailedHTMLProps, FC, forwardRef, ReactElement, SelectHTMLAttributes }
 
 import { twm } from "@/src/libs";
 
-import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel } from "../elements";
+import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel, IExampleLabel } from "../";
 
-/* eslint-disable perfectionist/sort-union-types */
-interface I extends DetailedHTMLProps<Omit<SelectHTMLAttributes<HTMLSelectElement>, "className">, HTMLSelectElement> {
+interface I
+  extends DetailedHTMLProps<Omit<SelectHTMLAttributes<HTMLSelectElement>, "className" | "color">, HTMLSelectElement>,
+    Omit<IExampleLabel, "children" | "className"> {
   className?: {
     container?: string;
-    fieldset?: string;
-    legend?: string;
     select?: string;
-  };
-  color?: "rose" | "emerald";
-  disabled?: boolean;
-  errorMessage?: string;
-  label?: string;
+  } & IExampleLabel["className"];
 }
-/* eslint-enable perfectionist/sort-union-types */
 
-const ExampleSelectTWM = ({ className, disabled }: I) =>
+const ExampleSelectTWM = ({ className, disabled }: Omit<I, "color" | "label">) =>
   twm("w-full rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed", disabled && "text-gray-400", className?.select);
 
 export const ExampleSelect: FC<I> = forwardRef<HTMLSelectElement, I>(

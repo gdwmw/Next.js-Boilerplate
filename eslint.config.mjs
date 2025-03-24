@@ -48,16 +48,11 @@ const eslintConfig = [
     },
   },
   {
-    files: ["src/components/elements/example/**/*spec.tsx"],
-    rules: {
-      "jest/no-conditional-expect": "off",
-    },
-  },
-  {
     plugins: {
       react,
     },
     rules: {
+      "@typescript-eslint/no-empty-object-type": "off",
       "@typescript-eslint/no-unused-expressions": "error",
       "arrow-body-style": ["error", "as-needed"],
       curly: ["error"],

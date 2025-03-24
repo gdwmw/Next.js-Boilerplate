@@ -1,15 +1,13 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FC, HTMLInputTypeAttribute, KeyboardEvent, ReactElement, useState, useTransition } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
-import Loading from "@/public/assets/animations/Loading.svg";
-import { ExampleA, ExampleATWM, ExampleInput, FormContainer } from "@/src/components";
+import { ExampleATWM, ExampleInput, FormContainer, SubmitButton } from "@/src/components";
 import { inputValidations } from "@/src/hooks";
 import { RegisterSchema, TRegisterSchema } from "@/src/schemas";
 import { POSTRegister } from "@/src/utils";
@@ -129,9 +127,7 @@ export const Content: FC = (): ReactElement => {
 
           <span className="text-center text-sm text-red-600">{passwordNotMatch && "Confirm Password does not match Password"}</span>
 
-          <ExampleA className="font-semibold" color="rose" disabled={loading} size="sm" type="submit" variant="solid">
-            {loading ? <Image alt="Loading..." src={Loading} width={50} /> : "REGISTER"}
-          </ExampleA>
+          <SubmitButton color="rose" disabled={loading} label="REGISTER" size="sm" variant="solid" />
 
           <div className="flex justify-center gap-1">
             <span className="text-xs">Already have an account?</span>

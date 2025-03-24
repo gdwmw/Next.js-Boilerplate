@@ -7,6 +7,6 @@ import { ExampleA } from "../../";
 
 export const Logout: FC = (): ReactElement => (
   <ExampleA color="rose" onClick={() => signOut()} size="sm" variant="solid">
-    Logout
+    LOGOUT
   </ExampleA>
 );

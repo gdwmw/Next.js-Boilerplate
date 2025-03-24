@@ -2,17 +2,11 @@ import { DetailedHTMLProps, FC, HTMLAttributes, ReactElement } from "react";
 
 import { twm } from "@/src/libs";
 
-interface IExampleBContainer extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
-  className?: string;
-}
+interface IExampleBContainer extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {}
 
-interface IExampleBIcon extends DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {
-  className?: string;
-}
+interface IExampleBIcon extends DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {}
 
-interface IExampleBText extends DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {
-  className?: string;
-}
+interface IExampleBText extends DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {}
 
 export const ExampleBContainer: FC<IExampleBContainer> = ({ className, ...props }): ReactElement => (
   <section className={twm("flex max-w-52 flex-col items-center text-center", className)} data-testid="example-b-container" {...props}>
