@@ -164,7 +164,7 @@ export const Content: FC<I> = (props): ReactElement => {
 
   return (
     <main className="bg-slate-100 dark:bg-slate-900">
-      <FormContainer className={{ innerContainer: "size-full max-h-[624px] max-w-[450px]" }} href={"/"} label={"Home"}>
+      <FormContainer className={{ innerContainer: "max-h-[624px] w-full max-w-[450px]" }} href={"/"} label={"Home"}>
         <form className="flex w-full flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
           {previewImage || props.session?.user?.image ? (
             <div className="relative mx-auto aspect-square size-fit min-h-32 min-w-32 overflow-hidden rounded-full border border-gray-200">

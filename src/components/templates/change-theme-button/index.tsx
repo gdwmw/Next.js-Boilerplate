@@ -6,17 +6,17 @@ import { FaDesktop, FaMoon, FaSun } from "react-icons/fa";
 
 import { setCookie } from "@/src/hooks";
 
-import { ExampleA } from "../../";
+import { ExampleA, IExampleA } from "../..";
 
-interface I {
+interface I extends IExampleA {
   cookie: string;
 }
 
-export const ChangeThemeButton: FC<I> = (props): ReactElement => {
+export const ChangeThemeButton: FC<I> = ({ cookie, ...props }): ReactElement => {
   const { setTheme, theme } = useTheme();
 
-  const getThemeIcon = (cookie: string) => {
-    switch (cookie) {
+  const getThemeIcon = (dt: string) => {
+    switch (dt) {
       case "dark":
         return <FaMoon size={18} />;
       case "light":
@@ -33,8 +33,8 @@ export const ChangeThemeButton: FC<I> = (props): ReactElement => {
   };
 
   return (
-    <ExampleA className="min-w-16" color="rose" onClick={handleTheme} size="sm" variant="outline">
-      {getThemeIcon(props.cookie)}
+    <ExampleA onClick={handleTheme} {...props}>
+      {getThemeIcon(cookie)}
     </ExampleA>
   );
 };

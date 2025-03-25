@@ -5,7 +5,7 @@ import { DetailedHTMLProps, FC, forwardRef, InputHTMLAttributes, ReactElement, R
 import { twm } from "@/src/libs";
 
 import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel, IExampleLabel } from "../";
-import { ExampleA } from "../../";
+import { ExampleA } from "../..";
 
 interface I
   extends DetailedHTMLProps<Omit<InputHTMLAttributes<HTMLInputElement>, "className" | "color">, HTMLInputElement>,
