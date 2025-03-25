@@ -1,14 +1,13 @@
 "use server";
 
+import type { CookieSerializeOptions } from "cookie";
+
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { cookies } from "next/headers";
 
 interface I {
   name: string;
-  options?: {
-    maxAge?: number;
-    path?: string;
-  };
+  options?: CookieSerializeOptions;
   value: string;
 }
 
