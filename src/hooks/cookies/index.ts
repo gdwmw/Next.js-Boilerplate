@@ -1,19 +1,11 @@
 "use server";
 
-import type { CookieSerializeOptions } from "cookie";
-
-import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
+import { CookieListItem, RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { cookies } from "next/headers";
 
-interface I {
-  name: string;
-  options?: CookieSerializeOptions;
-  value: string;
-}
-
-export const setCookie = async (props: I) => {
+export const setCookie = async (props: CookieListItem) => {
   const cookieStore = await cookies();
-  cookieStore.set(props.name, props.value, props.options);
+  cookieStore.set(props);
 };
 
 export const getCookie = async (name: string): Promise<RequestCookie | undefined> => {
