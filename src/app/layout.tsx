@@ -4,6 +4,7 @@ import { FC, PropsWithChildren, ReactElement } from "react";
 
 import { NextAuthProvider, NextThemesProvider, ReactQueryProvider } from "@/src/libs/providers";
 
+import { APIConnectionChecker } from "../components";
 import { geistMono, geistSans } from "./fonts";
 import "./globals.css";
 
@@ -26,7 +27,10 @@ const RootLayout: FC<T> = (props): ReactElement => (
     <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <NextThemesProvider>
         <ReactQueryProvider>
-          <NextAuthProvider>{props.children}</NextAuthProvider>
+          <NextAuthProvider>
+            {props.children}
+            <APIConnectionChecker />
+          </NextAuthProvider>
         </ReactQueryProvider>
       </NextThemesProvider>
     </body>
