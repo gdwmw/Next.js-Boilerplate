@@ -2,36 +2,51 @@ import Image from "next/image";
 import { FC, ReactElement } from "react";
 import { FaUser } from "react-icons/fa";
 
-interface I {
-  size: "lg" | "md" | "sm";
+import { twm } from "@/src/libs";
+import { TAvatarSize } from "@/src/types";
+
+export interface IAvatar {
+  className?: string;
+  iconSize?: number;
+  size?: TAvatarSize;
   src: string;
 }
 
-export const Avatar: FC<I> = (props): ReactElement => {
+export const Avatar: FC<IAvatar> = (props): ReactElement => {
   const getSize = () => {
     switch (props.size) {
       case "lg":
-        return { container: "min-h-40 min-w-40", icon: 80 };
+        return { container: "min-h-16 min-w-16", icon: 32 };
       case "md":
-        return { container: "min-h-32 min-w-32", icon: 64 };
+        return { container: "min-h-14 min-w-14", icon: 28 };
       case "sm":
-        return { container: "min-h-24 min-w-24", icon: 48 };
+        return { container: "min-h-12 min-w-12", icon: 24 };
       default:
-        return { container: "min-h-32 min-w-32", icon: 64 };
+        return { container: "min-h-12 min-w-12", icon: 24 };
     }
   };
 
   const { container, icon } = getSize();
 
   return props.src ? (
-    <div className={`relative mx-auto aspect-square size-fit overflow-hidden rounded-full border bg-gray-100 dark:border-gray-600 ${container}`}>
+    <div
+      className={twm(
+        "relative aspect-square size-fit overflow-hidden rounded-full border bg-gray-100 dark:border-gray-600",
+        container,
+        props.className,
+      )}
+    >
       <Image alt="Profile Image" className="object-cover" fill quality={50} src={props.src} />
     </div>
   ) : (
     <div
-      className={`mx-auto flex aspect-square size-fit items-center justify-center rounded-full border bg-gray-100 dark:border-gray-600 dark:bg-gray-800 ${container}`}
+      className={twm(
+        "flex aspect-square size-fit items-center justify-center rounded-full border bg-gray-100 dark:border-gray-600 dark:bg-gray-800",
+        container,
+        props.className,
+      )}
     >
-      <FaUser className="text-gray-400" size={icon} />
+      <FaUser className="text-gray-400" size={props.iconSize ? props.iconSize : icon} />
     </div>
   );
 };

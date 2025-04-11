@@ -164,7 +164,7 @@ export const Content: FC<I> = (props): ReactElement => {
     <main className="bg-slate-100 dark:bg-slate-900">
       <FormContainer className={{ innerContainer: "max-h-[624px] w-full max-w-[450px]" }} href={"/"} label={"Home"}>
         <form className="flex w-full flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
-          <Avatar size="md" src={previewImage ?? props.session?.user?.image ?? ""} />
+          <Avatar className="mx-auto min-h-24 min-w-24" iconSize={48} src={previewImage ?? props.session?.user?.image ?? ""} />
 
           {FORM_FIELDS_DATA.map((dt) => (
             <ExampleInput

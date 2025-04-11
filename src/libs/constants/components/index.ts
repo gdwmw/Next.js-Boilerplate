@@ -5,3 +5,7 @@ export const EXAMPLEA_SIZE_OPTIONS = ["lg", "md", "sm"] as const;
 // ----------------------------
 
 export const EXAMPLEC_COLOR_OPTIONS = ["emerald", "rose"] as const;
+
+// ----------------------------
+
+export const AVATAR_SIZE_OPTIONS = ["lg", "md", "sm"] as const;
