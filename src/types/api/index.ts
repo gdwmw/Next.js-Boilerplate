@@ -105,6 +105,19 @@ export interface IUserResponse {
 
 // ----------------------------
 
+export interface IMetaResponse {
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+}
+
+// ----------------------------
+
 export interface IUploadPayload {
   files: FileList;
   ref?: string;

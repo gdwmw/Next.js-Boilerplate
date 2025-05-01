@@ -60,12 +60,12 @@ export const Content: FC = (): ReactElement => {
         }
 
         await deleteCookie("report");
-        console.log("Login Success!");
+        console.info("Login Success!");
         router.push("/");
         router.refresh();
         reset();
       } catch (error) {
-        console.log("Login Failed!");
+        console.warn("Login Failed!");
         console.error("--- Authentication Error Message ---", error);
       }
     });

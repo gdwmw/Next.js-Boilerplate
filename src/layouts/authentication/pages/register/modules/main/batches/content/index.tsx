@@ -93,11 +93,11 @@ export const Content: FC = (): ReactElement => {
       if (getValues("password") === getValues("confirmPassword")) {
         try {
           await POSTRegister(dt);
-          console.log("Register Success!");
+          console.info("Register Success!");
           router.push("/authentication/login");
           reset();
         } catch {
-          console.log("Register Failed!");
+          console.warn("Register Failed!");
         }
       } else {
         setPasswordNotMatch(true);

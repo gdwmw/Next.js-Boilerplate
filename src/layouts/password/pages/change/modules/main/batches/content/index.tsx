@@ -62,11 +62,11 @@ export const Content: FC = (): ReactElement => {
       if (getValues("password") === getValues("passwordConfirmation")) {
         try {
           await POSTChangePassword(dt);
-          console.log("Change Password Success!");
+          console.info("Change Password Success!");
           signOut();
           reset();
         } catch {
-          console.log("Change Password Failed!");
+          console.warn("Change Password Failed!");
         }
       } else {
         setPasswordNotMatch(true);

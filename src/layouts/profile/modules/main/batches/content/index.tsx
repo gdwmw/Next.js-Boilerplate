@@ -152,10 +152,10 @@ export const Content: FC<I> = (props): ReactElement => {
           },
         });
 
-        console.log("Profile Success!");
+        console.info("Profile Success!");
         router.refresh();
       } catch {
-        console.log("Profile Failed!");
+        console.warn("Profile Failed!");
       }
     });
   };
