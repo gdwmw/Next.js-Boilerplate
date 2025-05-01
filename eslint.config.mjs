@@ -42,6 +42,7 @@ const eslintConfig = [
   {
     files: ["src/types/**/*.ts"],
     rules: {
+      "@tanstack/query/infinite-query-property-order": "off",
       "perfectionist/sort-enums": "off",
       "perfectionist/sort-interfaces": "off",
       "perfectionist/sort-object-types": "off",
