@@ -7,6 +7,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
 import { ExampleInput, FormContainer, SubmitButton } from "@/src/components";
+import { getErrorMessage } from "@/src/hooks";
 import { ChangePasswordSchema, TChangePasswordSchema } from "@/src/schemas";
 import { POSTChangePassword } from "@/src/utils";
 
@@ -27,7 +28,7 @@ const FORM_FIELDS_DATA: IFormField[] = [
   },
   {
     id: 2,
-    label: "Password",
+    label: "New Password",
     maxLength: 72,
     name: "password",
     type: "password",
@@ -42,7 +43,7 @@ const FORM_FIELDS_DATA: IFormField[] = [
 
 export const Content: FC = (): ReactElement => {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
-  const [passwordNotMatch, setPasswordNotMatch] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | undefined>("");
   const [loading, setTransition] = useTransition();
 
   const {
@@ -57,7 +58,7 @@ export const Content: FC = (): ReactElement => {
 
   const onSubmit: SubmitHandler<TChangePasswordSchema> = (dt) => {
     setTransition(async () => {
-      setPasswordNotMatch(false);
+      setErrorMessage("");
 
       if (getValues("password") === getValues("passwordConfirmation")) {
         try {
@@ -65,11 +66,12 @@ export const Content: FC = (): ReactElement => {
           console.info("Change Password Success!");
           signOut();
           reset();
-        } catch {
+        } catch (error) {
+          setErrorMessage(getErrorMessage(error));
           console.warn("Change Password Failed!");
         }
       } else {
-        setPasswordNotMatch(true);
+        setErrorMessage("Confirm Password Does Not Match New Password");
       }
     });
   };
@@ -93,7 +95,7 @@ export const Content: FC = (): ReactElement => {
             />
           ))}
 
-          <span className="text-center text-sm text-red-600">{passwordNotMatch && "Confirm Password does not match Password"}</span>
+          <span className="text-center text-sm text-red-600">{errorMessage}</span>
 
           <SubmitButton color="rose" disabled={loading} label="UPDATE" size="sm" variant="solid" />
         </form>

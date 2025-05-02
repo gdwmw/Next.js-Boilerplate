@@ -48,14 +48,14 @@ export const Content: FC = (): ReactElement => {
 
         if (!res?.ok) {
           if (report?.[0] === false) {
-            setErrorMessage("Your account has not been confirmed");
-            throw new Error("Your account has not been confirmed");
+            setErrorMessage("Your Account Has Not Been Confirmed");
+            throw new Error("Your Account Has Not Been Confirmed");
           } else if (report?.[1] === true) {
-            setErrorMessage("Your account has been blocked");
-            throw new Error("Your account has been blocked");
+            setErrorMessage("Your Account Has Been Blocked");
+            throw new Error("Your Account Has Been Blocked");
           } else {
-            setErrorMessage(loginWithEmail ? "Invalid Email or Password" : "Invalid Username or Password");
-            throw new Error(loginWithEmail ? "Invalid Email or Password" : "Invalid Username or Password");
+            setErrorMessage(loginWithEmail ? "Invalid Email Or Password" : "Invalid Username Or Password");
+            throw new Error(loginWithEmail ? "Invalid Email Or Password" : "Invalid Username Or Password");
           }
         }
 

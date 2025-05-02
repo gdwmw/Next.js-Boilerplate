@@ -8,7 +8,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
 import { ExampleATWM, ExampleInput, FormContainer, SubmitButton } from "@/src/components";
-import { inputValidations } from "@/src/hooks";
+import { getErrorMessage, inputValidations } from "@/src/hooks";
 import { RegisterSchema, TRegisterSchema } from "@/src/schemas";
 import { POSTRegister } from "@/src/utils";
 
@@ -73,7 +73,7 @@ const FORM_FIELDS_DATA: IFormField[] = [
 export const Content: FC = (): ReactElement => {
   const router = useRouter();
   const [passwordVisibility, setPasswordVisibility] = useState(false);
-  const [passwordNotMatch, setPasswordNotMatch] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | undefined>("");
   const [loading, setTransition] = useTransition();
 
   const {
@@ -88,7 +88,7 @@ export const Content: FC = (): ReactElement => {
 
   const onSubmit: SubmitHandler<TRegisterSchema> = (dt) => {
     setTransition(async () => {
-      setPasswordNotMatch(false);
+      setErrorMessage("");
 
       if (getValues("password") === getValues("confirmPassword")) {
         try {
@@ -96,11 +96,12 @@ export const Content: FC = (): ReactElement => {
           console.info("Register Success!");
           router.push("/authentication/login");
           reset();
-        } catch {
+        } catch (error) {
+          setErrorMessage(getErrorMessage(error));
           console.warn("Register Failed!");
         }
       } else {
-        setPasswordNotMatch(true);
+        setErrorMessage("Confirm Password Does Not Match Password");
       }
     });
   };
@@ -125,7 +126,7 @@ export const Content: FC = (): ReactElement => {
             />
           ))}
 
-          <span className="text-center text-sm text-red-600">{passwordNotMatch && "Confirm Password does not match Password"}</span>
+          <span className="text-center text-sm text-red-600">{errorMessage}</span>
 
           <SubmitButton color="rose" disabled={loading} label="REGISTER" size="sm" variant="solid" />
 
@@ -139,7 +140,7 @@ export const Content: FC = (): ReactElement => {
                   e.preventDefault();
                 } else {
                   setPasswordVisibility(false);
-                  setPasswordNotMatch(false);
+                  setErrorMessage("");
                   reset();
                 }
               }}
