@@ -1,3 +1,5 @@
+import { getSession } from "@/src/hooks";
+
 const API_URL = process.env.NEXT_PUBLIC_EXAMPLE_URL;
 
 if (!API_URL) {
@@ -20,12 +22,14 @@ export const apiRequest = async <T>(props: I): Promise<T> => {
   const url = `${API_URL}${props.endpoint}${queryParams ? `?${queryParams}&` : "?"}populate=*`;
 
   const isFormData = props.data instanceof FormData;
+  const token = await getSession("token");
 
   try {
     const res = await fetch(url, {
       body: isFormData ? (props.data as FormData) : JSON.stringify(props.data),
       headers: {
         ...(!isFormData && { "Content-Type": "application/json" }),
+        ...(token && { Authorization: `Bearer ${token}` }),
         ...props.headers,
       },
       method: props.method,
