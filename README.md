@@ -13,6 +13,7 @@ Below is the main directory structure of the boilerplate:
 ```
 └── 📁configs
     └── 📁authentication
+└── 📁docs
 └── 📁src
     └── 📁app
         └── 📁(authed)
@@ -96,6 +97,7 @@ Below is the main directory structure of the boilerplate:
 ### Structure Explanation 📚
 
 - **/configs**: Contains configuration files, including authentication settings and logic.
+- **/docs**: Contains project documentation such as architectural diagrams, flowcharts, API documentation, and other technical documentation that helps understand the project structure and functionality.
 - **/public**: Contains static assets such as images, animations, and other static files.
 - **/src/app**: Contains the main application pages, including login, admin, user, and others.
 - **/src/components**: Contains reusable components throughout the application, organized following the principles of Atomic Design.
@@ -265,64 +267,3 @@ If you have any questions regarding the boilerplate or its usage, please follow 
 By following these guidelines, you can help ensure that your questions are understood and addressed promptly.
 
 This documentation provides a clear overview of the boilerplate, installation instructions, commit guidelines, and contribution guidelines. If you have any further questions, feel free to ask!
-
-## Special AI Instructions for Creating Code Structure Diagrams 🤖
-
-1. **Format**:
-
-   - Use Markdown format.
-   - Use headings (`#`, `##`, `###`) for titles and subtitles.
-
-2. **Icons**:
-
-   - Use the following icons to identify components:
-     - 📚 for **Layout**.
-     - 📋 for **Template**.
-     - 📄 for **Page**.
-     - 📦 for **(Section)Layout**.
-     - 🤖 for **Header**.
-     - 🧭 for **Nav**.
-     - 📐 for **Aside**.
-     - 🔰 for **Main**.
-     - 🦶 for **Footer**.
-     - 📝 for **Content**.
-     - ❌ for **Error**.
-
-3. **Structure**:
-
-   - Create a hierarchy using indentation (use `-` for lists).
-   - Each component must have a link to the file path (example: `[📄 HomePage](src/app/page.tsx)`).
-
-4. **Section Titles**:
-
-   - Use section titles for each part (example: `### 🏠 **Home**`).
-
-5. **Important**:
-
-   - Create the structure according to the actual structure in the codebase. This is just an example, so adjust it to the current codebase.
-
-## Example Code Structure Diagram 📊
-
-### 🏠 **Example**
-
-```md
-- [📚 Layout](src/app/example/layout.tsx)
-  - [📐 Aside](src/layouts/example/global/aside/index.tsx)
-    - [📝 Content](src/layouts/example/global/aside/batches/content/index.tsx)
-- [📋 Template](src/app/example/template.tsx)
-  - [🤖 Header](src/layouts/example/template/header/index.tsx)
-    - [📝 Content](src/layouts/example/template/header/batches/content/index.tsx)
-- [📄 ExamplePage](src/app/example/page.tsx)
-  - [📦 ExampleLayout](src/layouts/example/index.tsx)
-    - [🧭 Nav](src/layouts/example/modules/nav/index.tsx)
-      - [📝 Content](src/layouts/example/modules/nav/batches/content/index.tsx)
-    - [📦 Main](src/layouts/example/modules/main/index.tsx)
-      - [📝 About](src/layouts/example/modules/main/batches/about/index.tsx)
-      - [📝 Contact](src/layouts/example/modules/main/batches/contact/index.tsx)
-      - [📝 Home](src/layouts/example/modules/main/batches/example/index.tsx)
-      - [📝 Packages](src/layouts/example/modules/main/batches/packages/index.tsx)
-      - [📝 Portfolio](src/layouts/example/modules/main/batches/portfolio/index.tsx)
-    - [🦶 Footer](src/layouts/example/modules/footer/index.tsx)
-      - [📝 Content](src/layouts/example/modules/footer/batches/content/index.tsx)
-- [❌ Error](src/app/example/error.tsx)
-```
