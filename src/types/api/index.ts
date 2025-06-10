@@ -1,5 +1,4 @@
-export type TRole = "admin" | "demo" | "user";
-export type TIndicator = "Canceled" | "On Going" | "Payment" | "Rejected" | "Success" | "Waiting";
+import { TRole } from "../authentication";
 
 // ----------------------------
 

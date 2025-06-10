@@ -38,6 +38,7 @@ export default meta;
 type Story = StoryObj<typeof ExampleA>;
 
 /* eslint-disable perfectionist/sort-objects */
+
 export const Solid: Story = {
   args: {
     variant: "solid",
@@ -79,4 +80,3 @@ export const Ghost: Story = {
     ),
   },
 };
-/* eslint-enable perfectionist/sort-objects */

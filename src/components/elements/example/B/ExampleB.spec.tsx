@@ -4,6 +4,7 @@ import { FaCrown } from "react-icons/fa";
 import { ExampleBContainer, ExampleBIcon, ExampleBText } from ".";
 
 /* eslint-disable tailwindcss/no-custom-classname */
+
 const component = (
   <ExampleBContainer className="testing-class" id="testing-id" style={{ color: "#ff0000" }}>
     <ExampleBIcon className="testing-class" id="testing-id" style={{ color: "#ff0000" }}>
@@ -14,7 +15,6 @@ const component = (
     </ExampleBText>
   </ExampleBContainer>
 );
-/* eslint-enable tailwindcss/no-custom-classname */
 
 describe("ExampleB Component Testing", () => {
   it("Should have a id", () => {

@@ -1,4 +1,5 @@
 /* eslint-disable perfectionist/sort-objects */
+
 export const schemaErrorMessage = {
   string: {
     min: (label: string, min: number) => `Please enter ${label} minimum ${min} characters`,
@@ -13,4 +14,3 @@ export const schemaErrorMessage = {
     max: (label: string, max: number) => `${label} maximum ${max}`,
   },
 };
-/* eslint-enable perfectionist/sort-objects */

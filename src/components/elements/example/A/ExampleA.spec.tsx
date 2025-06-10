@@ -4,6 +4,7 @@ import { FaCrown } from "react-icons/fa";
 import { ExampleA, IExampleA } from ".";
 
 /* eslint-disable tailwindcss/no-custom-classname */
+
 const component = (props: { onClickFn?: () => void } & Partial<IExampleA>) => (
   <ExampleA
     className="testing-class"
@@ -20,7 +21,6 @@ const component = (props: { onClickFn?: () => void } & Partial<IExampleA>) => (
     This is testing text
   </ExampleA>
 );
-/* eslint-enable tailwindcss/no-custom-classname */
 
 describe("ExampleA Component Testing", () => {
   it("Should have a id", () => {

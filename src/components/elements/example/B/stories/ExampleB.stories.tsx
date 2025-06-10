@@ -26,6 +26,7 @@ export default meta;
 type Story = StoryObj<typeof StoriesLayout>;
 
 /* eslint-disable perfectionist/sort-objects */
+
 export const Primary: Story = {
   args: {
     text: "This is example text",
@@ -34,4 +35,3 @@ export const Primary: Story = {
     icon: <FaCrown size={75} />,
   },
 };
-/* eslint-enable perfectionist/sort-objects */

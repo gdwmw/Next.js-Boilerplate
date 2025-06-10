@@ -16,7 +16,11 @@ interface I
 }
 
 const ExampleSelectTWM = ({ className, disabled }: Omit<I, "color" | "label">) =>
-  twm("w-full rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed", disabled && "text-gray-400", className?.select);
+  twm(
+    "w-full cursor-pointer rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed",
+    disabled && "text-gray-400",
+    className?.select,
+  );
 
 export const ExampleSelect: FC<I> = forwardRef<HTMLSelectElement, I>(
   ({ className, color, disabled, errorMessage, label, ...props }, ref): ReactElement => (

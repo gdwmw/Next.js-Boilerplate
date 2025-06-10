@@ -40,7 +40,7 @@ const eslintConfig = [
     },
   },
   {
-    files: ["src/types/**/*.ts"],
+    files: ["src/types/**/*"],
     rules: {
       "@tanstack/query/infinite-query-property-order": "off",
       "perfectionist/sort-enums": "off",

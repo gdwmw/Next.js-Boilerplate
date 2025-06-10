@@ -39,6 +39,7 @@ export default meta;
 type Story = StoryObj<typeof StoriesLayout>;
 
 /* eslint-disable perfectionist/sort-objects */
+
 export const Input: Story = {
   args: {
     componentType: "input",
@@ -64,4 +65,3 @@ export const TextArea: Story = {
     label: "Example TextArea",
   },
 };
-/* eslint-enable perfectionist/sort-objects */

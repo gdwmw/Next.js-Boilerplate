@@ -2,6 +2,10 @@ import { IAuthResponse, IDummyAccount } from "@/src/types";
 
 // ----------------------------
 
+export const ROLE_OPTIONS = ["admin", "demo", "user"] as const;
+
+// ----------------------------
+
 export const DEMO_ACCOUNT_DATA: IAuthResponse = {
   blocked: false,
   confirmed: true,
