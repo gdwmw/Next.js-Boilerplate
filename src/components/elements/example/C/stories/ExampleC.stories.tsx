@@ -58,10 +58,18 @@ export const Select: Story = {
   },
 };
 
+export const DatePicker: Story = {
+  args: {
+    componentType: "datepicker",
+    color: "rose",
+    label: "Example Date Picker",
+  },
+};
+
 export const TextArea: Story = {
   args: {
     componentType: "textarea",
     color: "rose",
-    label: "Example TextArea",
+    label: "Example Text Area",
   },
 };

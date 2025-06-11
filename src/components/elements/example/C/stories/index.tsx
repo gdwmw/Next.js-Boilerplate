@@ -2,11 +2,11 @@ import { FC, ReactElement, ReactNode } from "react";
 
 import { TExampleCColor } from "@/src/types";
 
-import { ExampleInput, ExampleSelect, ExampleTextArea } from "..";
+import { ExampleDatePicker, ExampleInput, ExampleSelect, ExampleTextArea } from "..";
 
 interface I {
   color: TExampleCColor;
-  componentType: "input" | "select" | "textarea";
+  componentType: "datepicker" | "input" | "select" | "textarea";
   disabled?: boolean;
   errorMessage?: string;
   icon?: ReactNode;
@@ -17,6 +17,12 @@ interface I {
 
 const StoriesLayout: FC<I> = (props): null | ReactElement => {
   switch (props.componentType) {
+    case "datepicker":
+      return (
+        <div className="w-60">
+          <ExampleDatePicker color={props.color} disabled={props.disabled} errorMessage={props.errorMessage} label={props.label} />
+        </div>
+      );
     case "input":
       return (
         <div className="w-60">
