@@ -1,5 +1,3 @@
-"use client";
-
 import { DetailedHTMLProps, FC, forwardRef, ReactElement, SelectHTMLAttributes } from "react";
 
 import { twm } from "@/src/libs";
