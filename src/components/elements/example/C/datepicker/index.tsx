@@ -5,7 +5,7 @@ import DatePicker, { DatePickerProps } from "react-datepicker";
 
 import { twm } from "@/src/libs";
 
-import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel, IExampleLabel } from "../";
+import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel, IExampleLabel } from "../elements";
 
 import "@/src/styles/datepicker.css";
 

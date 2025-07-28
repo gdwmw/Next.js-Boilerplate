@@ -2,7 +2,7 @@ import { DetailedHTMLProps, FC, forwardRef, ReactElement, SelectHTMLAttributes }
 
 import { twm } from "@/src/libs";
 
-import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel, IExampleLabel } from "../";
+import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel, IExampleLabel } from "../elements";
 
 interface I
   extends DetailedHTMLProps<Omit<SelectHTMLAttributes<HTMLSelectElement>, "className" | "color">, HTMLSelectElement>,

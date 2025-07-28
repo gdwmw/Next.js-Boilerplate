@@ -2,7 +2,10 @@ import { FC, ReactElement, ReactNode } from "react";
 
 import { TExampleCColor } from "@/src/types";
 
-import { ExampleDatePicker, ExampleInput, ExampleSelect, ExampleTextArea } from "..";
+import { ExampleDatePicker } from "../datepicker";
+import { ExampleInput } from "../input";
+import { ExampleSelect } from "../select";
+import { ExampleTextArea } from "../text-area";
 
 interface I {
   color: TExampleCColor;
