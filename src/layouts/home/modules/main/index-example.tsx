@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FC, ReactElement } from "react";
+import { FaUserAlt } from "react-icons/fa";
 
 import { ChangeThemeButton, ExampleATWM, FormContainer, LogoutButton } from "@/src/components";
 import { getCookie, getSession } from "@/src/hooks";
@@ -18,9 +19,21 @@ export const Main: FC = async (): Promise<ReactElement> => {
         </header>
 
         <nav className="space-y-3">
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap justify-center gap-3">
             <ChangeThemeButton className="min-w-16" color="rose" cookie={themeCookie?.value ?? ""} size="sm" variant="outline" />
 
+            {session && (
+              <>
+                <Link className={ExampleATWM({ className: "min-w-16", color: "rose", size: "sm", variant: "solid" })} href={"/profile"}>
+                  <FaUserAlt size={17} />
+                </Link>
+
+                <LogoutButton className="min-w-16" color="rose" size="sm" variant="solid" />
+              </>
+            )}
+          </div>
+
+          <div className="flex flex-wrap gap-3">
             <Link className={ExampleATWM({ className: "grow", color: "rose", size: "sm", variant: "solid" })} href={"/user-example"}>
               User
             </Link>
@@ -29,16 +42,6 @@ export const Main: FC = async (): Promise<ReactElement> => {
               Admin
             </Link>
           </div>
-
-          {session && (
-            <div className="flex flex-wrap gap-3">
-              <Link className={ExampleATWM({ className: "grow", color: "rose", size: "sm", variant: "solid" })} href={"/profile"}>
-                Profile
-              </Link>
-
-              <LogoutButton className="grow" color="rose" size="sm" variant="solid" />
-            </div>
-          )}
         </nav>
       </FormContainer>
     </main>
