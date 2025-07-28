@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
-import { fn } from "@storybook/test";
 import { FaCrown } from "react-icons/fa";
+import { fn } from "storybook/test";
 
 import { EXAMPLEA_COLOR_OPTIONS, EXAMPLEA_SIZE_OPTIONS, EXAMPLEA_VARIANT_OPTIONS } from "@/src/libs";
 
