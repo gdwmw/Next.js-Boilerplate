@@ -12,7 +12,6 @@ import { ChangePasswordSchema, TChangePasswordSchema } from "@/src/schemas";
 import { POSTChangePassword } from "@/src/utils";
 
 interface IFormField {
-  id: number;
   label: string;
   maxLength?: number;
   name: keyof TChangePasswordSchema;
@@ -21,20 +20,17 @@ interface IFormField {
 
 const FORM_FIELDS_DATA: IFormField[] = [
   {
-    id: 1,
     label: "Current Password",
     name: "currentPassword",
     type: "password",
   },
   {
-    id: 2,
     label: "New Password",
     maxLength: 72,
     name: "password",
     type: "password",
   },
   {
-    id: 3,
     label: "Confirm Password",
     name: "passwordConfirmation",
     type: "password",
@@ -80,14 +76,14 @@ export const Content: FC = (): ReactElement => {
     <main className="bg-slate-100 dark:bg-slate-900">
       <FormContainer className={{ innerContainer: "w-full max-w-[350px]" }} href={"/profile"} label={"Back"}>
         <form className="flex w-full flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
-          {FORM_FIELDS_DATA.map((dt) => (
+          {FORM_FIELDS_DATA.map((dt, i) => (
             <ExampleInput
               color="rose"
               disabled={loading}
               errorMessage={errors[dt.name]?.message}
               icon={passwordVisibility ? <IoIosEye size={18} /> : <IoIosEyeOff size={18} />}
               iconOnClick={() => setPasswordVisibility((prev) => !prev)}
-              key={dt.id}
+              key={i}
               label={dt.label}
               maxLength={dt.maxLength}
               type={passwordVisibility ? "text" : "password"}

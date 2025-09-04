@@ -67,7 +67,7 @@ export const APIConnectionChecker: FC = (): ReactElement => {
             </figure>
 
             {ENVIRONMENT_DATA_VARIABLES.map((dt, i) => (
-              <figure className="flex items-center gap-3 rounded-md border bg-gray-100 p-2 dark:border-gray-600 dark:bg-gray-800" key={dt}>
+              <figure className="flex items-center gap-3 rounded-md border bg-gray-100 p-2 dark:border-gray-600 dark:bg-gray-800" key={i}>
                 <div
                   className={`flex size-8 items-center justify-center rounded-full text-white ${connection[i] ? "bg-emerald-400" : "bg-rose-400"}`}
                 >

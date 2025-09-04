@@ -13,7 +13,6 @@ import { RegisterSchema, TRegisterSchema } from "@/src/schemas";
 import { POSTRegister } from "@/src/utils";
 
 interface IFormField {
-  id: number;
   isPassword?: boolean;
   label: string;
   maxLength?: number;
@@ -24,7 +23,6 @@ interface IFormField {
 
 const FORM_FIELDS_DATA: IFormField[] = [
   {
-    id: 1,
     label: "Name",
     maxLength: 50,
     name: "name",
@@ -32,7 +30,6 @@ const FORM_FIELDS_DATA: IFormField[] = [
     type: "text",
   },
   {
-    id: 2,
     label: "Username",
     maxLength: 8,
     name: "username",
@@ -40,13 +37,11 @@ const FORM_FIELDS_DATA: IFormField[] = [
     type: "text",
   },
   {
-    id: 3,
     label: "Email",
     name: "email",
     type: "email",
   },
   {
-    id: 4,
     label: "Phone",
     maxLength: 15,
     name: "phoneNumber",
@@ -54,7 +49,6 @@ const FORM_FIELDS_DATA: IFormField[] = [
     type: "tel",
   },
   {
-    id: 5,
     isPassword: true,
     label: "Password",
     maxLength: 72,
@@ -62,7 +56,6 @@ const FORM_FIELDS_DATA: IFormField[] = [
     type: "password",
   },
   {
-    id: 6,
     isPassword: true,
     label: "Confirm Password",
     name: "confirmPassword",
@@ -110,14 +103,14 @@ export const Content: FC = (): ReactElement => {
     <main className="bg-slate-100 dark:bg-slate-900">
       <FormContainer className={{ innerContainer: "max-h-[556px] w-full max-w-[450px]" }} href={"/"} label={"Home"}>
         <form className="flex w-full flex-col gap-3 overflow-y-auto" onSubmit={handleSubmit(onSubmit)}>
-          {FORM_FIELDS_DATA.map((dt) => (
+          {FORM_FIELDS_DATA.map((dt, i) => (
             <ExampleInput
               color="rose"
               disabled={loading}
               errorMessage={errors[dt.name]?.message}
               icon={dt.isPassword ? passwordVisibility ? <IoIosEye size={18} /> : <IoIosEyeOff size={18} /> : undefined}
               iconOnClick={dt.isPassword ? () => setPasswordVisibility((prev) => !prev) : undefined}
-              key={dt.id}
+              key={i}
               label={dt.label}
               maxLength={dt.maxLength}
               onKeyDown={dt.onKeyDown}

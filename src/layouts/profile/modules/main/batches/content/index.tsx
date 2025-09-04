@@ -20,7 +20,6 @@ if (!API_URL) {
 }
 
 interface IFormField {
-  id: number;
   label: string;
   maxLength?: number;
   name: keyof TProfileSchema;
@@ -30,7 +29,6 @@ interface IFormField {
 
 const FORM_FIELDS_DATA: IFormField[] = [
   {
-    id: 1,
     label: "Name",
     maxLength: 50,
     name: "name",
@@ -38,7 +36,6 @@ const FORM_FIELDS_DATA: IFormField[] = [
     type: "text",
   },
   {
-    id: 2,
     label: "Username",
     maxLength: 8,
     name: "username",
@@ -46,13 +43,11 @@ const FORM_FIELDS_DATA: IFormField[] = [
     type: "text",
   },
   {
-    id: 3,
     label: "Email",
     name: "email",
     type: "email",
   },
   {
-    id: 4,
     label: "Phone",
     maxLength: 15,
     name: "phoneNumber",
@@ -60,7 +55,6 @@ const FORM_FIELDS_DATA: IFormField[] = [
     type: "tel",
   },
   {
-    id: 5,
     label: "Image",
     name: "image",
     type: "file",
@@ -166,12 +160,12 @@ export const Content: FC<I> = (props): ReactElement => {
         <form className="flex w-full flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
           <Avatar className="mx-auto min-h-32 min-w-32" iconSize={64} src={previewImage ?? props.session?.user?.image ?? ""} />
 
-          {FORM_FIELDS_DATA.map((dt) => (
+          {FORM_FIELDS_DATA.map((dt, i) => (
             <ExampleInput
               color="rose"
               disabled={loading}
               errorMessage={errors[dt.name]?.message}
-              key={dt.id}
+              key={i}
               label={dt.label}
               maxLength={dt.maxLength}
               onKeyDown={dt.onKeyDown}
