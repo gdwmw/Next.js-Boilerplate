@@ -15,7 +15,7 @@ interface I
 
 const ExampleSelectTWM = ({ className, disabled }: Omit<I, "color" | "label">) =>
   twm(
-    "h-[24px]cursor-pointer w-full rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed",
+    "h-[24px] w-full cursor-pointer rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed",
     disabled && "text-gray-400",
     className?.select,
   );

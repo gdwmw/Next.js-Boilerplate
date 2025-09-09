@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { EXAMPLE_PACKAGES_DATA } from "@/src/libs/constants";
+import { EXAMPLE_PACKAGES_DATA } from "@/src/libs";
 
 import { schemaErrorMessage as errorMessage } from "../schema-error-message";
 

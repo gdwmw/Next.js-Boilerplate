@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { FC, PropsWithChildren, ReactElement } from "react";
 
-import { NextAuthProvider, NextThemesProvider, ReactQueryProvider } from "@/src/libs/providers";
+import { NextAuthProvider, NextThemesProvider, ReactQueryProvider } from "@/src/libs";
 
 import { APIConnectionChecker } from "../components";
 import { geistMono, geistSans } from "./fonts";
