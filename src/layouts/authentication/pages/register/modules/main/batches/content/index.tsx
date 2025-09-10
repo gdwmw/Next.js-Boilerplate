@@ -8,7 +8,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
 import { ExampleATWM, ExampleInput, FormContainer, SubmitButton } from "@/src/components";
-import { getErrorMessage, inputValidations } from "@/src/hooks";
+import { getErrorMessageFromAPI, inputValidations } from "@/src/hooks";
 import { RegisterSchema, TRegisterSchema } from "@/src/schemas";
 import { POSTRegister } from "@/src/utils";
 
@@ -90,7 +90,7 @@ export const Content: FC = (): ReactElement => {
           router.push("/authentication/login");
           reset();
         } catch (error) {
-          setErrorMessage(getErrorMessage(error));
+          setErrorMessage(getErrorMessageFromAPI(error));
           console.warn("Register Failed!");
         }
       } else {

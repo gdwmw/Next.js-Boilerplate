@@ -2,7 +2,7 @@ import { KeyboardEvent } from "react";
 
 // ----------------------------
 
-export const getErrorMessage = (error: unknown): string | undefined => {
+export const getErrorMessageFromAPI = (error: unknown): string | undefined => {
   const errorMessage =
     error instanceof Error
       ? error.message

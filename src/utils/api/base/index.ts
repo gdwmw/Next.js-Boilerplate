@@ -1,6 +1,6 @@
 import { getSession } from "@/src/hooks";
 
-const API_URL = process.env.NEXT_PUBLIC_EXAMPLE_URL;
+const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");

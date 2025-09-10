@@ -134,6 +134,30 @@ export interface IUploadResponse {
 
 // ----------------------------
 
+export interface IFormatCommon {
+  name: string;
+  width: number;
+  height: number;
+  url: string;
+}
+
+export interface IImageCommon {
+  id: number;
+  documentId: string;
+  name: string;
+  width: number;
+  height: number;
+  formats: {
+    thumbnail: IFormatCommon;
+    large: IFormatCommon;
+    medium: IFormatCommon;
+    small: IFormatCommon;
+  };
+  url: string;
+}
+
+// ----------------------------
+
 interface IDataCommon {
   name: string;
   phoneNumber: string;

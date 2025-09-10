@@ -13,6 +13,19 @@
   top: 6px;
   width: 9px;
 }
+/* sr-only utility class for accessibility */
+.react-datepicker__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .react-datepicker-wrapper {
   display: inline-block;
   padding: 0;
