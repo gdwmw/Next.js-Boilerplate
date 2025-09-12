@@ -9,6 +9,7 @@ if (!API_URL) {
 type THttpMethod = "DELETE" | "GET" | "POST" | "PUT";
 
 interface I {
+  cache?: RequestCache;
   data?: unknown;
   endpoint: string;
   headers?: HeadersInit;
@@ -27,6 +28,7 @@ export const apiRequest = async <T>(props: I): Promise<T> => {
   try {
     const res = await fetch(url, {
       body: isFormData ? (props.data as FormData) : JSON.stringify(props.data),
+      cache: props.cache || "default",
       headers: {
         ...(!isFormData && { "Content-Type": "application/json" }),
         ...(token && { Authorization: `Bearer ${token}` }),
