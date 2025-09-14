@@ -1,8 +1,7 @@
 import { IAuthResponse, IAuthSchema, IDataResponse, ILoginPayload } from "@/src/types";
 
+import { GETDataByDocumentId, GETUserByDocumentId } from "../..";
 import { postApi } from "../../base";
-import { GETDataByDocumentId } from "../../data";
-import { GETUserByDocumentId } from "../../user";
 
 const API_URL = process.env.NEXT_PUBLIC_EXAMPLE_URL;
 
