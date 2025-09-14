@@ -24,7 +24,7 @@ type T = Readonly<PropsWithChildren>;
 
 const RootLayout: FC<T> = (props): ReactElement => (
   <html lang="en" suppressHydrationWarning>
-    <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <body className={`${geistSans.variable} ${geistMono.variable} font-geistSans antialiased`}>
       <NextThemesProvider>
         <ReactQueryProvider>
           <NextAuthProvider>
