@@ -19,7 +19,7 @@ const meta: Meta<typeof StoriesLayout> = {
     layout: "centered",
   },
   tags: ["autodocs"],
-  title: "Components/Interfaces/Example/B",
+  title: "Components/Elements/Example/B",
 };
 
 export default meta;

@@ -31,7 +31,7 @@ const meta: Meta<typeof ExampleA> = {
     layout: "centered",
   },
   tags: ["autodocs"],
-  title: "Components/Interfaces/Example/A",
+  title: "Components/Elements/Example/A",
 };
 
 export default meta;
