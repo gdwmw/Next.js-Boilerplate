@@ -21,10 +21,10 @@ const FieldsetTWM = ({ className, color, disabled, errorMessage }: Omit<IExample
 
   return twm(
     "group overflow-hidden rounded-md border-2 px-1 pb-2",
-    disabled ? "border-gray-400" : "border-black dark:border-white",
     isActive && color === "rose" && "focus-within:border-rose-400",
     isActive && color === "emerald" && "focus-within:border-emerald-400",
     isError && "focus-within:border-red-600",
+    disabled ? "border-gray-400" : "border-black dark:border-white",
     className?.fieldset,
   );
 };
@@ -35,10 +35,10 @@ const LegendTWM = ({ className, color, disabled, errorMessage }: Omit<IExampleLa
 
   return twm(
     "ml-3 flex select-none items-center gap-1 whitespace-nowrap px-1 text-xs font-semibold",
-    disabled ? "text-gray-400" : "dark:text-white",
     isActive && color === "rose" && "group-focus-within:text-rose-400",
     isActive && color === "emerald" && "group-focus-within:text-emerald-400",
     isError && "group-focus-within:text-red-600",
+    disabled ? "text-gray-400" : "dark:text-white",
     className?.legend,
   );
 };

@@ -44,7 +44,9 @@ const StoriesLayout: FC<I> = (props): null | ReactElement => {
       return (
         <div className="w-60">
           <ExampleSelect color={props.color} disabled={props.disabled} errorMessage={props.errorMessage} label={props.label}>
-            <option value="-">-</option>
+            <option className="hidden" value="-">
+              -
+            </option>
             <option value="1">Option 1</option>
             <option value="2">Option 2</option>
             <option value="3">Option 3</option>
