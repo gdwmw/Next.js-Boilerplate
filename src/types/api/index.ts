@@ -124,16 +124,6 @@ export interface IUploadPayload {
   field?: string;
 }
 
-export interface IUploadResponse {
-  id: number;
-  documentId: string;
-  name: string;
-  url: string;
-  formats: { thumbnail: { url: string } } | null;
-}
-
-// ----------------------------
-
 export interface IFormatCommon {
   name: string;
   width: number;
@@ -141,7 +131,7 @@ export interface IFormatCommon {
   url: string;
 }
 
-export interface IImageCommon {
+export interface IUploadResponse {
   id: number;
   documentId: string;
   name: string;
