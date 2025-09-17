@@ -13,7 +13,7 @@ import { inputValidations } from "@/src/hooks";
 import { ProfileSchema, TProfileSchema } from "@/src/schemas";
 import { DELETEUpload, POSTUpload, PUTData, PUTUser } from "@/src/utils";
 
-const API_URL = process.env.NEXT_PUBLIC_EXAMPLE_URL;
+const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
