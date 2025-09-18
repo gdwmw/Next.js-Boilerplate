@@ -1,3 +1,10 @@
+![Home](public/assets/images/project/1.png)
+![Login](public/assets/images/project/2.png)
+![Register](public/assets/images/project/3.png)
+![Profile](public/assets/images/project/4.png)
+![Change Password](public/assets/images/project/5.png)
+![Role Page](public/assets/images/project/6.png)
+
 # Next.js Boilerplate Documentation
 
 Boilerplate By [Gede Dewo Wahyu M.W](https://github.com/gdwmw) ❤️
