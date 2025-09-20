@@ -8,7 +8,7 @@ export const LoginSchema = (label: string) =>
   z.object({
     identifier:
       label === "Email"
-        ? z.string().email({ message: errorMessage.string.email(label) })
+        ? z.email({ message: errorMessage.string.email(label) })
         : z.string().min(1, { message: errorMessage.string.required(label) }),
     password: z.string().min(1, { message: errorMessage.string.required("Password") }),
   });
@@ -19,7 +19,7 @@ export type TLoginSchema = z.infer<ReturnType<typeof LoginSchema>>;
 
 export const RegisterSchema = z.object({
   confirmPassword: z.string().min(1, { message: errorMessage.string.required("Confirm Password") }),
-  email: z.string().email({ message: errorMessage.string.email("Email") }),
+  email: z.email({ message: errorMessage.string.email("Email") }),
   name: z.string().min(3, { message: errorMessage.string.min("Name", 3) }),
   password: z
     .string()

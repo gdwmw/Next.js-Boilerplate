@@ -5,7 +5,7 @@ import { FC, PropsWithChildren, ReactElement } from "react";
 import { NextAuthProvider, NextThemesProvider, ReactQueryProvider } from "@/src/libs";
 
 import { APIConnectionChecker } from "../components";
-import { geistMono, geistSans } from "./fonts";
+import { geistMono, geistSans, inter, roboto } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ type T = Readonly<PropsWithChildren>;
 
 const RootLayout: FC<T> = (props): ReactElement => (
   <html lang="en" suppressHydrationWarning>
-    <body className={`${geistSans.variable} ${geistMono.variable} font-geistSans antialiased`}>
+    <body className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${roboto.variable} font-inter antialiased`}>
       <NextThemesProvider>
         <ReactQueryProvider>
           <NextAuthProvider>

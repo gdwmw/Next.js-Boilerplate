@@ -164,7 +164,7 @@ export const Content: FC<I> = (props): ReactElement => {
             <ExampleInput
               color="rose"
               disabled={loading}
-              errorMessage={errors[dt.name]?.message}
+              errorMessage={errors[dt.name]?.message as string | undefined}
               key={i}
               label={dt.label}
               maxLength={dt.maxLength}
