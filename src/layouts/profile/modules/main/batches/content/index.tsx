@@ -9,9 +9,8 @@ import { FC, HTMLInputTypeAttribute, KeyboardEvent, ReactElement, useEffect, use
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { Avatar, ExampleATWM, ExampleInput, FormContainer, SubmitButton } from "@/src/components";
-import { inputValidations } from "@/src/hooks";
 import { ProfileSchema, TProfileSchema } from "@/src/schemas";
-import { DELETEUpload, POSTUpload, PUTData, PUTUser } from "@/src/utils";
+import { DELETEUpload, inputValidations, POSTUpload, PUTData, PUTUser } from "@/src/utils";
 
 const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 

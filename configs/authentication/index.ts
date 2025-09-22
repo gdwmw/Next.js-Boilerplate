@@ -4,7 +4,7 @@ import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import { DUMMY_ACCOUNT_DATA } from "@/src/libs";
-// import { deleteCookie, setCookie } from "@/src/hooks";
+// import { deleteCookie, setCookie } from "@/src/utils";
 // import { DEMO_ACCOUNT_DATA } from "@/src/libs";
 import { ILoginPayload } from "@/src/types";
 // import { POSTLogin } from "@/src/utils";

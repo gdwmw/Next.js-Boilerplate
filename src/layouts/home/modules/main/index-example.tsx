@@ -3,7 +3,7 @@ import { FC, ReactElement } from "react";
 import { FaUserAlt } from "react-icons/fa";
 
 import { ChangeThemeButton, ExampleATWM, FormContainer, LogoutButton } from "@/src/components";
-import { getCookie, getSession } from "@/src/hooks";
+import { getCookie, getSession } from "@/src/utils";
 
 export const Main: FC = async (): Promise<ReactElement> => {
   const session = await getSession("status");
