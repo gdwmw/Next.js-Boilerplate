@@ -122,10 +122,10 @@ export const Content: FC = (): ReactElement => {
 
           <SubmitButton color="black" disabled={loading} label="REGISTER" size="sm" variant="solid" />
 
-          <div className="flex justify-center gap-1">
-            <span className="text-xs">Already have an account?</span>
+          <div className="mx-auto text-center">
+            <span className="text-xs">Already have an account? </span>
             <Link
-              className={ExampleATWM({ className: "text-xs", color: "blue", disabled: loading, size: "sm", variant: "ghost" })}
+              className={ExampleATWM({ className: "inline text-xs", color: "blue", disabled: loading, size: "sm", variant: "ghost" })}
               href={"/authentication/login"}
               onClick={(e) => {
                 if (loading) {

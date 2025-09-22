@@ -173,10 +173,10 @@ export const Content: FC<I> = (props): ReactElement => {
             />
           ))}
 
-          <div className="flex justify-center gap-1 max-[350px]:flex-col max-[350px]:items-center">
-            <span className="text-xs">Do you want to change your password?</span>
+          <div className="mx-auto text-center">
+            <span className="text-xs">Do you want to change your password? </span>
             <Link
-              className={ExampleATWM({ className: "text-xs", color: "blue", disabled: loading, size: "sm", variant: "ghost" })}
+              className={ExampleATWM({ className: "inline text-xs", color: "blue", disabled: loading, size: "sm", variant: "ghost" })}
               href={"/password/change"}
               onClick={(e) => {
                 if (loading) {
