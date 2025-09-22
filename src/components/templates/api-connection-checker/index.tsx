@@ -48,7 +48,7 @@ export const APIConnectionChecker: FC = (): ReactElement => {
     <section className="fixed bottom-5 right-5 z-50">
       <div className="flex flex-col items-end">
         {open && (
-          <div className="flex min-w-64 flex-col gap-2 rounded-lg bg-white p-5 shadow-lg dark:bg-black dark:shadow-white/10">
+          <div className="flex min-w-64 flex-col gap-2 rounded-lg border border-gray-200 bg-white p-5 shadow-sm shadow-black/50 dark:border-gray-600 dark:bg-gray-800 dark:shadow-white/70">
             <header className="flex items-center justify-between gap-5">
               <h1 className="text-lg font-semibold dark:text-white">API Connection Checker</h1>
               <ExampleA className="-mb-0.5" color={"blue"} onClick={() => setOpen(false)} size="sm" variant="ghost">
@@ -56,7 +56,7 @@ export const APIConnectionChecker: FC = (): ReactElement => {
               </ExampleA>
             </header>
 
-            <figure className="flex items-center gap-3 rounded-md border bg-gray-100 p-2 dark:border-gray-600 dark:bg-gray-800">
+            <figure className="flex items-center gap-3 rounded-md border border-gray-200 bg-gray-100 p-2 dark:border-gray-600 dark:bg-gray-700">
               <div className="flex size-8 items-center justify-center rounded-full bg-green-500 text-white">
                 <IoCheckmark size={18} />
               </div>
@@ -67,7 +67,10 @@ export const APIConnectionChecker: FC = (): ReactElement => {
             </figure>
 
             {ENVIRONMENT_DATA_VARIABLES.map((dt, i) => (
-              <figure className="flex items-center gap-3 rounded-md border bg-gray-100 p-2 dark:border-gray-600 dark:bg-gray-800" key={i}>
+              <figure
+                className="flex items-center gap-3 rounded-md border border-gray-200 bg-gray-100 p-2 dark:border-gray-600 dark:bg-gray-700"
+                key={i}
+              >
                 <div className={`flex size-8 items-center justify-center rounded-full text-white ${connection[i] ? "bg-green-500" : "bg-red-500"}`}>
                   {connection[i] ? <IoCheckmark size={18} /> : <IoClose size={18} />}
                 </div>

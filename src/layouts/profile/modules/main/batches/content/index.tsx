@@ -188,7 +188,7 @@ export const Content: FC<I> = (props): ReactElement => {
             </Link>
           </div>
 
-          <SubmitButton color="blue" disabled={loading} label="UPDATE" size="sm" variant="solid" />
+          <SubmitButton color="black" disabled={loading} label="UPDATE" size="sm" variant="solid" />
         </form>
       </FormContainer>
     </main>

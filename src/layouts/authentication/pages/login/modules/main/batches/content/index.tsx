@@ -104,7 +104,7 @@ export const Content: FC = (): ReactElement => {
 
           <span className="text-center text-xs text-red-600">{errorMessage}</span>
 
-          <SubmitButton color="blue" disabled={loading} label="LOGIN" size="sm" variant="solid" />
+          <SubmitButton color="black" disabled={loading} label="LOGIN" size="sm" variant="solid" />
 
           <div className="flex justify-center gap-1">
             <span className="text-xs">Don&apos;t have an account yet?</span>

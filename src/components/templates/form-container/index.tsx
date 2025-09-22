@@ -21,7 +21,7 @@ export const FormContainer: FC<I> = ({ children, className, href, label, ...prop
   <section className={twm("container mx-auto flex h-dvh items-center justify-center p-5", className?.container)}>
     <div
       className={twm(
-        "relative flex rounded-xl bg-white px-5 pb-5 pt-[60px] shadow-lg dark:bg-black dark:text-white dark:shadow-white/10",
+        "relative flex rounded-xl border border-gray-200 bg-white px-5 pb-5 pt-[60px] shadow-sm shadow-black/50 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:shadow-white/70",
         !href && "p-5",
         className?.innerContainer,
       )}
@@ -30,7 +30,7 @@ export const FormContainer: FC<I> = ({ children, className, href, label, ...prop
         <Link
           className={ExampleATWM({
             className: `absolute left-5 top-5 font-semibold ${className?.link}`,
-            color: "blue",
+            color: "black",
             size: "sm",
             variant: "ghost",
           })}

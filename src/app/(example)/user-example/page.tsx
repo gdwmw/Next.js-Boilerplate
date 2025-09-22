@@ -20,12 +20,13 @@ const UserPage: FC = async (): Promise<ReactElement> => {
     <main>
       <FormContainer className={{ innerContainer: "w-full max-w-[435px] flex-col items-center gap-3" }} href="/" label="Home">
         <header>
-          <h1 className="text-center text-2xl font-semibold">
-            This is <span className="text-blue-500">User</span> page
-          </h1>
+          <h1 className="text-center text-2xl font-semibold text-blue-500">User Page</h1>
+          <p className="text-center text-sm tracking-wide">This is the user page of the application</p>
         </header>
-        <div className="w-full overflow-x-auto rounded-lg border border-black p-2 dark:border-white">
-          <pre className="w-fit text-sm">session: {JSON.stringify(session, null, 2)}</pre>
+        <div className="max-w-full overflow-hidden rounded-lg border border-blue-500">
+          <div className="w-full overflow-x-auto p-2">
+            <pre className="w-fit text-sm">session: {JSON.stringify(session, null, 2)}</pre>
+          </div>
         </div>
       </FormContainer>
     </main>

@@ -23,6 +23,12 @@ export const ExampleATWM = ({ className, color, disabled, size, variant }: IExam
 
     variant === "solid" && color === "blue" && !disabled && "bg-blue-500 text-white",
 
+    variant === "solid" && color === "black" && !disabled && "bg-black text-white dark:bg-white dark:text-black",
+
+    variant === "solid" && color === "white" && !disabled && "bg-white text-black dark:bg-black dark:text-white",
+
+    variant === "solid" && color === "gray" && !disabled && "bg-gray-200 text-black dark:bg-gray-500 dark:text-white",
+
     variant === "solid" && disabled && "bg-gray-400 text-white",
 
     // ⭐ === OUTLINE === ⭐
@@ -41,6 +47,21 @@ export const ExampleATWM = ({ className, color, disabled, size, variant }: IExam
       !disabled &&
       "bg-transparent text-blue-500 ring-1 ring-inset ring-blue-500 hover:bg-blue-500 hover:text-white",
 
+    variant === "outline" &&
+      color === "black" &&
+      !disabled &&
+      "bg-transparent text-black ring-1 ring-inset ring-black hover:bg-black hover:text-white dark:text-white dark:ring-white dark:hover:bg-white dark:hover:text-black",
+
+    variant === "outline" &&
+      color === "white" &&
+      !disabled &&
+      "bg-transparent text-white ring-1 ring-inset ring-white hover:bg-white hover:text-black dark:text-black dark:ring-black dark:hover:bg-black dark:hover:text-white",
+
+    variant === "outline" &&
+      color === "gray" &&
+      !disabled &&
+      "bg-transparent text-gray-200 ring-1 ring-inset ring-gray-200 hover:bg-gray-200 hover:text-black dark:text-gray-500 dark:ring-gray-500 dark:hover:bg-gray-500 dark:hover:text-white",
+
     variant === "outline" && disabled && "bg-transparent text-gray-400 ring-1 ring-inset ring-gray-400",
 
     // ⭐ === GHOST === ⭐
@@ -49,6 +70,12 @@ export const ExampleATWM = ({ className, color, disabled, size, variant }: IExam
     variant === "ghost" && color === "green" && !disabled && "text-green-500",
 
     variant === "ghost" && color === "blue" && !disabled && "text-blue-500",
+
+    variant === "ghost" && color === "black" && !disabled && "text-black dark:text-white",
+
+    variant === "ghost" && color === "white" && !disabled && "text-white dark:text-black",
+
+    variant === "ghost" && color === "gray" && !disabled && "text-gray-200 dark:text-gray-500",
 
     variant === "ghost" && disabled && "text-gray-400",
 

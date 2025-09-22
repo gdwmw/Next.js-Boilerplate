@@ -31,7 +31,7 @@ export const Avatar: FC<IAvatar> = (props): ReactElement => {
   return props.src ? (
     <div
       className={twm(
-        "relative aspect-square size-fit overflow-hidden rounded-full border bg-gray-100 dark:border-gray-600",
+        "relative aspect-square size-fit overflow-hidden rounded-full border border-gray-400 bg-gray-200 dark:border-gray-200 dark:bg-gray-700",
         container,
         props.className,
       )}
@@ -41,12 +41,12 @@ export const Avatar: FC<IAvatar> = (props): ReactElement => {
   ) : (
     <div
       className={twm(
-        "flex aspect-square size-fit items-center justify-center rounded-full border bg-gray-100 dark:border-gray-600 dark:bg-gray-800",
+        "flex aspect-square size-fit items-center justify-center rounded-full border border-gray-400 bg-gray-200 dark:border-gray-200 dark:bg-gray-700",
         container,
         props.className,
       )}
     >
-      <FaUser className="text-gray-400" size={props.iconSize ? props.iconSize : icon} />
+      <FaUser className="text-gray-400 dark:text-gray-200" size={props.iconSize ? props.iconSize : icon} />
     </div>
   );
 };
