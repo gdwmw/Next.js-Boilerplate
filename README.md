@@ -45,10 +45,9 @@ Below is the main directory structure of the boilerplate:
         └── README.md
     └── 📁context
     └── 📁hooks
-        └── 📁cookies
-        └── 📁functions
-        └── 📁session
-        └── index.ts
+        └── 📁ui
+        └── 📁utils
+|        └── index.ts
     └── 📁layouts
         └── 📁authentication
         └── 📁example
@@ -89,14 +88,8 @@ Below is the main directory structure of the boilerplate:
         └── next-auth.d.ts
     └── 📁utils
         └── 📁api
-            └── 📁authentication
-            └── 📁base
-            └── 📁data
-            └── 📁example
-            └── 📁password
-            └── 📁upload
-            └── 📁user
-            └── index.ts
+        └── 📁helpers
+        └── 📁server
         └── index.ts
     └── middleware.ts
 ```
