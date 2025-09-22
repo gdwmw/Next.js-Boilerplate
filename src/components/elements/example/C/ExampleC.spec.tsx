@@ -17,7 +17,7 @@ interface I {
 
 const inputComponent = (props: I) => (
   <ExampleInput
-    color={props.color ?? "rose"}
+    color={props.color ?? "default"}
     defaultValue={props.defaultValue}
     disabled={props.disabled}
     errorMessage={props.errorMessage}
@@ -29,7 +29,7 @@ const inputComponent = (props: I) => (
 
 const selectComponent = (props: I) => (
   <ExampleSelect
-    color={props.color ?? "rose"}
+    color={props.color ?? "default"}
     defaultValue={props.defaultValue}
     disabled={props.disabled}
     errorMessage={props.errorMessage}
@@ -42,7 +42,7 @@ const selectComponent = (props: I) => (
 
 const textareaComponent = (props: I) => (
   <ExampleTextArea
-    color={props.color ?? "rose"}
+    color={props.color ?? "default"}
     defaultValue={props.defaultValue}
     disabled={props.disabled}
     errorMessage={props.errorMessage}

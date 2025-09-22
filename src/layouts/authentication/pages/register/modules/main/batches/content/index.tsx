@@ -104,7 +104,7 @@ export const Content: FC = (): ReactElement => {
         <form className="flex w-full flex-col gap-3 overflow-y-auto" onSubmit={handleSubmit(onSubmit)}>
           {FORM_FIELDS_DATA.map((dt, i) => (
             <ExampleInput
-              color="rose"
+              color="default"
               disabled={loading}
               errorMessage={errors[dt.name]?.message}
               icon={dt.isPassword ? passwordVisibility ? <IoIosEye size={18} /> : <IoIosEyeOff size={18} /> : undefined}
@@ -118,14 +118,14 @@ export const Content: FC = (): ReactElement => {
             />
           ))}
 
-          <span className="text-center text-sm text-red-600">{errorMessage}</span>
+          <span className="text-center text-xs text-red-600">{errorMessage}</span>
 
-          <SubmitButton color="rose" disabled={loading} label="REGISTER" size="sm" variant="solid" />
+          <SubmitButton color="blue" disabled={loading} label="REGISTER" size="sm" variant="solid" />
 
           <div className="flex justify-center gap-1">
             <span className="text-xs">Already have an account?</span>
             <Link
-              className={ExampleATWM({ className: "text-xs", color: "rose", disabled: loading, size: "sm", variant: "ghost" })}
+              className={ExampleATWM({ className: "text-xs", color: "blue", disabled: loading, size: "sm", variant: "ghost" })}
               href={"/authentication/login"}
               onClick={(e) => {
                 if (loading) {

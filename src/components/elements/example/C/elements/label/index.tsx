@@ -20,11 +20,13 @@ const FieldsetTWM = ({ className, color, disabled, errorMessage }: Omit<IExample
   const isError = errorMessage && !disabled;
 
   return twm(
-    "group overflow-hidden rounded-md border-2 px-1 pb-2",
-    isActive && color === "rose" && "focus-within:border-rose-400",
-    isActive && color === "emerald" && "focus-within:border-emerald-400",
-    isError && "focus-within:border-red-600",
-    disabled ? "border-gray-400" : "border-black dark:border-white",
+    "group overflow-hidden rounded-md border px-1 pb-2 dark:text-white",
+    isActive && color === "blue" && "focus-within:border-blue-500",
+    isActive && color === "red" && "focus-within:border-red-500",
+    isActive && color === "green" && "focus-within:border-green-500",
+    isActive && color === "default" && "",
+    isError && color !== "default" && "focus-within:border-red-600",
+    disabled ? "border-gray-400" : "border-gray-300",
     className?.fieldset,
   );
 };
@@ -35,9 +37,11 @@ const LegendTWM = ({ className, color, disabled, errorMessage }: Omit<IExampleLa
 
   return twm(
     "ml-3 flex select-none items-center gap-1 whitespace-nowrap px-1 text-xs font-semibold",
-    isActive && color === "rose" && "group-focus-within:text-rose-400",
-    isActive && color === "emerald" && "group-focus-within:text-emerald-400",
-    isError && "group-focus-within:text-red-600",
+    isActive && color === "blue" && "group-focus-within:text-blue-500",
+    isActive && color === "red" && "group-focus-within:text-red-500",
+    isActive && color === "green" && "group-focus-within:text-green-500",
+    isActive && color === "default" && "",
+    isError && color !== "default" && "group-focus-within:text-red-600",
     disabled ? "text-gray-400" : "dark:text-white",
     className?.legend,
   );

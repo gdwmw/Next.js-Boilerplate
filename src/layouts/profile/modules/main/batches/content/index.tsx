@@ -154,14 +154,14 @@ export const Content: FC<I> = (props): ReactElement => {
   };
 
   return (
-    <main className="bg-slate-100 dark:bg-slate-900">
+    <main>
       <FormContainer className={{ innerContainer: "max-h-[624px] w-full max-w-[450px]" }} href={"/"} label={"Home"}>
         <form className="flex w-full flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
           <Avatar className="mx-auto min-h-32 min-w-32" iconSize={64} src={previewImage ?? props.session?.user?.image ?? ""} />
 
           {FORM_FIELDS_DATA.map((dt, i) => (
             <ExampleInput
-              color="rose"
+              color="default"
               disabled={loading}
               errorMessage={errors[dt.name]?.message as string | undefined}
               key={i}
@@ -176,7 +176,7 @@ export const Content: FC<I> = (props): ReactElement => {
           <div className="flex justify-center gap-1 max-[350px]:flex-col max-[350px]:items-center">
             <span className="text-xs">Do you want to change your password?</span>
             <Link
-              className={ExampleATWM({ className: "text-xs", color: "rose", disabled: loading, size: "sm", variant: "ghost" })}
+              className={ExampleATWM({ className: "text-xs", color: "blue", disabled: loading, size: "sm", variant: "ghost" })}
               href={"/password/change"}
               onClick={(e) => {
                 if (loading) {
@@ -188,7 +188,7 @@ export const Content: FC<I> = (props): ReactElement => {
             </Link>
           </div>
 
-          <SubmitButton color="rose" disabled={loading} label="UPDATE" size="sm" variant="solid" />
+          <SubmitButton color="blue" disabled={loading} label="UPDATE" size="sm" variant="solid" />
         </form>
       </FormContainer>
     </main>

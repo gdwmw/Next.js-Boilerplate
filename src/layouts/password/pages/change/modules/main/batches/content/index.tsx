@@ -72,12 +72,12 @@ export const Content: FC = (): ReactElement => {
   };
 
   return (
-    <main className="bg-slate-100 dark:bg-slate-900">
+    <main>
       <FormContainer className={{ innerContainer: "w-full max-w-[350px]" }} href={"/profile"} label={"Back"}>
         <form className="flex w-full flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
           {FORM_FIELDS_DATA.map((dt, i) => (
             <ExampleInput
-              color="rose"
+              color="default"
               disabled={loading}
               errorMessage={errors[dt.name]?.message}
               icon={passwordVisibility ? <IoIosEye size={18} /> : <IoIosEyeOff size={18} />}
@@ -90,9 +90,9 @@ export const Content: FC = (): ReactElement => {
             />
           ))}
 
-          <span className="text-center text-sm text-red-600">{errorMessage}</span>
+          <span className="text-center text-xs text-red-600">{errorMessage}</span>
 
-          <SubmitButton color="rose" disabled={loading} label="UPDATE" size="sm" variant="solid" />
+          <SubmitButton color="blue" disabled={loading} label="UPDATE" size="sm" variant="solid" />
         </form>
       </FormContainer>
     </main>

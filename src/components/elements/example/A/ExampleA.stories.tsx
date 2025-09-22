@@ -42,7 +42,7 @@ type Story = StoryObj<typeof ExampleA>;
 export const Solid: Story = {
   args: {
     variant: "solid",
-    color: "rose",
+    color: "blue",
     size: "sm",
     children: (
       <>
@@ -56,7 +56,7 @@ export const Solid: Story = {
 export const Outline: Story = {
   args: {
     variant: "outline",
-    color: "rose",
+    color: "blue",
     size: "sm",
     children: (
       <>
@@ -70,7 +70,7 @@ export const Outline: Story = {
 export const Ghost: Story = {
   args: {
     variant: "ghost",
-    color: "rose",
+    color: "blue",
     size: "sm",
     children: (
       <>

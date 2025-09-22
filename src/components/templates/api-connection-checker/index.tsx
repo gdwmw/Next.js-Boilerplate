@@ -51,13 +51,13 @@ export const APIConnectionChecker: FC = (): ReactElement => {
           <div className="flex min-w-64 flex-col gap-2 rounded-lg bg-white p-5 shadow-lg dark:bg-black dark:shadow-white/10">
             <header className="flex items-center justify-between gap-5">
               <h1 className="text-lg font-semibold dark:text-white">API Connection Checker</h1>
-              <ExampleA className="-mb-1" color={"rose"} onClick={() => setOpen(false)} size="sm" variant="ghost">
+              <ExampleA className="-mb-0.5" color={"blue"} onClick={() => setOpen(false)} size="sm" variant="ghost">
                 <IoClose size={20} />
               </ExampleA>
             </header>
 
             <figure className="flex items-center gap-3 rounded-md border bg-gray-100 p-2 dark:border-gray-600 dark:bg-gray-800">
-              <div className="flex size-8 items-center justify-center rounded-full bg-emerald-400 text-white">
+              <div className="flex size-8 items-center justify-center rounded-full bg-green-500 text-white">
                 <IoCheckmark size={18} />
               </div>
               <figcaption>
@@ -68,9 +68,7 @@ export const APIConnectionChecker: FC = (): ReactElement => {
 
             {ENVIRONMENT_DATA_VARIABLES.map((dt, i) => (
               <figure className="flex items-center gap-3 rounded-md border bg-gray-100 p-2 dark:border-gray-600 dark:bg-gray-800" key={i}>
-                <div
-                  className={`flex size-8 items-center justify-center rounded-full text-white ${connection[i] ? "bg-emerald-400" : "bg-rose-400"}`}
-                >
+                <div className={`flex size-8 items-center justify-center rounded-full text-white ${connection[i] ? "bg-green-500" : "bg-red-500"}`}>
                   {connection[i] ? <IoCheckmark size={18} /> : <IoClose size={18} />}
                 </div>
                 <figcaption>
@@ -85,7 +83,7 @@ export const APIConnectionChecker: FC = (): ReactElement => {
         )}
 
         {!open && (
-          <ExampleA className="min-w-16" color={"rose"} onClick={() => setOpen(true)} size="sm" variant="solid">
+          <ExampleA className="min-w-10" color={"blue"} onClick={() => setOpen(true)} size="sm" variant="solid">
             <FaServer size={18} />
           </ExampleA>
         )}

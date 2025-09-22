@@ -24,12 +24,14 @@ type T = Readonly<PropsWithChildren>;
 
 const RootLayout: FC<T> = (props): ReactElement => (
   <html lang="en" suppressHydrationWarning>
-    <body className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${roboto.variable} font-inter antialiased`}>
+    <body
+      className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${roboto.variable} bg-gray-100 font-inter antialiased dark:bg-gray-900`}
+    >
       <NextThemesProvider>
         <ReactQueryProvider>
           <NextAuthProvider>
             {props.children}
-            <APIConnectionChecker />
+            {(process.env.NODE_ENV === "development" || process.env.NEXT_PUBLIC_EXAMPLE_MODE) && <APIConnectionChecker />}
           </NextAuthProvider>
         </ReactQueryProvider>
       </NextThemesProvider>

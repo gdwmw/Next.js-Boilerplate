@@ -13,39 +13,42 @@ export const ExampleATWM = ({ className, color, disabled, size, variant }: IExam
   twm(
     "flex items-center gap-2 font-semibold",
     // ⭐ === BASE === ⭐
-    variant !== "ghost" && "justify-center rounded-full",
+    variant !== "ghost" && "justify-center rounded-md",
     disabled ? "cursor-not-allowed" : "active:scale-95",
 
     // ⭐ === SOLID === ⭐
-    variant === "solid" &&
-      color === "rose" &&
-      !disabled &&
-      "bg-rose-400 text-white hover:bg-rose-500 hover:ring-1 hover:ring-rose-600 active:bg-rose-600",
+    variant === "solid" && color === "red" && !disabled && "bg-red-500 text-white",
 
-    variant === "solid" &&
-      color === "emerald" &&
-      !disabled &&
-      "bg-emerald-400 text-white hover:bg-emerald-500 hover:ring-1 hover:ring-emerald-600 active:bg-emerald-600",
+    variant === "solid" && color === "green" && !disabled && "bg-green-500 text-white",
+
+    variant === "solid" && color === "blue" && !disabled && "bg-blue-500 text-white",
 
     variant === "solid" && disabled && "bg-gray-400 text-white",
 
     // ⭐ === OUTLINE === ⭐
     variant === "outline" &&
-      color === "rose" &&
+      color === "red" &&
       !disabled &&
-      "bg-transparent text-rose-400 ring-1 ring-rose-400 hover:bg-rose-500 hover:text-white hover:ring-rose-600 active:bg-rose-600",
+      "bg-transparent text-red-500 ring-1 ring-inset ring-red-500 hover:bg-red-500 hover:text-white",
 
     variant === "outline" &&
-      color === "emerald" &&
+      color === "green" &&
       !disabled &&
-      "bg-transparent text-emerald-400 ring-1 ring-emerald-400 hover:bg-emerald-500 hover:text-white hover:ring-emerald-600 active:bg-emerald-600",
+      "bg-transparent text-green-500 ring-1 ring-inset ring-green-500 hover:bg-green-500 hover:text-white",
 
-    variant === "outline" && disabled && "bg-transparent text-gray-400 ring-1 ring-gray-400",
+    variant === "outline" &&
+      color === "blue" &&
+      !disabled &&
+      "bg-transparent text-blue-500 ring-1 ring-inset ring-blue-500 hover:bg-blue-500 hover:text-white",
+
+    variant === "outline" && disabled && "bg-transparent text-gray-400 ring-1 ring-inset ring-gray-400",
 
     // ⭐ === GHOST === ⭐
-    variant === "ghost" && color === "rose" && !disabled && "text-rose-400 hover:text-rose-500 active:text-rose-600",
+    variant === "ghost" && color === "red" && !disabled && "text-red-500",
 
-    variant === "ghost" && color === "emerald" && !disabled && "text-emerald-400 hover:text-emerald-500 active:text-emerald-600",
+    variant === "ghost" && color === "green" && !disabled && "text-green-500",
+
+    variant === "ghost" && color === "blue" && !disabled && "text-blue-500",
 
     variant === "ghost" && disabled && "text-gray-400",
 

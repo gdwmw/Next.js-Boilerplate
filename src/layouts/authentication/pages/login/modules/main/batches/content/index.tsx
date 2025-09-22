@@ -76,7 +76,7 @@ export const Content: FC = (): ReactElement => {
       <FormContainer className={{ innerContainer: "w-full max-w-[300px]" }} href={"/"} label={"Home"}>
         <form className="flex w-full flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
           <ExampleInput
-            color="rose"
+            color="default"
             disabled={loading}
             errorMessage={errors.identifier?.message}
             icon={<TbArrowsExchange size={18} />}
@@ -92,7 +92,7 @@ export const Content: FC = (): ReactElement => {
           />
 
           <ExampleInput
-            color="rose"
+            color="default"
             disabled={loading}
             errorMessage={errors.password?.message}
             icon={passwordVisibility ? <IoIosEye size={18} /> : <IoIosEyeOff size={18} />}
@@ -102,14 +102,14 @@ export const Content: FC = (): ReactElement => {
             {...register("password")}
           />
 
-          <span className="text-center text-sm text-red-600">{errorMessage}</span>
+          <span className="text-center text-xs text-red-600">{errorMessage}</span>
 
-          <SubmitButton color="rose" disabled={loading} label="LOGIN" size="sm" variant="solid" />
+          <SubmitButton color="blue" disabled={loading} label="LOGIN" size="sm" variant="solid" />
 
           <div className="flex justify-center gap-1">
             <span className="text-xs">Don&apos;t have an account yet?</span>
             <Link
-              className={ExampleATWM({ className: "text-xs", color: "rose", disabled: loading, size: "sm", variant: "ghost" })}
+              className={ExampleATWM({ className: "text-xs", color: "blue", disabled: loading, size: "sm", variant: "ghost" })}
               href={"/authentication/register"}
               onClick={(e) => {
                 if (loading) {

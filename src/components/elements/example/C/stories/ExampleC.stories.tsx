@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 
-import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 import { fn } from "storybook/test";
 
 import { EXAMPLEC_COLOR_OPTIONS } from "@/src/libs";
@@ -24,7 +24,24 @@ const meta: Meta<typeof StoriesLayout> = {
       control: { type: "text" },
     },
     type: {
-      control: { type: "text" },
+      control: { type: "select" },
+      options: [
+        "color",
+        "date",
+        "datetime-local",
+        "email",
+        "file",
+        "month",
+        "number",
+        "password",
+        "range",
+        "search",
+        "tel",
+        "text",
+        "time",
+        "url",
+        "week",
+      ],
     },
   },
   component: StoriesLayout,
@@ -43,17 +60,17 @@ type Story = StoryObj<typeof StoriesLayout>;
 export const Input: Story = {
   args: {
     componentType: "input",
-    color: "rose",
+    color: "default",
     label: "Example Input",
     type: "text",
-    icon: <FaEye />,
+    icon: <FaEyeSlash />,
   },
 };
 
 export const Select: Story = {
   args: {
     componentType: "select",
-    color: "rose",
+    color: "default",
     label: "Example Select",
   },
 };
@@ -61,7 +78,7 @@ export const Select: Story = {
 export const DatePicker: Story = {
   args: {
     componentType: "datepicker",
-    color: "rose",
+    color: "default",
     label: "Example Date Picker",
   },
 };
@@ -69,7 +86,7 @@ export const DatePicker: Story = {
 export const TextArea: Story = {
   args: {
     componentType: "textarea",
-    color: "rose",
+    color: "default",
     label: "Example Text Area",
   },
 };

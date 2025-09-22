@@ -8,7 +8,7 @@ import { ExampleA, IExampleA } from ".";
 const component = (props: { onClickFn?: () => void } & Partial<IExampleA>) => (
   <ExampleA
     className="testing-class"
-    color={props.color ?? "rose"}
+    color={props.color ?? "blue"}
     disabled={props.disabled}
     id="testing-id"
     onClick={props.onClickFn}

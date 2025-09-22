@@ -10,38 +10,44 @@ export const Main: FC = async (): Promise<ReactElement> => {
   const themeCookie = await getCookie("theme");
 
   return (
-    <main className="bg-slate-100 dark:bg-slate-900">
+    <main>
       <FormContainer className={{ innerContainer: "flex-col items-center gap-3" }} href="" label="">
         <header>
           <h1 className="text-center text-2xl font-semibold">
-            This is <span className="text-rose-400">Home</span> page
+            This is <span className="text-blue-500">Home</span> page
           </h1>
         </header>
 
-        <nav className="space-y-3">
-          <div className="flex flex-wrap justify-center gap-3">
-            <ChangeThemeButton className="min-w-16" color="rose" cookie={themeCookie?.value ?? ""} size="sm" variant="outline" />
+        <nav className={`w-full ${session ? "space-y-3" : "flex gap-3"}`}>
+          {session ? (
+            <div className="flex flex-wrap justify-center gap-3">
+              <ChangeThemeButton className="min-w-16" color="green" cookie={themeCookie?.value ?? ""} size="sm" variant="outline" />
 
-            {session && (
-              <>
-                <Link className={ExampleATWM({ className: "min-w-16", color: "rose", size: "sm", variant: "solid" })} href={"/profile"}>
-                  <FaUserAlt size={17} />
-                </Link>
+              <Link className={ExampleATWM({ className: "min-w-16", color: "blue", size: "sm", variant: "solid" })} href={"/profile"}>
+                <FaUserAlt size={17} />
+              </Link>
 
-                <LogoutButton className="min-w-16" color="rose" size="sm" variant="solid" />
-              </>
-            )}
-          </div>
+              <LogoutButton className="min-w-16" color="red" size="sm" variant="solid" />
+            </div>
+          ) : (
+            <ChangeThemeButton className="min-w-10" color="green" cookie={themeCookie?.value ?? ""} size="sm" variant="outline" />
+          )}
 
-          <div className="flex flex-wrap gap-3">
-            <Link className={ExampleATWM({ className: "grow", color: "rose", size: "sm", variant: "solid" })} href={"/user-example"}>
-              User
+          {session ? (
+            <div className="flex flex-wrap gap-3">
+              <Link className={ExampleATWM({ className: "grow", color: "blue", size: "sm", variant: "solid" })} href={"/user-example"}>
+                USER
+              </Link>
+
+              <Link className={ExampleATWM({ className: "grow", color: "blue", size: "sm", variant: "solid" })} href={"/admin-example"}>
+                ADMIN
+              </Link>
+            </div>
+          ) : (
+            <Link className={ExampleATWM({ className: "w-full", color: "blue", size: "sm", variant: "solid" })} href={"/authentication/login"}>
+              LOGIN
             </Link>
-
-            <Link className={ExampleATWM({ className: "grow", color: "rose", size: "sm", variant: "solid" })} href={"/admin-example"}>
-              Admin
-            </Link>
-          </div>
+          )}
         </nav>
       </FormContainer>
     </main>
