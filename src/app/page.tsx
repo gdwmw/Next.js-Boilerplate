@@ -1,7 +1,7 @@
 import { Metadata, Viewport } from "next";
 import { FC, ReactElement } from "react";
 
-import { Main } from "@/src/layouts/home/modules/main/index-example";
+import { Main } from "../layouts/home/modules/main/index-example";
 
 export const viewport: Viewport = {
   initialScale: 1.0,
