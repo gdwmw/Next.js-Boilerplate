@@ -13,13 +13,19 @@ const ENVIRONMENT_DATA_VALUES = [process.env.NEXT_PUBLIC_BASE_API_URL];
 
 export const APIConnectionChecker: FC = (): ReactElement => {
   const { toggle, value } = useToggle();
-  const [connection, setConnection] = useState<boolean[]>([]);
+  const [connection, setConnection] = useState<boolean[]>(() => ENVIRONMENT_DATA_VALUES.map(() => false));
 
   useEffect(() => {
+    if (value) {
+      setConnection(ENVIRONMENT_DATA_VALUES.map(() => false));
+    }
+
     const handleSetArray = (value: boolean, index: number) => {
-      const newArray = [...connection];
-      newArray[index] = value;
-      setConnection(newArray);
+      setConnection((prev) => {
+        const next = [...prev];
+        next[index] = value;
+        return next;
+      });
     };
 
     const checkConnection = async (url: string, index: number) => {
@@ -34,16 +40,23 @@ export const APIConnectionChecker: FC = (): ReactElement => {
       }
     };
 
-    const handleCheckConnection = () =>
-      ENVIRONMENT_DATA_VALUES.forEach(async (url, i) => {
-        if (value && url) {
-          await checkConnection(url, i);
+    const handleCheckConnection = () => {
+      if (!value) {
+        return;
+      }
+      const tasks = ENVIRONMENT_DATA_VALUES.map((url, i) => {
+        if (!url) {
+          handleSetArray(false, i);
+          return Promise.resolve();
         }
+        return checkConnection(url, i);
       });
+      void Promise.allSettled(tasks);
+    };
+
     handleCheckConnection();
     const interval = setInterval(handleCheckConnection, 30000);
     return () => clearInterval(interval);
-    // eslint-disable-next-line
   }, [value]);
 
   return (
