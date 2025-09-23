@@ -73,7 +73,7 @@ export const Content: FC = (): ReactElement => {
 
   return (
     <main>
-      <FormContainer className={{ innerContainer: "w-full max-w-[350px]" }} href={"/profile"} label={"Back"}>
+      <FormContainer className={{ innerContainer: "max-w-[350px]" }} href={"/profile"} label={"Back"}>
         <form className="flex w-full flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
           {FORM_FIELDS_DATA.map((dt, i) => (
             <ExampleInput

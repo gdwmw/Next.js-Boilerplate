@@ -18,7 +18,7 @@ const AdminPage: FC = async (): Promise<ReactElement> => {
 
   return (
     <main>
-      <FormContainer className={{ innerContainer: "w-full max-w-[435px] flex-col items-center gap-3" }} href="/" label="Home">
+      <FormContainer className={{ innerContainer: "max-w-[435px] flex-col items-center gap-3" }} href="/" label="Home">
         <header>
           <h1 className="text-center text-2xl font-semibold text-blue-500">Admin Page</h1>
           <p className="text-center text-sm tracking-wide">This is the admin page of the application</p>

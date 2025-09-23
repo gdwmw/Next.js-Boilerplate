@@ -11,7 +11,7 @@ export const Main: FC = async (): Promise<ReactElement> => {
 
   return (
     <main>
-      <FormContainer className={{ innerContainer: "w-full max-w-[400px] flex-col items-center gap-3" }} href="" label="">
+      <FormContainer className={{ innerContainer: "max-w-[400px] flex-col items-center gap-3" }} href="" label="">
         <header>
           <h1 className="text-center text-2xl font-semibold text-blue-500">Home Page</h1>
           <p className="text-center text-sm tracking-wide">This is the home page of the application</p>
