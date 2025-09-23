@@ -24,7 +24,7 @@ const AdminPage: FC = async (): Promise<ReactElement> => {
           <p className="text-center text-sm tracking-wide">This is the admin page of the application</p>
         </header>
         <div className="max-w-full overflow-hidden rounded-lg border border-blue-500">
-          <div className="w-full overflow-x-auto p-2">
+          <div className="w-full overflow-auto p-2">
             <pre className="w-fit text-sm">session: {JSON.stringify(session, null, 2)}</pre>
           </div>
         </div>
