@@ -60,48 +60,50 @@ export const APIConnectionChecker: FC = (): ReactElement => {
   }, [value]);
 
   return (
-    <section className="fixed bottom-5 right-5 z-50">
+    <section className="fixed bottom-5 right-5 z-50 w-[calc(100%-40px)] max-w-full sm:w-auto sm:max-w-sm">
       <div className="flex flex-col items-end">
         {value && (
-          <div className="flex min-w-64 flex-col gap-2 rounded-lg border border-gray-200 bg-white p-5 shadow-sm shadow-black/50 dark:border-gray-600 dark:bg-gray-800 dark:shadow-white/70">
-            <header className="flex items-center justify-between gap-5">
-              <h1 className="text-lg font-semibold dark:text-white">API Connection Checker</h1>
-              <ExampleA className="-mb-0.5" color={"blue"} onClick={() => toggle()} size="sm" variant="ghost">
+          <div className="flex max-h-[70vh] w-full flex-col gap-2 overflow-y-auto rounded-lg border border-gray-200 bg-white p-4 shadow-sm shadow-black/50 sm:w-auto sm:p-5 dark:border-gray-600 dark:bg-gray-800 dark:shadow-white/70">
+            <div className="flex items-center justify-between gap-3 sm:gap-5">
+              <h1 className="truncate text-base font-semibold sm:text-lg dark:text-white">API Connection Checker</h1>
+              <ExampleA className="-mb-0.5" color="blue" onClick={() => toggle()} size="sm" variant="ghost">
                 <IoClose size={20} />
               </ExampleA>
-            </header>
+            </div>
 
-            <figure className="flex items-center gap-3 rounded-md border border-gray-200 bg-gray-100 p-2 dark:border-gray-600 dark:bg-gray-700">
-              <div className="flex size-8 items-center justify-center rounded-full bg-green-500 text-white">
+            <div className="flex items-center gap-3 rounded-md border border-gray-200 bg-gray-100 p-2 dark:border-gray-600 dark:bg-gray-700">
+              <div className="flex min-h-8 min-w-8 items-center justify-center rounded-full bg-green-500 text-white">
                 <IoCheckmark size={18} />
               </div>
-              <figcaption>
-                <h2 className="font-semibold dark:text-white">Connected</h2>
-                <span className="block text-xs text-gray-600 dark:text-gray-300">NEXT_PUBLIC_EXAMPLE_URL</span>
-              </figcaption>
-            </figure>
+              <div className="overflow-hidden">
+                <h2 className="text-sm font-semibold sm:text-base dark:text-white">Connected</h2>
+                <span className="block max-w-[200px] truncate text-xs text-gray-600 sm:max-w-xs dark:text-gray-300">NEXT_PUBLIC_EXAMPLE_URL</span>
+              </div>
+            </div>
 
             {ENVIRONMENT_DATA_VARIABLES.map((dt, i) => (
-              <figure
+              <div
                 className="flex items-center gap-3 rounded-md border border-gray-200 bg-gray-100 p-2 dark:border-gray-600 dark:bg-gray-700"
                 key={i}
               >
-                <div className={`flex size-8 items-center justify-center rounded-full text-white ${connection[i] ? "bg-green-500" : "bg-red-500"}`}>
+                <div
+                  className={`flex min-h-8 min-w-8 items-center justify-center rounded-full text-white ${connection[i] ? "bg-green-500" : "bg-red-500"}`}
+                >
                   {connection[i] ? <IoCheckmark size={18} /> : <IoClose size={18} />}
                 </div>
-                <figcaption>
-                  <h2 className="font-semibold dark:text-white">{connection[i] ? "Connected" : "Disconnected"}</h2>
-                  <span className="block text-xs text-gray-600 dark:text-gray-300">{dt}</span>
-                </figcaption>
-              </figure>
+                <div className="overflow-hidden">
+                  <h2 className="text-sm font-semibold sm:text-base dark:text-white">{connection[i] ? "Connected" : "Disconnected"}</h2>
+                  <span className="block max-w-[200px] truncate text-xs text-gray-600 sm:max-w-xs dark:text-gray-300">{dt}</span>
+                </div>
+              </div>
             ))}
 
-            <p className="text-xs text-gray-400">Last checked: {new Date().toLocaleTimeString()}</p>
+            <p className="mt-1 text-xs text-gray-400">Last checked: {new Date().toLocaleTimeString()}</p>
           </div>
         )}
 
         {!value && (
-          <ExampleA className="min-w-10" color={"blue"} onClick={() => toggle()} size="sm" variant="solid">
+          <ExampleA className="min-w-10" color="blue" onClick={() => toggle()} size="sm" variant="solid">
             <FaServer size={18} />
           </ExampleA>
         )}

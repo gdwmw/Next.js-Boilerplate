@@ -30,7 +30,7 @@ const RootLayout: FC<T> = (props): ReactElement => (
         <ReactQueryProvider>
           <NextAuthProvider>
             {props.children}
-            {(process.env.NODE_ENV === "development" || process.env.NEXT_PUBLIC_EXAMPLE_MODE) && <APIConnectionChecker />}
+            {(process.env.NODE_ENV === "development" || process.env.NEXT_PUBLIC_EXAMPLE_MODE === "true") && <APIConnectionChecker />}
           </NextAuthProvider>
         </ReactQueryProvider>
       </NextThemesProvider>
