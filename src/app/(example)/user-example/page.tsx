@@ -18,13 +18,13 @@ const UserPage: FC = async (): Promise<ReactElement> => {
 
   return (
     <main>
-      <FormContainer className={{ innerContainer: "max-w-[435px] flex-col items-center gap-3" }} href="/" label="Home">
+      <FormContainer className={{ innerContainer: "h-full max-h-[639px] max-w-[435px] flex-col items-center gap-3" }} href="/" label="Home">
         <header>
           <h1 className="text-center text-2xl font-semibold text-blue-500">User Page</h1>
           <p className="text-center text-sm tracking-wide">This is the user page of the application</p>
         </header>
-        <div className="max-w-full overflow-hidden rounded-lg border border-blue-500">
-          <div className="w-full overflow-auto p-2">
+        <div className="max-h-full max-w-full overflow-hidden rounded-lg border border-blue-500">
+          <div className="size-full overflow-auto p-2">
             <pre className="w-fit text-sm">session: {JSON.stringify(session, null, 2)}</pre>
           </div>
         </div>

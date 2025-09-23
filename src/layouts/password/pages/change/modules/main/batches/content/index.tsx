@@ -74,7 +74,7 @@ export const Content: FC = (): ReactElement => {
   return (
     <main>
       <FormContainer className={{ innerContainer: "max-w-[350px]" }} href={"/profile"} label={"Back"}>
-        <form className="flex w-full flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex w-full flex-col gap-3 overflow-y-auto" onSubmit={handleSubmit(onSubmit)}>
           {FORM_FIELDS_DATA.map((dt, i) => (
             <ExampleInput
               color="default"
