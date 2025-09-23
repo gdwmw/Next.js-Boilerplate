@@ -4,13 +4,15 @@ import { FC, ReactElement, useEffect, useState } from "react";
 import { FaServer } from "react-icons/fa";
 import { IoCheckmark, IoClose } from "react-icons/io5";
 
+import { useToggle } from "@/src/hooks";
+
 import { ExampleA } from "../../elements";
 
 const ENVIRONMENT_DATA_VARIABLES = ["NEXT_PUBLIC_BASE_API_URL"];
 const ENVIRONMENT_DATA_VALUES = [process.env.NEXT_PUBLIC_BASE_API_URL];
 
 export const APIConnectionChecker: FC = (): ReactElement => {
-  const [open, setOpen] = useState(false);
+  const { toggle, value } = useToggle();
   const [connection, setConnection] = useState<boolean[]>([]);
 
   useEffect(() => {
@@ -34,7 +36,7 @@ export const APIConnectionChecker: FC = (): ReactElement => {
 
     const handleCheckConnection = () =>
       ENVIRONMENT_DATA_VALUES.forEach(async (url, i) => {
-        if (open && url) {
+        if (value && url) {
           await checkConnection(url, i);
         }
       });
@@ -42,16 +44,16 @@ export const APIConnectionChecker: FC = (): ReactElement => {
     const interval = setInterval(handleCheckConnection, 30000);
     return () => clearInterval(interval);
     // eslint-disable-next-line
-  }, [open]);
+  }, [value]);
 
   return (
     <section className="fixed bottom-5 right-5 z-50">
       <div className="flex flex-col items-end">
-        {open && (
+        {value && (
           <div className="flex min-w-64 flex-col gap-2 rounded-lg border border-gray-200 bg-white p-5 shadow-sm shadow-black/50 dark:border-gray-600 dark:bg-gray-800 dark:shadow-white/70">
             <header className="flex items-center justify-between gap-5">
               <h1 className="text-lg font-semibold dark:text-white">API Connection Checker</h1>
-              <ExampleA className="-mb-0.5" color={"blue"} onClick={() => setOpen(false)} size="sm" variant="ghost">
+              <ExampleA className="-mb-0.5" color={"blue"} onClick={() => toggle()} size="sm" variant="ghost">
                 <IoClose size={20} />
               </ExampleA>
             </header>
@@ -85,8 +87,8 @@ export const APIConnectionChecker: FC = (): ReactElement => {
           </div>
         )}
 
-        {!open && (
-          <ExampleA className="min-w-10" color={"blue"} onClick={() => setOpen(true)} size="sm" variant="solid">
+        {!value && (
+          <ExampleA className="min-w-10" color={"blue"} onClick={() => toggle()} size="sm" variant="solid">
             <FaServer size={18} />
           </ExampleA>
         )}
