@@ -1,19 +1,17 @@
 import { FlatCompat } from "@eslint/eslintrc";
-import js from "@eslint/js";
 import pluginQuery from "@tanstack/eslint-plugin-query";
 import perfectionist from "eslint-plugin-perfectionist";
-import { default as react, default as reactPlugin } from "eslint-plugin-react";
+import reactPlugin from "eslint-plugin-react";
 import storybook from "eslint-plugin-storybook";
 import tailwind from "eslint-plugin-tailwindcss";
-import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { dirname } from "path";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = dirname(__filename);
+
 const compat = new FlatCompat({
-  allConfig: js.configs.all,
   baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
 });
 
 const eslintConfig = [
@@ -31,7 +29,7 @@ const eslintConfig = [
     "plugin:jest/style",
   ),
   {
-    ignores: ["!.storybook"],
+    ignores: ["node_modules/**", ".next/**", "out/**", "build/**", "next-env.d.ts", "!.storybook"],
   },
   {
     files: ["**/.commitlintrc.cjs"],
@@ -50,7 +48,7 @@ const eslintConfig = [
   },
   {
     plugins: {
-      react,
+      react: reactPlugin,
     },
     rules: {
       "@typescript-eslint/no-empty-object-type": "off",
