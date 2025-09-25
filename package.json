@@ -13,7 +13,7 @@
     "storybook:start": "bunx http-server storybook-static",
     "jest:watch": "jest --watch",
     "jest:test": "jest",
-    "lint": "next lint",
+    "lint": "next lint --max-warnings 0",
     "lint:fix": "eslint src --fix",
     "prettier": "prettier --write \"src/**/*\"",
     "vercel": "vercel --prod",
