@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "0bb15b3a-7ab8-4be9-8688-5a42ce44df3f",
+		"name": "EXAMPLE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30687134"
+	},
+	"item": [
+		{
+			"name": "datas",
+			"item": [
+				{
+					"name": "get-all",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/datas?populate=*",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"datas"
+							],
+							"query": [
+								{
+									"key": "populate",
+									"value": "*"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/datas/xg3h3vcki322l7wjtdnucoh6?populate=*",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"datas",
+								"xg3h3vcki322l7wjtdnucoh6"
+							],
+							"query": [
+								{
+									"key": "populate",
+									"value": "*"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"name\": \"User\",\r\n        \"phoneNumber\": \"000000000000\",\r\n        \"image\": 1,\r\n        \"role\": \"user\",\r\n        \"bookings\": \"jzp7m47bk1gek5xi6m9ujsu1\",\r\n        \"reviews\": \"jzp7m47bk1gek5xi6m9ujsu1\",\r\n        \"questionnaires\": \"jzp7m47bk1gek5xi6m9ujsu1\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/datas?populate=*",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"datas"
+							],
+							"query": [
+								{
+									"key": "populate",
+									"value": "*"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"name\": \"User\",\r\n        \"phoneNumber\": \"000000000000\",\r\n        \"image\": 1,\r\n        \"role\": \"user\",\r\n        \"bookings\": \"jzp7m47bk1gek5xi6m9ujsu1\",\r\n        \"reviews\": \"jzp7m47bk1gek5xi6m9ujsu1\",\r\n        \"questionnaires\": \"jzp7m47bk1gek5xi6m9ujsu1\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/datas/jzp7m47bk1gek5xi6m9ujsu1?populate=*",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"datas",
+								"jzp7m47bk1gek5xi6m9ujsu1"
+							],
+							"query": [
+								{
+									"key": "populate",
+									"value": "*"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/datas/xg3h3vcki322l7wjtdnucoh6?populate=*",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"datas",
+								"xg3h3vcki322l7wjtdnucoh6"
+							],
+							"query": [
+								{
+									"key": "populate",
+									"value": "*"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
