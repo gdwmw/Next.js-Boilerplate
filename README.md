@@ -1,3 +1,5 @@
+# Next.js Boilerplate Documentation
+
 ![Home](public/assets/images/project/1.png)
 ![Login](public/assets/images/project/2.png)
 ![Register](public/assets/images/project/3.png)
@@ -5,19 +7,17 @@
 ![Change Password](public/assets/images/project/5.png)
 ![Role Page](public/assets/images/project/6.png)
 
-# Next.js Boilerplate Documentation
-
 Boilerplate By [Gede Dewo Wahyu M.W](https://github.com/gdwmw) ❤️
 
 ## Boilerplate Description 📖
 
-This boilerplate is a web application built using Next.js, which is a React framework for web application development. The boilerplate includes various features such as authentication, theme management, state management, form validation, and more. Additionally, this boilerplate follows the principles of Atomic Design for organizing components.
+This boilerplate is a web application built with Next.js, a React framework for modern web development. It includes features such as authentication, theme management, state management, form validation, and more. It also follows Atomic Design principles for organizing components.
 
 ## Boilerplate Structure 📂
 
-Below is the main directory structure of the boilerplate:
+Below is the primary directory structure of the boilerplate:
 
-```
+```text
 └── 📁configs
     └── 📁authentication
 └── 📁docs
@@ -96,115 +96,115 @@ Below is the main directory structure of the boilerplate:
 
 ### Structure Explanation 📚
 
-- **/configs**: Contains configuration files, including authentication settings and logic.
-- **/docs**: Contains project documentation such as architectural diagrams, flowcharts, API documentation, and other technical documentation that helps understand the project structure and functionality.
-- **/public**: Contains static assets such as images, animations, and other static files.
-- **/src/app**: Contains the main application pages, including login, admin, user, and others.
-- **/src/components**: Contains reusable components throughout the application, organized following the principles of Atomic Design.
-- **/src/context**: Contains context providers for state management and sharing data across components.
-- **/src/hooks**: Contains custom hooks for managing state and side effects in functional components.
-- **/src/layouts**: Contains layouts for various parts of the application, such as header, footer, aside, and others. The layouts are organized following the principles of Atomic Design, with components broken down into smaller, reusable pieces.
-- **/src/libs**: Contains libraries such as providers for authentication and theme management, as well as constants and others.
-- **/src/schemas**: Contains validation schemas using Zod to ensure incoming data meets expectations.
-- **/src/styles**: Contains global styles, CSS modules, and other styling-related files.
-- **/src/types**: Contains TypeScript type definitions to ensure type safety throughout the application.
-- **/src/utils**: Contains utility functions used in various places within the application.
-- **/src/middleware.ts**: Contains middleware functions for handling requests and responses.
+- **/configs**: Configuration files, including authentication settings and logic.
+- **/docs**: Project documentation such as architecture diagrams, flowcharts, API docs, and other technical references.
+- **/public**: Static assets such as images and animations.
+- **/src/app**: Application routes/pages, including login, admin, and user areas.
+- **/src/components**: Reusable components organized with Atomic Design principles.
+- **/src/context**: Context providers for state management and cross-component data sharing.
+- **/src/hooks**: Custom hooks for managing state and side effects.
+- **/src/layouts**: Layouts for various parts of the app (header, footer, aside, etc.), structured using Atomic Design.
+- **/src/libs**: Libraries such as providers for authentication and theme management, plus constants.
+- **/src/schemas**: Validation schemas (Zod) to ensure incoming data meets expectations.
+- **/src/styles**: Global styles, CSS modules, and other styling-related files.
+- **/src/types**: TypeScript type definitions to ensure type safety.
+- **/src/utils**: Utility functions used throughout the application.
+- **/src/middleware.ts**: Middleware for handling requests and responses.
 
 ## Installation 🚀
 
-To get started with this boilerplate, follow these steps:
+To get started, follow these steps:
 
-1. **Clone the Repository**
+1. **Clone the repository**
 
    ```bash
    git clone https://github.com/gdwmw/Next.js-Boilerplate.git
    cd Next.js-Boilerplate
    ```
 
-2. **Install Dependencies**
+2. **Install dependencies**
 
    ```bash
    bun install
    ```
 
-3. **Setup Environment Variables**
+3. **Set up environment variables**
 
    ```bash
    bun cpenv
    ```
 
-4. **Fill in the `NEXTAUTH_URL` with Local URL**
+4. **Set `NEXTAUTH_URL` to your local URL**
 
    ```bash
    http://localhost:3000
    ```
 
-5. **Get Base64 Code to Fill in the `NEXTAUTH_SECRET` Variable**
+5. **Generate a base64 value for `NEXTAUTH_SECRET`**
 
    ```bash
    bun base64
    ```
 
-6. **Run the Development Server**
+6. **Run the development server**
 
    ```bash
    bun dev
    ```
 
-7. **Access the Application**
+7. **Access the application**
 
    Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
 
 ## Commit Guidelines 📝
 
-When committing your changes using the `bun commit` command, please follow these steps:
+When committing changes with `bun commit`, follow these steps:
 
-1. **Ensure Your Changes Are Ready**  
-   Before committing, make sure that your code is properly tested and follows the project's coding standards.
+1. **Prepare your changes**  
+   Ensure your code is tested and complies with the project's coding standards.
 
-2. **Stage Your Changes**  
-   Use the following command to stage your changes:
+2. **Stage your changes**  
+   Stage all relevant files:
 
    ```bash
    git add .
    ```
 
-3. **Run the Commit Command**  
-   Execute the commit command:
+3. **Run the commit command**  
+   Execute:
 
    ```bash
    bun commit
    ```
 
-4. **Follow the Commit Prompt**  
-   After running the command, a prompt will appear. You will be asked to select the type of change you are committing (e.g., feature, bug fix, documentation). Choose the appropriate type.
+4. **Follow the interactive prompt**  
+   Select the appropriate change type (e.g., feature, fix, docs) when prompted.
 
-5. **Provide a Scope (Optional)**  
-   If applicable, specify the scope of your changes (e.g., a specific module or feature).
+5. **Optionally provide a scope**  
+   If relevant, specify the scope (e.g., a specific module or feature).
 
-6. **Write a Descriptive Subject**  
-   Write a short, imperative tense description of the change. Keep it concise and clear.
+6. **Write a concise subject**  
+   Use the imperative mood and keep it short and clear.
 
-7. **Add a Detailed Body (Optional)**  
-   If necessary, provide a longer description of the changes in the body section. This can include the motivation for the change and any relevant details.
+7. **Optionally add a detailed body**  
+   Include motivation, context, and implementation details if helpful.
 
-8. **List Breaking Changes (If Any) (Optional)**  
-   If your changes introduce breaking changes, list them in the designated section.
+8. **Document breaking changes (if any)**  
+   Clearly list any breaking changes in the designated section.
 
-9. **Confirm Your Commit**  
-   Review your commit message and confirm the commit when prompted.
+9. **Confirm your commit**  
+   Review the message and confirm when prompted.
 
-By following these guidelines, you ensure that your commit messages are informative and consistent with the project's standards.
+Following these guidelines ensures commit messages are informative and consistent with the project's standards.
 
 ## Contribution 🤝
 
-If you would like to contribute to this boilerplate, please follow these steps:
+If you would like to contribute, follow these steps:
 
-1. **Fork the Repository**  
-   Click on the "Fork" button at the top right corner of the repository page to create your own copy.
+1. **Fork the repository**  
+   Click the "Fork" button at the top right of the repository page.
 
-2. **Clone Your Fork**  
+2. **Clone your fork**  
    Clone your forked repository to your local machine:
 
    ```bash
@@ -212,58 +212,58 @@ If you would like to contribute to this boilerplate, please follow these steps:
    cd Next.js-Boilerplate
    ```
 
-3. **Create a New Branch**  
-   Create a new branch for your feature or bug fix:
+3. **Create a new branch**  
+   Create a branch for your feature or bug fix:
 
    ```bash
    git checkout -b your-feature-branch
    ```
 
-4. **Make Your Changes**  
-   Implement your changes and ensure that your code follows the project's coding standards.
+4. **Make your changes**  
+   Implement your changes and ensure they follow the project's standards.
 
-5. **Commit Your Changes**  
-   Commit your changes with a descriptive message:
+5. **Commit your changes**  
+   Commit with a descriptive message:
 
    ```bash
    bun commit
    ```
 
-6. **Push to Your Fork**  
-   Push your changes to your forked repository:
+6. **Push to your fork**  
+   Push your branch to your forked repository:
 
    ```bash
    git push origin your-feature-branch
    ```
 
-7. **Create a Pull Request**  
-   Go to the original repository and click on "New Pull Request". Select your branch and submit the pull request with a description of the changes you made.
+7. **Open a pull request**  
+   In the original repository, click "New Pull Request", select your branch, and submit with a clear description.
 
-Thank you for your contribution!
+Thank you for contributing!
 
 ## MIT License ⚖️
 
-This boilerplate is licensed under the MIT License. Please see the `LICENSE` file for more information.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
-## How to Ask Questions❓
+## How to Ask Questions ❓
 
-If you have any questions regarding the boilerplate or its usage, please follow these guidelines:
+If you have questions about the boilerplate or how to use it, follow these guidelines:
 
-1. **Be Clear and Concise**  
-   Clearly state your question or issue. Provide enough context for others to understand your problem.
+1. **Be clear and concise**  
+   Clearly state your question or issue and provide enough context.
 
-2. **Include Relevant Details**  
-   Mention any specific errors, code snippets, or configurations that are relevant to your question.
+2. **Include relevant details**  
+   Share specific errors, code snippets, or configurations that are relevant.
 
-3. **Search Before Asking**  
-   Check the documentation and existing issues to see if your question has already been answered.
+3. **Search before asking**  
+   Review the documentation and existing issues to avoid duplicates.
 
-4. **Use Proper Formatting**  
-   When sharing code or error messages, use code blocks for better readability.
+4. **Use proper formatting**  
+   Use code blocks when sharing code or error messages for readability.
 
-5. **Be Respectful**  
-   Remember to be polite and respectful in your communication.
+5. **Be respectful**  
+   Be polite and respectful in all communication.
 
-By following these guidelines, you can help ensure that your questions are understood and addressed promptly.
+Following these guidelines helps ensure your questions are understood and answered promptly.
 
-This documentation provides a clear overview of the boilerplate, installation instructions, commit guidelines, and contribution guidelines. If you have any further questions, feel free to ask!
+This documentation provides an overview of the boilerplate, installation steps, commit guidelines, and contribution process. If you have further questions, feel free to ask!
