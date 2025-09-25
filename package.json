@@ -16,6 +16,7 @@
     "lint": "next lint --max-warnings 0",
     "lint:fix": "eslint src --fix",
     "prettier": "prettier --write \"src/**/*\"",
+    "check-types": "tsc --noEmit",
     "vercel": "vercel --prod",
     "vercel:link": "vercel link",
     "vercel:pull": "vercel env pull .env.local",

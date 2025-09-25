@@ -1,3 +1,4 @@
-bun jest
+bun check-types
+bun jest:test
 bun storybook:build
-bun next build
+bun run build
