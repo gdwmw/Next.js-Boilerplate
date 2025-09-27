@@ -14,10 +14,12 @@ export const GETExample = async (query?: string): Promise<IExampleResponse[]> =>
   return response.data;
 };
 
-export const GETExampleByDocumentId = async (documentId: string): Promise<IExampleResponse> => {
+export const GETExampleByDocumentId = async (documentId: string, query?: string): Promise<IExampleResponse> => {
+  const params = query ? Object.fromEntries(new URLSearchParams(query).entries()) : undefined;
   const response = await getApi<{ data: IExampleResponse }>({
     endpoint: `/api/example/${documentId}`,
     label: label,
+    params: params,
   });
   return response.data;
 };
