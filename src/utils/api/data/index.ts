@@ -4,10 +4,12 @@ import { getApi, postApi, putApi } from "../base";
 
 const label = "Data";
 
-export const GETDataByDocumentId = async (documentId: string): Promise<IDataResponse> => {
+export const GETDataByDocumentId = async (documentId: string, query?: string): Promise<IDataResponse> => {
+  const params = query ? Object.fromEntries(new URLSearchParams(query).entries()) : undefined;
   const response = await getApi<{ data: IDataResponse }>({
     endpoint: `/api/datas/${documentId}`,
     label: label,
+    params: params,
   });
   return response.data;
 };

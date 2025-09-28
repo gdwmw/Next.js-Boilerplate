@@ -13,11 +13,14 @@ export const GETUpload = async (query?: string): Promise<IUploadResponse[]> => {
   });
 };
 
-export const GETUploadById = async (id: string): Promise<IUploadResponse> =>
-  getApi<IUploadResponse>({
+export const GETUploadById = async (id: string, query?: string): Promise<IUploadResponse> => {
+  const params = query ? Object.fromEntries(new URLSearchParams(query).entries()) : undefined;
+  return getApi<IUploadResponse>({
     endpoint: `/api/upload/files/${id}`,
     label: label,
+    params: params,
   });
+};
 
 export const POSTUpload = async (payload: IUploadPayload): Promise<IUploadResponse[]> => {
   const formData = new FormData();

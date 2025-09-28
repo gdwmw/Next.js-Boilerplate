@@ -11,24 +11,22 @@ type THttpMethod = "DELETE" | "GET" | "POST" | "PUT";
 interface I {
   cache?: RequestCache;
   data?: unknown;
-  endpoint?: string;
+  endpoint: string;
   headers?: HeadersInit;
   label: string;
   method?: THttpMethod;
   params?: Record<string, string>;
-  url?: string;
 }
 
 export const apiRequest = async <T>(props: I): Promise<T> => {
   const queryParams = props.params ? new URLSearchParams(props.params).toString() : "";
-  const url = `${API_URL}${props.endpoint}${queryParams ? `?${queryParams}&` : "?"}populate=*`;
-  const otherUrl = props.url || "";
+  const url = `${API_URL}${props.endpoint}${queryParams && `?${queryParams}`}`;
 
   const isFormData = props.data instanceof FormData;
   const token = await getSession("token");
 
   try {
-    const res = await fetch(props.endpoint ? url : otherUrl, {
+    const res = await fetch(url, {
       body: isFormData ? (props.data as FormData) : JSON.stringify(props.data),
       cache: props.cache || "default",
       headers: {
