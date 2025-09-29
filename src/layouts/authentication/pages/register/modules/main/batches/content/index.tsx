@@ -9,7 +9,7 @@ import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
 import { ExampleATWM, ExampleInput, FormContainer, SubmitButton } from "@/src/components";
 import { RegisterSchema, TRegisterSchema } from "@/src/schemas";
-import { getErrorMessageFromAPI, inputValidations, POSTRegister } from "@/src/utils";
+import { capitalizeErrorMessage, inputValidations, POSTRegister } from "@/src/utils";
 
 interface IFormField {
   isPassword?: boolean;
@@ -89,7 +89,7 @@ export const Content: FC = (): ReactElement => {
           router.push("/authentication/login");
           reset();
         } catch (error) {
-          setErrorMessage(getErrorMessageFromAPI(error));
+          setErrorMessage(capitalizeErrorMessage(error));
           console.warn("Register Failed!");
         }
       } else {

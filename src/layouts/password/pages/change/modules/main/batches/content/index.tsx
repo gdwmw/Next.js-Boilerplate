@@ -8,7 +8,7 @@ import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
 import { ExampleInput, FormContainer, SubmitButton } from "@/src/components";
 import { ChangePasswordSchema, TChangePasswordSchema } from "@/src/schemas";
-import { getErrorMessageFromAPI, POSTChangePassword } from "@/src/utils";
+import { capitalizeErrorMessage, POSTChangePassword } from "@/src/utils";
 
 interface IFormField {
   label: string;
@@ -62,7 +62,7 @@ export const Content: FC = (): ReactElement => {
           signOut();
           reset();
         } catch (error) {
-          setErrorMessage(getErrorMessageFromAPI(error));
+          setErrorMessage(capitalizeErrorMessage(error));
           console.warn("Change Password Failed!");
         }
       } else {
