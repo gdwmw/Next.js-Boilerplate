@@ -11,6 +11,13 @@ const nextConfig: NextConfig = {
         protocol: "http",
         search: "",
       },
+      {
+        hostname: "sztraa.zettara.com",
+        pathname: "/**",
+        port: "",
+        protocol: "https",
+        search: "",
+      },
     ],
   },
 };
