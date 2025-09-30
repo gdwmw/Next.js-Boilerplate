@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import { FC, ReactElement, useEffect, useState } from "react";
 import { FaServer } from "react-icons/fa";
 import { IoCheckmark, IoClose } from "react-icons/io5";
@@ -30,8 +31,7 @@ export const APIConnectionChecker: FC = (): ReactElement => {
 
     const checkConnection = async (url: string, index: number) => {
       try {
-        await fetch(url, {
-          cache: "no-store",
+        await axios(url, {
           method: "HEAD",
         });
         handleSetArray(true, index);
