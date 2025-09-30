@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       {
         alt: "Next.js",
         height: 800,
-        url: "https://website-name.com/assets/images/logos/logo-name.png", // Must be an absolute URL and PNG format
+        url: "https://boilerplate.zettara.com/assets/images/logos/Vercel.png", // Must be an absolute URL and PNG format
         width: 800,
       },
     ],
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: "Next.js",
     title: "Next.js | Home",
     type: "website",
-    url: "https://website-name.com/",
+    url: "https://boilerplate.zettara.com/",
   },
   robots: {
     follow: true,
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     creator: "@gdwmw",
     description: "Boilerplate by Gede Dewo Wahyu M.W",
-    images: ["https://website-name.com/assets/images/logos/logo-name.png"], // Must be an absolute URL and PNG format
+    images: ["https://boilerplate.zettara.com/assets/images/logos/Vercel.png"], // Must be an absolute URL and PNG format
     title: "Next.js | Home",
   },
 };
