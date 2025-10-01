@@ -27,7 +27,7 @@ const eslintConfig = [
   ...pluginQuery.configs["flat/recommended"],
   ...storybook.configs["flat/recommended"],
   ...tailwind.configs["flat/recommended"],
-  ...compat.extends("next/core-web-vitals", "plugin:jest/recommended", "plugin:jest/style"),
+  ...compat.extends("next/core-web-vitals", "next/typescript", "plugin:jest/recommended", "plugin:jest/style"),
   {
     files: ["src/types/**/*"],
     rules: {
