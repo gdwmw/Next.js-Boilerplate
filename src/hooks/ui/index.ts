@@ -1,3 +1,3 @@
-export * from "./useModal";
-export * from "./useToast";
-export * from "./useToggle";
+export * from "./modal";
+export * from "./toast";
+export * from "./toggle";
