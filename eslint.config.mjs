@@ -7,7 +7,6 @@ import storybook from "eslint-plugin-storybook";
 import tailwind from "eslint-plugin-tailwindcss";
 import { fileURLToPath } from "node:url";
 import { dirname } from "path";
-import tseslint from "typescript-eslint";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -18,10 +17,20 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   {
-    ignores: ["node_modules/**", ".next/**", "out/**", "build/**", "next-env.d.ts", "!.storybook", "storybook-static/**", "coverage/**", "dist/**"],
+    ignores: [
+      ".commitlintrc.cjs",
+      "node_modules/**",
+      ".next/**",
+      "out/**",
+      "build/**",
+      "next-env.d.ts",
+      "!.storybook",
+      "storybook-static/**",
+      "coverage/**",
+      "dist/**",
+    ],
   },
   eslint.configs.recommended,
-  ...tseslint.configs.recommended,
   reactPlugin.configs.flat.recommended,
   perfectionist.configs["recommended-alphabetical"],
   ...pluginQuery.configs["flat/recommended"],
