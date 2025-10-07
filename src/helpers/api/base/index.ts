@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse, Method } from "axios";
 
-import { getSession } from "@/src/utils";
+import { getSession } from "@/src/helpers";
 
 const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 
