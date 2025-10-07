@@ -7,8 +7,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
 import { ExampleInput, FormContainer, SubmitButton } from "@/src/components";
+import { capitalizeErrorMessage, POSTChangePassword } from "@/src/helpers";
 import { ChangePasswordSchema, TChangePasswordSchema } from "@/src/schemas";
-import { capitalizeErrorMessage, POSTChangePassword } from "@/src/utils";
 
 interface IFormField {
   label: string;

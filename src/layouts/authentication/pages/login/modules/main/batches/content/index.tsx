@@ -10,8 +10,8 @@ import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { TbArrowsExchange } from "react-icons/tb";
 
 import { ExampleATWM, ExampleInput, FormContainer, SubmitButton } from "@/src/components";
+import { deleteCookie, getCookie } from "@/src/helpers";
 import { LoginSchema, TLoginSchema } from "@/src/schemas";
-import { deleteCookie, getCookie } from "@/src/utils";
 
 export const Content: FC = (): ReactElement => {
   const router = useRouter();

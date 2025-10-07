@@ -8,8 +8,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
 import { ExampleATWM, ExampleInput, FormContainer, SubmitButton } from "@/src/components";
+import { capitalizeErrorMessage, inputValidations, POSTRegister } from "@/src/helpers";
 import { RegisterSchema, TRegisterSchema } from "@/src/schemas";
-import { capitalizeErrorMessage, inputValidations, POSTRegister } from "@/src/utils";
 
 interface IFormField {
   isPassword?: boolean;

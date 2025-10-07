@@ -2,7 +2,7 @@ import { Metadata, Viewport } from "next";
 import { FC, ReactElement } from "react";
 
 import { FormContainer } from "@/src/components";
-import { getAllSession } from "@/src/utils";
+import { getAllSession } from "@/src/helpers";
 
 export const viewport: Viewport = {
   initialScale: 1.0,

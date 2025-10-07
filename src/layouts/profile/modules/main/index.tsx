@@ -1,6 +1,6 @@
 import { FC, ReactElement } from "react";
 
-import { getAllSession } from "@/src/utils";
+import { getAllSession } from "@/src/helpers";
 
 import { Content } from "./batches";
 

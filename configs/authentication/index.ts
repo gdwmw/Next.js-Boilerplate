@@ -4,10 +4,10 @@ import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import { DUMMY_ACCOUNT_DATA } from "@/src/libs";
-// import { deleteCookie, setCookie } from "@/src/utils";
+// import { deleteCookie, setCookie } from "@/src/helpers";
 // import { DEMO_ACCOUNT_DATA } from "@/src/libs";
 import { ILoginPayload } from "@/src/types";
-// import { POSTLogin } from "@/src/utils";
+// import { POSTLogin } from "@/src/helpers";
 
 export const options: NextAuthOptions = {
   callbacks: {
