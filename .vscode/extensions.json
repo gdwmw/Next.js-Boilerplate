@@ -1,0 +1,33 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+    "csstools.postcss",
+    "davidanson.vscode-markdownlint",
+    "dbaeumer.vscode-eslint",
+    "dsznajder.es7-react-js-snippets",
+    "esbenp.prettier-vscode",
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag",
+    "github.vscode-github-actions",
+    "github.vscode-pull-request-github",
+    "gruntfuggly.todo-tree",
+    "hwencc.html-tag-wrapper",
+    "mguellsegarra.highlight-on-copy",
+    "mikestead.dotenv",
+    "ms-vscode.js-debug-nightly",
+    "onlylys.leaper",
+    "pedrohenrique-ql.regex-match",
+    "pflannery.vscode-versionlens",
+    "pkief.material-icon-theme",
+    "pranaygp.vscode-css-peek",
+    "sirtori.indenticator",
+    "sonarsource.sonarlint-vscode",
+    "spmeesseman.vscode-taskexplorer",
+    "usernamehw.errorlens",
+    "vincaslt.highlight-matching-tag",
+    "yoavbls.pretty-ts-errors",
+    "zignd.html-css-class-completion"
+  ]
+}
