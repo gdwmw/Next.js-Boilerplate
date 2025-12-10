@@ -5,7 +5,8 @@ import { twm } from "@/src/libs";
 import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel, IExampleLabel } from "../elements";
 
 interface I
-  extends DetailedHTMLProps<Omit<SelectHTMLAttributes<HTMLSelectElement>, "className" | "color">, HTMLSelectElement>,
+  extends
+    DetailedHTMLProps<Omit<SelectHTMLAttributes<HTMLSelectElement>, "className" | "color">, HTMLSelectElement>,
     Omit<IExampleLabel, "children" | "className"> {
   className?: {
     container?: string;

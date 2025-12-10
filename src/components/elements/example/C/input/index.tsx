@@ -6,7 +6,8 @@ import { ExampleA } from "../../A";
 import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel, IExampleLabel } from "../elements";
 
 interface I
-  extends DetailedHTMLProps<Omit<InputHTMLAttributes<HTMLInputElement>, "className" | "color">, HTMLInputElement>,
+  extends
+    DetailedHTMLProps<Omit<InputHTMLAttributes<HTMLInputElement>, "className" | "color">, HTMLInputElement>,
     Omit<IExampleLabel, "children" | "className"> {
   className?: {
     container?: string;

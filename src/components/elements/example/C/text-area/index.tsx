@@ -5,7 +5,8 @@ import { twm } from "@/src/libs";
 import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel, IExampleLabel } from "../elements";
 
 interface I
-  extends DetailedHTMLProps<Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "className" | "color">, HTMLTextAreaElement>,
+  extends
+    DetailedHTMLProps<Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "className" | "color">, HTMLTextAreaElement>,
     Omit<IExampleLabel, "children" | "className"> {
   className?: {
     container?: string;
