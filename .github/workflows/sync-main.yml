@@ -1,0 +1,30 @@
+name: Sync Development Branch to Main Branch
+
+on:
+  push:
+    branches:
+      - development
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Development
+        uses: actions/checkout@v3
+        with:
+          ref: development
+
+      - name: Set Git identity
+        run: |
+          git config user.name "Gede Dewo Wahyu M.W"
+          git config user.email "gededewowahyumw@gmail.com"
+
+      - name: Reset To Single Commit
+        run: |
+          git checkout --orphan main
+          git add -A
+          git commit -m "feat: 🎉 boilerplate by gdwmw"
+          git push -f origin main
