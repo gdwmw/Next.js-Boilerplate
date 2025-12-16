@@ -49,7 +49,7 @@ export const apiRequest = async <T>({ auth = true, ...props }: I): Promise<T> =>
       `An error occurred while processing ${props.method} request for ${props.label} || Status Code: ${statusCode} || Message: ${errorMessage}`,
     );
 
-    throw new Error(errorMessage);
+    throw error;
   }
 };
 
