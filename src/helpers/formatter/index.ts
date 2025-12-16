@@ -1,14 +1,10 @@
-export const capitalizeErrorMessage = (error: unknown): string | undefined => {
-  const errorMessage =
-    error instanceof Error
-      ? error.message
-          .split(" ")
-          .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(" ")
-      : "An Unknown Error Occurred";
-
-  return errorMessage;
-};
+export const capitalize = (value: null | string | undefined): string =>
+  value
+    ? value
+        .split(" ")
+        .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ")
+    : "An Unknown Error Occurred";
 
 // ----------------------------
 

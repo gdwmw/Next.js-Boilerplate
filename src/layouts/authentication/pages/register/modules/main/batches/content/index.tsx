@@ -1,6 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { AxiosError } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FC, HTMLInputTypeAttribute, KeyboardEvent, ReactElement, useState, useTransition } from "react";
@@ -8,8 +9,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
 import { ExampleATWM, ExampleInput, FormContainer, SubmitButton } from "@/src/components";
-import { capitalizeErrorMessage, inputValidations, POSTRegister } from "@/src/helpers";
+import { capitalize, inputValidations, POSTRegister } from "@/src/helpers";
 import { RegisterSchema, TRegisterSchema } from "@/src/schemas";
+import { IErrorResponse } from "@/src/types";
 
 interface IFormField {
   isPassword?: boolean;
@@ -89,7 +91,8 @@ export const Content: FC = (): ReactElement => {
           router.push("/authentication/login");
           reset();
         } catch (error) {
-          setErrorMessage(capitalizeErrorMessage(error));
+          const axiosError = error as AxiosError<IErrorResponse>;
+          setErrorMessage(capitalize(axiosError.response?.data?.error?.message));
           console.warn("Register Failed!");
         }
       } else {

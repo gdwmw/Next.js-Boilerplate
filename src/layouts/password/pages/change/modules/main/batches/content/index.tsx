@@ -1,14 +1,16 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { AxiosError } from "axios";
 import { signOut } from "next-auth/react";
 import { FC, HTMLInputTypeAttribute, ReactElement, useState, useTransition } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
 import { ExampleInput, FormContainer, SubmitButton } from "@/src/components";
-import { capitalizeErrorMessage, POSTChangePassword } from "@/src/helpers";
+import { capitalize, POSTChangePassword } from "@/src/helpers";
 import { ChangePasswordSchema, TChangePasswordSchema } from "@/src/schemas";
+import { IErrorResponse } from "@/src/types";
 
 interface IFormField {
   label: string;
@@ -62,7 +64,8 @@ export const Content: FC = (): ReactElement => {
           signOut();
           reset();
         } catch (error) {
-          setErrorMessage(capitalizeErrorMessage(error));
+          const axiosError = error as AxiosError<IErrorResponse>;
+          setErrorMessage(capitalize(axiosError.response?.data?.error?.message));
           console.warn("Change Password Failed!");
         }
       } else {

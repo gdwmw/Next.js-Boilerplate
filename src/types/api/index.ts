@@ -32,6 +32,17 @@ export interface IExampleResponse extends IExampleCommon {}
 
 // ----------------------------
 
+export interface IErrorResponse {
+  error: {
+    status: number;
+    name: string;
+    message: string;
+    details: object;
+  };
+}
+
+// ----------------------------
+
 export interface IRegisterPayload {
   username: string;
   email: string;
