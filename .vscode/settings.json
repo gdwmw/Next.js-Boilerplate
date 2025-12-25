@@ -10,7 +10,6 @@
   "workbench.iconTheme": "material-icon-theme",
   "material-icon-theme.activeIconPack": "react",
   "material-icon-theme.hidesExplorerArrows": true,
-  "taskexplorer.taskButtons.clickAction": "Execute",
   "editor.guides.bracketPairs": "active",
   "highlight-matching-tag.highlightSelfClosing": true,
   "highlight-matching-tag.highlightFromContent": true,
@@ -18,9 +17,7 @@
     ["twm\\(([^)]*)\\)", "\"([^\"]*)\""],
     ["clsx\\(([^)]*)\\)", "\"([^\"]*)\""],
     ["twm\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
-    ["clsx\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
-    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
-    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+    ["clsx\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
   ],
   "sonarlint.rules": {
     "typescript:S2004": {
