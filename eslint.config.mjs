@@ -112,6 +112,7 @@ const eslintConfig = defineConfig([
       "better-tailwindcss": {
         callees: ["twm"],
         entryPoint: "src/app/global.css",
+        variables: [".*TWM"],
       },
     },
   },
