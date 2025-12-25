@@ -17,7 +17,7 @@ interface I
 
 const ExampleTextAreaTWM = ({ className, disabled }: Omit<I, "color" | "label">) =>
   twm(
-    "max-h-[200px] min-h-[120px] w-full rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed",
+    "max-h-[200px] min-h-[120px] w-full rounded-xs bg-transparent px-1 outline-hidden disabled:cursor-not-allowed",
     disabled && "text-gray-400",
     className?.textarea,
   );

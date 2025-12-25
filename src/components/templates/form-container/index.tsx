@@ -21,7 +21,7 @@ export const FormContainer: FC<I> = ({ children, className, href, label, ...prop
   <section className={twm("container mx-auto flex h-dvh items-center justify-center p-5", className?.container)}>
     <div
       className={twm(
-        "relative flex max-h-full w-full rounded-xl border border-gray-200 bg-white px-5 pb-5 pt-[60px] shadow-sm shadow-black/50 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:shadow-white/70",
+        "relative flex max-h-full w-full rounded-xl border border-gray-200 bg-white px-5 pb-5 pt-[60px] shadow-xs shadow-black/50 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:shadow-white/70",
         !href && "p-5",
         className?.innerContainer,
       )}

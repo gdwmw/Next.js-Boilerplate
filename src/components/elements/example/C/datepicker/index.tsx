@@ -17,7 +17,7 @@ interface I extends Omit<DatePickerProps, "className">, Omit<IExampleLabel, "chi
 }
 
 const ExampleDatePickerTWM = ({ className, disabled }: Omit<I, "color" | "label">) =>
-  twm("w-full rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed", disabled && "text-gray-400", className?.datepicker);
+  twm("w-full rounded-xs bg-transparent px-1 outline-hidden disabled:cursor-not-allowed", disabled && "text-gray-400", className?.datepicker);
 
 export const ExampleDatePicker: FC<I> = ({ className, color, disabled, errorMessage, label, ...props }): ReactElement => (
   <ExampleInputsContainer className={className?.container}>

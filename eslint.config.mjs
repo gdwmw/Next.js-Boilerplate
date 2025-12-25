@@ -2,11 +2,11 @@ import eslint from "@eslint/js";
 import pluginQuery from "@tanstack/eslint-plugin-query";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
+import eslintPluginBetterTailwindcss from "eslint-plugin-better-tailwindcss";
 import jest from "eslint-plugin-jest";
 import perfectionist from "eslint-plugin-perfectionist";
 import reactPlugin from "eslint-plugin-react";
 import storybook from "eslint-plugin-storybook";
-import tailwind from "eslint-plugin-tailwindcss";
 import { defineConfig, globalIgnores } from "eslint/config";
 import tseslint from "typescript-eslint";
 
@@ -19,7 +19,6 @@ const eslintConfig = defineConfig([
   perfectionist.configs["recommended-alphabetical"],
   ...pluginQuery.configs["flat/recommended"],
   ...storybook.configs["flat/recommended"],
-  ...tailwind.configs["flat/recommended"],
   jest.configs["flat/recommended"],
   globalIgnores([
     ".next/**",
@@ -42,6 +41,9 @@ const eslintConfig = defineConfig([
     },
   },
   {
+    plugins: {
+      "better-tailwindcss": eslintPluginBetterTailwindcss,
+    },
     rules: {
       "@typescript-eslint/no-empty-object-type": "off",
       "@typescript-eslint/no-unused-expressions": "error",
@@ -54,6 +56,15 @@ const eslintConfig = defineConfig([
         },
       ],
       "arrow-body-style": ["error", "as-needed"],
+      "better-tailwindcss/enforce-consistent-class-order": ["error", { order: "official" }],
+      "better-tailwindcss/enforce-consistent-important-position": ["error", { position: "recommended" }],
+      // "better-tailwindcss/enforce-consistent-line-wrapping": ["error", { group: "newLine" }],
+      "better-tailwindcss/enforce-consistent-variable-syntax": ["error", { syntax: "shorthand" }],
+      "better-tailwindcss/enforce-shorthand-classes": ["error"],
+      "better-tailwindcss/no-deprecated-classes": ["error"],
+      "better-tailwindcss/no-duplicate-classes": ["error"],
+      "better-tailwindcss/no-unnecessary-whitespace": ["error", { allowMultiline: true }],
+      "better-tailwindcss/no-unregistered-classes": ["error", { ignore: ["font-inter", "font-geistMono", "font-geistSans", "font-roboto"] }],
       curly: ["error"],
       "no-unused-expressions": "off",
       "perfectionist/sort-imports": [
@@ -98,9 +109,9 @@ const eslintConfig = defineConfig([
       "react/react-in-jsx-scope": "off",
     },
     settings: {
-      tailwindcss: {
-        callees: ["twMerge", "clsx", "twm"],
-        classRegex: "^(class(Name)?$)|(.*[cC]lassName$)",
+      "better-tailwindcss": {
+        callees: ["twm"],
+        entryPoint: "src/app/global.css",
       },
     },
   },

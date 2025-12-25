@@ -59,7 +59,7 @@ export const APIConnectionChecker: FC = (): ReactElement => {
     <section className="fixed bottom-5 right-5 z-50 w-[calc(100%-40px)] max-w-full sm:w-auto sm:max-w-sm">
       <div className="flex flex-col items-end">
         {value && (
-          <div className="flex max-h-[70vh] w-full flex-col gap-2 overflow-y-auto rounded-lg border border-gray-200 bg-white p-4 shadow-sm shadow-black/50 sm:w-auto sm:p-5 dark:border-gray-600 dark:bg-gray-800 dark:shadow-white/70">
+          <div className="flex max-h-[70vh] w-full flex-col gap-2 overflow-y-auto rounded-lg border border-gray-200 bg-white p-4 shadow-xs shadow-black/50 sm:w-auto sm:p-5 dark:border-gray-600 dark:bg-gray-800 dark:shadow-white/70">
             <div className="flex items-center justify-between gap-3 sm:gap-5">
               <h1 className="truncate text-base font-semibold sm:text-lg dark:text-white">API Connection Checker</h1>
               <ExampleA className="-mb-0.5" color="blue" onClick={() => toggle()} size="sm" variant="ghost">
