@@ -35,34 +35,34 @@ export const ExampleATWM = ({ className, color, disabled, size, variant }: IExam
     variant === "outline" &&
       color === "red" &&
       !disabled &&
-      "bg-transparent text-red-500 ring-1 ring-inset ring-red-500 hover:bg-red-500 hover:text-white",
+      "bg-transparent text-red-500 ring-1 ring-red-500 ring-inset hover:bg-red-500 hover:text-white",
 
     variant === "outline" &&
       color === "green" &&
       !disabled &&
-      "bg-transparent text-green-500 ring-1 ring-inset ring-green-500 hover:bg-green-500 hover:text-white",
+      "bg-transparent text-green-500 ring-1 ring-green-500 ring-inset hover:bg-green-500 hover:text-white",
 
     variant === "outline" &&
       color === "blue" &&
       !disabled &&
-      "bg-transparent text-blue-500 ring-1 ring-inset ring-blue-500 hover:bg-blue-500 hover:text-white",
+      "bg-transparent text-blue-500 ring-1 ring-blue-500 ring-inset hover:bg-blue-500 hover:text-white",
 
     variant === "outline" &&
       color === "black" &&
       !disabled &&
-      "bg-transparent text-black ring-1 ring-inset ring-black hover:bg-black hover:text-white dark:text-white dark:ring-white dark:hover:bg-white dark:hover:text-black",
+      "bg-transparent text-black ring-1 ring-black ring-inset hover:bg-black hover:text-white dark:text-white dark:ring-white dark:hover:bg-white dark:hover:text-black",
 
     variant === "outline" &&
       color === "white" &&
       !disabled &&
-      "bg-transparent text-white ring-1 ring-inset ring-white hover:bg-white hover:text-black dark:text-black dark:ring-black dark:hover:bg-black dark:hover:text-white",
+      "bg-transparent text-white ring-1 ring-white ring-inset hover:bg-white hover:text-black dark:text-black dark:ring-black dark:hover:bg-black dark:hover:text-white",
 
     variant === "outline" &&
       color === "gray" &&
       !disabled &&
-      "bg-transparent text-gray-200 ring-1 ring-inset ring-gray-200 hover:bg-gray-200 hover:text-black dark:text-gray-500 dark:ring-gray-500 dark:hover:bg-gray-500 dark:hover:text-white",
+      "bg-transparent text-gray-200 ring-1 ring-gray-200 ring-inset hover:bg-gray-200 hover:text-black dark:text-gray-500 dark:ring-gray-500 dark:hover:bg-gray-500 dark:hover:text-white",
 
-    variant === "outline" && disabled && "bg-transparent text-gray-400 ring-1 ring-inset ring-gray-400",
+    variant === "outline" && disabled && "bg-transparent text-gray-400 ring-1 ring-gray-400 ring-inset",
 
     // ⭐ === GHOST === ⭐
     variant === "ghost" && color === "red" && !disabled && "text-red-500",

@@ -36,7 +36,7 @@ const LegendTWM = ({ className, color, disabled, errorMessage }: Omit<IExampleLa
   const isError = errorMessage && !disabled;
 
   return twm(
-    "ml-3 flex select-none items-center gap-1 whitespace-nowrap px-1 text-xs font-semibold",
+    "ml-3 flex items-center gap-1 px-1 text-xs font-semibold whitespace-nowrap select-none",
     isActive && color === "blue" && "group-focus-within:text-blue-500",
     isActive && color === "red" && "group-focus-within:text-red-500",
     isActive && color === "green" && "group-focus-within:text-green-500",
