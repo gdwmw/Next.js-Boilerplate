@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
 interface IUseLocalStorageOptions<T> {
   defaultValue?: T;
@@ -30,11 +30,7 @@ export const useLocalStorage = <T>(key: string, options: IUseLocalStorageOptions
     }
   });
 
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+  const [isLoaded] = useState(true);
 
   const setValueCallback = useCallback(
     (newValue: ((prev: T) => T) | T) => {

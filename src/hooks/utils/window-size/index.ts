@@ -32,9 +32,6 @@ export const useWindowSize = (options: IUseWindowSizeOptions = {}): IWindowSize 
 
     window.addEventListener("resize", handleResize);
 
-    // Set initial size
-    handleResize();
-
     return () => {
       window.removeEventListener("resize", handleResize);
     };

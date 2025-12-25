@@ -1,7 +1,7 @@
 import { NextRequestWithAuth, withAuth } from "next-auth/middleware";
 import { NextResponse } from "next/server";
 
-export default withAuth(function middleware(request: NextRequestWithAuth) {
+export default withAuth(function proxy(request: NextRequestWithAuth) {
   if (request.nextUrl.pathname.startsWith("/admin-example") && request.nextauth.token?.role !== "admin" && request.nextauth.token?.role !== "demo") {
     return NextResponse.rewrite(new URL("/denied", request.url));
   }

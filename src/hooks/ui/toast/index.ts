@@ -24,28 +24,29 @@ interface IUseToastReturn {
 export const useToast = (): IUseToastReturn => {
   const [toasts, setToasts] = useState<IToast[]>([]);
 
-  const showToast = useCallback((toast: Omit<IToast, "id">) => {
-    const id = Math.random().toString(36).substring(2, 11);
-    const newToast: IToast = {
-      ...toast,
-      duration: toast.duration || 5000,
-      id,
-    };
-
-    setToasts((prev) => [...prev, newToast]);
-
-    // Auto remove toast after duration
-    if (newToast.duration && newToast.duration > 0) {
-      setTimeout(() => {
-        hideToast(id);
-      }, newToast.duration);
-    }
-    // eslint-disable-next-line
-  }, []);
-
   const hideToast = useCallback((id: string) => {
     setToasts((prev) => prev.filter((toast) => toast.id !== id));
   }, []);
+
+  const showToast = useCallback(
+    (toast: Omit<IToast, "id">) => {
+      const id = Math.random().toString(36).substring(2, 11);
+      const newToast: IToast = {
+        ...toast,
+        duration: toast.duration || 5000,
+        id,
+      };
+
+      setToasts((prev) => [...prev, newToast]);
+
+      if (newToast.duration && newToast.duration > 0) {
+        setTimeout(() => {
+          hideToast(id);
+        }, newToast.duration);
+      }
+    },
+    [hideToast],
+  );
 
   const clearToasts = useCallback(() => {
     setToasts([]);

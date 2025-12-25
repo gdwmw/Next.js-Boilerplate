@@ -1,36 +1,18 @@
-import { FlatCompat } from "@eslint/eslintrc";
 import eslint from "@eslint/js";
 import pluginQuery from "@tanstack/eslint-plugin-query";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+import jest from "eslint-plugin-jest";
 import perfectionist from "eslint-plugin-perfectionist";
 import reactPlugin from "eslint-plugin-react";
 import storybook from "eslint-plugin-storybook";
 import tailwind from "eslint-plugin-tailwindcss";
-import { fileURLToPath } from "node:url";
-import { dirname } from "path";
+import { defineConfig, globalIgnores } from "eslint/config";
 import tseslint from "typescript-eslint";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-  {
-    ignores: [
-      ".commitlintrc.cjs",
-      "node_modules/**",
-      ".next/**",
-      "out/**",
-      "build/**",
-      "next-env.d.ts",
-      "!.storybook",
-      "storybook-static/**",
-      "coverage/**",
-      "dist/**",
-    ],
-  },
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   reactPlugin.configs.flat.recommended,
@@ -38,12 +20,19 @@ const eslintConfig = [
   ...pluginQuery.configs["flat/recommended"],
   ...storybook.configs["flat/recommended"],
   ...tailwind.configs["flat/recommended"],
-  ...compat.extends(
-    "next/core-web-vitals",
-    // "next/typescript",
-    "plugin:jest/recommended",
-    "plugin:jest/style",
-  ),
+  jest.configs["flat/recommended"],
+  globalIgnores([
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+    ".commitlintrc.cjs",
+    "node_modules/**",
+    "!.storybook",
+    "storybook-static/**",
+    "coverage/**",
+    "dist/**",
+  ]),
   {
     files: ["src/types/**/*"],
     rules: {
@@ -70,22 +59,24 @@ const eslintConfig = [
       "perfectionist/sort-imports": [
         "error",
         {
-          customGroups: { type: {}, value: {} },
+          customGroups: [],
           environment: "node",
+          fallbackSort: { type: "unsorted" },
           groups: [
-            "type",
-            ["builtin", "external"],
-            "internal-type",
-            "internal",
-            ["parent-type", "sibling-type", "index-type"],
-            ["parent", "sibling", "index"],
-            "object",
+            "type-import",
+            ["value-builtin", "value-external"],
+            "type-internal",
+            "value-internal",
+            ["type-parent", "type-sibling", "type-index"],
+            ["value-parent", "value-sibling", "value-index"],
+            "ts-equals-import",
             "unknown",
           ],
           ignoreCase: true,
-          internalPattern: ["^@/.+"],
+          internalPattern: ["^~/.+", "^@/.+"],
           maxLineLength: undefined,
-          newlinesBetween: "always",
+          newlinesBetween: 1,
+          newlinesInside: 0,
           order: "asc",
           partitionByComment: false,
           partitionByNewLine: false,
@@ -113,6 +104,6 @@ const eslintConfig = [
       },
     },
   },
-];
+]);
 
 export default eslintConfig;

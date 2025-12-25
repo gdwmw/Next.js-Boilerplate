@@ -17,10 +17,6 @@ export const APIConnectionChecker: FC = (): ReactElement => {
   const [connection, setConnection] = useState<boolean[]>(() => ENVIRONMENT_DATA_VALUES.map(() => false));
 
   useEffect(() => {
-    if (value) {
-      setConnection(ENVIRONMENT_DATA_VALUES.map(() => false));
-    }
-
     const handleSetArray = (value: boolean, index: number) => {
       setConnection((prev) => {
         const next = [...prev];
