@@ -1,0 +1,48 @@
+{
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "explorer.fileNesting.enabled": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.activeIconPack": "react",
+  "material-icon-theme.hidesExplorerArrows": true,
+  "editor.guides.bracketPairs": "active",
+  "highlight-matching-tag.highlightSelfClosing": true,
+  "highlight-matching-tag.highlightFromContent": true,
+  "tailwindCSS.experimental.classRegex": [
+    ["twm\\(([^)]*)\\)", "\"([^\"]*)\""],
+    ["clsx\\(([^)]*)\\)", "\"([^\"]*)\""],
+    ["twm\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["clsx\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ],
+  "sonarlint.rules": {
+    "typescript:S2004": {
+      "level": "off"
+    },
+    "typescript:S3776": {
+      "level": "off"
+    },
+    "typescript:S3358": {
+      "level": "off"
+    },
+    "typescript:S4624": {
+      "level": "off"
+    },
+    "typescript:S6571": {
+      "level": "off"
+    },
+    "typescript:S4323": {
+      "level": "off"
+    },
+    "typescript:S6479": {
+      "level": "off"
+    },
+    "typescript:S6772": {
+      "level": "off"
+    }
+  }
+}
