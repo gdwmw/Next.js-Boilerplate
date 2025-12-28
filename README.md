@@ -20,96 +20,406 @@ Below is the primary directory structure of the boilerplate:
 ```text
 └── 📁configs
     └── 📁authentication
+        └── index.ts
 └── 📁docs
+    ├── example.codediagram
+    ├── example.drawio
+    └── example.postman_collection.json
+└── 📁public
+    └── 📁assets
+        └── 📁animations
+            └── 📁loadings
+                ├── Loading-B.svg
+                ├── Loading-W.svg
+        └── 📁images
+            └── 📁logos
+                ├── Next.svg
+                ├── Vercel.png
+                ├── Vercel.svg
+            └── 📁project
+                ├── 1.png
+                ├── 2.png
+                ├── 3.png
+                ├── 4.png
+                ├── 5.png
+                └── 6.png
 └── 📁src
     └── 📁app
         └── 📁(authed)
             └── 📁(admin)
+                ├── .gitkeep
             └── 📁(user)
+                └── 📁password
+                    └── 📁change
+                        ├── page.tsx
+                └── 📁profile
+                    ├── page.tsx
         └── 📁(example)
             └── 📁admin-example
+                ├── page.tsx
             └── 📁home-example
+                ├── page.tsx
             └── 📁user-example
+                ├── page.tsx
         └── 📁api
             └── 📁auth
                 └── 📁[...nextauth]
+                    ├── route.ts
         └── 📁authentication
             └── 📁login
+                ├── page.tsx
             └── 📁register
+                ├── page.tsx
         └── 📁denied
+            ├── page.tsx
         └── 📁fonts
+            ├── GeistMonoVF.woff
+            ├── GeistVF.woff
+            ├── index.ts
+            ├── Inter.ttf
+            ├── Roboto.ttf
+        ├── favicon.ico
+        ├── globals.css
+        ├── layout.tsx
+        ├── not-found.tsx
+        ├── page.tsx
     └── 📁components
         └── 📁elements
+            └── 📁example
+                └── 📁A
+                    ├── ExampleA.spec.tsx
+                    ├── ExampleA.stories.tsx
+                    ├── index.tsx
+                └── 📁B
+                    └── 📁stories
+                        ├── ExampleB.stories.tsx
+                        ├── index.tsx
+                    ├── ExampleB.spec.tsx
+                    ├── index.tsx
+                └── 📁C
+                    └── 📁datepicker
+                        ├── index.tsx
+                    └── 📁elements
+                        └── 📁error-message
+                            ├── index.tsx
+                        └── 📁inputs-container
+                            ├── index.tsx
+                        └── 📁label
+                            ├── index.tsx
+                        ├── index.ts
+                    └── 📁input
+                        ├── index.tsx
+                    └── 📁select
+                        ├── index.tsx
+                    └── 📁stories
+                        ├── ExampleC.stories.tsx
+                        ├── index.tsx
+                    └── 📁text-area
+                        ├── index.tsx
+                    ├── ExampleC.spec.tsx
+                    ├── index.ts
+                ├── index.ts
+            ├── index.ts
         └── 📁templates
-        └── index.ts
-        └── README.md
+            └── 📁api-connection-checker
+                ├── index.tsx
+            └── 📁avatar
+                ├── index.tsx
+            └── 📁change-theme-button
+                ├── index.tsx
+            └── 📁form-container
+                ├── index.tsx
+            └── 📁logout-button
+                ├── index.tsx
+            └── 📁submit-button
+                ├── index.tsx
+            ├── index.ts
+        ├── index.ts
+        ├── README.md
     └── 📁context
+        ├── index.ts
+    └── 📁helpers
+        └── 📁api
+            └── 📁authentication
+                └── 📁login
+                    ├── index.ts
+                └── 📁register
+                    ├── index.ts
+                ├── index.ts
+            └── 📁base
+                ├── index.ts
+            └── 📁data
+                ├── index.ts
+            └── 📁example
+                ├── index.ts
+            └── 📁password
+                ├── index.ts
+            └── 📁upload
+                ├── index.ts
+            └── 📁user
+                ├── index.ts
+            ├── index.ts
+        └── 📁formatter
+            ├── index.ts
+        └── 📁math
+            ├── index.ts
+        └── 📁server
+            └── 📁cookies
+                ├── index.ts
+            └── 📁getbase64
+                ├── index.ts
+            └── 📁session
+                ├── index.ts
+            ├── index.ts
+        └── 📁validations
+            ├── index.ts
+        ├── index.ts
     └── 📁hooks
         └── 📁ui
+            └── 📁modal
+                ├── index.ts
+            └── 📁toast
+                ├── index.ts
+            └── 📁toggle
+                ├── index.ts
+            ├── index.ts
         └── 📁utils
-|        └── index.ts
+            └── 📁local-storage
+                ├── index.ts
+            └── 📁window-size
+                ├── index.ts
+            ├── index.ts
+        ├── index.ts
     └── 📁layouts
         └── 📁authentication
+            └── 📁pages
+                └── 📁login
+                    └── 📁modules
+                        └── 📁main
+                            └── 📁batches
+                                └── 📁content
+                                    ├── index.tsx
+                                ├── index.ts
+                            ├── index.tsx
+                        ├── index.ts
+                    ├── index.tsx
+                └── 📁register
+                    └── 📁modules
+                        └── 📁main
+                            └── 📁batches
+                                └── 📁content
+                                    ├── index.tsx
+                                ├── index.ts
+                            ├── index.tsx
+                        ├── index.ts
+                    ├── index.tsx
         └── 📁example
             └── 📁global
-            └── 📁pages
-            └── 📁template
+                ├── .gitkeep
             └── 📁modules
                 └── 📁aside
+                    └── 📁batches
+                        └── 📁content
+                            ├── index.tsx
+                        ├── index.ts
+                    ├── index.tsx
                 └── 📁footer
+                    └── 📁batches
+                        └── 📁content
+                            ├── index.tsx
+                        ├── index.ts
+                    ├── index.tsx
                 └── 📁header
+                    └── 📁batches
+                        └── 📁content
+                            ├── index.tsx
+                        ├── index.ts
+                    ├── index.tsx
                 └── 📁main
+                    └── 📁batches
+                        └── 📁content
+                            ├── index.tsx
+                        ├── index.ts
+                    ├── index.tsx
                 └── 📁nav
-            └── index.tsx
+                    └── 📁batches
+                        └── 📁content
+                            ├── index.tsx
+                        ├── index.ts
+                    ├── index.tsx
+                ├── index.ts
+            └── 📁pages
+                └── 📁example
+                    └── 📁global
+                        ├── .gitkeep
+                    └── 📁modules
+                        └── 📁aside
+                            └── 📁batches
+                                └── 📁content
+                                    ├── index.tsx
+                                ├── index.ts
+                            ├── index.tsx
+                        └── 📁footer
+                            └── 📁batches
+                                └── 📁content
+                                    ├── index.tsx
+                                ├── index.ts
+                            ├── index.tsx
+                        └── 📁header
+                            └── 📁batches
+                                └── 📁content
+                                    ├── index.tsx
+                                ├── index.ts
+                            ├── index.tsx
+                        └── 📁main
+                            └── 📁batches
+                                └── 📁content
+                                    ├── index.tsx
+                                ├── index.ts
+                            ├── index.tsx
+                        └── 📁nav
+                            └── 📁batches
+                                └── 📁content
+                                    ├── index.tsx
+                                ├── index.ts
+                            ├── index.tsx
+                        ├── index.ts
+                    └── 📁template
+                        ├── .gitkeep
+                    ├── index.tsx
+            └── 📁template
+                ├── .gitkeep
+            ├── index.tsx
         └── 📁home
+            └── 📁modules
+                └── 📁aside
+                    └── 📁batches
+                        └── 📁content
+                            ├── index.tsx
+                        ├── index.ts
+                    ├── index.tsx
+                └── 📁footer
+                    └── 📁batches
+                        └── 📁content
+                            ├── index.tsx
+                        ├── index.ts
+                    ├── index.tsx
+                └── 📁header
+                    └── 📁batches
+                        └── 📁content
+                            ├── index.tsx
+                        ├── index.ts
+                    ├── index.tsx
+                └── 📁main
+                    └── 📁batches
+                        └── 📁content
+                            ├── index.tsx
+                        ├── index.ts
+                    ├── index-example.tsx
+                    ├── index.tsx
+                └── 📁nav
+                    └── 📁batches
+                        └── 📁content
+                            ├── index.tsx
+                        ├── index.ts
+                    ├── index.tsx
+                ├── index.ts
+            ├── index.tsx
         └── 📁password
+            └── 📁pages
+                └── 📁change
+                    └── 📁modules
+                        └── 📁main
+                            └── 📁batches
+                                └── 📁content
+                                    ├── index.tsx
+                                ├── index.ts
+                            ├── index.tsx
+                        ├── index.ts
+                    ├── index.tsx
         └── 📁profile
+            └── 📁modules
+                └── 📁main
+                    └── 📁batches
+                        └── 📁content
+                            ├── index.tsx
+                        ├── index.ts
+                    ├── index.tsx
+                ├── index.ts
+            ├── index.tsx
     └── 📁libs
         └── 📁constants
+            └── 📁authentication
+                ├── index.ts
+            └── 📁components
+                ├── index.ts
+            └── 📁contents
+                ├── index.ts
+            └── 📁hooks
+                ├── index.ts
+            ├── index.ts
         └── 📁providers
             └── 📁next-auth
+                ├── index.tsx
             └── 📁next-themes
+                ├── index.tsx
             └── 📁react-query
-            └── index.ts
+                ├── index.tsx
+            ├── index.ts
         └── 📁tailwind-merge
-        └── index.ts
+            ├── index.ts
+        ├── index.ts
     └── 📁schemas
         └── 📁authentication
+            ├── index.ts
         └── 📁example
+            ├── index.ts
         └── 📁password
+            ├── index.ts
         └── 📁profile
-        └── index.ts
+            ├── index.ts
+        └── 📁schema-error-message
+            ├── index.ts
+        ├── index.ts
     └── 📁styles
+        ├── datepicker.css
     └── 📁types
         └── 📁api
+            ├── index.ts
+        └── 📁authentication
+            ├── index.ts
         └── 📁components
+            ├── index.ts
         └── 📁context
-        └── index.ts
-        └── next-auth.d.ts
+            ├── index.ts
+        └── 📁hooks
+            ├── index.ts
+        ├── index.ts
+        ├── next-auth.d.ts
     └── 📁utils
-        └── 📁api
-        └── 📁helpers
-        └── 📁server
-        └── index.ts
-    └── middleware.ts
+        └── 📁math
+            ├── index.ts
+        ├── index.ts
+    └── proxy.ts
 ```
 
 ### Structure Explanation 📚
 
-- **/configs**: Configuration files, including authentication settings and logic.
+- **/configs**: Configuration files, including authentication settings and shared logic.
 - **/docs**: Project documentation such as architecture diagrams, flowcharts, API docs, and other technical references.
 - **/public**: Static assets such as images and animations.
-- **/src/app**: Application routes/pages, including login, admin, and user areas.
-- **/src/components**: Reusable components organized with Atomic Design principles.
+- **/src/app**: Application routes/pages, including authentication flows plus admin and user areas.
+- **/src/components**: Reusable UI pieces organized with Atomic Design principles.
 - **/src/context**: Context providers for state management and cross-component data sharing.
+- **/src/helpers**: Helper layers for API wrappers, formatting, math, server utilities, and validations.
 - **/src/hooks**: Custom hooks for managing state and side effects.
 - **/src/layouts**: Layouts for various parts of the app (header, footer, aside, etc.), structured using Atomic Design.
-- **/src/libs**: Libraries such as providers for authentication and theme management, plus constants.
+- **/src/libs**: Shared libraries such as providers (NextAuth, themes, React Query), constants, and Tailwind merge utilities.
 - **/src/schemas**: Validation schemas (Zod) to ensure incoming data meets expectations.
-- **/src/styles**: Global styles, CSS modules, and other styling-related files.
-- **/src/types**: TypeScript type definitions to ensure type safety.
-- **/src/utils**: Utility functions used throughout the application.
-- **/src/middleware.ts**: Middleware for handling requests and responses.
+- **/src/styles**: Global styles and component-level stylesheets.
+- **/src/types**: TypeScript type definitions (including NextAuth) to ensure type safety.
+- **/src/utils**: Utility functions used throughout the application (e.g., math helpers).
+- **/src/proxy.ts**: NextAuth-aware proxy middleware that guards protected routes.
 
 ## Installation 🚀
 
