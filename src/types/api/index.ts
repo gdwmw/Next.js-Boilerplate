@@ -32,6 +32,17 @@ export interface IExampleResponse extends IExampleCommon {}
 
 // ----------------------------
 
+export interface IMetaResponse {
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+}
+
 export interface IErrorResponse {
   error: {
     status: number;
@@ -111,19 +122,6 @@ export interface IUserResponse {
   relation_data?: IDataResponse;
   confirmed: boolean;
   blocked: boolean;
-}
-
-// ----------------------------
-
-export interface IMetaResponse {
-  meta: {
-    pagination: {
-      page: number;
-      pageSize: number;
-      pageCount: number;
-      total: number;
-    };
-  };
 }
 
 // ----------------------------
