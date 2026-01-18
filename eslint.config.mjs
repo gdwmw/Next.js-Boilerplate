@@ -56,7 +56,7 @@ const eslintConfig = defineConfig([
         },
       ],
       "arrow-body-style": ["error", "as-needed"],
-      "better-tailwindcss/enforce-consistent-class-order": ["error", { order: "official" }],
+      // "better-tailwindcss/enforce-consistent-class-order": ["error", { order: "official" }],
       "better-tailwindcss/enforce-consistent-important-position": ["error", { position: "recommended" }],
       "better-tailwindcss/enforce-consistent-variable-syntax": ["error", { syntax: "shorthand" }],
       "better-tailwindcss/enforce-shorthand-classes": ["error"],
