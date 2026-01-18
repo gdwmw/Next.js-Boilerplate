@@ -1,0 +1,4 @@
+bun check-types
+bun jest:test
+bun storybook:build
+bun run build
