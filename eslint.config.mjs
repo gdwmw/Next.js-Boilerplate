@@ -62,7 +62,7 @@ const eslintConfig = defineConfig([
       "better-tailwindcss/enforce-shorthand-classes": ["error"],
       "better-tailwindcss/no-deprecated-classes": ["error"],
       "better-tailwindcss/no-duplicate-classes": ["error"],
-      "better-tailwindcss/no-unknown-classes": ["error", { ignore: ["font-inter", "font-geistMono", "font-geistSans", "font-roboto", "xs:"] }],
+      "better-tailwindcss/no-unknown-classes": ["error", { ignore: ["font-inter", "font-geistMono", "font-geistSans", "font-roboto"] }],
       "better-tailwindcss/no-unnecessary-whitespace": ["error"],
       curly: ["error"],
       "no-unused-expressions": "off",
