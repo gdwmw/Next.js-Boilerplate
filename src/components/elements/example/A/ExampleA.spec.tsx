@@ -3,7 +3,7 @@ import { FaCrown } from "react-icons/fa";
 
 import { ExampleA, IExampleA } from ".";
 
-/* eslint-disable better-tailwindcss/no-unregistered-classes */
+/* eslint-disable better-tailwindcss/no-unknown-classes */
 
 const component = (props: { onClickFn?: () => void } & Partial<IExampleA>) => (
   <ExampleA
