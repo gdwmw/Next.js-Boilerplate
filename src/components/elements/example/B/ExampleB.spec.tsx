@@ -3,7 +3,7 @@ import { FaCrown } from "react-icons/fa";
 
 import { ExampleBContainer, ExampleBIcon, ExampleBText } from ".";
 
-/* eslint-disable better-tailwindcss/no-unregistered-classes */
+/* eslint-disable better-tailwindcss/no-unknown-classes */
 
 const component = (
   <ExampleBContainer className="testing-class" id="testing-id" style={{ color: "#ff0000" }}>
