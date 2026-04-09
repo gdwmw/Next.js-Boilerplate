@@ -1,6 +1,21 @@
-import type { IUserPayload, IUserResponse } from "@/src/types";
-
 import { getApi, putApi } from "../base";
+import { IDataResponse } from "../data";
+
+export interface IUserPayload {
+  email?: string;
+  id?: number;
+  relation_data?: number;
+  username?: string;
+}
+
+export interface IUserResponse {
+  blocked: boolean;
+  confirmed: boolean;
+  email: string;
+  id: number;
+  relation_data?: IDataResponse;
+  username: string;
+}
 
 const label = "User";
 

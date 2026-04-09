@@ -1,6 +1,26 @@
-import type { IDataPayload, IDataResponse } from "@/src/types";
+import { TRole } from "@/src/types";
 
 import { getApi, postApi, putApi } from "../base";
+import { IUploadResponse } from "../upload";
+
+interface IDataCommon {
+  name: string;
+  phoneNumber: string;
+}
+
+export interface IDataPayload extends IDataCommon {
+  documentId?: string;
+  id?: number;
+  image?: FileList | number;
+  role?: TRole;
+}
+
+export interface IDataResponse extends IDataCommon {
+  documentId: string;
+  id: number;
+  image: IUploadResponse | null;
+  role: TRole;
+}
 
 const label = "Data";
 

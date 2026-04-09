@@ -1,7 +1,13 @@
-import { IAuthResponse, IAuthSchema, IDataPayload, IDataResponse, IRegisterPayload } from "@/src/types";
-
-import { POSTData, PUTUser } from "../..";
+import { IAuthResponse, IAuthSchema } from "..";
 import { postApi } from "../../base";
+import { IDataPayload, IDataResponse, POSTData } from "../../data";
+import { PUTUser } from "../../user";
+
+export interface IRegisterPayload {
+  email: string;
+  password: string;
+  username: string;
+}
 
 const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 

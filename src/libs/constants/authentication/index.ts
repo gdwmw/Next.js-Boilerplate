@@ -1,4 +1,4 @@
-import { IAuthResponse, IDummyAccount } from "@/src/types";
+import { IAuthResponse, IDummyAccount } from "@/src/helpers";
 
 // ----------------------------
 

@@ -1,7 +1,12 @@
-import { IAuthResponse, IAuthSchema, IDataResponse, ILoginPayload } from "@/src/types";
-
-import { GETDataByDocumentId, GETUserByDocumentId } from "../..";
+import { IAuthResponse, IAuthSchema } from "..";
 import { postApi } from "../../base";
+import { GETDataByDocumentId, IDataResponse } from "../../data";
+import { GETUserByDocumentId } from "../../user";
+
+export interface ILoginPayload {
+  identifier: string;
+  password: string;
+}
 
 const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 

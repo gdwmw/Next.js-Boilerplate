@@ -8,6 +8,26 @@ if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
 }
 
+export interface IMetaResponse {
+  meta: {
+    pagination: {
+      page: number;
+      pageCount: number;
+      pageSize: number;
+      total: number;
+    };
+  };
+}
+
+export interface IErrorResponse {
+  error: {
+    details: object;
+    message: string;
+    name: string;
+    status: number;
+  };
+}
+
 interface I {
   auth?: boolean;
   data?: unknown;

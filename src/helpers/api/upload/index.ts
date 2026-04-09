@@ -1,6 +1,33 @@
-import type { IUploadPayload, IUploadResponse } from "@/src/types";
-
 import { deleteApi, getApi, postApi } from "../base";
+
+export interface IUploadPayload {
+  field?: string;
+  files: FileList;
+  ref?: string;
+  refId?: string;
+}
+
+export interface IFormatCommon {
+  height: number;
+  name: string;
+  url: string;
+  width: number;
+}
+
+export interface IUploadResponse {
+  documentId: string;
+  formats: {
+    large: IFormatCommon;
+    medium: IFormatCommon;
+    small: IFormatCommon;
+    thumbnail: IFormatCommon;
+  };
+  height: number;
+  id: number;
+  name: string;
+  url: string;
+  width: number;
+}
 
 const label = "Upload";
 

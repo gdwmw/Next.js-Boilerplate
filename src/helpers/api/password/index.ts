@@ -1,6 +1,13 @@
-import type { IAuthSchema, IPasswordPayload } from "@/src/types";
-
+import { IAuthSchema } from "../authentication";
 import { postApi } from "../base";
+
+export interface IPasswordPayload {
+  code?: string;
+  currentPassword?: string;
+  email?: string;
+  password?: string;
+  passwordConfirmation?: string;
+}
 
 const label = "Change Password";
 

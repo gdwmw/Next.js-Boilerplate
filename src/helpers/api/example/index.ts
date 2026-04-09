@@ -1,6 +1,23 @@
-import type { IExamplePayload, IExampleResponse } from "@/src/types";
-
 import { deleteApi, getApi, postApi, putApi } from "../base";
+
+interface IExampleCommon {
+  email: string;
+  name: string;
+  phoneNumber: string;
+  username: string;
+}
+
+export interface IExampleSchema {
+  data: {
+    documentId: string;
+  } & IExampleCommon;
+}
+
+export interface IExamplePayload extends IExampleCommon {
+  documentId?: string;
+}
+
+export interface IExampleResponse extends IExampleCommon {}
 
 const label = "Example";
 
