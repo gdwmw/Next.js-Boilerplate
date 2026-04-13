@@ -19,10 +19,11 @@ export interface IExamplePayload extends IExampleCommon {
 
 export interface IExampleResponse extends IExampleCommon {}
 
+type TQueryParams = Record<string, unknown>;
+
 const label = "Example";
 
-export const GETExample = async (query?: string): Promise<IExampleResponse[]> => {
-  const params = query ? Object.fromEntries(new URLSearchParams(query).entries()) : undefined;
+export const GETExample = async (params?: TQueryParams): Promise<IExampleResponse[]> => {
   const response = await getApi<{ data: IExampleResponse[] }>({
     endpoint: "/api/example",
     label: label,
@@ -31,8 +32,7 @@ export const GETExample = async (query?: string): Promise<IExampleResponse[]> =>
   return response.data;
 };
 
-export const GETExampleByDocumentId = async (documentId: string, query?: string): Promise<IExampleResponse> => {
-  const params = query ? Object.fromEntries(new URLSearchParams(query).entries()) : undefined;
+export const GETExampleByDocumentId = async (documentId: string, params?: TQueryParams): Promise<IExampleResponse> => {
   const response = await getApi<{ data: IExampleResponse }>({
     endpoint: `/api/example/${documentId}`,
     label: label,

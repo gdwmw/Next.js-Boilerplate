@@ -12,7 +12,7 @@ export interface IRegisterPayload {
 const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 
 if (!API_URL) {
-  throw new Error("The API URL is not defined. Please check your environment variables.");
+  throw new Error("Please check your environment variables. NEXT_PUBLIC_BASE_API_URL is not defined.");
 }
 
 const rearrange = (authResponse: IAuthSchema, dataResponse: IDataResponse): IAuthResponse => ({

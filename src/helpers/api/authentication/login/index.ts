@@ -11,7 +11,7 @@ export interface ILoginPayload {
 const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 
 if (!API_URL) {
-  throw new Error("The API URL is not defined. Please check your environment variables.");
+  throw new Error("Please check your environment variables. NEXT_PUBLIC_BASE_API_URL is not defined.");
 }
 
 const rearrange = (authResponse: IAuthSchema, dataResponse: IDataResponse): IAuthResponse => ({
@@ -36,8 +36,8 @@ const label = "Login";
 export const POSTLogin = async (payload: ILoginPayload): Promise<IAuthResponse> => {
   const authResponse = await postApi<IAuthSchema>({ data: payload, endpoint: "/api/auth/local", label: label });
 
-  const userResponse = await GETUserByDocumentId(authResponse.user.id, "populate=relation_data");
-  const dataResponse = await GETDataByDocumentId(userResponse.relation_data?.documentId ?? "", "populate=*");
+  const userResponse = await GETUserByDocumentId(authResponse.user.id, { populate: "relation_data" });
+  const dataResponse = await GETDataByDocumentId(userResponse.relation_data?.documentId ?? "", { populate: "*" });
 
   return rearrange(authResponse, dataResponse);
 };

@@ -5,10 +5,10 @@ import { getSession } from "@/src/helpers";
 const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 
 if (!API_URL) {
-  throw new Error("The API URL is not defined. Please check your environment variables.");
+  throw new Error("Please check your environment variables. NEXT_PUBLIC_BASE_API_URL is not defined.");
 }
 
-export interface IMetaResponse {
+interface IMetaResponse {
   meta: {
     pagination: {
       page: number;
@@ -28,6 +28,8 @@ export interface IErrorResponse {
   };
 }
 
+type TResponse<T> = IMetaResponse & T;
+
 interface I {
   auth?: boolean;
   data?: unknown;
@@ -39,7 +41,7 @@ interface I {
   params?: Record<string, any>;
 }
 
-export const apiRequest = async <T>({ auth = true, ...props }: I): Promise<T> => {
+export const apiRequest = async <T>({ auth = true, ...props }: I): Promise<TResponse<T>> => {
   const fetchToken = async () => await getSession("token");
 
   try {
@@ -56,13 +58,20 @@ export const apiRequest = async <T>({ auth = true, ...props }: I): Promise<T> =>
       url: `${API_URL}${props.endpoint}`,
     };
 
-    const res: AxiosResponse<T> = await axios(config);
+    const res: AxiosResponse<TResponse<T>> = await axios(config);
 
     return res.data;
   } catch (error) {
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    const statusCode = (error as any)?.response?.status;
-    const errorMessage = (error as any)?.response?.data?.error?.message || (error as Error)?.message;
+    let statusCode: number | undefined;
+    let errorMessage = "Unknown Error";
+
+    if (axios.isAxiosError<IErrorResponse>(error)) {
+      // console.log(error.response);
+      statusCode = error.response?.status;
+      errorMessage = error.response?.data?.error?.message ?? error.message;
+    } else if (error instanceof Error) {
+      errorMessage = error.message;
+    }
 
     console.error(
       "--- API Request Error ---",
@@ -73,10 +82,44 @@ export const apiRequest = async <T>({ auth = true, ...props }: I): Promise<T> =>
   }
 };
 
-export const getApi = <T>(props: Omit<I, "data" | "method">): Promise<T> => apiRequest<T>({ ...props, method: "GET" });
+export const getApi = <T>(props: Omit<I, "data" | "method">): Promise<TResponse<T>> => apiRequest<T>({ ...props, method: "GET" });
 
-export const postApi = <T>(props: Omit<I, "method" | "params">): Promise<T> => apiRequest<T>({ ...props, method: "POST" });
+export const postApi = <T>(props: Omit<I, "method" | "params">): Promise<TResponse<T>> => apiRequest<T>({ ...props, method: "POST" });
 
-export const putApi = <T>(props: Omit<I, "method" | "params">): Promise<T> => apiRequest<T>({ ...props, method: "PUT" });
+export const putApi = <T>(props: Omit<I, "method" | "params">): Promise<TResponse<T>> => apiRequest<T>({ ...props, method: "PUT" });
 
-export const deleteApi = <T>(props: Omit<I, "data" | "method" | "params">): Promise<T> => apiRequest<T>({ ...props, method: "DELETE" });
+export const deleteApi = <T>(props: Omit<I, "data" | "method" | "params">): Promise<TResponse<T>> => apiRequest<T>({ ...props, method: "DELETE" });
+
+/*
+PENJELASAN TIPE GENERIK DENGAN CONTOH PENGGUNAAN:
+
+// 1. User panggil dengan <{ data: IDataResponse }>
+const response = await getApi<{ data: IDataResponse }>({
+  endpoint: `/api/datas/${documentId}`,
+  label: label,
+  params: params,
+});
+
+// 2. T sekarang = { data: IDataResponse }
+// TResponse<T> = IMetaResponse & T
+// Maka TResponse<{ data: IDataResponse }> = IMetaResponse & { data: IDataResponse }
+// getApi menjadi:
+getApi = <{ data: IDataResponse }>(
+  props: Omit<I, "data" | "method">
+): Promise<IMetaResponse & { data: IDataResponse }> => 
+  apiRequest<{ data: IDataResponse }>({ ...props, method: "GET" });
+
+// 3. apiRequest terima T = { data: IDataResponse }
+export const apiRequest = async <{ data: IDataResponse }>({ auth = true, ...props }: I): Promise<IMetaResponse & { data: IDataResponse }> => {
+  // ...
+  
+  // 4. axios return AxiosResponse<IMetaResponse & { data: IDataResponse }>
+  const res: AxiosResponse<IMetaResponse & { data: IDataResponse }> = await axios(config);
+  
+  // 5. res.data bertipe IMetaResponse & { data: IDataResponse }
+  return res.data;  // ← return data + meta (saat request sukses)
+}
+
+// 6. Final result - response bertipe IMetaResponse & { data: IDataResponse }
+const response: IMetaResponse & { data: IDataResponse } = await getApi<{ data: IDataResponse }>({ ... });
+*/

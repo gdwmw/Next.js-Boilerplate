@@ -22,10 +22,11 @@ export interface IDataResponse extends IDataCommon {
   role: TRole;
 }
 
+type TQueryParams = Record<string, unknown>;
+
 const label = "Data";
 
-export const GETDataByDocumentId = async (documentId: string, query?: string): Promise<IDataResponse> => {
-  const params = query ? Object.fromEntries(new URLSearchParams(query).entries()) : undefined;
+export const GETDataByDocumentId = async (documentId: string, params?: TQueryParams): Promise<IDataResponse> => {
   const response = await getApi<{ data: IDataResponse }>({
     endpoint: `/api/datas/${documentId}`,
     label: label,

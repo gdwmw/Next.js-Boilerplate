@@ -17,16 +17,16 @@ export interface IUserResponse {
   username: string;
 }
 
+type TQueryParams = Record<string, unknown>;
+
 const label = "User";
 
-export const GETUserByDocumentId = async (id: number, query?: string): Promise<IUserResponse> => {
-  const params = query ? Object.fromEntries(new URLSearchParams(query).entries()) : undefined;
-  return getApi<IUserResponse>({
+export const GETUserByDocumentId = async (id: number, params?: TQueryParams): Promise<IUserResponse> =>
+  getApi<IUserResponse>({
     endpoint: `/api/users/${id}`,
     label: label,
     params: params,
   });
-};
 
 export const PUTUser = async (payload: IUserPayload): Promise<IUserResponse> =>
   putApi<IUserResponse>({

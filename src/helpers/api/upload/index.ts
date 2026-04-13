@@ -29,25 +29,23 @@ export interface IUploadResponse {
   width: number;
 }
 
+type TQueryParams = Record<string, unknown>;
+
 const label = "Upload";
 
-export const GETUpload = async (query?: string): Promise<IUploadResponse[]> => {
-  const params = query ? Object.fromEntries(new URLSearchParams(query).entries()) : undefined;
-  return getApi<IUploadResponse[]>({
+export const GETUpload = async (params?: TQueryParams): Promise<IUploadResponse[]> =>
+  getApi<IUploadResponse[]>({
     endpoint: "/api/upload/files",
     label: label,
     params: params,
   });
-};
 
-export const GETUploadById = async (id: string, query?: string): Promise<IUploadResponse> => {
-  const params = query ? Object.fromEntries(new URLSearchParams(query).entries()) : undefined;
-  return getApi<IUploadResponse>({
+export const GETUploadById = async (id: string, params?: TQueryParams): Promise<IUploadResponse> =>
+  getApi<IUploadResponse>({
     endpoint: `/api/upload/files/${id}`,
     label: label,
     params: params,
   });
-};
 
 export const POSTUpload = async (payload: IUploadPayload): Promise<IUploadResponse[]> => {
   const formData = new FormData();

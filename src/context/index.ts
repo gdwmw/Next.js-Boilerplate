@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 import { IGlobalActions, IGlobalStates } from "@/src/types";
 
-export const useGlobalStates = create<IGlobalActions & IGlobalStates>((set) => ({
+export const useGlobalContext = create<IGlobalActions & IGlobalStates>((set) => ({
   openA: false,
   openB: false,
   setOpenA: (openA: boolean) => set({ openA }),
