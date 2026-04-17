@@ -1,7 +1,7 @@
 import { Metadata, Viewport } from "next";
 import { FC, ReactElement } from "react";
 
-import LoginLayout from "@/src/layouts/authentication/pages/login";
+import LoginLayout from "./_layout";
 
 export const viewport: Viewport = {
   initialScale: 1.0,

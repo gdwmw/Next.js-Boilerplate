@@ -3,7 +3,9 @@ import { FC, ReactElement } from "react";
 import { FaUser } from "react-icons/fa";
 
 import { twm } from "@/src/libs";
-import { TAvatarSize } from "@/src/types";
+
+export const AVATAR_SIZE_OPTIONS = ["lg", "md", "sm"] as const;
+export type TAvatarSize = (typeof AVATAR_SIZE_OPTIONS)[number];
 
 export interface IAvatar {
   className?: string;

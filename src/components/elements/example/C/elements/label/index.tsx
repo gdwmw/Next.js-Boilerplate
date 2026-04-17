@@ -2,7 +2,8 @@ import { FC, PropsWithChildren, ReactElement } from "react";
 import { MdError } from "react-icons/md";
 
 import { twm } from "@/src/libs";
-import { TExampleCColor } from "@/src/types";
+
+import { TExampleCColor } from "../../types";
 
 export interface IExampleLabel extends Readonly<PropsWithChildren> {
   className?: {

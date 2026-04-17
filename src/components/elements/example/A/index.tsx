@@ -1,7 +1,14 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, FC, ReactElement } from "react";
 
 import { twm } from "@/src/libs";
-import { TExampleAColor, TExampleASize, TExampleAVariant } from "@/src/types";
+
+export const EXAMPLEA_VARIANT_OPTIONS = ["ghost", "outline", "solid"] as const;
+export const EXAMPLEA_COLOR_OPTIONS = ["red", "green", "blue", "black", "white", "gray"] as const;
+export const EXAMPLEA_SIZE_OPTIONS = ["lg", "md", "sm"] as const;
+
+export type TExampleAVariant = (typeof EXAMPLEA_VARIANT_OPTIONS)[number];
+export type TExampleAColor = (typeof EXAMPLEA_COLOR_OPTIONS)[number];
+export type TExampleASize = (typeof EXAMPLEA_SIZE_OPTIONS)[number];
 
 export interface IExampleA extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   color: TExampleAColor;

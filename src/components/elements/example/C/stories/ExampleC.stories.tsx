@@ -3,9 +3,8 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { FaEyeSlash } from "react-icons/fa";
 import { fn } from "storybook/test";
 
-import { EXAMPLEC_COLOR_OPTIONS } from "@/src/libs";
-
 import StoriesLayout from ".";
+import { EXAMPLEC_COLOR_OPTIONS } from "../types";
 
 const meta: Meta<typeof StoriesLayout> = {
   args: { iconOnClick: fn(() => alert("Clicked!")) },
