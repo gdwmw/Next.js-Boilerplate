@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FC, HTMLInputTypeAttribute, KeyboardEvent, ReactElement, useEffect, useState, useTransition } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm, useWatch } from "react-hook-form";
 
 import { Avatar, ExampleATWM, ExampleInput, FormContainer, SubmitButton } from "@/src/components";
 import { DELETEUpload, inputValidations, POSTUpload, PUTData, PUTUser } from "@/src/utils";
@@ -75,7 +75,6 @@ export const Main: FC<I> = (props): ReactElement => {
     formState: { errors },
     handleSubmit,
     register,
-    watch,
   } = useForm<TProfileSchema>({
     defaultValues: {
       email: props.session?.user?.email ?? undefined,
@@ -86,19 +85,18 @@ export const Main: FC<I> = (props): ReactElement => {
     resolver: zodResolver(ProfileSchema),
   });
 
+  const watchImage = useWatch({ name: "image" });
+
   useEffect(() => {
-    const file = watch("image")?.[0];
+    const file = watchImage?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreviewImage(reader.result as string);
       };
       reader.readAsDataURL(file);
-    } else {
-      setPreviewImage(null);
     }
-    // eslint-disable-next-line
-  }, [watch("image")]);
+  }, [watchImage]);
 
   const onSubmit: SubmitHandler<TProfileSchema> = (dt) => {
     setTransition(async () => {
