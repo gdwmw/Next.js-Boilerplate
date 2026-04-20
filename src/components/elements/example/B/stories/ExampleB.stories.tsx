@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { FaCrown } from "react-icons/fa";
+import { Crown } from "lucide-react";
 
 import StoriesLayout from ".";
 
@@ -32,6 +32,6 @@ export const Primary: Story = {
     text: "This is example text",
     iconColor: "",
     textColor: "",
-    icon: <FaCrown size={75} />,
+    icon: <Crown size={75} />,
   },
 };

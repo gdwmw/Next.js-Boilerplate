@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { FaEyeSlash } from "react-icons/fa";
+import { EyeOff } from "lucide-react";
 import { fn } from "storybook/test";
 
 import StoriesLayout from ".";
@@ -62,7 +62,7 @@ export const Input: Story = {
     color: "default",
     label: "Example Input",
     type: "text",
-    icon: <FaEyeSlash />,
+    icon: <EyeOff size={18} />,
   },
 };
 

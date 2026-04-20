@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { FaCrown } from "react-icons/fa";
+import { Crown } from "lucide-react";
 import { fn } from "storybook/test";
 
 import { ExampleA, EXAMPLEA_COLOR_OPTIONS, EXAMPLEA_SIZE_OPTIONS, EXAMPLEA_VARIANT_OPTIONS } from ".";
@@ -44,7 +44,7 @@ export const Solid: Story = {
     size: "sm",
     children: (
       <>
-        <FaCrown />
+        <Crown size={18} />
         Example
       </>
     ),
@@ -58,7 +58,7 @@ export const Outline: Story = {
     size: "sm",
     children: (
       <>
-        <FaCrown />
+        <Crown size={18} />
         Example
       </>
     ),
@@ -72,7 +72,7 @@ export const Ghost: Story = {
     size: "sm",
     children: (
       <>
-        <FaCrown />
+        <Crown size={18} />
         Example
       </>
     ),

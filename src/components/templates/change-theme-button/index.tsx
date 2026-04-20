@@ -1,8 +1,8 @@
 "use client";
 
+import { Monitor, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { FC, ReactElement } from "react";
-import { FaDesktop, FaMoon, FaSun } from "react-icons/fa";
 
 import { setCookie } from "@/src/utils";
 
@@ -18,11 +18,11 @@ export const ChangeThemeButton: FC<I> = ({ cookie, ...props }): ReactElement => 
   const getThemeIcon = (dt: string) => {
     switch (dt) {
       case "dark":
-        return <FaMoon size={18} />;
+        return <Moon size={18} />;
       case "light":
-        return <FaSun size={18} />;
+        return <Sun size={18} />;
       default:
-        return <FaDesktop size={18} />;
+        return <Monitor size={18} />;
     }
   };
 

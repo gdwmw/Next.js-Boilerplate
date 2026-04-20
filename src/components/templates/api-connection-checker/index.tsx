@@ -1,9 +1,8 @@
 "use client";
 
 import axios from "axios";
+import { Check, Server, X } from "lucide-react";
 import { FC, ReactElement, useEffect, useState } from "react";
-import { FaServer } from "react-icons/fa";
-import { IoCheckmark, IoClose } from "react-icons/io5";
 
 import { useToggle } from "@/src/hooks";
 
@@ -63,13 +62,13 @@ export const APIConnectionChecker: FC = (): ReactElement => {
             <div className="flex items-center justify-between gap-3 sm:gap-5">
               <h1 className="truncate text-base font-semibold sm:text-lg dark:text-white">API Connection Checker</h1>
               <ExampleA className="-mb-0.5" color="blue" onClick={() => toggle()} size="sm" variant="ghost">
-                <IoClose size={20} />
+                <X size={20} />
               </ExampleA>
             </div>
 
             <div className="flex items-center gap-3 rounded-md border border-gray-200 bg-gray-100 p-2 dark:border-gray-600 dark:bg-gray-700">
               <div className="flex min-h-8 min-w-8 items-center justify-center rounded-full bg-green-500 text-white">
-                <IoCheckmark size={18} />
+                <Check size={18} />
               </div>
               <div className="overflow-hidden">
                 <h2 className="text-sm font-semibold sm:text-base dark:text-white">Connected</h2>
@@ -85,7 +84,7 @@ export const APIConnectionChecker: FC = (): ReactElement => {
                 <div
                   className={`flex min-h-8 min-w-8 items-center justify-center rounded-full text-white ${connection[i] ? "bg-green-500" : "bg-red-500"}`}
                 >
-                  {connection[i] ? <IoCheckmark size={18} /> : <IoClose size={18} />}
+                  {connection[i] ? <Check size={18} /> : <X size={18} />}
                 </div>
                 <div className="overflow-hidden">
                   <h2 className="text-sm font-semibold sm:text-base dark:text-white">{connection[i] ? "Connected" : "Disconnected"}</h2>
@@ -100,7 +99,7 @@ export const APIConnectionChecker: FC = (): ReactElement => {
 
         {!value && (
           <ExampleA className="min-w-10" color="blue" onClick={() => toggle()} size="sm" variant="solid">
-            <FaServer size={18} />
+            <Server size={18} />
           </ExampleA>
         )}
       </div>

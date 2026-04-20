@@ -1,6 +1,6 @@
+import { ChevronLeft } from "lucide-react";
 import Link, { LinkProps } from "next/link";
 import { FC, ReactElement, ReactNode } from "react";
-import { FaChevronLeft } from "react-icons/fa";
 
 import { twm } from "@/src/libs";
 
@@ -37,7 +37,7 @@ export const FormContainer: FC<I> = ({ children, className, href, label, ...prop
           href={href}
           {...props}
         >
-          <FaChevronLeft className="ml-1" size={12} /> {label}
+          <ChevronLeft className="ml-1" size={12} /> {label}
         </Link>
       )}
 

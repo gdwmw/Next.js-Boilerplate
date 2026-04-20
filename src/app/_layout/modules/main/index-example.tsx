@@ -1,6 +1,6 @@
+import { User } from "lucide-react";
 import Link from "next/link";
 import { FC, ReactElement } from "react";
-import { FaUserAlt } from "react-icons/fa";
 
 import { ChangeThemeButton, ExampleATWM, FormContainer, LogoutButton } from "@/src/components";
 import { getCookie, getSession } from "@/src/utils";
@@ -23,7 +23,7 @@ export const Main: FC = async (): Promise<ReactElement> => {
               <ChangeThemeButton className="min-w-16" color="blue" cookie={themeCookie?.value ?? ""} size="sm" variant="outline" />
 
               <Link className={ExampleATWM({ className: "min-w-16", color: "black", size: "sm", variant: "solid" })} href={"/profile"}>
-                <FaUserAlt size={17} />
+                <User size={17} />
               </Link>
 
               <LogoutButton className="min-w-16" color="gray" size="sm" variant="solid" />

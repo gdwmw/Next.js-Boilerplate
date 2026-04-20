@@ -2,11 +2,11 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AxiosError } from "axios";
+import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FC, HTMLInputTypeAttribute, KeyboardEvent, ReactElement, useState, useTransition } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
 import { ExampleATWM, ExampleInput, FormContainer, SubmitButton } from "@/src/components";
 import { capitalize, IErrorResponse, inputValidations, POSTRegister } from "@/src/utils";
@@ -110,7 +110,7 @@ export const Main: FC = (): ReactElement => {
               color="default"
               disabled={loading}
               errorMessage={errors[dt.name]?.message}
-              icon={dt.isPassword ? passwordVisibility ? <IoIosEye size={18} /> : <IoIosEyeOff size={18} /> : undefined}
+              icon={dt.isPassword ? passwordVisibility ? <Eye size={18} /> : <EyeOff size={18} /> : undefined}
               iconOnClick={dt.isPassword ? () => setPasswordVisibility((prev) => !prev) : undefined}
               key={i}
               label={dt.label}

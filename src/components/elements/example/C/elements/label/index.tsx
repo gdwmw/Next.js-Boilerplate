@@ -1,5 +1,5 @@
+import { CircleAlert } from "lucide-react";
 import { FC, PropsWithChildren, ReactElement } from "react";
-import { MdError } from "react-icons/md";
 
 import { twm } from "@/src/libs";
 
@@ -52,7 +52,7 @@ export const ExampleLabel: FC<IExampleLabel> = ({ className, color, disabled, er
   <fieldset className={FieldsetTWM({ className, color, disabled, errorMessage })} data-testid="example-label-fieldset">
     <legend className={LegendTWM({ className, color, disabled, errorMessage })} data-testid="example-label-legend">
       {label}
-      {errorMessage && !disabled && <MdError className="text-red-600" data-testid="example-label-icon" />}
+      {errorMessage && !disabled && <CircleAlert className="text-red-600" data-testid="example-label-icon" size={12} />}
     </legend>
 
     <div className="flex items-center justify-center">{props.children}</div>

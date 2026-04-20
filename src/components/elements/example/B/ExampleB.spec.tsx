@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { FaCrown } from "react-icons/fa";
+import { Crown } from "lucide-react";
 
 import { ExampleBContainer, ExampleBIcon, ExampleBText } from ".";
 
@@ -8,7 +8,7 @@ import { ExampleBContainer, ExampleBIcon, ExampleBText } from ".";
 const component = (
   <ExampleBContainer className="testing-class" id="testing-id" style={{ color: "#ff0000" }}>
     <ExampleBIcon className="testing-class" id="testing-id" style={{ color: "#ff0000" }}>
-      <FaCrown data-testid="testing-icon" />
+      <Crown data-testid="testing-icon" />
     </ExampleBIcon>
     <ExampleBText className="testing-class" id="testing-id" style={{ color: "#ff0000" }}>
       This is testing text

@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
+import { Eye } from "lucide-react";
 import { InputHTMLAttributes, ReactNode } from "react";
-import { FaEye } from "react-icons/fa";
 
 import { ExampleInput, ExampleSelect, ExampleTextArea, TExampleCColor } from ".";
 
@@ -61,7 +61,7 @@ describe("ExampleC Component Testing", () => {
     });
 
     it("Should have an icon", () => {
-      const { getByTestId } = render(inputComponent({ defaultValue: "Example", icon: <FaEye data-testid="example-input-icon" />, type: "password" }));
+      const { getByTestId } = render(inputComponent({ defaultValue: "Example", icon: <Eye data-testid="example-input-icon" />, type: "password" }));
       expect(getByTestId("example-input-icon")).toBeDefined();
     });
 

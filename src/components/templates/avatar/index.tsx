@@ -1,6 +1,6 @@
+import { User } from "lucide-react";
 import Image from "next/image";
 import { FC, ReactElement } from "react";
-import { FaUser } from "react-icons/fa";
 
 import { twm } from "@/src/libs";
 
@@ -48,7 +48,7 @@ export const Avatar: FC<IAvatar> = (props): ReactElement => {
         props.className,
       )}
     >
-      <FaUser className="text-gray-400 dark:text-gray-200" size={props.iconSize ? props.iconSize : icon} />
+      <User className="text-gray-400 dark:text-gray-200" size={props.iconSize ? props.iconSize : icon} />
     </div>
   );
 };

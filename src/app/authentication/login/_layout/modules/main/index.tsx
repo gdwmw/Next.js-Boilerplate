@@ -1,13 +1,12 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ArrowLeftRight, Eye, EyeOff } from "lucide-react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FC, ReactElement, useState, useTransition } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { IoIosEye, IoIosEyeOff } from "react-icons/io";
-import { TbArrowsExchange } from "react-icons/tb";
 
 import { ExampleATWM, ExampleInput, FormContainer, SubmitButton } from "@/src/components";
 import { deleteCookie, getCookie } from "@/src/utils";
@@ -80,7 +79,7 @@ export const Main: FC = (): ReactElement => {
             color="default"
             disabled={loading}
             errorMessage={errors.identifier?.message}
-            icon={<TbArrowsExchange size={18} />}
+            icon={<ArrowLeftRight size={18} />}
             iconOnClick={() => {
               setPasswordVisibility(false);
               setErrorMessage("");
@@ -96,7 +95,7 @@ export const Main: FC = (): ReactElement => {
             color="default"
             disabled={loading}
             errorMessage={errors.password?.message}
-            icon={passwordVisibility ? <IoIosEye size={18} /> : <IoIosEyeOff size={18} />}
+            icon={passwordVisibility ? <Eye size={18} /> : <EyeOff size={18} />}
             iconOnClick={() => setPasswordVisibility((prev) => !prev)}
             label="Password"
             type={passwordVisibility ? "text" : "password"}
