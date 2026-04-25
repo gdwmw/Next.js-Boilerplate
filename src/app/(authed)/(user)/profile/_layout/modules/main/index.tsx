@@ -87,6 +87,7 @@ export const Main: FC<I> = (props): ReactElement => {
   });
 
   useEffect(() => {
+    // eslint-disable-next-line
     const file = watch("image")?.[0];
     if (file) {
       const reader = new FileReader();
