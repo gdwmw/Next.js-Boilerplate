@@ -1,7 +1,7 @@
 import { IAuthResponse, IAuthSchema } from "..";
-import { postApi } from "../../base";
-import { GETDataByDocumentId, IDataResponse } from "../../data";
-import { GETUserByDocumentId } from "../../user";
+import { postApi } from "../base";
+import { GETDataByDocumentId, IDataResponse } from "../data";
+import { GETUserByDocumentId } from "../user";
 
 export interface ILoginPayload {
   identifier: string;

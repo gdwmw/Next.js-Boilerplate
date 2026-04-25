@@ -1,7 +1,7 @@
 import { IAuthResponse, IAuthSchema } from "..";
-import { postApi } from "../../base";
-import { IDataPayload, IDataResponse, POSTData } from "../../data";
-import { PUTUser } from "../../user";
+import { postApi } from "../base";
+import { IDataPayload, IDataResponse, POSTData } from "../data";
+import { PUTUser } from "../user";
 
 export interface IRegisterPayload {
   email: string;

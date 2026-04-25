@@ -1,4 +1,4 @@
-import { deleteApi, getApi, postApi, putApi } from "../base";
+import { deleteApi, getApi, postApi, putApi } from "./base";
 
 interface IExampleCommon {
   email: string;

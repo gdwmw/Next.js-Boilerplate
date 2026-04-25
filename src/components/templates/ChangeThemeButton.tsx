@@ -6,7 +6,7 @@ import { FC, ReactElement } from "react";
 
 import { setCookie } from "@/src/utils";
 
-import { ExampleA, IExampleA } from "../..";
+import { ExampleA, IExampleA } from "..";
 
 interface I extends IExampleA {
   cookie: string;

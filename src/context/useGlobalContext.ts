@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import { IGlobalActions, IGlobalStates } from "../types";
+import { IGlobalActions, IGlobalStates } from "./type";
 
 export const useGlobalContext = create<IGlobalActions & IGlobalStates>((set) => ({
   openA: false,

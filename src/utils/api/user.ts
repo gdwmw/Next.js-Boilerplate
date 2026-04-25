@@ -1,5 +1,5 @@
-import { getApi, putApi } from "../base";
-import { IDataResponse } from "../data";
+import { getApi, putApi } from "./base";
+import { IDataResponse } from "./data";
 
 export interface IUserPayload {
   email?: string;

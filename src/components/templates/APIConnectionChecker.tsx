@@ -6,7 +6,7 @@ import { FC, ReactElement, useEffect, useState } from "react";
 
 import { useToggle } from "@/src/hooks";
 
-import { ExampleA } from "../../elements";
+import { ExampleA } from "../elements";
 
 const ENVIRONMENT_DATA_VARIABLES = ["NEXT_PUBLIC_BASE_API_URL"];
 const ENVIRONMENT_DATA_VALUES = [process.env.NEXT_PUBLIC_BASE_API_URL];

@@ -1,5 +1,5 @@
-import { IAuthSchema } from "../authentication";
-import { postApi } from "../base";
+import { IAuthSchema } from "./authentication";
+import { postApi } from "./base";
 
 export interface IPasswordPayload {
   code?: string;

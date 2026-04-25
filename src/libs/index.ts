@@ -1,2 +1,2 @@
 export * from "./providers";
-export * from "./tailwind-merge";
+export * from "./twm";

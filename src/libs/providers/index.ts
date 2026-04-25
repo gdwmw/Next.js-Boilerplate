@@ -1,3 +1,3 @@
-export * from "./next-auth";
-export * from "./next-themes";
-export * from "./react-query";
+export * from "./NextAuthProvider";
+export * from "./NextThemesProvider";
+export * from "./ReactQueryProvider";

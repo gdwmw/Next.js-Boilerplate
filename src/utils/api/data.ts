@@ -1,7 +1,7 @@
 import { TRole } from "@/src/types";
 
-import { getApi, postApi, putApi } from "../base";
-import { IUploadResponse } from "../upload";
+import { getApi, postApi, putApi } from "./base";
+import { IUploadResponse } from "./upload";
 
 interface IDataCommon {
   name: string;

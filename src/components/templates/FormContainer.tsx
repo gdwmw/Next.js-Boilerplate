@@ -4,7 +4,7 @@ import { FC, ReactElement, ReactNode } from "react";
 
 import { twm } from "@/src/libs";
 
-import { ExampleATWM } from "../..";
+import { ExampleATWM } from "..";
 
 interface I extends Omit<LinkProps, "href"> {
   children: ReactNode;

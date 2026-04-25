@@ -1,4 +1,4 @@
-import { deleteApi, getApi, postApi } from "../base";
+import { deleteApi, getApi, postApi } from "./base";
 
 export interface IUploadPayload {
   field?: string;
