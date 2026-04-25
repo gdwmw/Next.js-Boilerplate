@@ -10,7 +10,7 @@
     "clean": "rimraf .next",
     "storybook": "storybook dev -p 6006 --ci",
     "storybook:build": "storybook build",
-    "storybook:start": "bunx http-server storybook-static",
+    "storybook:start": "pnpm dlx http-server storybook-static",
     "jest:watch": "jest --watch",
     "jest:test": "jest",
     "lint": "eslint --max-warnings 0",
@@ -55,6 +55,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.5.2",
     "@commitlint/config-conventional": "^20.5.0",
+    "@eslint/js": "^10.0.1",
     "@storybook/addon-themes": "^10.3.5",
     "@storybook/nextjs-vite": "^10.3.5",
     "@tailwindcss/postcss": "^4.2.4",

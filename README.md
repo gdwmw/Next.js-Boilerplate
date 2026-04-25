@@ -287,13 +287,13 @@ To get started, follow these steps:
 2. **Install dependencies**
 
    ```bash
-   bun install
+   pnpm install
    ```
 
 3. **Set up environment variables**
 
    ```bash
-   bun cpenv
+   pnpm cpenv
    ```
 
 4. **Set `NEXTAUTH_URL` to your local URL**
@@ -305,13 +305,13 @@ To get started, follow these steps:
 5. **Generate a base64 value for `NEXTAUTH_SECRET`**
 
    ```bash
-   bun base64
+   pnpm base64
    ```
 
 6. **Run the development server**
 
    ```bash
-   bun dev
+   pnpm dev
    ```
 
 7. **Access the application**
@@ -320,7 +320,7 @@ To get started, follow these steps:
 
 ## Commit Guidelines 📝
 
-When committing changes with `bun commit`, follow these steps:
+When committing changes with `pnpm commit`, follow these steps:
 
 1. **Prepare your changes**  
    Ensure your code is tested and complies with the project's coding standards.
@@ -336,7 +336,7 @@ When committing changes with `bun commit`, follow these steps:
    Execute:
 
    ```bash
-   bun commit
+   pnpm commit
    ```
 
 4. **Follow the interactive prompt**  
@@ -388,7 +388,7 @@ If you would like to contribute, follow these steps:
    Commit with a descriptive message:
 
    ```bash
-   bun commit
+   pnpm commit
    ```
 
 6. **Push to your fork**  
