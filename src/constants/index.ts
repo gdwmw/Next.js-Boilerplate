@@ -1,2 +1,2 @@
 export * from "./authentication";
-export * from "./schemas-error-message";
+export * from "./schemasErrorMessage";

@@ -1,2 +1,2 @@
-export * from "./types";
-export * from "./zustand";
+export * from "./type";
+export * from "./useGlobalContext";

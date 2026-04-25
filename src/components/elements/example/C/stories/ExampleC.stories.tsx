@@ -3,8 +3,8 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { EyeOff } from "lucide-react";
 import { fn } from "storybook/test";
 
-import StoriesLayout from ".";
-import { EXAMPLEC_COLOR_OPTIONS } from "../types";
+import { EXAMPLEC_COLOR_OPTIONS } from "../type";
+import StoriesLayout from "./StoriesLayout";
 
 const meta: Meta<typeof StoriesLayout> = {
   args: { iconOnClick: fn(() => alert("Clicked!")) },
