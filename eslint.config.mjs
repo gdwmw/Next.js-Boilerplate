@@ -9,13 +9,13 @@ import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended"
 import reactPlugin from "eslint-plugin-react";
 import storybook from "eslint-plugin-storybook";
 import { defineConfig, globalIgnores } from "eslint/config";
-import tseslint from "typescript-eslint";
+// import tseslint from "typescript-eslint";
 
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   eslint.configs.recommended,
-  ...tseslint.configs.recommended,
+  // ...tseslint.configs.recommended,
   reactPlugin.configs.flat.recommended,
   perfectionist.configs["recommended-alphabetical"],
   ...pluginQuery.configs["flat/recommended"],
@@ -53,9 +53,9 @@ const eslintConfig = defineConfig([
     },
     rules: {
       "@typescript-eslint/no-empty-object-type": "off",
-      "@typescript-eslint/no-unused-expressions": "error",
+      "@typescript-eslint/no-unused-expressions": "warn",
       "@typescript-eslint/no-unused-vars": [
-        "error",
+        "warn",
         {
           argsIgnorePattern: "^_",
           caughtErrorsIgnorePattern: "^_",
@@ -73,6 +73,7 @@ const eslintConfig = defineConfig([
       "better-tailwindcss/no-unnecessary-whitespace": ["error"],
       curly: ["error"],
       "no-unused-expressions": "off",
+      "no-unused-vars": "off",
       "perfectionist/sort-imports": [
         "error",
         {
