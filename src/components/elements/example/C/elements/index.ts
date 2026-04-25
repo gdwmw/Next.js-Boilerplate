@@ -1,3 +1,3 @@
-export * from "./error-message";
-export * from "./inputs-container";
-export * from "./label";
+export * from "./ExampleErrorMessage";
+export * from "./ExampleInputsContainer";
+export * from "./ExampleLabel";

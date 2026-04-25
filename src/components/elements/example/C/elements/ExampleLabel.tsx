@@ -3,7 +3,7 @@ import { FC, PropsWithChildren, ReactElement } from "react";
 
 import { twm } from "@/src/libs";
 
-import { TExampleCColor } from "../../types";
+import { TExampleCColor } from "../type";
 
 export interface IExampleLabel extends Readonly<PropsWithChildren> {
   className?: {

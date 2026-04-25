@@ -1,6 +1,6 @@
 import { FC, ReactElement, ReactNode } from "react";
 
-import { ExampleBContainer, ExampleBIcon, ExampleBText } from "..";
+import { ExampleBContainer, ExampleBIcon, ExampleBText } from "../ExampleB";
 
 interface I {
   icon: ReactNode;

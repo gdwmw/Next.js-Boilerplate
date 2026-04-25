@@ -2,8 +2,8 @@ import { DetailedHTMLProps, FC, forwardRef, InputHTMLAttributes, ReactElement, R
 
 import { twm } from "@/src/libs";
 
-import { ExampleA } from "../../A";
-import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel, IExampleLabel } from "../elements";
+import { ExampleA } from "../A";
+import { ExampleErrorMessage, ExampleInputsContainer, ExampleLabel, IExampleLabel } from "./elements";
 
 interface I
   extends
