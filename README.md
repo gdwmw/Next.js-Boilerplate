@@ -17,11 +17,10 @@ This boilerplate is a web application built with Next.js, a React framework for 
 
 Below is the primary directory structure of the boilerplate:
 
-```text
+```
 └── 📁Next.js-Boilerplate
     └── 📁configs
-        └── 📁authentication
-            ├── index.ts
+        ├── authentication.ts
     └── 📁docs
         ├── example.codediagram
         ├── example.drawio
@@ -46,46 +45,56 @@ Below is the primary directory structure of the boilerplate:
                     ├── 6.png
     └── 📁src
         └── 📁app
-            └── 📁_example ── Collocated example layout (not a route)
+            └── 📁_example
                 └── 📁modules
                     └── 📁aside
                         └── 📁batches
+                            ├── .gitkeep
                         ├── index.tsx
                     └── 📁footer
                         └── 📁batches
+                            ├── .gitkeep
                         ├── index.tsx
                     └── 📁header
                         └── 📁batches
+                            ├── .gitkeep
                         ├── index.tsx
                     └── 📁main
                         └── 📁batches
+                            ├── .gitkeep
                         ├── index.tsx
                     └── 📁nav
                         └── 📁batches
+                            ├── .gitkeep
                         ├── index.tsx
                     ├── index.ts
                 ├── index.tsx
-            └── 📁_layout ── Collocated home layout (not a route)
+            └── 📁_layout
                 └── 📁modules
                     └── 📁aside
                         └── 📁batches
+                            ├── .gitkeep
                         ├── index.tsx
                     └── 📁footer
                         └── 📁batches
+                            ├── .gitkeep
                         ├── index.tsx
                     └── 📁header
                         └── 📁batches
+                            ├── .gitkeep
                         ├── index.tsx
                     └── 📁main
                         └── 📁batches
+                            ├── .gitkeep
                         ├── index-example.tsx
                         ├── index.tsx
                     └── 📁nav
                         └── 📁batches
+                            ├── .gitkeep
                         ├── index.tsx
                     ├── index.ts
                 ├── index.tsx
-            └── 📁(authed) ── Route group for authenticated pages
+            └── 📁(authed)
                 └── 📁(admin)
                     ├── .gitkeep
                 └── 📁(user)
@@ -94,9 +103,8 @@ Below is the primary directory structure of the boilerplate:
                             └── 📁_layout
                                 └── 📁modules
                                     └── 📁main
-                                        └── 📁schema
-                                            ├── index.ts
                                         ├── index.tsx
+                                        ├── schema.ts
                                     ├── index.ts
                                 ├── index.tsx
                             ├── page.tsx
@@ -104,13 +112,12 @@ Below is the primary directory structure of the boilerplate:
                         └── 📁_layout
                             └── 📁modules
                                 └── 📁main
-                                    └── 📁schema
-                                        ├── index.ts
                                     ├── index.tsx
+                                    ├── schema.ts
                                 ├── index.ts
                             ├── index.tsx
                         ├── page.tsx
-            └── 📁(example) ── Route group for example/demo pages
+            └── 📁(example)
                 └── 📁admin-example
                     ├── page.tsx
                 └── 📁home-example
@@ -126,9 +133,8 @@ Below is the primary directory structure of the boilerplate:
                     └── 📁_layout
                         └── 📁modules
                             └── 📁main
-                                └── 📁schema
-                                    ├── index.ts
                                 ├── index.tsx
+                                ├── schema.ts
                             ├── index.ts
                         ├── index.tsx
                     ├── page.tsx
@@ -136,9 +142,8 @@ Below is the primary directory structure of the boilerplate:
                     └── 📁_layout
                         └── 📁modules
                             └── 📁main
-                                └── 📁schema
-                                    ├── index.ts
                                 ├── index.tsx
+                                ├── schema.ts
                             ├── index.ts
                         ├── index.tsx
                     ├── page.tsx
@@ -161,134 +166,94 @@ Below is the primary directory structure of the boilerplate:
                     └── 📁A
                         ├── ExampleA.spec.tsx
                         ├── ExampleA.stories.tsx
-                        ├── index.tsx
+                        ├── ExampleA.tsx
+                        ├── index.ts
                     └── 📁B
                         └── 📁stories
                             ├── ExampleB.stories.tsx
-                            ├── index.tsx
+                            ├── StoriesLayout.tsx
                         ├── ExampleB.spec.tsx
-                        ├── index.tsx
+                        ├── ExampleB.tsx
+                        ├── index.ts
                     └── 📁C
-                        └── 📁datepicker
-                            ├── index.tsx
                         └── 📁elements
-                            └── 📁error-message
-                                ├── index.tsx
-                            └── 📁inputs-container
-                                ├── index.tsx
-                            └── 📁label
-                                ├── index.tsx
+                            ├── ExampleErrorMessage.tsx
+                            ├── ExampleInputsContainer.tsx
+                            ├── ExampleLabel.tsx
                             ├── index.ts
-                        └── 📁input
-                            ├── index.tsx
-                        └── 📁select
-                            ├── index.tsx
                         └── 📁stories
                             ├── ExampleC.stories.tsx
-                            ├── index.tsx
-                        └── 📁text-area
-                            ├── index.tsx
-                        └── 📁types
-                            ├── index.ts
+                            ├── StoriesLayout.tsx
                         ├── ExampleC.spec.tsx
+                        ├── ExampleDatePicker.tsx
+                        ├── ExampleInput.tsx
+                        ├── ExampleSelect.tsx
+                        ├── ExampleTextArea.tsx
                         ├── index.ts
+                        ├── type.ts
                     ├── index.ts
                 ├── index.ts
             └── 📁templates
-                └── 📁api-connection-checker
-                    ├── index.tsx
-                └── 📁avatar
-                    ├── index.tsx
-                └── 📁change-theme-button
-                    ├── index.tsx
-                └── 📁form-container
-                    ├── index.tsx
-                └── 📁logout-button
-                    ├── index.tsx
-                └── 📁submit-button
-                    ├── index.tsx
+                ├── APIConnectionChecker.tsx
+                ├── Avatar.tsx
+                ├── ChangeThemeButton.tsx
+                ├── FormContainer.tsx
                 ├── index.ts
+                ├── LogoutButton.tsx
+                ├── SubmitButton.tsx
             ├── index.ts
             ├── README.md
         └── 📁constants
-            └── 📁authentication
-                ├── index.ts
-            └── 📁schemas-error-message
-                ├── index.ts
+            ├── authentication.ts
             ├── index.ts
+            ├── schemasErrorMessage.ts
         └── 📁context
-            └── 📁types
-                ├── index.ts
-            └── 📁zustand
-                ├── index.ts
             ├── index.ts
+            ├── type.ts
+            ├── useGlobalContext.ts
         └── 📁hooks
-            └── 📁local-storage
-                ├── index.ts
-            └── 📁modal
-                ├── index.ts
-            └── 📁toast
-                ├── index.ts
-            └── 📁toggle
-                ├── index.ts
-            └── 📁window-size
-                ├── index.ts
             ├── index.ts
+            ├── useLocalStorage.ts
+            ├── useModal.ts
+            ├── useToast.ts
+            ├── useToggle.ts
+            ├── useWindowSize.ts
         └── 📁libs
             └── 📁providers
-                └── 📁next-auth
-                    ├── index.tsx
-                └── 📁next-themes
-                    ├── index.tsx
-                └── 📁react-query
-                    ├── index.tsx
                 ├── index.ts
-            └── 📁tailwind-merge
-                ├── index.ts
+                ├── NextAuthProvider.tsx
+                ├── NextThemesProvider.tsx
+                ├── ReactQueryProvider.tsx
             ├── index.ts
+            ├── twm.ts
         └── 📁styles
             ├── datepicker.css
         └── 📁types
-            └── 📁authentication
-                ├── index.ts
+            ├── authentication.ts
             ├── index.ts
             ├── next-auth.d.ts
         └── 📁utils
             └── 📁api
                 └── 📁authentication
-                    └── 📁login
-                        ├── index.ts
-                    └── 📁register
-                        ├── index.ts
                     ├── index.ts
-                └── 📁base
-                    ├── index.ts
-                └── 📁data
-                    ├── index.ts
-                └── 📁example
-                    ├── index.ts
-                └── 📁password
-                    ├── index.ts
-                └── 📁upload
-                    ├── index.ts
-                └── 📁user
-                    ├── index.ts
+                    ├── login.ts
+                    ├── register.ts
+                ├── base.ts
+                ├── data.ts
+                ├── example.ts
                 ├── index.ts
-            └── 📁formatter
-                ├── index.ts
-            └── 📁math
-                ├── index.ts
+                ├── password.ts
+                ├── upload.ts
+                ├── user.ts
             └── 📁server
-                └── 📁cookies
-                    ├── index.ts
-                └── 📁getbase64
-                    ├── index.ts
-                └── 📁session
-                    ├── index.ts
+                ├── cookies.ts
+                ├── getBase64.ts
                 ├── index.ts
-            └── 📁validations
-                ├── index.ts
+                ├── session.ts
+            ├── formatter.ts
             ├── index.ts
+            ├── math.ts
+            ├── validations.ts
         ├── proxy.ts
 ```
 
