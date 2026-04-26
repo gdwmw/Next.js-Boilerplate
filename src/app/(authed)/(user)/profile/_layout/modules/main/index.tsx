@@ -14,6 +14,8 @@ import { DELETEUpload, IErrorResponse, inputValidations, POSTUpload, PUTUser } f
 
 import { ProfileSchema, TProfileSchema } from "./schema";
 
+const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
+
 interface IFormField {
   label: string;
   maxLength?: number;
@@ -153,7 +155,11 @@ export const Main: FC<I> = (props): ReactElement => {
     <main>
       <FormContainer className={{ innerContainer: "max-w-[450px]" }} href={"/"} label={"Home"}>
         <form className="flex w-full flex-col gap-3 overflow-y-auto" onSubmit={handleSubmit(onSubmit)}>
-          <Avatar className="mx-auto min-h-32 min-w-32" iconSize={64} src={previewImage ?? props.session?.user?.image ?? ""} />
+          <Avatar
+            className="mx-auto min-h-32 min-w-32"
+            iconSize={64}
+            src={previewImage ? previewImage : props.session?.user?.image ? `${API_URL}${props.session?.user?.image}` : ""}
+          />
 
           {FORM_FIELDS_DATA.map((dt, i) => (
             <ExampleInput
