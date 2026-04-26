@@ -1,78 +1,66 @@
-import { deleteApi, getApi, postApi } from "./base";
+import { deleteApi, getApi, ISuccessResponse, postApi } from "./base";
 
 export interface IUploadPayload {
-  field?: string;
-  files: FileList;
-  ref?: string;
-  refId?: string;
+  file: File;
 }
 
-export interface IFormatCommon {
+export interface IImageFormat {
+  filename: string;
   height: number;
-  name: string;
+  mimetype: string;
+  path: string;
+  size: number;
   url: string;
   width: number;
 }
 
 export interface IUploadResponse {
-  documentId: string;
-  formats: {
-    large: IFormatCommon;
-    medium: IFormatCommon;
-    small: IFormatCommon;
-    thumbnail: IFormatCommon;
-  };
-  height: number;
+  createdAt: Date;
+  dominantColor: null | string;
+  filename: string;
+  formats: null | Record<string, IImageFormat>;
+  height: null | number;
   id: number;
-  name: string;
+  mimetype: string;
+  originalFilename: string;
+  path: string;
+  placeholder: null | string;
+  size: number;
   url: string;
-  width: number;
+  width: null | number;
 }
 
 type TQueryParams = Record<string, unknown>;
 
 const label = "Upload";
 
-export const GETUpload = async (params?: TQueryParams): Promise<IUploadResponse[]> =>
+export const GETUpload = async (params?: TQueryParams): Promise<ISuccessResponse<IUploadResponse[]>> =>
   getApi<IUploadResponse[]>({
-    endpoint: "/api/upload/files",
+    endpoint: "/upload",
     label: label,
     params: params,
   });
 
-export const GETUploadById = async (id: string, params?: TQueryParams): Promise<IUploadResponse> =>
+export const GETUploadById = async (id: string, params?: TQueryParams): Promise<ISuccessResponse<IUploadResponse>> =>
   getApi<IUploadResponse>({
-    endpoint: `/api/upload/files/${id}`,
+    endpoint: `/upload/${id}`,
     label: label,
     params: params,
   });
 
-export const POSTUpload = async (payload: IUploadPayload): Promise<IUploadResponse[]> => {
+export const POSTUpload = async (payload: IUploadPayload): Promise<ISuccessResponse<IUploadResponse>> => {
   const formData = new FormData();
+  formData.append("file", payload.file);
 
-  for (const file of payload.files) {
-    formData.append("files", file);
-  }
-
-  if (payload.ref) {
-    formData.append("ref", payload.ref);
-  }
-  if (payload.refId) {
-    formData.append("refId", payload.refId);
-  }
-  if (payload.field) {
-    formData.append("field", payload.field);
-  }
-
-  return postApi<IUploadResponse[]>({
+  return postApi<IUploadResponse>({
     data: formData,
-    endpoint: "/api/upload",
+    endpoint: "/upload",
     label: label,
   });
 };
 
-export const DELETEUpload = async (id: number): Promise<IUploadResponse> =>
+export const DELETEUpload = async (id: number): Promise<ISuccessResponse<IUploadResponse>> =>
   deleteApi<IUploadResponse>({
-    endpoint: `/api/upload/files/${id}`,
+    endpoint: `/upload/${id}`,
     label: label,
   });

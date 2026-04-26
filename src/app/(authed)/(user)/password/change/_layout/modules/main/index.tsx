@@ -8,7 +8,7 @@ import { FC, HTMLInputTypeAttribute, ReactElement, useState, useTransition } fro
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { ExampleInput, FormContainer, SubmitButton } from "@/src/components";
-import { capitalize, IErrorResponse, POSTChangePassword } from "@/src/utils";
+import { IErrorResponse, POSTChangePassword } from "@/src/utils";
 
 import { ChangePasswordSchema, TChangePasswordSchema } from "./schema";
 
@@ -22,18 +22,18 @@ interface IFormField {
 const FORM_FIELDS_DATA: IFormField[] = [
   {
     label: "Current Password",
-    name: "currentPassword",
+    name: "oldPassword",
     type: "password",
   },
   {
     label: "New Password",
     maxLength: 72,
-    name: "password",
+    name: "newPassword",
     type: "password",
   },
   {
     label: "Confirm Password",
-    name: "passwordConfirmation",
+    name: "confirmPassword",
     type: "password",
   },
 ];
@@ -57,16 +57,18 @@ export const Main: FC = (): ReactElement => {
     setTransition(async () => {
       setErrorMessage("");
 
-      if (getValues("password") === getValues("passwordConfirmation")) {
+      if (getValues("newPassword") === getValues("confirmPassword")) {
         try {
-          await POSTChangePassword(dt);
+          const { confirmPassword: _confirmPassword, ...changePasswordPayload } = dt;
+          await POSTChangePassword(changePasswordPayload);
           console.info("Change password success!");
           signOut();
           reset();
         } catch (error) {
           const axiosError = error as AxiosError<IErrorResponse>;
-          setErrorMessage(capitalize(axiosError.response?.data?.error?.message));
+          setErrorMessage(axiosError.response?.data?.message ?? "Failed to change password");
           console.warn("Change password failed!");
+          console.error(error);
         }
       } else {
         setErrorMessage("Confirm password does not match new password");

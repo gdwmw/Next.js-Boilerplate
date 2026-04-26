@@ -1,6 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { AxiosError } from "axios";
 import { ArrowLeftRight, Eye, EyeOff } from "lucide-react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
@@ -9,7 +10,7 @@ import { FC, ReactElement, useState, useTransition } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { ExampleATWM, ExampleInput, FormContainer, SubmitButton } from "@/src/components";
-import { deleteCookie, getCookie } from "@/src/utils";
+import { IErrorResponse, POSTLogin } from "@/src/utils";
 
 import { LoginSchema, TLoginSchema } from "./schema";
 
@@ -34,39 +35,31 @@ export const Main: FC = (): ReactElement => {
       setErrorMessage("");
 
       try {
+        // Validate with backend first to get actual error message
+        const method = dt.identifier.includes("@") ? "email" : "username";
+        await POSTLogin({ identifier: dt.identifier, method, password: dt.password });
+
+        // If validation passes, use NextAuth to complete authentication
         const res = await signIn("credentials", {
           identifier: dt.identifier,
           password: dt.password,
           redirect: false,
         });
 
-        const reportResponse = await getCookie("report");
-        let report: boolean[] = [];
-        if (reportResponse?.value) {
-          report = JSON.parse(reportResponse?.value);
-        }
-
         if (!res?.ok) {
-          if (report?.[0] === false) {
-            setErrorMessage("Your account has not been confirmed");
-            throw new Error("Your account has not been confirmed");
-          } else if (report?.[1] === true) {
-            setErrorMessage("Your account has been blocked");
-            throw new Error("Your account has been blocked");
-          } else {
-            setErrorMessage(loginWithEmail ? "Email or Password invalid" : "Username or Password invalid");
-            throw new Error(loginWithEmail ? "Email or Password invalid" : "Username or Password invalid");
-          }
+          setErrorMessage("Authentication failed. Please try again.");
+          throw new Error("Authentication failed");
         }
 
-        await deleteCookie("report");
         console.info("Login success!");
         router.push("/");
         router.refresh();
         reset();
       } catch (error) {
+        const axiosError = error as AxiosError<IErrorResponse>;
+        setErrorMessage(axiosError.response?.data?.message ?? "Login failed");
         console.warn("Login failed!");
-        console.error("--- Authentication Error Message ---", error);
+        console.error(error);
       }
     });
   };

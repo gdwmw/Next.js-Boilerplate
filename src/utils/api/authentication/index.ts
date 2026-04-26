@@ -1,7 +1,3 @@
-import { TRole } from "@/src/types";
-
-import { IUserResponse } from "../user";
-
 export interface IDummyAccount {
   email: string;
   password: string;
@@ -9,36 +5,36 @@ export interface IDummyAccount {
   username: string;
 }
 
-export interface IAuthSchema {
-  jwt: string;
-  user: IUserResponse;
-}
-
-interface IAuthCommon {
-  blocked: boolean;
-  confirmed: boolean;
-  dataDocumentId: string;
-  dataId: string;
+export interface IAuthResponse {
+  accessToken: string;
+  email: string;
   id: string;
-  imageId: null | string;
-  phoneNumber: string;
-  role: TRole;
+  image?: null | string;
+  imageId?: null | string;
+  name: string;
+  phone: string;
+  placeholder?: null | string;
+  refreshToken: string;
+  role: "admin" | "user";
   status: string;
-  token: string;
   username: string;
 }
 
-export interface IAuthResponse extends IAuthCommon {
-  email: string;
-  image?: null | string;
-  name: string;
-}
-
-export interface INextAuthResponse extends IAuthCommon {
+export interface INextAuthResponse {
+  accessToken?: string;
   email?: null | string;
+  id?: string;
   image?: null | string;
+  imageId?: null | string;
   name?: null | string;
+  phone?: string;
+  placeholder?: null | string;
+  refreshToken?: string;
+  role?: "admin" | "user";
+  status?: string;
+  username?: string;
 }
 
 export * from "./login";
+export * from "./password";
 export * from "./register";

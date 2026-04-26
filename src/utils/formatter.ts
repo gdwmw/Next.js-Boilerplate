@@ -1,13 +1,3 @@
-export const capitalize = (value: null | string | undefined): string =>
-  value
-    ? value
-        .split(" ")
-        .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ")
-    : "An Unknown Error Occurred";
-
-// ----------------------------
-
 const CURRENCY_SETTINGS = {
   EUR: {
     fractionDigits: 2,

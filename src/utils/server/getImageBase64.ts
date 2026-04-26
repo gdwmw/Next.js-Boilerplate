@@ -4,7 +4,7 @@ import { getPlaiceholder } from "plaiceholder";
 
 // https://www.youtube.com/watch?v=Bz3No1RFXWY&t=18s
 
-export const getBase64 = async (imageUrl: string) => {
+export const getImageBase64 = async (imageUrl: string) => {
   try {
     const res = await fetch(imageUrl);
 

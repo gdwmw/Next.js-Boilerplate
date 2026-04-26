@@ -4,6 +4,8 @@ import { FC, ReactElement } from "react";
 
 import { twm } from "@/src/libs";
 
+const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
+
 export const AVATAR_SIZE_OPTIONS = ["lg", "md", "sm"] as const;
 export type TAvatarSize = (typeof AVATAR_SIZE_OPTIONS)[number];
 
@@ -38,7 +40,7 @@ export const Avatar: FC<IAvatar> = (props): ReactElement => {
         props.className,
       )}
     >
-      <Image alt="Profile Image" className="object-cover" fill quality={50} src={props.src} />
+      <Image alt="Profile Image" className="object-cover" fill quality={50} src={`${API_URL}${props.src}`} />
     </div>
   ) : (
     <div

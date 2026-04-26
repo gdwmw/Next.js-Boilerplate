@@ -9,7 +9,7 @@ import { FC, HTMLInputTypeAttribute, KeyboardEvent, ReactElement, useState, useT
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { ExampleATWM, ExampleInput, FormContainer, SubmitButton } from "@/src/components";
-import { capitalize, IErrorResponse, inputValidations, POSTRegister } from "@/src/utils";
+import { IErrorResponse, inputValidations, POSTRegister } from "@/src/utils";
 
 import { RegisterSchema, TRegisterSchema } from "./schema";
 
@@ -45,7 +45,7 @@ const FORM_FIELDS_DATA: IFormField[] = [
   {
     label: "Phone",
     maxLength: 15,
-    name: "phoneNumber",
+    name: "phone",
     onKeyDown: (e) => inputValidations.phoneNumber(e),
     type: "tel",
   },
@@ -86,14 +86,16 @@ export const Main: FC = (): ReactElement => {
 
       if (getValues("password") === getValues("confirmPassword")) {
         try {
-          await POSTRegister(dt);
+          const { confirmPassword: _confirmPassword, ...registerPayload } = dt;
+          await POSTRegister(registerPayload);
           console.info("Register success!");
           router.push("/authentication/login");
           reset();
         } catch (error) {
           const axiosError = error as AxiosError<IErrorResponse>;
-          setErrorMessage(capitalize(axiosError.response?.data?.error?.message));
+          setErrorMessage(axiosError.response?.data?.message ?? "Registration failed");
           console.warn("Register failed!");
+          console.error(error);
         }
       } else {
         setErrorMessage("Confirm password does not match password");

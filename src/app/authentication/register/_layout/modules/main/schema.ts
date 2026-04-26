@@ -9,10 +9,11 @@ export const RegisterSchema = z.object({
   password: z
     .string()
     .min(8, { message: schemaMessage.string.min("Password", 8) })
+    .max(72, { message: schemaMessage.string.max("Password", 72) })
     .regex(/^(?=.*[A-Z])/, { message: "Password must have at least 1 uppercase letter" })
     .regex(/^(?=.*\d)/, { message: "Password must have at least 1 number" })
     .regex(/^(?=.*[!@#$%^&*])/, { message: "Password must have at least 1 symbol (!@#$%^&*)" }),
-  phoneNumber: z.string().min(10, { message: schemaMessage.string.min("Phone", 10) }),
+  phone: z.string().min(10, { message: schemaMessage.string.min("Phone", 10) }),
   username: z.string().min(4, { message: schemaMessage.string.min("Username", 4) }),
 });
 

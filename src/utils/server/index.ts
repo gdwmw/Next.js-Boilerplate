@@ -1,3 +1,3 @@
 export * from "./cookies";
-export * from "./getBase64";
+export * from "./getImageBase64";
 export * from "./session";

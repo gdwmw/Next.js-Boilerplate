@@ -1,39 +1,50 @@
-import { IAuthResponse, IAuthSchema } from "..";
-import { postApi } from "../base";
-import { GETDataByDocumentId, IDataResponse } from "../data";
-import { GETUserByDocumentId } from "../user";
+import { IAuthResponse } from "..";
+import { ISuccessResponse, postApi } from "../base";
 
 export interface ILoginPayload {
   identifier: string;
+  method: "email" | "username";
   password: string;
 }
 
-const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
-
-const rearrange = (authResponse: IAuthSchema, dataResponse: IDataResponse): IAuthResponse => ({
-  blocked: authResponse.user.blocked,
-  confirmed: authResponse.user.confirmed,
-  dataDocumentId: dataResponse.documentId ?? "",
-  dataId: dataResponse.id.toString(),
-  email: authResponse.user.email,
-  id: authResponse.user.id.toString(),
-  image: dataResponse.image ? API_URL + dataResponse.image.url : null,
-  imageId: dataResponse.image?.id.toString() ?? null,
-  name: dataResponse.name,
-  phoneNumber: dataResponse.phoneNumber,
-  role: dataResponse.role,
-  status: "authenticated",
-  token: authResponse.jwt,
-  username: authResponse.user.username,
-});
+interface IElysiaLoginData {
+  accessToken: string;
+  email: string;
+  id: number;
+  name: string;
+  phone: string;
+  refreshToken: string;
+  role: "admin" | "user";
+  username: string;
+}
 
 const label = "Login";
 
-export const POSTLogin = async (payload: ILoginPayload): Promise<IAuthResponse> => {
-  const authResponse = await postApi<IAuthSchema>({ data: payload, endpoint: "/api/auth/local", label: label });
+export const POSTLogin = async (payload: ILoginPayload): Promise<ISuccessResponse<IAuthResponse>> => {
+  const res = await postApi<IElysiaLoginData>({
+    auth: false,
+    data: payload,
+    endpoint: "/auth/login",
+    label,
+  });
 
-  const userResponse = await GETUserByDocumentId(authResponse.user.id, { populate: "relation_data" });
-  const dataResponse = await GETDataByDocumentId(userResponse.relation_data?.documentId ?? "", { populate: "*" });
+  const user = res.data;
 
-  return rearrange(authResponse, dataResponse);
+  return {
+    data: {
+      accessToken: user.accessToken,
+      email: user.email,
+      id: user.id.toString(),
+      image: null,
+      imageId: null,
+      name: user.name,
+      phone: user.phone,
+      refreshToken: user.refreshToken,
+      role: user.role,
+      status: "authenticated",
+      username: user.username,
+    },
+    message: res.message,
+    success: true,
+  };
 };

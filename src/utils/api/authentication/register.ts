@@ -1,55 +1,52 @@
-import { IAuthResponse, IAuthSchema } from "..";
-import { postApi } from "../base";
-import { IDataPayload, IDataResponse, POSTData } from "../data";
-import { PUTUser } from "../user";
+import { IAuthResponse } from "..";
+import { ISuccessResponse, postApi } from "../base";
 
 export interface IRegisterPayload {
   email: string;
+  name: string;
   password: string;
+  phone: string;
   username: string;
 }
 
-const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
-
-const rearrange = (authResponse: IAuthSchema, dataResponse: IDataResponse): IAuthResponse => ({
-  blocked: authResponse.user.blocked,
-  confirmed: authResponse.user.confirmed,
-  dataDocumentId: dataResponse.documentId ?? "",
-  dataId: dataResponse.id.toString(),
-  email: authResponse.user.email,
-  id: authResponse.user.id.toString(),
-  image: dataResponse.image ? API_URL + dataResponse.image.url : null,
-  imageId: dataResponse.image?.id.toString() ?? null,
-  name: dataResponse.name,
-  phoneNumber: dataResponse.phoneNumber,
-  role: dataResponse.role,
-  status: "authenticated",
-  token: authResponse.jwt,
-  username: authResponse.user.username,
-});
-
-interface I extends IDataPayload, IRegisterPayload {}
+interface IElysiaRegisterData {
+  accessToken: string;
+  email: string;
+  id: number;
+  name: string;
+  phone: string;
+  refreshToken: string;
+  role: "admin" | "user";
+  username: string;
+}
 
 const label = "Register";
 
-export const POSTRegister = async (payload: I): Promise<IAuthResponse> => {
-  const authResponse = await postApi<IAuthSchema>({
+export const POSTRegister = async (payload: IRegisterPayload): Promise<ISuccessResponse<IAuthResponse>> => {
+  const res = await postApi<IElysiaRegisterData>({
+    auth: false,
+    data: payload,
+    endpoint: "/auth/register",
+    label,
+  });
+
+  const user = res.data;
+
+  return {
     data: {
-      email: payload.email,
-      password: payload.password,
-      username: payload.username,
+      accessToken: user.accessToken,
+      email: user.email,
+      id: user.id.toString(),
+      image: null,
+      imageId: null,
+      name: user.name,
+      phone: user.phone,
+      refreshToken: user.refreshToken,
+      role: user.role,
+      status: "authenticated",
+      username: user.username,
     },
-    endpoint: "/api/auth/local/register",
-    label: label,
-  });
-
-  const dataResponse = await POSTData({
-    name: payload.name,
-    phoneNumber: payload.phoneNumber,
-    role: "user",
-  });
-
-  await PUTUser({ id: authResponse.user.id, relation_data: dataResponse.id });
-
-  return rearrange(authResponse, dataResponse);
+    message: res.message,
+    success: true,
+  };
 };
