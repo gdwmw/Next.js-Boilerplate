@@ -60,16 +60,16 @@ export const Main: FC = (): ReactElement => {
       if (getValues("password") === getValues("passwordConfirmation")) {
         try {
           await POSTChangePassword(dt);
-          console.info("Change Password Success!");
+          console.info("Change password success!");
           signOut();
           reset();
         } catch (error) {
           const axiosError = error as AxiosError<IErrorResponse>;
           setErrorMessage(capitalize(axiosError.response?.data?.error?.message));
-          console.warn("Change Password Failed!");
+          console.warn("Change password failed!");
         }
       } else {
-        setErrorMessage("Confirm Password Does Not Match New Password");
+        setErrorMessage("Confirm password does not match new password");
       }
     });
   };

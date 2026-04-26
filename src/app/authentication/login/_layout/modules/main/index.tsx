@@ -48,24 +48,24 @@ export const Main: FC = (): ReactElement => {
 
         if (!res?.ok) {
           if (report?.[0] === false) {
-            setErrorMessage("Your Account Has Not Been Confirmed");
-            throw new Error("Your Account Has Not Been Confirmed");
+            setErrorMessage("Your account has not been confirmed");
+            throw new Error("Your account has not been confirmed");
           } else if (report?.[1] === true) {
-            setErrorMessage("Your Account Has Been Blocked");
-            throw new Error("Your Account Has Been Blocked");
+            setErrorMessage("Your account has been blocked");
+            throw new Error("Your account has been blocked");
           } else {
-            setErrorMessage(loginWithEmail ? "Invalid Email Or Password" : "Invalid Username Or Password");
-            throw new Error(loginWithEmail ? "Invalid Email Or Password" : "Invalid Username Or Password");
+            setErrorMessage(loginWithEmail ? "Email or Password invalid" : "Username or Password invalid");
+            throw new Error(loginWithEmail ? "Email or Password invalid" : "Username or Password invalid");
           }
         }
 
         await deleteCookie("report");
-        console.info("Login Success!");
+        console.info("Login success!");
         router.push("/");
         router.refresh();
         reset();
       } catch (error) {
-        console.warn("Login Failed!");
+        console.warn("Login failed!");
         console.error("--- Authentication Error Message ---", error);
       }
     });

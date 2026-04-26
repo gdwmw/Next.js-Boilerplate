@@ -15,10 +15,6 @@ import { ProfileSchema, TProfileSchema } from "./schema";
 
 const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 
-if (!API_URL) {
-  throw new Error("Please check your environment variables. NEXT_PUBLIC_BASE_API_URL is not defined.");
-}
-
 interface IFormField {
   label: string;
   maxLength?: number;
@@ -146,10 +142,10 @@ export const Main: FC<I> = (props): ReactElement => {
           },
         });
 
-        console.info("Profile Success!");
+        console.info("Profile success!");
         router.refresh();
       } catch {
-        console.warn("Profile Failed!");
+        console.warn("Profile failed!");
       }
     });
   };

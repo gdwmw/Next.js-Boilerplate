@@ -19,6 +19,14 @@ export const metadata: Metadata = {
   },
 };
 
+if (!process.env.NEXT_PUBLIC_BASE_API_URL) {
+  throw new Error("Please check your environment variables. NEXT_PUBLIC_BASE_API_URL is not defined.");
+}
+
+if (!process.env.NEXT_PUBLIC_DEBUG_MODE) {
+  throw new Error("Please check your environment variables. NEXT_PUBLIC_DEBUG_MODE is not defined.");
+}
+
 type T = Readonly<PropsWithChildren>;
 
 const RootLayout: FC<T> = (props): ReactElement => (

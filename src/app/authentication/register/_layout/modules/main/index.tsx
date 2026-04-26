@@ -87,16 +87,16 @@ export const Main: FC = (): ReactElement => {
       if (getValues("password") === getValues("confirmPassword")) {
         try {
           await POSTRegister(dt);
-          console.info("Register Success!");
+          console.info("Register success!");
           router.push("/authentication/login");
           reset();
         } catch (error) {
           const axiosError = error as AxiosError<IErrorResponse>;
           setErrorMessage(capitalize(axiosError.response?.data?.error?.message));
-          console.warn("Register Failed!");
+          console.warn("Register failed!");
         }
       } else {
-        setErrorMessage("Confirm Password Does Not Match Password");
+        setErrorMessage("Confirm password does not match password");
       }
     });
   };

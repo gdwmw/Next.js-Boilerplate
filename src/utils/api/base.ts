@@ -4,10 +4,6 @@ import { getSession } from "@/src/utils";
 
 const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 
-if (!API_URL) {
-  throw new Error("Please check your environment variables. NEXT_PUBLIC_BASE_API_URL is not defined.");
-}
-
 interface IMetaResponse {
   meta: {
     pagination: {
