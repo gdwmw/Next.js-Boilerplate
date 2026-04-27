@@ -1,0 +1,23 @@
+{
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.codeActionsOnSave": {
+    // "source.fixAll": "explicit",
+    "source.addMissingImports.ts": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "explorer.fileNesting.enabled": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.activeIconPack": "react",
+  "material-icon-theme.hidesExplorerArrows": true,
+  "editor.guides.bracketPairs": "active",
+  "highlight-matching-tag.highlightSelfClosing": true,
+  "highlight-matching-tag.highlightFromContent": true,
+  "tailwindCSS.experimental.classRegex": [
+    ["twm\\(([^)]*)\\)", "\"([^\"]*)\""],
+    ["clsx\\(([^)]*)\\)", "\"([^\"]*)\""],
+    ["twm\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["clsx\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ]
+}

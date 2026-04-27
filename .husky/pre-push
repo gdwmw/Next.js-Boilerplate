@@ -1,0 +1,4 @@
+pnpm check-types
+pnpm jest:test
+pnpm storybook:build
+pnpm run build
