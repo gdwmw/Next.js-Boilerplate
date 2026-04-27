@@ -31,12 +31,12 @@ export const apiRequest = async <T>({ auth = true, ...props }: I): Promise<ISucc
   const fetchToken = async () => await getSession("accessToken");
 
   try {
-    const token = auth && (await fetchToken());
+    const accessToken = auth && (await fetchToken());
 
     const config: AxiosRequestConfig = {
       data: props.data,
       headers: {
-        ...(token && { Authorization: `Bearer ${token}` }),
+        ...(accessToken && { Authorization: `Bearer ${accessToken}` }),
         ...props.headers,
       },
       method: props.method,
