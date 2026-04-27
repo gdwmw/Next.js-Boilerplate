@@ -95,7 +95,6 @@ export const Main: FC = (): ReactElement => {
           const axiosError = error as AxiosError<IErrorResponse>;
           setErrorMessage(axiosError.response?.data?.message ?? "Registration failed");
           console.warn("Register failed!");
-          console.error(error);
         }
       } else {
         setErrorMessage("Confirm password does not match password");

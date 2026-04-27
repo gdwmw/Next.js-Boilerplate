@@ -10,7 +10,7 @@ import { FC, HTMLInputTypeAttribute, KeyboardEvent, ReactElement, useEffect, use
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { Avatar, ExampleATWM, ExampleInput, FormContainer, SubmitButton } from "@/src/components";
-import { DELETEUpload, IErrorResponse, inputValidations, POSTUpload, PUTUser } from "@/src/utils";
+import { DELETEUpload, IErrorResponse, inputValidations, POSTUpload, PUTUsers } from "@/src/utils";
 
 import { ProfileSchema, TProfileSchema } from "./schema";
 
@@ -101,13 +101,11 @@ export const Main: FC<I> = (props): ReactElement => {
   const onSubmit: SubmitHandler<TProfileSchema> = (dt) => {
     setTransition(async () => {
       try {
-        let imageId: null | number | string | undefined = props.session?.user?.imageId;
-        let imageUrl = props.session?.user?.image;
-        let placeholder = props.session?.user?.placeholder;
+        let imageId: null | number | undefined = props.session?.user?.imageId;
 
         if (dt.image && dt.image.length > 0) {
           if (props.session?.user?.imageId) {
-            await DELETEUpload(parseInt(props.session?.user?.imageId as string));
+            await DELETEUpload(props.session?.user?.imageId);
           }
 
           const uploadResponse = await POSTUpload({
@@ -115,13 +113,11 @@ export const Main: FC<I> = (props): ReactElement => {
           });
 
           imageId = uploadResponse.data.id;
-          imageUrl = uploadResponse.data.url;
-          placeholder = uploadResponse.data.placeholder;
         }
 
-        const userResponse = await PUTUser(Number(props.session?.user?.id), {
+        const userResponse = await PUTUsers(props.session?.user?.id ?? 0, {
           email: dt.email,
-          imageId: typeof imageId === "string" ? parseInt(imageId) : (imageId ?? null),
+          imageId: imageId,
           name: dt.name,
           phone: dt.phone,
           username: dt.username,
@@ -131,11 +127,10 @@ export const Main: FC<I> = (props): ReactElement => {
           user: {
             ...session.data?.user,
             email: userResponse.data.email,
-            image: imageUrl,
+            image: userResponse.data.image,
             imageId: userResponse.data.imageId,
             name: userResponse.data.name,
             phone: userResponse.data.phone,
-            placeholder: placeholder,
             username: userResponse.data.username,
           },
         });
@@ -146,7 +141,6 @@ export const Main: FC<I> = (props): ReactElement => {
         const axiosError = error as AxiosError<IErrorResponse>;
         setErrorMessage(axiosError.response?.data?.message ?? "Failed to update profile");
         console.warn("Profile failed!");
-        console.error(error);
       }
     });
   };
@@ -158,7 +152,7 @@ export const Main: FC<I> = (props): ReactElement => {
           <Avatar
             className="mx-auto min-h-32 min-w-32"
             iconSize={64}
-            src={previewImage ? previewImage : props.session?.user?.image ? `${API_URL}${props.session?.user?.image}` : ""}
+            src={previewImage ? previewImage : props.session?.user?.image ? `${API_URL}${props.session?.user?.image?.formats?.thumbnail?.url}` : ""}
           />
 
           {FORM_FIELDS_DATA.map((dt, i) => (

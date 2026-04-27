@@ -7,12 +7,6 @@ interface IExampleCommon {
   username: string;
 }
 
-export interface IExampleSchema {
-  data: {
-    documentId: string;
-  } & IExampleCommon;
-}
-
 export interface IExamplePayload extends IExampleCommon {
   documentId?: string;
 }

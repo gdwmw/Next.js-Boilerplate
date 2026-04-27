@@ -68,7 +68,6 @@ export const Main: FC = (): ReactElement => {
           const axiosError = error as AxiosError<IErrorResponse>;
           setErrorMessage(axiosError.response?.data?.message ?? "Failed to change password");
           console.warn("Change password failed!");
-          console.error(error);
         }
       } else {
         setErrorMessage("Confirm password does not match new password");

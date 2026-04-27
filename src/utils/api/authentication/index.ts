@@ -1,3 +1,5 @@
+import { IUploadResponse } from "../upload";
+
 export interface IDummyAccount {
   email: string;
   password: string;
@@ -8,12 +10,11 @@ export interface IDummyAccount {
 export interface IAuthResponse {
   accessToken: string;
   email: string;
-  id: string;
-  image?: null | string;
-  imageId?: null | string;
+  id: number;
+  image?: IUploadResponse | null;
+  imageId?: null | number;
   name: string;
   phone: string;
-  placeholder?: null | string;
   refreshToken: string;
   role: "admin" | "user";
   status: string;
@@ -23,12 +24,11 @@ export interface IAuthResponse {
 export interface INextAuthResponse {
   accessToken?: string;
   email?: null | string;
-  id?: string;
-  image?: null | string;
-  imageId?: null | string;
+  id?: number;
+  image?: IUploadResponse | null;
+  imageId?: null | number;
   name?: null | string;
   phone?: string;
-  placeholder?: null | string;
   refreshToken?: string;
   role?: "admin" | "user";
   status?: string;
@@ -36,5 +36,6 @@ export interface INextAuthResponse {
 }
 
 export * from "./login";
+export * from "./logout";
 export * from "./password";
 export * from "./register";
