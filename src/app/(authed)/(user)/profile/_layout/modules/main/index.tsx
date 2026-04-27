@@ -152,6 +152,7 @@ export const Main: FC<I> = (props): ReactElement => {
           <Avatar
             className="mx-auto min-h-32 min-w-32"
             iconSize={64}
+            placeholder={previewImage ? null : props.session?.user?.image?.placeholder}
             src={previewImage ? previewImage : props.session?.user?.image ? `${API_URL}${props.session?.user?.image?.formats?.thumbnail?.url}` : ""}
           />
 

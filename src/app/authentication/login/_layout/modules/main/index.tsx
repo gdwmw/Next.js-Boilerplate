@@ -65,7 +65,7 @@ export const Main: FC = (): ReactElement => {
         reset();
       } catch (error) {
         const axiosError = error as AxiosError<IErrorResponse>;
-        setErrorMessage(axiosError.response?.data?.message ?? "Login failed");
+        setErrorMessage(axiosError.response?.data?.message ?? "Login failed. Please try again.");
         console.warn("Login failed!");
       }
     });
