@@ -30,21 +30,10 @@ export const POSTRegister = async (payload: IRegisterPayload): Promise<ISuccessR
     label,
   });
 
-  const user = res.data;
-
   return {
     data: {
-      accessToken: user.accessToken,
-      email: user.email,
-      id: user.id.toString(),
-      image: null,
-      imageId: null,
-      name: user.name,
-      phone: user.phone,
-      refreshToken: user.refreshToken,
-      role: user.role,
+      ...res.data,
       status: "authenticated",
-      username: user.username,
     },
     message: res.message,
     success: true,

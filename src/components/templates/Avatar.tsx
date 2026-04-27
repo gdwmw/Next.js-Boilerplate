@@ -10,6 +10,7 @@ export type TAvatarSize = (typeof AVATAR_SIZE_OPTIONS)[number];
 export interface IAvatar {
   className?: string;
   iconSize?: number;
+  placeholder?: null | string;
   size?: TAvatarSize;
   src: string;
 }
@@ -38,7 +39,15 @@ export const Avatar: FC<IAvatar> = (props): ReactElement => {
         props.className,
       )}
     >
-      <Image alt="Profile Image" className="object-cover" fill quality={50} src={props.src} />
+      <Image
+        alt="Profile Image"
+        blurDataURL={props.placeholder ?? ""}
+        className="object-cover"
+        fill
+        placeholder={props.placeholder ? "blur" : "empty"}
+        quality={50}
+        src={props.src}
+      />
     </div>
   ) : (
     <div

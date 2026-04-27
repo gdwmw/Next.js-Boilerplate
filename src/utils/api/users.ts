@@ -41,7 +41,7 @@ export interface IUserResponse {
 
 type TQueryParams = Record<string, unknown>;
 
-const label = "User";
+const label = "Users";
 
 export const GETUsers = async (params?: TQueryParams): Promise<ISuccessResponse<IUserResponse[]>> =>
   getApi<IUserResponse[]>({
@@ -50,21 +50,21 @@ export const GETUsers = async (params?: TQueryParams): Promise<ISuccessResponse<
     params: params,
   });
 
-export const GETUser = async (id: number, params?: TQueryParams): Promise<ISuccessResponse<IUserResponse>> =>
+export const GETUsersById = async (id: number, params?: TQueryParams): Promise<ISuccessResponse<IUserResponse>> =>
   getApi<IUserResponse>({
     endpoint: `/users/${id}`,
     label: label,
     params: params,
   });
 
-export const PUTUser = async (id: number, payload: IUserPayload): Promise<ISuccessResponse<IUserResponse>> =>
+export const PUTUsers = async (id: number, payload: IUserPayload): Promise<ISuccessResponse<IUserResponse>> =>
   putApi<IUserResponse>({
     data: payload,
     endpoint: `/users/${id}`,
     label: label,
   });
 
-export const DELETEUser = async (id: number): Promise<ISuccessResponse<IUserResponse>> =>
+export const DELETEUsers = async (id: number): Promise<ISuccessResponse<IUserResponse>> =>
   deleteApi<IUserResponse>({
     endpoint: `/users/${id}`,
     label: label,

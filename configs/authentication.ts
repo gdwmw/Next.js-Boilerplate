@@ -4,7 +4,7 @@ import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import { DUMMY_ACCOUNT_DATA } from "@/src/constants";
-import { ILoginPayload, POSTLogin } from "@/src/utils";
+import { ILoginPayload, IUploadResponse, POSTLogin } from "@/src/utils";
 
 export const options: NextAuthOptions = {
   callbacks: {
@@ -14,7 +14,7 @@ export const options: NextAuthOptions = {
       }
 
       if (user) {
-        token.id = user.id;
+        token.id = parseInt(user.id);
         token.email = user.email;
         token.name = user.name;
         token.username = user.username;
@@ -22,9 +22,8 @@ export const options: NextAuthOptions = {
         token.role = user.role;
         token.accessToken = user.accessToken;
         token.refreshToken = user.refreshToken;
-        token.image = user.image;
+        token.image = user.image as IUploadResponse | null;
         token.imageId = user.imageId;
-        token.placeholder = user.placeholder;
         token.status = user.status;
       }
 
@@ -39,12 +38,11 @@ export const options: NextAuthOptions = {
       session.user = {
         accessToken: token.accessToken as string | undefined,
         email: token.email as null | string | undefined,
-        id: token.id as string | undefined,
-        image: token.image as null | string | undefined,
-        imageId: token.imageId as null | string | undefined,
+        id: token.id as number | undefined,
+        image: token.image as IUploadResponse | null | undefined,
+        imageId: token.imageId as null | number | undefined,
         name: token.name as null | string | undefined,
         phone: token.phone as string | undefined,
-        placeholder: token.placeholder as null | string | undefined,
         refreshToken: token.refreshToken as string | undefined,
         role: token.role as "admin" | "user" | undefined,
         status: token.status as string | undefined,
@@ -65,20 +63,21 @@ export const options: NextAuthOptions = {
           return null;
         }
 
-        const { identifier, password } = credentials as ILoginPayload;
+        const { identifier, method, password } = credentials as ILoginPayload;
 
         const dummyUser = DUMMY_ACCOUNT_DATA.find(
           (user) => (user.username === identifier || user.email === identifier) && user.password === password,
         );
 
         if (dummyUser) {
-          return dummyUser.response as User;
+          // eslint-disable-next-line
+          return dummyUser.response as any;
         }
 
         try {
-          const method = identifier.includes("@") ? "email" : "username";
-          const res = await POSTLogin({ identifier, method, password });
-          return res.data as User;
+          const res = await POSTLogin({ identifier, method: method === "email" ? "email" : "username", password });
+          // eslint-disable-next-line
+          return res.data as any;
         } catch (error) {
           console.error("Login error:", error);
           return null;
